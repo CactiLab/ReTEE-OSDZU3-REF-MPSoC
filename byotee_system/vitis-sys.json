@@ -1,0 +1,21 @@
+{
+  "modelVersion": "1.0",
+  "projectName": "byotee_system",
+  "platform": "/home/e/Documents/research/byotee/byotee_2_riscv/export/byotee_2_riscv/byotee_2_riscv.xpfm",
+  "externalComponentRefs": [],
+  "components": [],
+  "buildConfigurations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "supportedTargets": [
+        "HW_EMU",
+        "HW"
+      ]
+    }
+  ],
+  "activeBuildConfigId": "default",
+  "hostMode": "x86",
+  "isDirty": true,
+  "applicationFlow": "EMBEDDED"
+}

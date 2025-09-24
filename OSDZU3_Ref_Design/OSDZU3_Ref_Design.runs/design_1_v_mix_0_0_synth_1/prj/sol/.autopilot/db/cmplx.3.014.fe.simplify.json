@@ -1,0 +1,293 @@
+{
+  "0": {
+    "basicblocks": 6,
+    "calls": "22",
+    "control_depth": 2,
+    "def_use_depth": 4,
+    "file": "v_mix.cpp",
+    "fileloc": 2034,
+    "instructions": 159,
+    "loads": {
+      "T": 18
+    },
+    "memory_accesses": 1,
+    "name": "v_mix",
+    "total_instructions": 1950
+  },
+  "1": {
+    "basicblocks": 9,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 4,
+    "file": "v_csc.cpp",
+    "fileloc": 87,
+    "instructions": 26,
+    "memory_accesses": 2,
+    "name": "v_mix_422_to_444<false>",
+    "total_instructions": 65
+  },
+  "10": {
+    "basicblocks": 15,
+    "calls": "",
+    "control_depth": 4,
+    "def_use_depth": 13,
+    "file": "v_csc.cpp",
+    "fileloc": 123,
+    "instructions": 129,
+    "memory_accesses": 2,
+    "name": "v_mix_422_to_444<true>",
+    "total_instructions": 168
+  },
+  "11": {
+    "basicblocks": 9,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 3,
+    "file": "v_csc.cpp",
+    "fileloc": 865,
+    "instructions": 23,
+    "memory_accesses": 2,
+    "name": "v_mix_yuv2rgb<false>",
+    "total_instructions": 23
+  },
+  "12": {
+    "basicblocks": 9,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 3,
+    "file": "v_csc.cpp",
+    "fileloc": 58,
+    "instructions": 23,
+    "memory_accesses": 2,
+    "name": "v_mix_420_to_422<false>",
+    "total_instructions": 23
+  },
+  "13": {
+    "basicblocks": 9,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 4,
+    "file": "v_mix.cpp",
+    "fileloc": 93,
+    "instructions": 26,
+    "memory_accesses": 2,
+    "name": "v_mix_upsample<false>",
+    "total_instructions": 65
+  },
+  "14": {
+    "basicblocks": 9,
+    "calls": "6",
+    "control_depth": 2,
+    "def_use_depth": 12,
+    "file": "v_mix.cpp",
+    "fileloc": 361,
+    "instructions": 121,
+    "memory_accesses": 3,
+    "name": "v_mix_core_alpha<true, false>",
+    "total_instructions": 179
+  },
+  "15": {
+    "basicblocks": 9,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 3,
+    "file": "v_csc.cpp",
+    "fileloc": 58,
+    "instructions": 23,
+    "memory_accesses": 2,
+    "name": "v_mix_420_to_422<false>",
+    "total_instructions": 23
+  },
+  "16": {
+    "basicblocks": 7,
+    "calls": "6 6",
+    "control_depth": 0,
+    "def_use_depth": 6,
+    "file": "v_mix.cpp",
+    "fileloc": 3458,
+    "instructions": 81,
+    "memory_accesses": 9,
+    "name": "MultiPixStream2AXIvideo",
+    "stores": {
+      "L": 7
+    },
+    "total_instructions": 125
+  },
+  "17": {
+    "basicblocks": 7,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 3,
+    "file": "v_csc.cpp",
+    "fileloc": 702,
+    "instructions": 21,
+    "memory_accesses": 2,
+    "name": "v_mix_444_to_422<false>",
+    "total_instructions": 21
+  },
+  "18": {
+    "basicblocks": 9,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 3,
+    "file": "v_csc.cpp",
+    "fileloc": 87,
+    "instructions": 23,
+    "memory_accesses": 2,
+    "name": "v_mix_422_to_444<false>",
+    "total_instructions": 23
+  },
+  "19": {
+    "basicblocks": 7,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 4,
+    "file": "v_csc.cpp",
+    "fileloc": 1013,
+    "instructions": 24,
+    "memory_accesses": 2,
+    "name": "v_mix_rgb2yuv<false>",
+    "total_instructions": 63
+  },
+  "2": {
+    "basicblocks": 17,
+    "calls": "6 6",
+    "control_depth": 2,
+    "def_use_depth": 8,
+    "file": "v_mix.cpp",
+    "fileloc": 3358,
+    "instructions": 164,
+    "loads": {
+      "L": 7
+    },
+    "memory_accesses": 11,
+    "name": "AXIvideo2MultiPixStream",
+    "total_instructions": 194
+  },
+  "20": {
+    "basicblocks": 11,
+    "calls": "",
+    "control_depth": 4,
+    "def_use_depth": 9,
+    "file": "v_mix.cpp",
+    "fileloc": 435,
+    "instructions": 71,
+    "memory_accesses": 3,
+    "name": "v_mix_core_alpha<false, false>",
+    "total_instructions": 128
+  },
+  "21": {
+    "basicblocks": 9,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 3,
+    "file": "v_csc.cpp",
+    "fileloc": 865,
+    "instructions": 23,
+    "memory_accesses": 2,
+    "name": "v_mix_yuv2rgb<false>",
+    "total_instructions": 23
+  },
+  "22": {
+    "basicblocks": 1,
+    "calls": "7 15 18 21 2 12 10 3 8 20 4 9 1 11 13 14 19 17 5 16",
+    "control_depth": 0,
+    "def_use_depth": 1,
+    "file": "v_mix.cpp",
+    "fileloc": 498,
+    "instructions": 59,
+    "memory_accesses": 0,
+    "name": "VMixHlsDataFlowFunction",
+    "total_instructions": 1791
+  },
+  "3": {
+    "basicblocks": 9,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 15,
+    "file": "v_csc.cpp",
+    "fileloc": 908,
+    "instructions": 73,
+    "memory_accesses": 12,
+    "name": "v_mix_yuv2rgb<true>",
+    "total_instructions": 112
+  },
+  "4": {
+    "basicblocks": 17,
+    "calls": "6 6",
+    "control_depth": 2,
+    "def_use_depth": 8,
+    "file": "v_mix.cpp",
+    "fileloc": 3358,
+    "instructions": 164,
+    "loads": {
+      "L": 7
+    },
+    "memory_accesses": 11,
+    "name": "AXIvideo2MultiPixStream",
+    "total_instructions": 194
+  },
+  "5": {
+    "basicblocks": 7,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 3,
+    "file": "v_csc.cpp",
+    "fileloc": 493,
+    "instructions": 21,
+    "memory_accesses": 2,
+    "name": "v_mix_422_to_420<false>",
+    "total_instructions": 21
+  },
+  "6": {
+    "basicblocks": 1,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 0,
+    "file": "x_hls_utils.h",
+    "fileloc": 222,
+    "instructions": 1,
+    "memory_accesses": 0,
+    "name": "reg<unsigned short>",
+    "total_instructions": 1
+  },
+  "7": {
+    "basicblocks": 17,
+    "calls": "6 6",
+    "control_depth": 2,
+    "def_use_depth": 8,
+    "file": "v_mix.cpp",
+    "fileloc": 3358,
+    "instructions": 164,
+    "loads": {
+      "L": 7
+    },
+    "memory_accesses": 11,
+    "name": "AXIvideo2MultiPixStream",
+    "total_instructions": 194
+  },
+  "8": {
+    "basicblocks": 9,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 4,
+    "file": "v_mix.cpp",
+    "fileloc": 93,
+    "instructions": 26,
+    "memory_accesses": 2,
+    "name": "v_mix_upsample<false>",
+    "total_instructions": 65
+  },
+  "9": {
+    "basicblocks": 9,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 3,
+    "file": "v_csc.cpp",
+    "fileloc": 58,
+    "instructions": 23,
+    "memory_accesses": 2,
+    "name": "v_mix_420_to_422<false>",
+    "total_instructions": 23
+  }
+}

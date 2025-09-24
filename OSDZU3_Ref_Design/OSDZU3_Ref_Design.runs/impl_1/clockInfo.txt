@@ -1,0 +1,61 @@
+-------------------------------------
+| Tool Version : Vivado v.2025.1
+| Date         : Mon Sep 22 18:19:38 2025
+| Host         : e-ubuntu
+| Design       : design_1
+| Device       : xczu3eg-sfvc784-1-E-
+-------------------------------------
+
+For more information on clockInfo.txt clock routing debug file see https://support.xilinx.com/s/article/000035660?language=en_US
+
+***********************
+Running Pre-CRP Checker
+***********************
+Number of global clocks: 5
+	Number of BUFGCE: 2
+	Number of BUFGCE_HDIO: 0
+	Number of BUFG_CTRL: 2
+	Number of BUFGCE_DIV: 0
+	Number of BUFG_GT: 0
+	Number of BUFG_PS: 1
+	Number of BUFG_FABRIC: 0
+	Running suboptimal placement checker for 4 clocks (and their loads) which do not have the CLOCK_LOW_FANOUT property but have a fanout less than 2000...
+Pre-CRP Checker took 0 secs
+
+********************************
+Clock Net Route Info (CRP Input)
+********************************
+Clock 1: OSDZU3x_BYOTEE_i/zynq_ultra_ps_e_0/inst/pl_clk0
+	Clock source type: BUFG_PS
+	Clock source region: X0Y2
+	Clock regions with locked loads: X0Y0 X0Y2 
+	initial rect ((0, 0), (1, 2))
+
+Clock 2: OSDZU3x_BYOTEE_i/mdm_1/U0/MDM_Core_I1/JTAG_CONTROL_I/Test_Access_Port.BUFG_DRCK/Using_FPGA.Native_0
+	Clock source type: BUFG_CTRL
+	Clock source region: X1Y2
+	initial rect ((0, 1), (1, 2))
+
+Clock 3: OSDZU3x_BYOTEE_i/mdm_1/U0/MDM_Core_I1/JTAG_CONTROL_I/Test_Access_Port.BUFG_UPDATE/Using_FPGA.Native_0
+	Clock source type: BUFGCE
+	Clock source region: X1Y1
+	initial rect ((0, 1), (1, 1))
+
+Clock 4: OSDZU3x_BYOTEE_i/mdm_1/U0/Use_E2.BSCAN_I/tck_BUFGCE
+	Clock source type: BUFGCE
+	Clock source region: X1Y0
+	initial rect ((0, 0), (1, 1))
+
+Clock 5: OSDZU3x_BYOTEE_i/mdm_1/U0/Use_JTAG_BSCAN.BUFG_JTAG_TCK/Use_JTAG_BSCAN.tck_int
+	Clock source type: BUFG_CTRL
+	Clock source region: X1Y2
+	initial rect ((0, 1), (1, 2))
+
+
+
+*****************
+User Constraints:
+*****************
+No user constraints found
+
+

@@ -1,0 +1,124 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.01532",
+   "Default View_TopLeft":"1033,975",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
+#  -string -flagsOSRD
+preplace port dip_switches_8bits -pg 1 -lvl 6 -x 6180 -y 210 -defaultsOSRD
+preplace port led_8bits -pg 1 -lvl 6 -x 6180 -y 80 -defaultsOSRD
+preplace port push_buttons_3bits -pg 1 -lvl 6 -x 6180 -y 1000 -defaultsOSRD
+preplace port lvds_display_iic -pg 1 -lvl 6 -x 6180 -y 1340 -defaultsOSRD
+preplace port CLICK_I2C -pg 1 -lvl 6 -x 6180 -y 510 -defaultsOSRD
+preplace port PMOD_B_I2C -pg 1 -lvl 6 -x 6180 -y 330 -defaultsOSRD
+preplace port PMOD_A_GPIO -pg 1 -lvl 6 -x 6180 -y 790 -defaultsOSRD
+preplace port PMOD_B_GPIO -pg 1 -lvl 6 -x 6180 -y 360 -defaultsOSRD
+preplace port lvds_display_touch_irq -pg 1 -lvl 6 -x 6180 -y 1370 -defaultsOSRD
+preplace port port-id_lvds_display_clk_n -pg 1 -lvl 6 -x 6180 -y 1400 -defaultsOSRD
+preplace port port-id_lvds_display_clk_p -pg 1 -lvl 6 -x 6180 -y 1430 -defaultsOSRD
+preplace port port-id_PMOD_A_UART_RX -pg 1 -lvl 0 -x -140 -y 870 -defaultsOSRD
+preplace port port-id_PMOD_A_UART_TX -pg 1 -lvl 6 -x 6180 -y 850 -defaultsOSRD
+preplace port port-id_PMOD_A_UART_CTSn -pg 1 -lvl 0 -x -140 -y 840 -defaultsOSRD
+preplace port port-id_PMOD_A_UART_RTSn -pg 1 -lvl 6 -x 6180 -y 820 -defaultsOSRD
+preplace port port-id_backlight_dctrl -pg 1 -lvl 6 -x 6180 -y 1580 -defaultsOSRD
+preplace port port-id_CLICK_PWM -pg 1 -lvl 6 -x 6180 -y 570 -defaultsOSRD
+preplace port port-id_CLICK_UART_RX -pg 1 -lvl 0 -x -140 -y 530 -defaultsOSRD
+preplace port port-id_CLICK_UART_TX -pg 1 -lvl 6 -x 6180 -y 540 -defaultsOSRD
+preplace portBus lvds_display_data_n -pg 1 -lvl 6 -x 6180 -y 1460 -defaultsOSRD
+preplace portBus lvds_display_data_p -pg 1 -lvl 6 -x 6180 -y 1490 -defaultsOSRD
+preplace portBus lvds_display_reset -pg 1 -lvl 6 -x 6180 -y 1520 -defaultsOSRD
+preplace portBus lvds_display_standby -pg 1 -lvl 6 -x 6180 -y 1550 -defaultsOSRD
+preplace portBus pwr_en_ctrl -pg 1 -lvl 6 -x 6180 -y 1610 -defaultsOSRD
+preplace portBus lvds_display_touch_reset -pg 1 -lvl 6 -x 6180 -y 1640 -defaultsOSRD
+preplace inst rst_ps8_0_100M -pg 1 -lvl 3 -x 1800 -y 980 -defaultsOSRD
+preplace inst LVDS_Display -pg 1 -lvl 5 -x 2860 -y 1512 -defaultsOSRD
+preplace inst rst_ps8_0_200M -pg 1 -lvl 1 -x 790 -y 1190 -defaultsOSRD
+preplace inst rst_ps8_0_60M -pg 1 -lvl 4 -x 2340 -y 1220 -defaultsOSRD
+preplace inst CLICK -pg 1 -lvl 5 -x 2860 -y 560 -defaultsOSRD
+preplace inst PMOD_A -pg 1 -lvl 5 -x 2860 -y 830 -defaultsOSRD
+preplace inst PMOD_B -pg 1 -lvl 5 -x 2860 -y 370 -defaultsOSRD
+preplace inst IRQ0 -pg 1 -lvl 2 -x 1300 -y 680 -defaultsOSRD
+preplace inst IRQ1 -pg 1 -lvl 2 -x 1300 -y 1020 -defaultsOSRD
+preplace inst switch_gpio -pg 1 -lvl 5 -x 2860 -y 220 -defaultsOSRD
+preplace inst led_gpio -pg 1 -lvl 5 -x 2860 -y 80 -defaultsOSRD
+preplace inst button_gpio -pg 1 -lvl 5 -x 2860 -y 1010 -defaultsOSRD
+preplace inst ps8_0_axi_periph -pg 1 -lvl 4 -x 2340 -y 450 -defaultsOSRD
+preplace inst smartconnect_0 -pg 1 -lvl 2 -x 1300 -y 1410 -defaultsOSRD
+preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 3 -x 1800 -y 1210 -defaultsOSRD
+preplace inst mdm_riscv_0 -pg 1 -lvl 1 -x 790 -y 610 -defaultsOSRD
+preplace inst microblaze_riscv_0 -pg 1 -lvl 1 -x 790 -y 800 -defaultsOSRD
+preplace inst axi_intc_0 -pg 1 -lvl 1 -x 790 -y 440 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 4 -x 2340 -y 30 -defaultsOSRD
+preplace netloc CLICK_iic2intc_irpt 1 1 5 1160 820 NJ 820 NJ 820 2610J 660 3050
+preplace netloc IRQ0_dout 1 2 1 1490 680n
+preplace netloc IRQ1_dout 1 2 1 1430 1020n
+preplace netloc LVDS_Display_Dout_0 1 5 1 3150J 1610n
+preplace netloc LVDS_Display_gpio_io_o_0 1 5 1 3150J 1640n
+preplace netloc LVDS_Display_lvds_display_clk_n 1 5 1 3080J 1400n
+preplace netloc LVDS_Display_lvds_display_clk_p 1 5 1 3090J 1430n
+preplace netloc LVDS_Display_lvds_display_data_n 1 5 1 3100J 1460n
+preplace netloc LVDS_Display_lvds_display_data_p 1 5 1 3110J 1490n
+preplace netloc LVDS_Display_lvds_display_irq 1 1 5 1150 1710 NJ 1710 NJ 1710 NJ 1710 3040
+preplace netloc LVDS_Display_lvds_display_reset 1 5 1 3120J 1520n
+preplace netloc LVDS_Display_lvds_display_standby 1 5 1 3130J 1550n
+preplace netloc LVDS_Display_pwm0_0 1 5 1 3140J 1580n
+preplace netloc PMODB_iic2intc_irpt 1 1 5 1150 830 NJ 830 NJ 830 2640J 670 3070
+preplace netloc PMOD_A_ip2intc_irpt 1 1 5 1170 810 NJ 810 NJ 810 2650J 700 3050
+preplace netloc PMOD_A_ip2intc_irpt1 1 1 5 1140 840 NJ 840 NJ 840 2510J 710 3080
+preplace netloc PMOD_B_ip2intc_irpt 1 1 5 1170 1090 NJ 1090 NJ 1090 NJ 1090 3100
+preplace netloc axi_gpio_0_ip2intc_irpt 1 1 5 1130 850 NJ 850 NJ 850 2680J 680 3090
+preplace netloc axi_gpio_2_ip2intc_irpt 1 1 5 1170 550 NJ 550 2090J 770 2670J 720 3090
+preplace netloc axi_timer_0_interrupt 1 1 5 1120 860 NJ 860 NJ 860 2550J 690 3080
+preplace netloc axi_timer_0_pwm0 1 5 1 NJ 570
+preplace netloc axi_uart16550_0_rtsn 1 5 1 3110J 820n
+preplace netloc axi_uart16550_0_sout 1 5 1 NJ 850
+preplace netloc axi_uart16550_1_ip2intc_irpt 1 1 5 1110 870 NJ 870 NJ 870 2660J 450 3050
+preplace netloc axi_uart16550_1_sout 1 5 1 3110J 540n
+preplace netloc ctsn_0_1 1 0 5 -110J 340 NJ 340 NJ 340 2170J 790 2560J
+preplace netloc m_axi_aresetn_1 1 1 4 1060 1532 NJ 1532 NJ 1532 NJ
+preplace netloc rst_ps8_0_100M_mb_reset 1 0 4 510 1090 1090J 1100 NJ 1100 2090
+preplace netloc rst_ps8_0_60M_peripheral_reset 1 4 1 2540 1220n
+preplace netloc rst_ps8_0_99M_peripheral_aresetn 1 0 5 510 330 N 330 N 330 2140 780 2530
+preplace netloc sin_0_1 1 0 5 -120J 890 1170J 880 NJ 880 NJ 880 NJ
+preplace netloc sin_0_2 1 0 5 -120J 130 NJ 130 NJ 130 NJ 130 2680J
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 5 530 350 1080 940 1510 1080 2150 890 2620
+preplace netloc zynq_ultra_ps_e_0_pl_clk1 1 0 5 520 1300 1130 1300 1510 1310 2090 1462 2510J
+preplace netloc zynq_ultra_ps_e_0_pl_clk2 1 3 2 2170 1472 NJ
+preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 0 4 540 1290 NJ 1290 1480 1110 2090
+preplace netloc CLICK_CLICK_I2C 1 5 1 NJ 510
+preplace netloc LVDS_Display_GPIO2_0 1 5 1 3070J 1370n
+preplace netloc LVDS_Display_lvds_display_iic 1 5 1 3050J 1340n
+preplace netloc LVDS_Display_m_axi_mm_video 1 1 5 1170 1690 NJ 1690 NJ 1690 NJ 1690 3060
+preplace netloc LVDS_Display_m_axi_mm_video1 1 1 5 1160 1700 NJ 1700 NJ 1700 NJ 1700 3050
+preplace netloc PMODB_GPIO_0 1 5 1 NJ 360
+preplace netloc PMOD_A_GPIO_0 1 5 1 NJ 790
+preplace netloc PMOD_B_IIC_IIC 1 5 1 3100J 330n
+preplace netloc S00_AXI_1 1 4 1 2600 410n
+preplace netloc S_AXI_1 1 4 1 2560 340n
+preplace netloc axi_gpio_0_GPIO 1 5 1 NJ 210
+preplace netloc axi_gpio_1_GPIO 1 5 1 NJ 80
+preplace netloc axi_gpio_2_GPIO 1 5 1 NJ 1000
+preplace netloc axi_intc_0_interrupt 1 0 2 540 710 1040
+preplace netloc axi_smc_M00_AXI 1 0 5 520 110 NJ 110 NJ 110 NJ 110 2520
+preplace netloc axi_smc_M01_AXI 1 0 5 540 120 NJ 120 NJ 120 NJ 120 2510
+preplace netloc mdm_riscv_0_M_AXI 1 1 1 1100 570n
+preplace netloc microblaze_riscv_0_M_AXI_DP 1 1 3 1050J 100 NJ 100 2090
+preplace netloc ps8_0_axi_periph_M00_AXI 1 4 1 2550 200n
+preplace netloc ps8_0_axi_periph_M01_AXI 1 4 1 2540 60n
+preplace netloc ps8_0_axi_periph_M02_AXI 1 4 1 2630 390n
+preplace netloc ps8_0_axi_periph_M04_AXI 1 4 1 2670 430n
+preplace netloc ps8_0_axi_periph_M05_AXI 1 4 1 2640 450n
+preplace netloc ps8_0_axi_periph_M06_AXI 1 4 1 2650 470n
+preplace netloc ps8_0_axi_periph_M07_AXI 1 4 1 2590 490n
+preplace netloc ps8_0_axi_periph_M08_AXI 1 4 1 2580 510n
+preplace netloc ps8_0_axi_periph_M10_AXI 1 4 1 2570 360n
+preplace netloc smartconnect_0_M00_AXI 1 2 1 1500 1170n
+preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_LPD 1 3 1 2160 190n
+levelinfo -pg 1 -140 790 1300 1800 2340 2860 6180
+pagesize -pg 1 -db -bbox -sgen -340 -50 6450 3640
+"
+}
+{
+   "da_axi4_cnt":"8",
+   "da_zynq_ultra_ps_e_cnt":"3"
+}

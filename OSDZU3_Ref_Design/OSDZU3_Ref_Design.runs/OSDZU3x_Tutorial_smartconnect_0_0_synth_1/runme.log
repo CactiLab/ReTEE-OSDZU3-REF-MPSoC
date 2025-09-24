@@ -1,0 +1,1195 @@
+
+*** Running vivado
+    with args -log OSDZU3x_Tutorial_smartconnect_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source OSDZU3x_Tutorial_smartconnect_0_0.tcl
+
+
+****** Vivado v2025.1 (64-bit)
+  **** SW Build 6140274 on Wed May 21 22:58:25 MDT 2025
+  **** IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+  **** SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+  **** Start of session at: Mon Sep  8 15:43:25 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source OSDZU3x_Tutorial_smartconnect_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.ipdefs/IP_Repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/2025.1/Vivado/data/ip'.
+Command: synth_design -top OSDZU3x_Tutorial_smartconnect_0_0 -part xczu3eg-sfvc784-1-e -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu3eg'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu3eg'
+INFO: [Device 21-403] Loading part xczu3eg-sfvc784-1-e
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 39967
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2598.211 ; gain = 143.688 ; free physical = 10117 ; free virtual = 45849
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_2/synth/bd_a670_arsw_0.sv:83]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_PARAMETER' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_2/synth/bd_a670_arsw_0.sv:84]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_2/synth/bd_a670_arsw_0.sv:85]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_PARAMETER' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_2/synth/bd_a670_arsw_0.sv:86]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_2/synth/bd_a670_arsw_0.sv:98]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_2/synth/bd_a670_arsw_0.sv:99]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_3/synth/bd_a670_rsw_0.sv:83]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_PARAMETER' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_3/synth/bd_a670_rsw_0.sv:84]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_3/synth/bd_a670_rsw_0.sv:85]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_PARAMETER' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_3/synth/bd_a670_rsw_0.sv:86]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_3/synth/bd_a670_rsw_0.sv:98]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_3/synth/bd_a670_rsw_0.sv:99]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_4/synth/bd_a670_awsw_0.sv:83]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_PARAMETER' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_4/synth/bd_a670_awsw_0.sv:84]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_4/synth/bd_a670_awsw_0.sv:85]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_PARAMETER' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_4/synth/bd_a670_awsw_0.sv:86]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_4/synth/bd_a670_awsw_0.sv:98]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_4/synth/bd_a670_awsw_0.sv:99]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_5/synth/bd_a670_wsw_0.sv:83]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_PARAMETER' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_5/synth/bd_a670_wsw_0.sv:84]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_5/synth/bd_a670_wsw_0.sv:85]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_PARAMETER' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_5/synth/bd_a670_wsw_0.sv:86]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_5/synth/bd_a670_wsw_0.sv:98]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_5/synth/bd_a670_wsw_0.sv:99]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_6/synth/bd_a670_bsw_0.sv:83]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_PARAMETER' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_6/synth/bd_a670_bsw_0.sv:84]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_6/synth/bd_a670_bsw_0.sv:85]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_PARAMETER' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_6/synth/bd_a670_bsw_0.sv:86]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_6/synth/bd_a670_bsw_0.sv:98]
+WARNING: [Synth 8-10507] attribute 'X_INTERFACE_MODE' is already specified; last one will take precedence [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_6/synth/bd_a670_bsw_0.sv:99]
+INFO: [Synth 8-6157] synthesizing module 'OSDZU3x_Tutorial_smartconnect_0_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/synth/OSDZU3x_Tutorial_smartconnect_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:10]
+INFO: [Synth 8-6157] synthesizing module 'clk_map_imp_H7ZH5Y' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2178]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_one_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_0/synth/bd_a670_one_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_10_xlconstant' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/a165/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_10_xlconstant' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/a165/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_one_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_0/synth/bd_a670_one_0.v:53]
+INFO: [Synth 8-638] synthesizing module 'bd_a670_psr_aclk_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_1/synth/bd_a670_psr_aclk_0.vhd:74]
+	Parameter C_FAMILY bound to: zynquplus - type: string 
+	Parameter C_EXT_RST_WIDTH bound to: 4 - type: integer 
+	Parameter C_AUX_RST_WIDTH bound to: 1 - type: integer 
+	Parameter C_EXT_RESET_HIGH bound to: 1'b0 
+	Parameter C_AUX_RESET_HIGH bound to: 1'b0 
+	Parameter C_NUM_BUS_RST bound to: 1 - type: integer 
+	Parameter C_NUM_PERP_RST bound to: 1 - type: integer 
+	Parameter C_NUM_INTERCONNECT_ARESETN bound to: 1 - type: integer 
+	Parameter C_NUM_PERP_ARESETN bound to: 1 - type: integer 
+INFO: [Synth 8-3491] module 'proc_sys_reset' declared at '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1243' bound to instance 'U0' of component 'proc_sys_reset' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_1/synth/bd_a670_psr_aclk_0.vhd:139]
+INFO: [Synth 8-638] synthesizing module 'proc_sys_reset' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1302]
+	Parameter INIT bound to: 1'b1 
+INFO: [Synth 8-113] binding component instance 'FDRE_inst' to cell 'FDRE' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1371]
+	Parameter INIT bound to: 1'b1 
+INFO: [Synth 8-113] binding component instance 'FDRE_BSR' to cell 'FDRE' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1387]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'FDRE_BSR_N' to cell 'FDRE' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1413]
+	Parameter INIT bound to: 1'b1 
+INFO: [Synth 8-113] binding component instance 'FDRE_PER' to cell 'FDRE' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1436]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'FDRE_PER_N' to cell 'FDRE' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1460]
+INFO: [Synth 8-638] synthesizing module 'lpf' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:821]
+INFO: [Synth 8-3491] module 'SRL16' declared at '/tools/Xilinx/2025.1/Vivado/scripts/rt/data/unisim_comp.v:158596' bound to instance 'POR_SRL_I' of component 'SRL16' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:873]
+INFO: [Synth 8-6157] synthesizing module 'SRL16' [/tools/Xilinx/2025.1/Vivado/scripts/rt/data/unisim_comp.v:158596]
+INFO: [Synth 8-6155] done synthesizing module 'SRL16' (0#1) [/tools/Xilinx/2025.1/Vivado/scripts/rt/data/unisim_comp.v:158596]
+	Parameter DEST_SYNC_FF bound to: 4 - type: integer 
+	Parameter INIT_SYNC_FF bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter SRC_INPUT_REG bound to: 0 - type: integer 
+INFO: [Synth 8-3491] module 'xpm_cdc_single' declared at '/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:152' bound to instance 'ACT_LO_EXT' of component 'xpm_cdc_single' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:968]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_single' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:152]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_single' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:152]
+	Parameter DEST_SYNC_FF bound to: 4 - type: integer 
+	Parameter INIT_SYNC_FF bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter SRC_INPUT_REG bound to: 0 - type: integer 
+INFO: [Synth 8-3491] module 'xpm_cdc_single' declared at '/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:152' bound to instance 'ACT_LO_AUX' of component 'xpm_cdc_single' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1015]
+INFO: [Synth 8-256] done synthesizing module 'lpf' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:821]
+INFO: [Synth 8-638] synthesizing module 'sequence_psr' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:304]
+INFO: [Synth 8-638] synthesizing module 'upcnt_n' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:126]
+INFO: [Synth 8-256] done synthesizing module 'upcnt_n' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:126]
+INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:304]
+INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1302]
+INFO: [Synth 8-256] done synthesizing module 'bd_a670_psr_aclk_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_1/synth/bd_a670_psr_aclk_0.vhd:74]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'bd_a670_psr_aclk_0' is unconnected for instance 'psr_aclk' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2236]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'bd_a670_psr_aclk_0' is unconnected for instance 'psr_aclk' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2236]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'bd_a670_psr_aclk_0' is unconnected for instance 'psr_aclk' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2236]
+WARNING: [Synth 8-7071] port 'peripheral_aresetn' of module 'bd_a670_psr_aclk_0' is unconnected for instance 'psr_aclk' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2236]
+WARNING: [Synth 8-7023] instance 'psr_aclk' of module 'bd_a670_psr_aclk_0' has 10 connections declared, but only 6 given [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2236]
+INFO: [Synth 8-6155] done synthesizing module 'clk_map_imp_H7ZH5Y' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2178]
+INFO: [Synth 8-6157] synthesizing module 'm00_exit_pipeline_imp_1J57ERH' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2245]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m00e_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_37/synth/bd_a670_m00e_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_async_rst' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1175]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_async_rst' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1175]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m00e_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_37/synth/bd_a670_m00e_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'm00_exit_pipeline_imp_1J57ERH' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2245]
+INFO: [Synth 8-6157] synthesizing module 'm00_nodes_imp_15RREQ9' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2579]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m00arn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_32/synth/bd_a670_m00arn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_sdpram' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_sdpram' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_sdpram__parameterized0' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized0' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized0' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_sdpram__parameterized0' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m00arn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_32/synth/bd_a670_m00arn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m00awn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_34/synth/bd_a670_m00awn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m00awn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_34/synth/bd_a670_m00awn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m00bn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_36/synth/bd_a670_m00bn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_sdpram__parameterized1' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized1' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized1' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_sdpram__parameterized1' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_sdpram__parameterized2' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized2' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized2' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_sdpram__parameterized2' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m00bn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_36/synth/bd_a670_m00bn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m00rn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_33/synth/bd_a670_m00rn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_sdpram__parameterized3' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized3' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized3' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_sdpram__parameterized3' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m00rn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_33/synth/bd_a670_m00rn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m00wn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_35/synth/bd_a670_m00wn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_sdpram__parameterized4' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized4' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized4' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_sdpram__parameterized4' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_sdpram__parameterized5' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized5' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized5' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_sdpram__parameterized5' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m00wn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_35/synth/bd_a670_m00wn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'm00_nodes_imp_15RREQ9' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2579]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m00s2a_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_31/synth/bd_a670_m00s2a_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m00s2a_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_31/synth/bd_a670_m00s2a_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'm01_exit_pipeline_imp_1M5IWU5' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2830]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m01e_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_44/synth/bd_a670_m01e_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m01e_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_44/synth/bd_a670_m01e_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'm01_exit_pipeline_imp_1M5IWU5' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2830]
+INFO: [Synth 8-6157] synthesizing module 'm01_nodes_imp_371547' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:3128]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m01arn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_39/synth/bd_a670_m01arn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m01arn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_39/synth/bd_a670_m01arn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m01awn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_41/synth/bd_a670_m01awn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m01awn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_41/synth/bd_a670_m01awn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m01bn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_43/synth/bd_a670_m01bn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m01bn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_43/synth/bd_a670_m01bn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m01rn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_40/synth/bd_a670_m01rn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m01rn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_40/synth/bd_a670_m01rn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m01wn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_42/synth/bd_a670_m01wn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m01wn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_42/synth/bd_a670_m01wn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'm01_nodes_imp_371547' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:3128]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m01s2a_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_38/synth/bd_a670_m01s2a_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m01s2a_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_38/synth/bd_a670_m01s2a_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'm02_exit_pipeline_imp_1SMOPVH' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:3379]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m02e_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_51/synth/bd_a670_m02e_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m02e_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_51/synth/bd_a670_m02e_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'm02_exit_pipeline_imp_1SMOPVH' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:3379]
+INFO: [Synth 8-6157] synthesizing module 'm02_nodes_imp_X9LDZ0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:3621]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m02arn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_46/synth/bd_a670_m02arn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m02arn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_46/synth/bd_a670_m02arn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m02awn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_48/synth/bd_a670_m02awn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m02awn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_48/synth/bd_a670_m02awn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m02bn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_50/synth/bd_a670_m02bn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m02bn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_50/synth/bd_a670_m02bn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m02rn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_47/synth/bd_a670_m02rn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m02rn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_47/synth/bd_a670_m02rn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m02wn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_49/synth/bd_a670_m02wn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m02wn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_49/synth/bd_a670_m02wn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'm02_nodes_imp_X9LDZ0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:3621]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_m02s2a_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_45/synth/bd_a670_m02s2a_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_m02s2a_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_45/synth/bd_a670_m02s2a_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_s00a2s_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_10/synth/bd_a670_s00a2s_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_s00a2s_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_10/synth/bd_a670_s00a2s_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 's00_entry_pipeline_imp_JB4HA6' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:3872]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_s00mmu_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_7/synth/bd_a670_s00mmu_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_s00mmu_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_7/synth/bd_a670_s00mmu_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_s00sic_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_9/synth/bd_a670_s00sic_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_s00sic_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_9/synth/bd_a670_s00sic_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_s00tr_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_8/synth/bd_a670_s00tr_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_s00tr_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_8/synth/bd_a670_s00tr_0.sv:53]
+WARNING: [Synth 8-7071] port 'm_axi_awburst' of module 'bd_a670_s00tr_0' is unconnected for instance 's00_transaction_regulator' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:4271]
+WARNING: [Synth 8-7071] port 'm_axi_arburst' of module 'bd_a670_s00tr_0' is unconnected for instance 's00_transaction_regulator' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:4271]
+WARNING: [Synth 8-7023] instance 's00_transaction_regulator' of module 'bd_a670_s00tr_0' has 82 connections declared, but only 80 given [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:4271]
+INFO: [Synth 8-6155] done synthesizing module 's00_entry_pipeline_imp_JB4HA6' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:3872]
+INFO: [Synth 8-6157] synthesizing module 's00_nodes_imp_M8W6SK' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:4354]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_sarn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_11/synth/bd_a670_sarn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_sdpram__parameterized6' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized6' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized6' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_sdpram__parameterized6' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_sarn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_11/synth/bd_a670_sarn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_sawn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_13/synth/bd_a670_sawn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_sawn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_13/synth/bd_a670_sawn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_sbn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_15/synth/bd_a670_sbn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_sdpram__parameterized7' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized7' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized7' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_sdpram__parameterized7' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_sbn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_15/synth/bd_a670_sbn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_srn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_12/synth/bd_a670_srn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_sdpram__parameterized8' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized8' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized8' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_sdpram__parameterized8' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_srn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_12/synth/bd_a670_srn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_swn_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_14/synth/bd_a670_swn_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_sdpram__parameterized9' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized9' [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized9' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_sdpram__parameterized9' (0#1) [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8994]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_swn_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_14/synth/bd_a670_swn_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 's00_nodes_imp_M8W6SK' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:4354]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_s01a2s_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_19/synth/bd_a670_s01a2s_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_s01a2s_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_19/synth/bd_a670_s01a2s_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 's01_entry_pipeline_imp_1PUF2QY' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:4596]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_s01mmu_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_16/synth/bd_a670_s01mmu_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_s01mmu_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_16/synth/bd_a670_s01mmu_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_s01sic_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_18/synth/bd_a670_s01sic_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_s01sic_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_18/synth/bd_a670_s01sic_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_s01tr_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_17/synth/bd_a670_s01tr_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_s01tr_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_17/synth/bd_a670_s01tr_0.sv:53]
+WARNING: [Synth 8-7071] port 'm_axi_arburst' of module 'bd_a670_s01tr_0' is unconnected for instance 's01_transaction_regulator' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:4781]
+WARNING: [Synth 8-7023] instance 's01_transaction_regulator' of module 'bd_a670_s01tr_0' has 38 connections declared, but only 37 given [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:4781]
+INFO: [Synth 8-6155] done synthesizing module 's01_entry_pipeline_imp_1PUF2QY' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:4596]
+INFO: [Synth 8-6157] synthesizing module 's01_nodes_imp_1KX0EMQ' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:4821]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_sarn_1' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_20/synth/bd_a670_sarn_1.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_sarn_1' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_20/synth/bd_a670_sarn_1.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_srn_1' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_21/synth/bd_a670_srn_1.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_srn_1' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_21/synth/bd_a670_srn_1.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 's01_nodes_imp_1KX0EMQ' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:4821]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_s02a2s_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_25/synth/bd_a670_s02a2s_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_s02a2s_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_25/synth/bd_a670_s02a2s_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 's02_entry_pipeline_imp_1AM607R' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:4928]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_s02mmu_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_22/synth/bd_a670_s02mmu_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_s02mmu_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_22/synth/bd_a670_s02mmu_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_s02sic_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_24/synth/bd_a670_s02sic_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_s02sic_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_24/synth/bd_a670_s02sic_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_s02tr_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_23/synth/bd_a670_s02tr_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_s02tr_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_23/synth/bd_a670_s02tr_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 's02_entry_pipeline_imp_1AM607R' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:4928]
+INFO: [Synth 8-6157] synthesizing module 's02_nodes_imp_1D6J5XL' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:5472]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_sarn_2' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_26/synth/bd_a670_sarn_2.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_sarn_2' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_26/synth/bd_a670_sarn_2.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_sawn_1' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_28/synth/bd_a670_sawn_1.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_sawn_1' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_28/synth/bd_a670_sawn_1.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_sbn_1' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_30/synth/bd_a670_sbn_1.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_sbn_1' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_30/synth/bd_a670_sbn_1.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_srn_2' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_27/synth/bd_a670_srn_2.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_srn_2' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_27/synth/bd_a670_srn_2.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_swn_1' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_29/synth/bd_a670_swn_1.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_swn_1' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_29/synth/bd_a670_swn_1.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 's02_nodes_imp_1D6J5XL' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:5472]
+INFO: [Synth 8-6157] synthesizing module 'switchboards_imp_GLTLKG' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:5714]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_arsw_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_2/synth/bd_a670_arsw_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_arsw_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_2/synth/bd_a670_arsw_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_awsw_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_4/synth/bd_a670_awsw_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_awsw_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_4/synth/bd_a670_awsw_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_bsw_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_6/synth/bd_a670_bsw_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_bsw_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_6/synth/bd_a670_bsw_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_rsw_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_3/synth/bd_a670_rsw_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_rsw_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_3/synth/bd_a670_rsw_0.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_a670_wsw_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_5/synth/bd_a670_wsw_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670_wsw_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_5/synth/bd_a670_wsw_0.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'switchboards_imp_GLTLKG' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:5714]
+WARNING: [Synth 8-7071] port 'M01_SC_B_info' of module 'switchboards_imp_GLTLKG' is unconnected for instance 'switchboards' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2029]
+WARNING: [Synth 8-7071] port 'M01_SC_B_payld' of module 'switchboards_imp_GLTLKG' is unconnected for instance 'switchboards' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2029]
+WARNING: [Synth 8-7071] port 'M01_SC_B_req' of module 'switchboards_imp_GLTLKG' is unconnected for instance 'switchboards' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2029]
+WARNING: [Synth 8-7071] port 'M01_SC_B_send' of module 'switchboards_imp_GLTLKG' is unconnected for instance 'switchboards' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2029]
+WARNING: [Synth 8-7071] port 'S01_SC_AW_recv' of module 'switchboards_imp_GLTLKG' is unconnected for instance 'switchboards' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2029]
+WARNING: [Synth 8-7071] port 'S01_SC_W_recv' of module 'switchboards_imp_GLTLKG' is unconnected for instance 'switchboards' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2029]
+WARNING: [Synth 8-7023] instance 'switchboards' of module 'switchboards_imp_GLTLKG' has 152 connections declared, but only 146 given [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2029]
+INFO: [Synth 8-6155] done synthesizing module 'bd_a670' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'OSDZU3x_Tutorial_smartconnect_0_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/synth/OSDZU3x_Tutorial_smartconnect_0_0.v:53]
+WARNING: [Synth 8-3848] Net aresetn_out in module/entity clk_map_imp_H7ZH5Y does not have driver. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/synth/bd_a670.v:2212]
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_AB_reg_slice.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+WARNING: [Synth 8-7129] Port aclk in module sc_util_v1_0_4_pipeline__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aclken in module sc_util_v1_0_4_pipeline__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port areset in module sc_util_v1_0_4_pipeline__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[0] in module sc_util_v1_0_4_onehot_to_binary__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aclk in module sc_util_v1_0_4_pipeline__parameterized7 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aclken in module sc_util_v1_0_4_pipeline__parameterized7 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port areset in module sc_util_v1_0_4_pipeline__parameterized7 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[8] in module sc_switchboard_v1_0_8_top__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[7] in module sc_switchboard_v1_0_8_top__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[6] in module sc_switchboard_v1_0_8_top__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[5] in module sc_switchboard_v1_0_8_top__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[4] in module sc_switchboard_v1_0_8_top__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[3] in module sc_switchboard_v1_0_8_top__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[2] in module sc_switchboard_v1_0_8_top__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[1] in module sc_switchboard_v1_0_8_top__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[0] in module sc_switchboard_v1_0_8_top__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aclk in module sc_util_v1_0_4_pipeline__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aclken in module sc_util_v1_0_4_pipeline__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port areset in module sc_util_v1_0_4_pipeline__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[8] in module sc_switchboard_v1_0_8_top__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[7] in module sc_switchboard_v1_0_8_top__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[6] in module sc_switchboard_v1_0_8_top__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[5] in module sc_switchboard_v1_0_8_top__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[4] in module sc_switchboard_v1_0_8_top__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[3] in module sc_switchboard_v1_0_8_top__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[2] in module sc_switchboard_v1_0_8_top__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[1] in module sc_switchboard_v1_0_8_top__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[0] in module sc_switchboard_v1_0_8_top__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aclk in module sc_util_v1_0_4_pipeline__parameterized5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aclken in module sc_util_v1_0_4_pipeline__parameterized5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port areset in module sc_util_v1_0_4_pipeline__parameterized5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[8] in module sc_switchboard_v1_0_8_top__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[7] in module sc_switchboard_v1_0_8_top__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[6] in module sc_switchboard_v1_0_8_top__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[5] in module sc_switchboard_v1_0_8_top__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[4] in module sc_switchboard_v1_0_8_top__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[3] in module sc_switchboard_v1_0_8_top__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[2] in module sc_switchboard_v1_0_8_top__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[1] in module sc_switchboard_v1_0_8_top__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[0] in module sc_switchboard_v1_0_8_top__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aclk in module sc_util_v1_0_4_pipeline__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aclken in module sc_util_v1_0_4_pipeline__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port areset in module sc_util_v1_0_4_pipeline__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[8] in module sc_switchboard_v1_0_8_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[7] in module sc_switchboard_v1_0_8_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[6] in module sc_switchboard_v1_0_8_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[5] in module sc_switchboard_v1_0_8_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[4] in module sc_switchboard_v1_0_8_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[3] in module sc_switchboard_v1_0_8_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[2] in module sc_switchboard_v1_0_8_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[1] in module sc_switchboard_v1_0_8_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port connectivity[0] in module sc_switchboard_v1_0_8_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aresetn in module switchboards_imp_GLTLKG is either unconnected or has no load
+WARNING: [Synth 8-7129] Port din[0] in module sc_util_v1_0_4_onehot_to_binary__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aclk in module sc_util_v1_0_4_pipeline__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aclken in module sc_util_v1_0_4_pipeline__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port areset in module sc_util_v1_0_4_pipeline__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[89] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[88] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[87] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[86] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[85] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[84] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[83] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[82] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[81] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[80] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[79] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[78] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[77] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[76] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[75] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[74] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[73] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[72] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[71] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[70] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[69] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[68] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[67] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[66] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[65] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[64] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[63] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[62] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[61] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[60] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[59] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[58] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[57] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[56] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[55] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_sc_payld[54] in module sc_node_v1_0_18_ingress__parameterized13 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sleep in module xpm_memory_base__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsta in module xpm_memory_base__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port regcea in module xpm_memory_base__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port injectsbiterra in module xpm_memory_base__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port injectdbiterra in module xpm_memory_base__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clkb in module xpm_memory_base__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port regceb in module xpm_memory_base__parameterized9 is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2875.719 ; gain = 421.195 ; free physical = 9211 ; free virtual = 44991
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2875.719 ; gain = 421.195 ; free physical = 9205 ; free virtual = 44986
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2875.719 ; gain = 421.195 ; free physical = 9205 ; free virtual = 44986
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 3238.688 ; gain = 0.000 ; free physical = 6680 ; free virtual = 42591
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/ooc.xdc] for cell 'inst'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_1/bd_a670_psr_aclk_0_board.xdc] for cell 'inst/clk_map/psr_aclk/U0'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_1/bd_a670_psr_aclk_0_board.xdc] for cell 'inst/clk_map/psr_aclk/U0'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/smartconnect.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/smartconnect.xdc] for cell 'inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/smartconnect.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/OSDZU3x_Tutorial_smartconnect_0_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/OSDZU3x_Tutorial_smartconnect_0_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/OSDZU3x_Tutorial_smartconnect_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/OSDZU3x_Tutorial_smartconnect_0_0_synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/OSDZU3x_Tutorial_smartconnect_0_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/OSDZU3x_Tutorial_smartconnect_0_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/tools/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/OSDZU3x_Tutorial_smartconnect_0_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/OSDZU3x_Tutorial_smartconnect_0_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-1714] 131 XPM XDC files have been applied to the design.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3817.340 ; gain = 0.000 ; free physical = 5815 ; free virtual = 41770
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  SRL16 => SRL16E: 1 instance 
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.57 ; elapsed = 00:00:00.42 . Memory (MB): peak = 3817.375 ; gain = 0.000 ; free physical = 5762 ; free virtual = 41716
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:32 ; elapsed = 00:00:28 . Memory (MB): peak = 3817.375 ; gain = 1362.852 ; free physical = 5925 ; free virtual = 41835
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu3eg-sfvc784-1-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:32 ; elapsed = 00:00:28 . Memory (MB): peak = 3825.344 ; gain = 1370.820 ; free physical = 5925 ; free virtual = 41835
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:32 ; elapsed = 00:00:28 . Memory (MB): peak = 3825.344 ; gain = 1370.820 ; free physical = 5925 ; free virtual = 41836
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_AB_reg_slice.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_AB_reg_slice.state_reg' through user attribute
+INFO: [Synth 8-802] inferred FSM for state register 'w_state_reg' in module 'sc_exit_v1_0_17_axilite_conv'
+INFO: [Synth 8-802] inferred FSM for state register 'r_state_reg' in module 'sc_exit_v1_0_17_axilite_conv'
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-802] inferred FSM for state register 'gen_endpoint.w_state_reg' in module 'sc_mmu_v1_0_15_top__xdcDup__1'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_endpoint.r_state_reg' in module 'sc_mmu_v1_0_15_top__xdcDup__1'
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-802] inferred FSM for state register 'gen_endpoint.w_state_reg' in module 'sc_mmu_v1_0_15_top'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_endpoint.r_state_reg' in module 'sc_mmu_v1_0_15_top'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_axi.gen_write.write_cs_reg' in module 'sc_mmu_v1_0_15_decerr_slave__parameterized0'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_endpoint.w_state_reg' in module 'sc_mmu_v1_0_15_top__parameterized0'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_endpoint.r_state_reg' in module 'sc_mmu_v1_0_15_top__parameterized0'
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_pipelined.state_reg' through user attribute
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  W_IDLE |                              000 | 00000000000000000000000000000000
+                    W_RX |                              001 | 00000000000000000000000000000001
+                    W_TX |                              010 | 00000000000000000000000000000010
+              W_COMPLETE |                              011 | 00000000000000000000000000000100
+               W_RECOVER |                              100 | 00000000000000000000000000000011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'w_state_reg' using encoding 'sequential' in module 'sc_exit_v1_0_17_axilite_conv'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  R_IDLE |                               00 | 00000000000000000000000000000000
+                    R_RX |                               01 | 00000000000000000000000000000001
+                    R_TX |                               10 | 00000000000000000000000000000010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r_state_reg' using encoding 'sequential' in module 'sc_exit_v1_0_17_axilite_conv'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                               00 | 00000000000000000000000000000000
+*
+                 W_STALL |                               01 | 00000000000000000000000000000001
+               W_PENDING |                               10 | 00000000000000000000000000000010
+                W_DECERR |                               11 | 00000000000000000000000000000011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_endpoint.w_state_reg' using encoding 'sequential' in module 'sc_mmu_v1_0_15_top__xdcDup__1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                               00 | 00000000000000000000000000000000
+*
+                 R_STALL |                               01 | 00000000000000000000000000000001
+               R_PENDING |                               10 | 00000000000000000000000000000010
+                R_DECERR |                               11 | 00000000000000000000000000000011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_endpoint.r_state_reg' using encoding 'sequential' in module 'sc_mmu_v1_0_15_top__xdcDup__1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                               00 | 00000000000000000000000000000000
+*
+                 W_STALL |                               01 | 00000000000000000000000000000001
+               W_PENDING |                               10 | 00000000000000000000000000000010
+                W_DECERR |                               11 | 00000000000000000000000000000011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_endpoint.w_state_reg' using encoding 'sequential' in module 'sc_mmu_v1_0_15_top'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                               00 | 00000000000000000000000000000000
+*
+                 R_STALL |                               01 | 00000000000000000000000000000001
+               R_PENDING |                               10 | 00000000000000000000000000000010
+                R_DECERR |                               11 | 00000000000000000000000000000011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_endpoint.r_state_reg' using encoding 'sequential' in module 'sc_mmu_v1_0_15_top'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+            P_WRITE_IDLE |                              001 |                               00
+            P_WRITE_DATA |                              010 |                               01
+            P_WRITE_RESP |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_axi.gen_write.write_cs_reg' using encoding 'one-hot' in module 'sc_mmu_v1_0_15_decerr_slave__parameterized0'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                               00 | 00000000000000000000000000000000
+*
+                 W_STALL |                               01 | 00000000000000000000000000000001
+               W_PENDING |                               10 | 00000000000000000000000000000010
+                W_DECERR |                               11 | 00000000000000000000000000000011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_endpoint.w_state_reg' using encoding 'sequential' in module 'sc_mmu_v1_0_15_top__parameterized0'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                               00 | 00000000000000000000000000000000
+*
+                 R_STALL |                               01 | 00000000000000000000000000000001
+               R_PENDING |                               10 | 00000000000000000000000000000010
+                R_DECERR |                               11 | 00000000000000000000000000000011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_endpoint.r_state_reg' using encoding 'sequential' in module 'sc_mmu_v1_0_15_top__parameterized0'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:37 ; elapsed = 00:00:33 . Memory (MB): peak = 3825.344 ; gain = 1370.820 ; free physical = 5986 ; free virtual = 41923
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   12 Bit       Adders := 2     
+	   2 Input    9 Bit       Adders := 3     
+	   2 Input    8 Bit       Adders := 15    
+	   2 Input    7 Bit       Adders := 8     
+	   2 Input    6 Bit       Adders := 330   
+	   3 Input    6 Bit       Adders := 2     
+	   2 Input    5 Bit       Adders := 9     
+	   3 Input    5 Bit       Adders := 2     
+	   4 Input    5 Bit       Adders := 2     
+	   2 Input    4 Bit       Adders := 50    
+	   3 Input    4 Bit       Adders := 2     
+	   2 Input    3 Bit       Adders := 55    
+	   2 Input    2 Bit       Adders := 36    
+	   2 Input    1 Bit       Adders := 11    
+	   3 Input    1 Bit       Adders := 11    
++---XORs : 
+	   2 Input      1 Bit         XORs := 542   
++---Registers : 
+	             2178 Bit    Registers := 86    
+	              512 Bit    Registers := 1     
+	              163 Bit    Registers := 6     
+	              144 Bit    Registers := 11    
+	              109 Bit    Registers := 3     
+	              106 Bit    Registers := 3     
+	              104 Bit    Registers := 1     
+	               90 Bit    Registers := 5     
+	               87 Bit    Registers := 6     
+	               64 Bit    Registers := 5     
+	               47 Bit    Registers := 3     
+	               41 Bit    Registers := 2     
+	               33 Bit    Registers := 3     
+	               32 Bit    Registers := 5     
+	               28 Bit    Registers := 2     
+	               21 Bit    Registers := 1     
+	               20 Bit    Registers := 16    
+	               16 Bit    Registers := 4     
+	               14 Bit    Registers := 3     
+	               13 Bit    Registers := 1     
+	               12 Bit    Registers := 3     
+	                9 Bit    Registers := 9     
+	                8 Bit    Registers := 36    
+	                7 Bit    Registers := 9     
+	                6 Bit    Registers := 168   
+	                5 Bit    Registers := 13    
+	                4 Bit    Registers := 62    
+	                3 Bit    Registers := 202   
+	                2 Bit    Registers := 59    
+	                1 Bit    Registers := 1252  
++---Muxes : 
+	   2 Input 2178 Bit        Muxes := 43    
+	   4 Input  144 Bit        Muxes := 6     
+	   4 Input   90 Bit        Muxes := 3     
+	   4 Input   87 Bit        Muxes := 3     
+	   2 Input   72 Bit        Muxes := 1     
+	   2 Input   47 Bit        Muxes := 3     
+	   2 Input   41 Bit        Muxes := 1     
+	   2 Input   33 Bit        Muxes := 3     
+	   3 Input   32 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 17    
+	   2 Input   21 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 4     
+	   2 Input   14 Bit        Muxes := 3     
+	   3 Input   13 Bit        Muxes := 1     
+	   2 Input   13 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 7     
+	   5 Input   12 Bit        Muxes := 1     
+	   5 Input    9 Bit        Muxes := 1     
+	   2 Input    9 Bit        Muxes := 2     
+	   4 Input    9 Bit        Muxes := 3     
+	   3 Input    8 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 40    
+	   7 Input    8 Bit        Muxes := 6     
+	   2 Input    7 Bit        Muxes := 51    
+	   2 Input    6 Bit        Muxes := 55    
+	   2 Input    5 Bit        Muxes := 6     
+	   2 Input    4 Bit        Muxes := 37    
+	   3 Input    4 Bit        Muxes := 2     
+	   4 Input    3 Bit        Muxes := 19    
+	   2 Input    3 Bit        Muxes := 52    
+	   5 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 300   
+	   4 Input    2 Bit        Muxes := 8     
+	   3 Input    2 Bit        Muxes := 2     
+	   5 Input    2 Bit        Muxes := 1     
+	   7 Input    2 Bit        Muxes := 13    
+	   6 Input    1 Bit        Muxes := 267   
+	   4 Input    1 Bit        Muxes := 99    
+	   7 Input    1 Bit        Muxes := 86    
+	  12 Input    1 Bit        Muxes := 19    
+	   2 Input    1 Bit        Muxes := 539   
+	   5 Input    1 Bit        Muxes := 15    
+	   3 Input    1 Bit        Muxes := 24    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 360 (col length:72)
+BRAMs: 432 (col length: RAMB18 72 RAMB36 36)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port m_axi_awid[0] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port m_axi_arid[0] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2177] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2176] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2175] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2174] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2173] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2172] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2171] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2170] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2169] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2168] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2167] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2166] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2165] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2164] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2163] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2162] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2161] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2160] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2159] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2158] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2157] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2156] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2155] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2154] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2153] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2152] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2151] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2150] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2149] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2148] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2147] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2146] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2145] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2144] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2143] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2142] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2141] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2140] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2139] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2138] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2137] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2136] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2135] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2134] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2133] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2132] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2131] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2130] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2129] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2128] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2127] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2126] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2125] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2124] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2123] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2122] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2121] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2120] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2119] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2118] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2117] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2116] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2115] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2114] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2113] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2112] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2111] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2110] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2109] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2108] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2107] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2106] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2105] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2104] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2103] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2102] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2101] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2100] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2099] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2098] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2097] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2096] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2095] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2094] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2093] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2092] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2091] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2090] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2089] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2088] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2087] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2086] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2085] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2084] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2083] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2082] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2081] driven by constant 0
+INFO: [Synth 8-3917] design sc_mmu_v1_0_15_top__xdcDup__1__GC0 has port s_arvector[2080] driven by constant 0
+INFO: [Common 17-14] Message 'Synth 8-3917' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-3917' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-3917' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-3917' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\gen_endpoint.decerr_slave_inst/gen_axi.gen_read.s_axi_rid_i_reg[0] )
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[1].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_rd_addrb/count_r_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[1].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_rd_addrb/count_r_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[1].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_rd_addrb/count_r_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[1].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_wr_addra/count_r_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[1].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_wr_addra/count_r_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[1].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_wr_addra/count_r_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_r_node/inst /p_0_out_inferred__5/\inst_mi_handler/inst_ingress/inst_incoming_count/count_r_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_r_node/inst /p_0_out_inferred__5/\inst_mi_handler/inst_ingress/inst_incoming_count/count_r_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_r_node/inst /p_0_out_inferred__5/\inst_mi_handler/inst_ingress/inst_incoming_count/count_r_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_r_node/inst /p_0_out_inferred__5/\inst_mi_handler/inst_ingress/inst_incoming_count/count_r_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s00_nodes/s00_w_node/inst /\inst_mi_handler/p_0_out_inferred /\inst_mi_handler/inst_ingress/inst_incoming_count/count_r_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s00_nodes/s00_w_node/inst /\inst_mi_handler/p_0_out_inferred /\inst_mi_handler/inst_ingress/inst_incoming_count/count_r_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s00_nodes/s00_w_node/inst /\inst_mi_handler/p_0_out_inferred /\inst_mi_handler/inst_ingress/inst_incoming_count/count_r_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s00_nodes/s00_w_node/inst /\inst_mi_handler/p_0_out_inferred /\inst_mi_handler/inst_ingress/inst_incoming_count/count_r_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s02_nodes/s02_w_node/inst /\inst_mi_handler/p_0_out_inferred /\inst_mi_handler/inst_ingress/inst_incoming_count/count_r_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s02_nodes/s02_w_node/inst /\inst_mi_handler/p_0_out_inferred /\inst_mi_handler/inst_ingress/inst_incoming_count/count_r_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s02_nodes/s02_w_node/inst /\inst_mi_handler/p_0_out_inferred /\inst_mi_handler/inst_ingress/inst_incoming_count/count_r_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s02_nodes/s02_w_node/inst /\inst_mi_handler/p_0_out_inferred /\inst_mi_handler/inst_ingress/inst_incoming_count/count_r_reg[0] )
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_r_ch.accum_reg[sc_route][2]' (FDE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_r_ch.accum_reg[sc_route][1]'
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_r_ch.accum_reg[sc_route][0]' (FDE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_r_ch.accum_reg[sc_route][1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_r_node/inst /\inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_r_ch.accum_reg[sc_route][1] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\m02_nodes/m02_r_node/inst /\inst_mi_handler/inst_ingress/inst_incoming_count/is_zero_r_reg )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\m02_nodes/m02_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[1].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_wr.inst_wr_addra_p1/count_r_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[1].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_wr.inst_wr_addra_p1/count_r_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[1].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_wr.inst_wr_addra_p1/count_r_reg[2] )
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.accum_reg[sc_route][2]' (FDE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.accum_reg[sc_route][1]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.accum_reg[sc_route][0]' (FDE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.accum_reg[sc_route][1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s00_nodes/s00_w_node/inst /\inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.accum_reg[sc_route][1] )
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.accum_reg[sc_route][2]' (FDE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.accum_reg[sc_route][1]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.accum_reg[sc_route][0]' (FDE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.accum_reg[sc_route][1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s02_nodes/s02_w_node/inst /\inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.accum_reg[sc_route][1] )
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_upsize_ratio_reg[1]' (FDSE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[1]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_upsize_ratio_reg[0]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[7]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_mask_reg[0]' (FDSE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[1]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[5]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[7]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[6]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[7]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[7]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[4]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[0]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[4]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\s00_nodes/s00_w_node/inst /\inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[1] )
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[2]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[4]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[3]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s00_nodes/s00_w_node/inst /\inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[4] )
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_upsize_ratio_reg[1]' (FDSE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[1]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_upsize_ratio_reg[0]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[7]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_mask_reg[0]' (FDSE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[1]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[5]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[7]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[6]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[7]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[7]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[4]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[0]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[4]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\s02_nodes/s02_w_node/inst /\inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[1] )
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[2]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[4]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[3]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s02_nodes/s02_w_node/inst /\inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/gen_w_ch.post_pntr_shift_reg[4] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\s00_nodes/s00_w_node/inst /\inst_mi_handler/inst_ingress/inst_incoming_count/is_zero_r_reg )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\s02_nodes/s02_w_node/inst /\inst_mi_handler/inst_ingress/inst_incoming_count/is_zero_r_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_aw_node/inst /\inst_si_handler/gen_si_handler.gen_request_counters.gen_req_counter[1].inst_req_counter/count_r_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_aw_node/inst /\inst_si_handler/gen_si_handler.gen_request_counters.gen_req_counter[1].inst_req_counter/count_r_reg[1] )
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][12]' (FDRE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][14]' (FDRE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][15]' (FDRE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][16]' (FDRE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][17]' (FDRE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][18]' (FDRE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][19]' (FDRE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][10]' (FDRE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][11]' (FDRE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][8]' (FDRE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][9]' (FDRE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][7]' (FDRE) to 'm02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_r_node/inst /\inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4] )
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][12]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][14]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][15]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][16]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][17]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][18]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][19]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][10]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][11]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][8]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][9]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][7]' (FDRE) to 's00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s00_nodes/s00_w_node/inst /\inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4] )
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][12]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][14]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][15]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][16]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][17]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][18]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][19]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][10]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][11]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][8]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][9]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][7]' (FDRE) to 's02_nodes/s02_w_node/inst/inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\s02_nodes/s02_w_node/inst /\inst_mi_handler/gen_normal_area.gen_upsizer.inst_upsizer/inst_upsizer_target_pipeline/gen_pipe[1].pipe_reg[1][4] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\m02_nodes/m02_aw_node/inst /\inst_si_handler/gen_si_handler.gen_request_counters.gen_req_counter[1].inst_req_counter/is_zero_r_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_aw_node/inst /\inst_si_handler/gen_m_axis_arb_fifo.inst_axis_arb_fifo/gen_pipelined.mesg_reg_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_aw_node/inst /\inst_si_handler/gen_si_handler.gen_arbiter_rr_normal_area.inst_arbiter/grant_i_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_aw_node/inst /\inst_si_handler/gen_si_handler.gen_arbiter_rr_normal_area.inst_arbiter/last_grant_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_w_node/inst /\inst_mi_handler/inst_ingress/inst_pipeline_recv/gen_pipe[1].pipe_reg[1][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\m02_nodes/m02_aw_node/inst /\inst_mi_handler/inst_ingress/inst_pipeline_recv/gen_pipe[1].pipe_reg[1][1] )
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element gen_wr_a.gen_word_narrow.mem_reg was removed. 
+INFO: [Synth 8-3886] merging instance 'clk_map/psr_aclk/U0/SEQ/core_dec_reg[1]' (FD) to 'clk_map/psr_aclk/U0/SEQ/bsr_dec_reg[1]'
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:57 . Memory (MB): peak = 3853.277 ; gain = 1398.754 ; free physical = 8859 ; free virtual = 44833
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+----------------+----------------------+----------------+
+|Module Name                                                                                                                                                                                    | RTL Object                       | Inference      | Size (Depth x Width) | Primitives     | 
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+----------------+----------------------+----------------+
+|\s02_nodes/s02_ar_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                    | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s02_nodes/s02_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 144             | RAM32M16 x 11  | 
+|\s02_nodes/s02_aw_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                    | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s02_nodes/s02_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 144             | RAM32M16 x 11  | 
+|\s02_nodes/s02_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 28              | RAM32M16 x 2   | 
+|\s02_nodes/s02_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 106             | RAM32M16 x 8   | 
+|\s02_nodes/s02_w_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s02_nodes/s02_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 90              | RAM32M16 x 7   | 
+|\s00_nodes/s00_ar_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                    | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s00_nodes/s00_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 144             | RAM32M16 x 11  | 
+|\s00_nodes/s00_aw_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                    | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s00_nodes/s00_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 144             | RAM32M16 x 11  | 
+|\s00_nodes/s00_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 28              | RAM32M16 x 2   | 
+|\s00_nodes/s00_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 106             | RAM32M16 x 8   | 
+|\s00_nodes/s00_w_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s00_nodes/s00_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 90              | RAM32M16 x 7   | 
+|\m02_nodes/m02_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 163             | RAM32M16 x 12  | 
+|\m02_nodes/m02_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 163             | RAM32M16 x 12  | 
+|\m02_nodes/m02_b_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\m02_nodes/m02_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 9               | RAM32M16 x 1   | 
+|\m02_nodes/m02_r_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\m02_nodes/m02_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 87              | RAM32M16 x 7   | 
+|\m02_nodes/m02_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m02_nodes/m02_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[2].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m02_nodes/m02_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 109             | RAM32M16 x 8   | 
+|\m01_nodes/m01_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 163             | RAM32M16 x 12  | 
+|\m01_nodes/m01_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 163             | RAM32M16 x 12  | 
+|\m01_nodes/m01_b_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\m01_nodes/m01_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 9               | RAM32M16 x 1   | 
+|\m01_nodes/m01_r_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\m01_nodes/m01_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 87              | RAM32M16 x 7   | 
+|\m01_nodes/m01_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m01_nodes/m01_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[1].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m01_nodes/m01_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[2].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m01_nodes/m01_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 109             | RAM32M16 x 8   | 
+|\s01_nodes/s01_ar_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                    | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s01_nodes/s01_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 144             | RAM32M16 x 11  | 
+|\s01_nodes/s01_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 106             | RAM32M16 x 8   | 
+|\m00_nodes/m00_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 163             | RAM32M16 x 12  | 
+|\m00_nodes/m00_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 163             | RAM32M16 x 12  | 
+|\m00_nodes/m00_b_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\m00_nodes/m00_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 9               | RAM32M16 x 1   | 
+|\m00_nodes/m00_r_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\m00_nodes/m00_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 87              | RAM32M16 x 7   | 
+|\m00_nodes/m00_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m00_nodes/m00_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[1].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m00_nodes/m00_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[2].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m00_nodes/m00_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 109             | RAM32M16 x 8   | 
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+----------------+----------------------+----------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:53 ; elapsed = 00:01:03 . Memory (MB): peak = 3931.043 ; gain = 1476.520 ; free physical = 5551 ; free virtual = 41523
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:59 ; elapsed = 00:01:09 . Memory (MB): peak = 3951.051 ; gain = 1496.527 ; free physical = 5675 ; free virtual = 41646
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping Report
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+----------------+----------------------+----------------+
+|Module Name                                                                                                                                                                                    | RTL Object                       | Inference      | Size (Depth x Width) | Primitives     | 
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+----------------+----------------------+----------------+
+|\s02_nodes/s02_ar_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                    | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s02_nodes/s02_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 144             | RAM32M16 x 11  | 
+|\s02_nodes/s02_aw_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                    | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s02_nodes/s02_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 144             | RAM32M16 x 11  | 
+|\s02_nodes/s02_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 28              | RAM32M16 x 2   | 
+|\s02_nodes/s02_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 106             | RAM32M16 x 8   | 
+|\s02_nodes/s02_w_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s02_nodes/s02_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 90              | RAM32M16 x 7   | 
+|\s00_nodes/s00_ar_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                    | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s00_nodes/s00_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 144             | RAM32M16 x 11  | 
+|\s00_nodes/s00_aw_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                    | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s00_nodes/s00_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 144             | RAM32M16 x 11  | 
+|\s00_nodes/s00_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 28              | RAM32M16 x 2   | 
+|\s00_nodes/s00_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 106             | RAM32M16 x 8   | 
+|\s00_nodes/s00_w_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s00_nodes/s00_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 90              | RAM32M16 x 7   | 
+|\m02_nodes/m02_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 163             | RAM32M16 x 12  | 
+|\m02_nodes/m02_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 163             | RAM32M16 x 12  | 
+|\m02_nodes/m02_b_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\m02_nodes/m02_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 9               | RAM32M16 x 1   | 
+|\m02_nodes/m02_r_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\m02_nodes/m02_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 87              | RAM32M16 x 7   | 
+|\m02_nodes/m02_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m02_nodes/m02_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[2].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m02_nodes/m02_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 109             | RAM32M16 x 8   | 
+|\m01_nodes/m01_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 163             | RAM32M16 x 12  | 
+|\m01_nodes/m01_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 163             | RAM32M16 x 12  | 
+|\m01_nodes/m01_b_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\m01_nodes/m01_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 9               | RAM32M16 x 1   | 
+|\m01_nodes/m01_r_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\m01_nodes/m01_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 87              | RAM32M16 x 7   | 
+|\m01_nodes/m01_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m01_nodes/m01_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[2].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m01_nodes/m01_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 109             | RAM32M16 x 8   | 
+|\s01_nodes/s01_ar_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                    | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\s01_nodes/s01_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 144             | RAM32M16 x 11  | 
+|\s01_nodes/s01_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 106             | RAM32M16 x 8   | 
+|\m00_nodes/m00_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 163             | RAM32M16 x 12  | 
+|\m00_nodes/m00_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                          | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 163             | RAM32M16 x 12  | 
+|\m00_nodes/m00_b_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\m00_nodes/m00_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 9               | RAM32M16 x 1   | 
+|\m00_nodes/m00_r_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                     | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 20              | RAM32M16 x 2   | 
+|\m00_nodes/m00_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 87              | RAM32M16 x 7   | 
+|\m00_nodes/m00_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m00_nodes/m00_w_node/inst /\inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[2].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 4 x 1                | RAM16X1D x 1   | 
+|\m00_nodes/m00_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory /xpm_memory_base_inst                           | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 109             | RAM32M16 x 8   | 
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+----------------+----------------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:02 ; elapsed = 00:01:17 . Memory (MB): peak = 4028.773 ; gain = 1574.250 ; free physical = 7426 ; free virtual = 43463
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3332] Sequential element (FSM_sequential_gen_endpoint.w_state_reg[1]) is unused and will be removed from module sc_mmu_v1_0_15_top.
+INFO: [Synth 8-3332] Sequential element (FSM_sequential_gen_endpoint.w_state_reg[0]) is unused and will be removed from module sc_mmu_v1_0_15_top.
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:06 ; elapsed = 00:01:20 . Memory (MB): peak = 4041.773 ; gain = 1587.250 ; free physical = 7643 ; free virtual = 43645
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:06 ; elapsed = 00:01:20 . Memory (MB): peak = 4041.773 ; gain = 1587.250 ; free physical = 7639 ; free virtual = 43642
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:06 ; elapsed = 00:01:21 . Memory (MB): peak = 4049.773 ; gain = 1595.250 ; free physical = 7630 ; free virtual = 43633
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:06 ; elapsed = 00:01:21 . Memory (MB): peak = 4049.773 ; gain = 1595.250 ; free physical = 7630 ; free virtual = 43633
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:07 ; elapsed = 00:01:21 . Memory (MB): peak = 4049.773 ; gain = 1595.250 ; free physical = 7631 ; free virtual = 43631
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:07 ; elapsed = 00:01:21 . Memory (MB): peak = 4049.773 ; gain = 1595.250 ; free physical = 7631 ; free virtual = 43630
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Dynamic Shift Register Report:
++------------+---------------+--------+------------+--------+---------+--------+--------+--------+
+|Module Name | RTL Name      | Length | Data Width | SRL16E | SRLC32E | Mux F7 | Mux F8 | Mux F9 | 
++------------+---------------+--------+------------+--------+---------+--------+--------+--------+
+|dsrl        | shift_reg_reg | 16     | 1          | 1      | 0       | 0      | 0      | 0      | 
+|dsrl__1     | shift_reg_reg | 32     | 1          | 0      | 1       | 0      | 0      | 0      | 
++------------+---------------+--------+------------+--------+---------+--------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |LUT1     |   461|
+|2     |LUT2     |   451|
+|3     |LUT3     |  2876|
+|4     |LUT4     |  1044|
+|5     |LUT5     |  1493|
+|6     |LUT6     |  1733|
+|7     |MUXF7    |     1|
+|8     |RAM16X1D |     6|
+|9     |RAM32M   |    10|
+|10    |RAM32M16 |   178|
+|11    |SRL16    |     1|
+|12    |SRL16E   |   129|
+|13    |SRLC32E  |    73|
+|14    |FDCE     |   198|
+|15    |FDRE     |  9558|
+|16    |FDSE     |   373|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:07 ; elapsed = 00:01:21 . Memory (MB): peak = 4049.773 ; gain = 1595.250 ; free physical = 7631 ; free virtual = 43630
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 9060 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:55 ; elapsed = 00:01:05 . Memory (MB): peak = 4049.773 ; gain = 653.594 ; free physical = 15835 ; free virtual = 51837
+Synthesis Optimization Complete : Time (s): cpu = 00:01:18 ; elapsed = 00:01:23 . Memory (MB): peak = 4049.773 ; gain = 1595.250 ; free physical = 15901 ; free virtual = 51838
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.27 ; elapsed = 00:00:00.27 . Memory (MB): peak = 4049.773 ; gain = 0.000 ; free physical = 15907 ; free virtual = 51843
+INFO: [Netlist 29-17] Analyzing 196 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4049.773 ; gain = 0.000 ; free physical = 15926 ; free virtual = 51862
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 195 instances were transformed.
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 6 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 10 instances
+  RAM32M16 => RAM32M16 (RAMD32(x14), RAMS32(x2)): 178 instances
+  SRL16 => SRL16E: 1 instance 
+
+Synth Design complete | Checksum: 22ebe7f3
+INFO: [Common 17-83] Releasing license: Synthesis
+485 Infos, 162 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:23 ; elapsed = 00:01:28 . Memory (MB): peak = 4049.773 ; gain = 2472.203 ; free physical = 15919 ; free virtual = 51854
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 11505.606; main = 3144.477; forked = 8552.835
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 17476.312; main = 4041.777; forked = 13434.535
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4049.773 ; gain = 0.000 ; free physical = 15920 ; free virtual = 51857
+INFO: [Common 17-1381] The checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/OSDZU3x_Tutorial_smartconnect_0_0_synth_1/OSDZU3x_Tutorial_smartconnect_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP OSDZU3x_Tutorial_smartconnect_0_0, cache-ID = a1888cc437391cfc
+INFO: [Coretcl 2-1174] Renamed 1048 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.02 . Memory (MB): peak = 4049.773 ; gain = 0.000 ; free physical = 15866 ; free virtual = 51842
+INFO: [Common 17-1381] The checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/OSDZU3x_Tutorial_smartconnect_0_0_synth_1/OSDZU3x_Tutorial_smartconnect_0_0.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file OSDZU3x_Tutorial_smartconnect_0_0_utilization_synth.rpt -pb OSDZU3x_Tutorial_smartconnect_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Sep  8 15:45:04 2025...

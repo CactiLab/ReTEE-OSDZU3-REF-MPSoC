@@ -1,0 +1,493 @@
+
+*** Running vivado
+    with args -log design_1_axi_uart16550_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_axi_uart16550_0_0.tcl
+
+
+****** Vivado v2025.1 (64-bit)
+  **** SW Build 6140274 on Wed May 21 22:58:25 MDT 2025
+  **** IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+  **** SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+  **** Start of session at: Sat Sep  6 13:57:22 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source design_1_axi_uart16550_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.ipdefs/IP_Repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/2025.1/Vivado/data/ip'.
+Command: synth_design -top design_1_axi_uart16550_0_0 -part xczu3eg-sfvc784-1-e -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu3eg'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu3eg'
+INFO: [Device 21-403] Loading part xczu3eg-sfvc784-1-e
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 66837
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2569.574 ; gain = 135.688 ; free physical = 15863 ; free virtual = 35614
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'design_1_axi_uart16550_0_0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_uart16550_0_0/synth/design_1_axi_uart16550_0_0.vhd:99]
+	Parameter C_FAMILY bound to: zynquplus - type: string 
+	Parameter C_SIM_DEVICE bound to: VERSAL_AI_CORE_ES1 - type: string 
+	Parameter C_S_AXI_ACLK_FREQ_HZ bound to: 99999001 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 13 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_IS_A_16550 bound to: 1 - type: integer 
+	Parameter C_HAS_EXTERNAL_XIN bound to: 0 - type: integer 
+	Parameter C_HAS_EXTERNAL_RCLK bound to: 0 - type: integer 
+	Parameter C_EXTERNAL_XIN_CLK_HZ bound to: 25000000 - type: integer 
+INFO: [Synth 8-3491] module 'axi_uart16550' declared at '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:4847' bound to instance 'U0' of component 'axi_uart16550' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_uart16550_0_0/synth/design_1_axi_uart16550_0_0.vhd:210]
+INFO: [Synth 8-638] synthesizing module 'axi_uart16550' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:4922]
+INFO: [Synth 8-638] synthesizing module 'axi_lite_ipif' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2948]
+INFO: [Synth 8-638] synthesizing module 'slave_attachment' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2341]
+INFO: [Synth 8-638] synthesizing module 'address_decoder' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1775]
+INFO: [Synth 8-256] done synthesizing module 'address_decoder' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1775]
+INFO: [Synth 8-226] default block is never used [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2550]
+INFO: [Synth 8-256] done synthesizing module 'slave_attachment' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2341]
+INFO: [Synth 8-256] done synthesizing module 'axi_lite_ipif' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2948]
+INFO: [Synth 8-638] synthesizing module 'xuart' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:4458]
+INFO: [Synth 8-638] synthesizing module 'uart16550' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:2490]
+INFO: [Synth 8-638] synthesizing module 'xuart_tx_load_sm' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:487]
+INFO: [Synth 8-226] default block is never used [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:541]
+INFO: [Synth 8-256] done synthesizing module 'xuart_tx_load_sm' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:487]
+INFO: [Synth 8-113] binding component instance 'BAUD_FF' to cell 'ODDRE1' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:3630]
+INFO: [Synth 8-638] synthesizing module 'rx16550' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:1472]
+INFO: [Synth 8-226] default block is never used [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:1929]
+INFO: [Synth 8-256] done synthesizing module 'rx16550' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:1472]
+INFO: [Synth 8-638] synthesizing module 'tx16550' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:857]
+INFO: [Synth 8-256] done synthesizing module 'tx16550' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:857]
+INFO: [Synth 8-638] synthesizing module 'tx_fifo_block' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:718]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:70]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:70]
+INFO: [Synth 8-256] done synthesizing module 'tx_fifo_block' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:718]
+INFO: [Synth 8-638] synthesizing module 'rx_fifo_block' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:1298]
+INFO: [Synth 8-638] synthesizing module 'rx_fifo_control' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:278]
+INFO: [Synth 8-226] default block is never used [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:304]
+INFO: [Synth 8-256] done synthesizing module 'rx_fifo_control' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:278]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo__parameterized0' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:70]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo__parameterized0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:70]
+INFO: [Synth 8-256] done synthesizing module 'rx_fifo_block' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:1298]
+INFO: [Synth 8-256] done synthesizing module 'uart16550' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:2490]
+INFO: [Synth 8-638] synthesizing module 'ipic_if' [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:4129]
+INFO: [Synth 8-256] done synthesizing module 'ipic_if' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:4129]
+INFO: [Synth 8-256] done synthesizing module 'xuart' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:4458]
+INFO: [Synth 8-256] done synthesizing module 'axi_uart16550' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:4922]
+INFO: [Synth 8-256] done synthesizing module 'design_1_axi_uart16550_0_0' (0#1) [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_uart16550_0_0/synth/design_1_axi_uart16550_0_0.vhd:99]
+WARNING: [Synth 8-6014] Unused sequential element is_read_reg was removed.  [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2447]
+WARNING: [Synth 8-6014] Unused sequential element is_write_reg was removed.  [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2448]
+WARNING: [Synth 8-6014] Unused sequential element Character_received_reg was removed.  [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:1857]
+WARNING: [Synth 8-3848] Net Addr in module/entity srl_fifo does not have driver. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:65]
+WARNING: [Synth 8-3848] Net Addr in module/entity srl_fifo__parameterized0 does not have driver. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ipshared/a577/hdl/axi_uart16550_v2_0_vh_rfs.vhd:65]
+WARNING: [Synth 8-7129] Port Addr[0] in module srl_fifo__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Addr[1] in module srl_fifo__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Addr[2] in module srl_fifo__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Addr[3] in module srl_fifo__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Fcr[5] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Fcr[4] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Fcr[3] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Fcr[2] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Fcr[1] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Fcr[0] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Rx_fifo_data_in[7] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Rx_fifo_data_in[6] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Rx_fifo_data_in[5] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Rx_fifo_data_in[4] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Rx_fifo_data_in[3] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Rx_fifo_data_in[2] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Rx_fifo_data_in[1] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Rx_fifo_data_in[0] in module rx_fifo_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Addr[0] in module srl_fifo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Addr[1] in module srl_fifo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Addr[2] in module srl_fifo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Addr[3] in module srl_fifo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Lcr[7] in module tx16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Lcr[7] in module rx16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Lcr[6] in module rx16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[31] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[30] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[29] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[28] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[27] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[26] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[25] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[24] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[23] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[22] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[21] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[20] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[19] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[18] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[17] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[16] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[15] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[14] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[13] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[12] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[11] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[10] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[9] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus2IP_Data[8] in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Rclk in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Xin in module xuart is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Address_In_Erly[0] in module address_decoder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Address_In_Erly[1] in module address_decoder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Address_In_Erly[2] in module address_decoder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Address_In_Erly[3] in module address_decoder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Address_In_Erly[4] in module address_decoder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Bus_RNW in module address_decoder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[12] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[11] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[10] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[9] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[8] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[7] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[6] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[5] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARADDR[12] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARADDR[11] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARADDR[10] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARADDR[9] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARADDR[8] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARADDR[7] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARADDR[6] in module slave_attachment is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARADDR[5] in module slave_attachment is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2662.543 ; gain = 228.656 ; free physical = 14953 ; free virtual = 34707
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2662.543 ; gain = 228.656 ; free physical = 14899 ; free virtual = 34653
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2662.543 ; gain = 228.656 ; free physical = 14899 ; free virtual = 34653
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2673.512 ; gain = 0.000 ; free physical = 16857 ; free virtual = 36596
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_uart16550_0_0/design_1_axi_uart16550_0_0_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_uart16550_0_0/design_1_axi_uart16550_0_0_ooc.xdc] for cell 'U0'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_uart16550_0_0/design_1_axi_uart16550_0_0_board.xdc] for cell 'U0'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_uart16550_0_0/design_1_axi_uart16550_0_0_board.xdc] for cell 'U0'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_axi_uart16550_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_axi_uart16550_0_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2773.461 ; gain = 0.000 ; free physical = 15715 ; free virtual = 35480
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  ODDRE1 => OSERDESE3: 1 instance 
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2773.496 ; gain = 0.000 ; free physical = 16026 ; free virtual = 35791
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2773.496 ; gain = 339.609 ; free physical = 12358 ; free virtual = 32129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu3eg-sfvc784-1-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2781.465 ; gain = 347.578 ; free physical = 12350 ; free virtual = 32121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2781.465 ; gain = 347.578 ; free physical = 12334 ; free virtual = 32105
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'slave_attachment'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xuart_tx_load_sm'
+INFO: [Synth 8-802] inferred FSM for state register 'receive_state_reg' in module 'rx16550'
+INFO: [Synth 8-802] inferred FSM for state register 'transmit_state_reg' in module 'tx16550'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 sm_idle |                             0010 |                               00
+                 sm_read |                             1000 |                               01
+                sm_write |                             0100 |                               10
+                 sm_resp |                             0001 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'slave_attachment'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+             empty_empty |                               00 |                               00
+              empty_full |                               01 |                               01
+              full_empty |                               10 |                               10
+               full_full |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'xuart_tx_load_sm'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                             0101 |                             0000
+               start_bit |                             0100 |                             0001
+               data_bit1 |                             0110 |                             0010
+               data_bit2 |                             0000 |                             0011
+               data_bit3 |                             0001 |                             0100
+               data_bit4 |                             0010 |                             0101
+               data_bit5 |                             1101 |                             0110
+               data_bit6 |                             1010 |                             0111
+               data_bit7 |                             1011 |                             1000
+               data_bit8 |                             1100 |                             1001
+              parity_bit |                             1001 |                             1010
+             frame_error |                             0011 |                             1101
+               stop_bit1 |                             1000 |                             1011
+               stop_bit2 |                             0111 |                             1100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'receive_state_reg' using encoding 'sequential' in module 'rx16550'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                             0000 |                             0000
+               start_bit |                             0001 |                             0001
+               data_bit1 |                             0010 |                             0010
+               data_bit2 |                             0011 |                             0011
+               data_bit3 |                             0100 |                             0100
+               data_bit4 |                             0101 |                             0101
+               data_bit5 |                             0110 |                             0110
+               data_bit6 |                             0111 |                             0111
+               data_bit7 |                             1000 |                             1000
+               data_bit8 |                             1001 |                             1001
+              parity_bit |                             1010 |                             1010
+               stop_bit1 |                             1011 |                             1011
+               stop_bit2 |                             1100 |                             1100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'transmit_state_reg' using encoding 'sequential' in module 'tx16550'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2781.465 ; gain = 347.578 ; free physical = 11840 ; free virtual = 31613
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   16 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 4     
+	   2 Input    4 Bit       Adders := 3     
++---XORs : 
+	   2 Input      1 Bit         XORs := 4     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 1     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 14    
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 3     
+	                4 Bit    Registers := 5     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 118   
++---Muxes : 
+	   2 Input   16 Bit        Muxes := 1     
+	   4 Input    8 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 2     
+	  13 Input    8 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 5     
+	   4 Input    4 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 36    
+	  14 Input    4 Bit        Muxes := 1     
+	   6 Input    4 Bit        Muxes := 2     
+	  13 Input    4 Bit        Muxes := 1     
+	   3 Input    4 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 9     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 47    
+	   4 Input    1 Bit        Muxes := 3     
+	  14 Input    1 Bit        Muxes := 7     
+	   6 Input    1 Bit        Muxes := 1     
+	  13 Input    1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 360 (col length:72)
+BRAMs: 432 (col length: RAMB18 72 RAMB36 36)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port s_axi_awaddr[12] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[11] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[10] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[9] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[8] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[7] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[6] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[5] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[31] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[30] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[29] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[28] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[27] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[26] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[25] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[24] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[23] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[22] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[21] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[20] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[19] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[18] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[17] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[16] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[15] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[14] in module axi_uart16550 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[13] in module axi_uart16550 is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2781.465 ; gain = 347.578 ; free physical = 10547 ; free virtual = 30361
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 3372.996 ; gain = 939.109 ; free physical = 8917 ; free virtual = 28759
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 3420.043 ; gain = 986.156 ; free physical = 8540 ; free virtual = 28382
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 3428.051 ; gain = 994.164 ; free physical = 8507 ; free virtual = 28362
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 3579.863 ; gain = 1145.977 ; free physical = 7565 ; free virtual = 27414
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 3579.863 ; gain = 1145.977 ; free physical = 7565 ; free virtual = 27414
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 3579.863 ; gain = 1145.977 ; free physical = 7565 ; free virtual = 27414
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 3579.863 ; gain = 1145.977 ; free physical = 7565 ; free virtual = 27414
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 3579.863 ; gain = 1145.977 ; free physical = 7557 ; free virtual = 27406
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 3579.863 ; gain = 1145.977 ; free physical = 7549 ; free virtual = 27398
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Dynamic Shift Register Report:
++------------+--------------+--------+------------+--------+---------+--------+--------+--------+
+|Module Name | RTL Name     | Length | Data Width | SRL16E | SRLC32E | Mux F7 | Mux F8 | Mux F9 | 
++------------+--------------+--------+------------+--------+---------+--------+--------+--------+
+|dsrl        | data_reg[15] | 8      | 8          | 8      | 0       | 0      | 0      | 0      | 
+|dsrl__1     | data_reg[15] | 11     | 11         | 11     | 0       | 0      | 0      | 0      | 
++------------+--------------+--------+------------+--------+---------+--------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |LUT1   |     3|
+|2     |LUT2   |    57|
+|3     |LUT3   |    45|
+|4     |LUT4   |    56|
+|5     |LUT5   |    71|
+|6     |LUT6   |   188|
+|7     |ODDRE1 |     1|
+|8     |SRL16E |    19|
+|9     |FDRE   |   254|
+|10    |FDSE   |    55|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 3579.863 ; gain = 1145.977 ; free physical = 7541 ; free virtual = 27390
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 43 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 3579.863 ; gain = 1035.023 ; free physical = 7456 ; free virtual = 27305
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 3579.863 ; gain = 1145.977 ; free physical = 7456 ; free virtual = 27305
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3579.863 ; gain = 0.000 ; free physical = 7448 ; free virtual = 27297
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3579.863 ; gain = 0.000 ; free physical = 7288 ; free virtual = 27150
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  ODDRE1 => OSERDESE3: 1 instance 
+
+Synth Design complete | Checksum: f9fc4211
+INFO: [Common 17-83] Releasing license: Synthesis
+68 Infos, 106 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 3579.863 ; gain = 2019.867 ; free physical = 7249 ; free virtual = 27110
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2587.915; main = 2421.527; forked = 175.871
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 4516.926; main = 3562.207; forked = 963.871
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3586.215 ; gain = 0.000 ; free physical = 7241 ; free virtual = 27102
+INFO: [Common 17-1381] The checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_axi_uart16550_0_0_synth_1/design_1_axi_uart16550_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_axi_uart16550_0_0, cache-ID = 4f0f95399b0502f5
+INFO: [Coretcl 2-1174] Renamed 15 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3586.215 ; gain = 0.000 ; free physical = 7129 ; free virtual = 26993
+INFO: [Common 17-1381] The checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_axi_uart16550_0_0_synth_1/design_1_axi_uart16550_0_0.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file design_1_axi_uart16550_0_0_utilization_synth.rpt -pb design_1_axi_uart16550_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Sep  6 13:57:49 2025...

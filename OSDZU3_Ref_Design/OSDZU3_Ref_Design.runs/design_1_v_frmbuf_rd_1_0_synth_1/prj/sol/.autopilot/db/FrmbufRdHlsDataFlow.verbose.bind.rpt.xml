@@ -1,0 +1,48 @@
+<profile>
+
+<section name = "Vitis HLS Report for 'FrmbufRdHlsDataFlow'" level="0">
+<item name = "Date">Sat Sep  6 13:58:46 2025
+</item>
+<item name = "Version">2025.1 (Build 6135595 on May 21 2025)</item>
+<item name = "Project">prj</item>
+<item name = "Solution">sol (Vivado IP Flow Target)</item>
+<item name = "Product family">zynquplus</item>
+<item name = "Target device">xczu3eg-sfvc784-1-e</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.00 ns, 3.650 ns, 1.35 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">7297, 49775261, 36.485 us, 0.249 sec, 7298, 49775042, dataflow</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_AXIMMvideo2Bytes_fu_176">AXIMMvideo2Bytes, 7297, 12929761, 36.485 us, 64.649 ms, 7297, 12929761, no</column>
+<column name="grp_Bytes2MultiPixStream_fu_196">Bytes2MultiPixStream, 1, 49775041, 5.000 ns, 0.249 sec, 1, 49775041, no</column>
+<column name="grp_MultiPixStream2AXIvideo_fu_206">MultiPixStream2AXIvideo, 9, 8305209, 45.000 ns, 41.526 ms, 9, 8305209, no</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

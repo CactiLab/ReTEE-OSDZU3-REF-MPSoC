@@ -1,0 +1,196 @@
+
+
+================================================================
+== Vitis HLS Report for 'v_mix_core_alpha_false_false_Pipeline_VITIS_LOOP_465_3'
+================================================================
+* Date:           Sat Sep  6 13:59:18 2025
+
+* Version:        2025.1 (Build 6135595 on May 21 2025)
+* Project:        prj
+* Solution:       sol (Vivado IP Flow Target)
+* Product family: zynquplus
+* Target device:  xczu3eg-sfvc784-1-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|  2.337 ns|     1.35 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+-----------+-----+------+------------------------------------------------+
+    |  Latency (cycles) |  Latency (absolute)  |  Interval  |                    Pipeline                    |
+    |   min   |   max   |    min   |    max    | min |  max |                      Type                      |
+    +---------+---------+----------+-----------+-----+------+------------------------------------------------+
+    |       67|     3843|  0.335 us|  19.215 us|   65|  3841|  loop auto-rewind stp (delay=0 clock cycles(s))|
+    +---------+---------+----------+-----------+-----+------+------------------------------------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +--------------------+---------+---------+----------+-----------+-----------+-----------+----------+
+        |                    |  Latency (cycles) | Iteration|  Initiation Interval  |    Trip   |          |
+        |      Loop Name     |   min   |   max   |  Latency |  achieved |   target  |   Count   | Pipelined|
+        +--------------------+---------+---------+----------+-----------+-----------+-----------+----------+
+        |- VITIS_LOOP_465_3  |       65|     3841|         3|          1|          1|  64 ~ 3840|       yes|
+        +--------------------+---------+---------+----------+-----------+-----------+-----------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|    109|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    -|       -|      -|    -|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       0|    159|    -|
+|Register         |        -|    -|      68|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        0|    0|      68|    268|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      432|  360|  141120|  70560|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        0|    0|      ~0|     ~0|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |add_ln465_fu_247_p2               |         +|   0|  0|  19|          12|           1|
+    |and_ln476_1_fu_285_p2             |       and|   0|  0|   2|           1|           1|
+    |and_ln476_2_fu_291_p2             |       and|   0|  0|   2|           1|           1|
+    |and_ln476_3_fu_297_p2             |       and|   0|  0|   2|           1|           1|
+    |and_ln476_fu_279_p2               |       and|   0|  0|   2|           1|           1|
+    |ap_condition_149                  |       and|   0|  0|   2|           1|           1|
+    |ap_condition_154                  |       and|   0|  0|   2|           1|           1|
+    |ap_predicate_op48_read_state2     |       and|   0|  0|   2|           1|           1|
+    |ap_predicate_op55_read_state2     |       and|   0|  0|   2|           1|           1|
+    |icmp_ln465_fu_241_p2              |      icmp|   0|  0|  19|          12|          12|
+    |icmp_ln477_fu_261_p2              |      icmp|   0|  0|  23|          16|          16|
+    |icmp_ln478_fu_273_p2              |      icmp|   0|  0|  24|          17|          17|
+    |ap_block_pp0_stage0_01001         |        or|   0|  0|   2|           1|           1|
+    |ap_block_state2_pp0_stage0_iter1  |        or|   0|  0|   2|           1|           1|
+    |ap_enable_pp0                     |       xor|   0|  0|   2|           1|           2|
+    |xor_ln477_fu_267_p2               |       xor|   0|  0|   2|           1|           2|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |Total                             |          |   0|  0| 109|          69|          60|
+    +----------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +---------------------------------------------------------+----+-----------+-----+-----------+
+    |                           Name                          | LUT| Input Size| Bits| Total Bits|
+    +---------------------------------------------------------+----+-----------+-----+-----------+
+    |ap_done_int                                              |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1                                  |   9|          2|    1|          2|
+    |ap_phi_mux_storemerge_0_0_0_0_011_i_i_phi_fu_176_p4      |   9|          2|    8|         16|
+    |ap_phi_mux_storemerge_0_1_0_0_012_i_i_phi_fu_185_p4      |   9|          2|    8|         16|
+    |ap_phi_mux_storemerge_0_2_0_0_013_i_i_phi_fu_194_p4      |   9|          2|    8|         16|
+    |ap_phi_reg_pp0_iter1_storemerge_0_0_0_0_011_i_i_reg_173  |   9|          2|    8|         16|
+    |ap_phi_reg_pp0_iter1_storemerge_0_1_0_0_012_i_i_reg_182  |   9|          2|    8|         16|
+    |ap_phi_reg_pp0_iter1_storemerge_0_2_0_0_013_i_i_reg_191  |   9|          2|    8|         16|
+    |ap_sig_allocacmp_x_13                                    |   9|          2|   12|         24|
+    |outLayer0_blk_n                                          |   9|          2|    1|          2|
+    |outLayer1_blk_n                                          |   9|          2|    1|          2|
+    |p_0_0_014_i_i_reg_222                                    |  14|          3|    8|         24|
+    |p_0_0_0_116_i_i_reg_211                                  |  14|          3|    8|         24|
+    |p_0_0_0_218_i_i_reg_200                                  |  14|          3|    8|         24|
+    |srcLayer1x_blk_n                                         |   9|          2|    1|          2|
+    |x_fu_90                                                  |   9|          2|   12|         24|
+    +---------------------------------------------------------+----+-----------+-----+-----------+
+    |Total                                                    | 159|         35|  101|        226|
+    +---------------------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------------------------------------+----+----+-----+-----------+
+    |                           Name                          | FF | LUT| Bits| Const Bits|
+    +---------------------------------------------------------+----+----+-----+-----------+
+    |and_ln476_3_reg_403                                      |   1|   0|    1|          0|
+    |ap_CS_fsm                                                |   1|   0|    1|          0|
+    |ap_done_reg                                              |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1                                  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2                                  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter1_reg                         |   1|   0|    1|          0|
+    |ap_phi_reg_pp0_iter1_storemerge_0_0_0_0_011_i_i_reg_173  |   8|   0|    8|          0|
+    |ap_phi_reg_pp0_iter1_storemerge_0_1_0_0_012_i_i_reg_182  |   8|   0|    8|          0|
+    |ap_phi_reg_pp0_iter1_storemerge_0_2_0_0_013_i_i_reg_191  |   8|   0|    8|          0|
+    |icmp_ln465_reg_399                                       |   1|   0|    1|          0|
+    |p_0_0_014_i_i_reg_222                                    |   8|   0|    8|          0|
+    |p_0_0_0_116_i_i_reg_211                                  |   8|   0|    8|          0|
+    |p_0_0_0_218_i_i_reg_200                                  |   8|   0|    8|          0|
+    |tmp_reg_380                                              |   1|   0|    1|          0|
+    |x_fu_90                                                  |  12|   0|   12|          0|
+    +---------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                    |  68|   0|   68|          0|
+    +---------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------------+-----+-----+------------+----------------------------------------------------------+--------------+
+|          RTL Ports         | Dir | Bits|  Protocol  |                       Source Object                      |    C Type    |
++----------------------------+-----+-----+------------+----------------------------------------------------------+--------------+
+|ap_clk                      |   in|    1|  ap_ctrl_hs|  v_mix_core_alpha<false, false>_Pipeline_VITIS_LOOP_465_3|  return value|
+|ap_rst                      |   in|    1|  ap_ctrl_hs|  v_mix_core_alpha<false, false>_Pipeline_VITIS_LOOP_465_3|  return value|
+|ap_start                    |   in|    1|  ap_ctrl_hs|  v_mix_core_alpha<false, false>_Pipeline_VITIS_LOOP_465_3|  return value|
+|ap_done                     |  out|    1|  ap_ctrl_hs|  v_mix_core_alpha<false, false>_Pipeline_VITIS_LOOP_465_3|  return value|
+|ap_idle                     |  out|    1|  ap_ctrl_hs|  v_mix_core_alpha<false, false>_Pipeline_VITIS_LOOP_465_3|  return value|
+|ap_ready                    |  out|    1|  ap_ctrl_hs|  v_mix_core_alpha<false, false>_Pipeline_VITIS_LOOP_465_3|  return value|
+|outLayer0_dout              |   in|   24|     ap_fifo|                                                 outLayer0|       pointer|
+|outLayer0_empty_n           |   in|    1|     ap_fifo|                                                 outLayer0|       pointer|
+|outLayer0_read              |  out|    1|     ap_fifo|                                                 outLayer0|       pointer|
+|outLayer0_num_data_valid    |   in|    3|     ap_fifo|                                                 outLayer0|       pointer|
+|outLayer0_fifo_cap          |   in|    3|     ap_fifo|                                                 outLayer0|       pointer|
+|srcLayer1x_dout             |   in|   24|     ap_fifo|                                                srcLayer1x|       pointer|
+|srcLayer1x_empty_n          |   in|    1|     ap_fifo|                                                srcLayer1x|       pointer|
+|srcLayer1x_read             |  out|    1|     ap_fifo|                                                srcLayer1x|       pointer|
+|srcLayer1x_num_data_valid   |   in|    3|     ap_fifo|                                                srcLayer1x|       pointer|
+|srcLayer1x_fifo_cap         |   in|    3|     ap_fifo|                                                srcLayer1x|       pointer|
+|outLayer1_din               |  out|   24|     ap_fifo|                                                 outLayer1|       pointer|
+|outLayer1_full_n            |   in|    1|     ap_fifo|                                                 outLayer1|       pointer|
+|outLayer1_write             |  out|    1|     ap_fifo|                                                 outLayer1|       pointer|
+|outLayer1_num_data_valid    |   in|   32|     ap_fifo|                                                 outLayer1|       pointer|
+|outLayer1_fifo_cap          |   in|   32|     ap_fifo|                                                 outLayer1|       pointer|
+|HwReg_width_val             |   in|   12|   ap_stable|                                           HwReg_width_val|        scalar|
+|HwReg_background_Y_R_val12  |   in|    8|   ap_stable|                                HwReg_background_Y_R_val12|        scalar|
+|HwReg_background_U_G_val13  |   in|    8|   ap_stable|                                HwReg_background_U_G_val13|        scalar|
+|HwReg_background_V_B_val14  |   in|    8|   ap_stable|                                HwReg_background_V_B_val14|        scalar|
+|HwReg_layerStartX_1_val18   |   in|   16|   ap_stable|                                 HwReg_layerStartX_1_val18|        scalar|
+|add71_i_i                   |   in|   17|   ap_stable|                                                 add71_i_i|        scalar|
+|cmp61_i_i                   |   in|    1|     ap_none|                                                 cmp61_i_i|        scalar|
+|rev5                        |   in|    1|     ap_none|                                                      rev5|        scalar|
+|empty_65                    |   in|    1|   ap_stable|                                                  empty_65|        scalar|
+|empty                       |   in|    1|   ap_stable|                                                     empty|        scalar|
++----------------------------+-----+-----+------------+----------------------------------------------------------+--------------+
+

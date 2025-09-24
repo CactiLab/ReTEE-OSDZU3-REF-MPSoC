@@ -1,0 +1,19 @@
+{
+  "name": "riscv_linux_hello_world",
+  "type": "HOST",
+  "platform": "riscv_platform",
+  "domain": "linux_psu_cortexa53",
+  "cpuInstance": "cortex-a53",
+  "cpuType": "cortex-a53",
+  "os": "linux",
+  "sysroot": "/tools/zynqmp_common_peta/sysroots/cortexa72-cortexa53-amd-linux",
+  "configuration": {
+    "componentType": "HOST",
+    "hostToolchainConfigurations": []
+  },
+  "domainRealName": "linux_psu_cortexa53",
+  "useSysrootToolchain": false,
+  "sysrootToolchain": "/tools/Xilinx/xilinx-zynqmp-common-sysroot-2023.1/sources/aarch64-xilinx-linux",
+  "applicationFlow": "EMBEDDED",
+  "template": "linux_hello_world"
+}

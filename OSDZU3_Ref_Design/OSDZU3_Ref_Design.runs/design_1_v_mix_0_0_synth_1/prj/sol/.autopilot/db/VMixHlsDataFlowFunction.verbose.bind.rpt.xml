@@ -1,0 +1,65 @@
+<profile>
+
+<section name = "Vitis HLS Report for 'VMixHlsDataFlowFunction'" level="0">
+<item name = "Date">Sat Sep  6 13:59:17 2025
+</item>
+<item name = "Version">2025.1 (Build 6135595 on May 21 2025)</item>
+<item name = "Project">prj</item>
+<item name = "Solution">sol (Vivado IP Flow Target)</item>
+<item name = "Product family">zynquplus</item>
+<item name = "Target device">xczu3eg-sfvc784-1-e</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.00 ns, 3.650 ns, 1.35 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">4629, 1073938431, 23.145 us, 5.370 sec, 4611, 1073938427, dataflow</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_AXIvideo2MultiPixStream_1_fu_422">AXIvideo2MultiPixStream_1, 2, 8316006, 10.000 ns, 41.580 ms, 2, 8316006, no</column>
+<column name="grp_AXIvideo2MultiPixStream_5_fu_447">AXIvideo2MultiPixStream_5, 2, 8316006, 10.000 ns, 41.580 ms, 2, 8316006, no</column>
+<column name="grp_AXIvideo2MultiPixStream_fu_470">AXIvideo2MultiPixStream, 2, 8316006, 10.000 ns, 41.580 ms, 2, 8316006, no</column>
+<column name="grp_v_mix_420_to_422_false_2_fu_493">v_mix_420_to_422_false_2, 1, 8303041, 5.000 ns, 41.515 ms, 1, 8303041, no</column>
+<column name="grp_v_mix_420_to_422_false_6_fu_502">v_mix_420_to_422_false_6, 1, 8303041, 5.000 ns, 41.515 ms, 1, 8303041, no</column>
+<column name="grp_v_mix_420_to_422_false_s_fu_511">v_mix_420_to_422_false_s, 1, 8303041, 5.000 ns, 41.515 ms, 1, 8303041, no</column>
+<column name="grp_v_mix_422_to_444_false_3_fu_520">v_mix_422_to_444_false_3, 1, 8303041, 5.000 ns, 41.515 ms, 1, 8303041, no</column>
+<column name="grp_v_mix_422_to_444_true_s_fu_529">v_mix_422_to_444_true_s, 1, 1073938426, 5.000 ns, 5.370 sec, 1, 1073938426, no</column>
+<column name="grp_v_mix_422_to_444_false_s_fu_538">v_mix_422_to_444_false_s, 1, 8303041, 5.000 ns, 41.515 ms, 1, 8303041, no</column>
+<column name="grp_v_mix_yuv2rgb_false_4_fu_547">v_mix_yuv2rgb_false_4, 1, 8303041, 5.000 ns, 41.515 ms, 1, 8303041, no</column>
+<column name="grp_v_mix_yuv2rgb_true_s_fu_556">v_mix_yuv2rgb_true_s, 1, 8311681, 5.000 ns, 41.558 ms, 1, 8311681, no</column>
+<column name="grp_v_mix_yuv2rgb_false_s_fu_565">v_mix_yuv2rgb_false_s, 1, 8303041, 5.000 ns, 41.515 ms, 1, 8303041, no</column>
+<column name="grp_v_mix_upsample_false_7_fu_574">v_mix_upsample_false_7, 1, 8303041, 5.000 ns, 41.515 ms, 1, 8303041, no</column>
+<column name="grp_v_mix_upsample_false_s_fu_583">v_mix_upsample_false_s, 1, 8303041, 5.000 ns, 41.515 ms, 1, 8303041, no</column>
+<column name="grp_v_mix_core_alpha_false_false_s_fu_592">v_mix_core_alpha_false_false_s, 4417, 8305201, 22.085 us, 41.526 ms, 4417, 8305201, no</column>
+<column name="grp_v_mix_core_alpha_true_false_s_fu_616">v_mix_core_alpha_true_false_s, 4610, 8311682, 23.050 us, 41.558 ms, 4610, 8311682, no</column>
+<column name="grp_v_mix_rgb2yuv_false_s_fu_636">v_mix_rgb2yuv_false_s, 4353, 8303041, 21.765 us, 41.515 ms, 4353, 8303041, no</column>
+<column name="grp_v_mix_444_to_422_false_s_fu_644">v_mix_444_to_422_false_s, 4353, 8303041, 21.765 us, 41.515 ms, 4353, 8303041, no</column>
+<column name="grp_v_mix_422_to_420_false_s_fu_652">v_mix_422_to_420_false_s, 4353, 8303041, 21.765 us, 41.515 ms, 4353, 8303041, no</column>
+<column name="grp_MultiPixStream2AXIvideo_fu_660">MultiPixStream2AXIvideo, 2, 8305202, 10.000 ns, 41.526 ms, 2, 8305202, no</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

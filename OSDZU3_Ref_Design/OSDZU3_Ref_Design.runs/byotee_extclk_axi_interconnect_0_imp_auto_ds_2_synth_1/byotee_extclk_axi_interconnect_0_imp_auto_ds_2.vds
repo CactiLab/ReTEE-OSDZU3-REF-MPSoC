@@ -1,0 +1,29 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Wed May 21 22:58:25 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Mon Sep 15 13:53:46 2025
+# Process ID         : 1699262
+# Current directory  : /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/byotee_extclk_axi_interconnect_0_imp_auto_ds_2_synth_1
+# Command line       : vivado -log byotee_extclk_axi_interconnect_0_imp_auto_ds_2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source byotee_extclk_axi_interconnect_0_imp_auto_ds_2.tcl
+# Log file           : /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/byotee_extclk_axi_interconnect_0_imp_auto_ds_2_synth_1/byotee_extclk_axi_interconnect_0_imp_auto_ds_2.vds
+# Journal file       : /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/byotee_extclk_axi_interconnect_0_imp_auto_ds_2_synth_1/vivado.jou
+# Running On         : e-ubuntu
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.3 LTS
+# Processor Detail   : AMD Ryzen 9 7900X 12-Core Processor
+# CPU Frequency      : 5430.751 MHz
+# CPU Physical cores : 12
+# CPU Logical cores  : 24
+# Host memory        : 66513 MB
+# Swap memory        : 8589 MB
+# Total Virtual      : 75103 MB
+# Available Virtual  : 32507 MB
+#-----------------------------------------------------------
+source byotee_extclk_axi_interconnect_0_imp_auto_ds_2.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.ipdefs/IP_Repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/2025.1/Vivado/data/ip'.
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP byotee_extclk_axi_interconnect_0_imp_auto_ds_2, cache-ID = f147d7a92083e2d8.
+INFO: [Common 17-206] Exiting Vivado at Mon Sep 15 13:53:49 2025...

@@ -1,0 +1,18 @@
+# LED pin location constraints
+tclapp::octavo::osdzu3::set_osdzu3_package_pin E7 [get_ports {leds_8bits_tri_io[0]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin F7 [get_ports {leds_8bits_tri_io[1]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin A4 [get_ports {leds_8bits_tri_io[2]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin B4 [get_ports {leds_8bits_tri_io[3]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin C10 [get_ports {leds_8bits_tri_io[4]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin D10 [get_ports {leds_8bits_tri_io[5]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin C8 [get_ports {leds_8bits_tri_io[6]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin D8 [get_ports {leds_8bits_tri_io[7]}]
+# DIP switch pin location constraints
+tclapp::octavo::osdzu3::set_osdzu3_package_pin J1 [get_ports {dip_switches_8bits_tri_io[0]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin K1 [get_ports {dip_switches_8bits_tri_io[1]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin A10 [get_ports {dip_switches_8bits_tri_io[2]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin B10 [get_ports {dip_switches_8bits_tri_io[3]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin E10 [get_ports {dip_switches_8bits_tri_io[4]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin F10 [get_ports {dip_switches_8bits_tri_io[5]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin A3 [get_ports {dip_switches_8bits_tri_io[6]}]
+tclapp::octavo::osdzu3::set_osdzu3_package_pin B3 [get_ports {dip_switches_8bits_tri_io[7]}]

@@ -1,0 +1,15 @@
+vhdl xil_defaultlib  \
+"../../../bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_microblaze_0_0/sim/OSDZU3x_BYOTEE_microblaze_0_0.vhd" \
+"../../../bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_dlmb_v10_0/sim/OSDZU3x_BYOTEE_dlmb_v10_0.vhd" \
+"../../../bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_ilmb_v10_0/sim/OSDZU3x_BYOTEE_ilmb_v10_0.vhd" \
+"../../../bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_dlmb_bram_if_cntlr_0/sim/OSDZU3x_BYOTEE_dlmb_bram_if_cntlr_0.vhd" \
+"../../../bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_ilmb_bram_if_cntlr_0/sim/OSDZU3x_BYOTEE_ilmb_bram_if_cntlr_0.vhd" \
+"../../../bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_mdm_1_0/sim/OSDZU3x_BYOTEE_mdm_1_0.vhd" \
+"../../../bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_rst_ps8_0_99M_0/sim/OSDZU3x_BYOTEE_rst_ps8_0_99M_0.vhd" \
+"../../../bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_intc_0_0/sim/OSDZU3x_BYOTEE_axi_intc_0_0.vhd" \
+"../../../bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_gpio_0_0/sim/OSDZU3x_BYOTEE_axi_gpio_0_0.vhd" \
+"../../../bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_gpio_1_0/sim/OSDZU3x_BYOTEE_axi_gpio_1_0.vhd" \
+"../../../bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_gpio_2_0/sim/OSDZU3x_BYOTEE_axi_gpio_2_0.vhd" \
+
+# Do not sort compile order
+nosort

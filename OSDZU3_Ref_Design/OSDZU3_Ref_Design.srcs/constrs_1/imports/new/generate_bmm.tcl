@@ -1,0 +1,1 @@
+write_mem_info -force [current_project].mmi

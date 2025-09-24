@@ -1,0 +1,23 @@
+[
+  {
+    "functionLabel": "",
+    "functionName": "v_mix",
+    "id": 0,
+    "ifcond": "",
+    "insert_position": "",
+    "label": "",
+    "pragma": {
+      "name": "TOP",
+      "option": [
+        {
+          "name": "name",
+          "value": "v_mix"
+        }
+      ]
+    },
+    "slx": false,
+    "sourceFile": "/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_mix_0_0_synth_1/runhls.tcl",
+    "sourceLine": 44,
+    "success": true
+  }
+]

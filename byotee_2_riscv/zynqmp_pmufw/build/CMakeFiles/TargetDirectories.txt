@@ -1,0 +1,3 @@
+/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/build/CMakeFiles/pmufw.elf.dir
+/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/build/CMakeFiles/edit_cache.dir
+/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/build/CMakeFiles/rebuild_cache.dir

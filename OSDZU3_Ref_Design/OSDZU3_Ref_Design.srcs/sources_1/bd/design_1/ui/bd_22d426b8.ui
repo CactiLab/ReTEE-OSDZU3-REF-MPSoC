@@ -1,0 +1,40 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.959259",
+   "Default View_TopLeft":"-437,-10",
+   "DisplayTieOff":"1",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port S_AXI -pg 1 -lvl 0 -x -10 -y 210 -defaultsOSRD
+preplace port S_AXI1 -pg 1 -lvl 0 -x -10 -y 370 -defaultsOSRD
+preplace port S_AXI2 -pg 1 -lvl 0 -x -10 -y 50 -defaultsOSRD
+preplace port CLICK_I2C -pg 1 -lvl 2 -x 310 -y 50 -defaultsOSRD
+preplace port port-id_s_axi_aclk -pg 1 -lvl 0 -x -10 -y 230 -defaultsOSRD
+preplace port port-id_s_axi_aresetn -pg 1 -lvl 0 -x -10 -y 390 -defaultsOSRD
+preplace port port-id_ip2intc_irpt -pg 1 -lvl 2 -x 310 -y 270 -defaultsOSRD
+preplace port port-id_CLICK_UART_RX -pg 1 -lvl 0 -x -10 -y 150 -defaultsOSRD
+preplace port port-id_CLICK_UART_TX -pg 1 -lvl 2 -x 310 -y 250 -defaultsOSRD
+preplace port port-id_CLICK_PWM -pg 1 -lvl 2 -x 310 -y 430 -defaultsOSRD
+preplace port port-id_interrupt -pg 1 -lvl 2 -x 310 -y 450 -defaultsOSRD
+preplace port port-id_iic2intc_irpt -pg 1 -lvl 2 -x 310 -y 70 -defaultsOSRD
+preplace inst CLICK_UART -pg 1 -lvl 1 -x 160 -y 240 -defaultsOSRD
+preplace inst CLICK_PWM_TIMER -pg 1 -lvl 1 -x 160 -y 420 -defaultsOSRD
+preplace inst axi_iic_0 -pg 1 -lvl 1 -x 160 -y 70 -defaultsOSRD
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 1 10 70n
+preplace netloc rst_ps8_0_99M_peripheral_aresetn 1 0 1 20 90n
+preplace netloc axi_uart16550_1_ip2intc_irpt 1 1 1 NJ 270
+preplace netloc sin_0_2 1 0 2 NJ 150 290
+preplace netloc axi_uart16550_1_sout 1 1 1 NJ 250
+preplace netloc axi_timer_0_pwm0 1 1 1 NJ 430
+preplace netloc axi_timer_0_interrupt 1 1 1 NJ 450
+preplace netloc axi_iic_0_iic2intc_irpt 1 1 1 NJ 70
+preplace netloc ps8_0_axi_periph_M05_AXI 1 0 1 NJ 210
+preplace netloc LVDS_Display_M08_AXI 1 0 1 NJ 370
+preplace netloc Conn1 1 0 1 NJ 50
+preplace netloc Conn2 1 1 1 NJ 50
+levelinfo -pg 1 -10 160 310
+pagesize -pg 1 -db -bbox -sgen -180 -10 480 530
+"
+}
+

@@ -1,0 +1,3 @@
+/home/e/Documents/research/byotee/riscv_platform/zynqmp_fsbl/build/CMakeFiles/fsbl.elf.dir
+/home/e/Documents/research/byotee/riscv_platform/zynqmp_fsbl/build/CMakeFiles/edit_cache.dir
+/home/e/Documents/research/byotee/riscv_platform/zynqmp_fsbl/build/CMakeFiles/rebuild_cache.dir

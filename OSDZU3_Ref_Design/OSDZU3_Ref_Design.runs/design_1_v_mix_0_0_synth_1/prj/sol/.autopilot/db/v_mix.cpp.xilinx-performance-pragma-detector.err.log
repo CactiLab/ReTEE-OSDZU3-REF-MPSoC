@@ -1,0 +1,71 @@
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:25: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                        ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:26: warning: null character ignored [-Wnull-character]
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                            ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:27: warning: null character ignored [-Wnull-character]
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                    ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:28: warning: null character ignored [-Wnull-character]
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                            ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:29: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                    ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:1: error: unknown type name 'XlxVV0EB0000000000000098'
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:31: warning: null character ignored [-Wnull-character]
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                         ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:31: error: expected ';' after top level declarator
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                         ^
+                                                         ;
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:33: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                  ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:34: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                      ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:37: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                            ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:38: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                                ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:40: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                                     ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:41: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                                         ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:42: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                                             ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:43: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                                                 ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:44: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                                                     ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:46: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                                                          ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:48: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                                                               ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:50: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                                                                    ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:51: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                                                                        ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:52: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                                                                            ^
+/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.cpp:1:53: error: source file is not valid UTF-8
+XlxVV0EB0000000000000098<80><U+0000><U+0000><U+0000><B4>b<U+0000>0<A6><E6>01<E6><C3>-<AA><8D><8C><80><A8>N<E0>s<AC>/<FE><95><B5><BF><U+001B>3.ldX<91><U+0016><ED><FD><EF>
+                                                                                                                                ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]

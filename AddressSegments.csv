@@ -1,0 +1,43 @@
+######################################################################################
+# This is a generated CSV file representing the addressing in design OSDZU3x_BYOTEE
+#
+# Format:
+# Master Segment Name, Address Space, Slave Segment, Offset, Range ...
+#      Excluded (optional), Included (optional), Unassigned (optional)
+######################################################################################
+
+# 
+# Assignments in Address Space /mdm_0/Data
+#
+SEG_zynq_ultra_ps_e_0_HPC0_DDR_LOW,/mdm_0/Data,/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_LOW,0x00000000,1G
+SEG_axi_gpio_1_Reg,/mdm_0/Data,/axi_gpio_1/S_AXI/Reg,0x40000000,64K
+SEG_pl_ps_intr_Reg,/mdm_0/Data,/pl_ps_intr/S_AXI/Reg,0x40010000,64K
+SEG_axi_intc_0_Reg,/mdm_0/Data,/axi_intc_0/S_AXI/Reg,0x41200000,64K
+SEG_zynq_ultra_ps_e_0_HPC0_QSPI,/mdm_0/Data,/zynq_ultra_ps_e_0/SAXIGP0/HPC0_QSPI,0xC0000000,512M
+SEG_zynq_ultra_ps_e_0_HPC0_LPS_OCM,/mdm_0/Data,/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM,0xFFFC0000,256K
+# 
+# Assignments in Address Space /microblaze_0/Data
+#
+SEG_dlmb_bram_if_cntlr_Mem,/microblaze_0/Data,/microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB/Mem,0xA000000,16K
+SEG_zynq_ultra_ps_e_0_HPC0_DDR_LOW,/microblaze_0/Data,/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_LOW,0x20000000,512M
+SEG_axi_gpio_1_Reg,/microblaze_0/Data,/axi_gpio_1/S_AXI/Reg,0x40000000,256
+SEG_pl_ps_intr_Reg,/microblaze_0/Data,/pl_ps_intr/S_AXI/Reg,0x40010000,64K
+SEG_axi_intc_0_Reg,/microblaze_0/Data,/axi_intc_0/S_AXI/Reg,0x41200000,64K
+SEG_zynq_ultra_ps_e_0_HPC0_QSPI,/microblaze_0/Data,/zynq_ultra_ps_e_0/SAXIGP0/HPC0_QSPI,0xC0000000,512M
+SEG_zynq_ultra_ps_e_0_HPC0_LPS_OCM,/microblaze_0/Data,/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM,0xFFFC0000,256K
+# 
+# Assignments in Address Space /microblaze_0/Instruction
+#
+SEG_ilmb_bram_if_cntlr_Mem,/microblaze_0/Instruction,/microblaze_0_local_memory/ilmb_bram_if_cntlr/SLMB/Mem,0xA040000,16K
+SEG_axi_gpio_1_Reg,/microblaze_0/Instruction,/axi_gpio_1/S_AXI/Reg,0x40000000,256
+SEG_pl_ps_intr_Reg,/microblaze_0/Instruction,/pl_ps_intr/S_AXI/Reg,0x40010000,64K
+SEG_axi_intc_0_Reg,/microblaze_0/Instruction,/axi_intc_0/S_AXI/Reg,0x41200000,64K
+SEG_zynq_ultra_ps_e_0_HPC0_DDR_LOW,/microblaze_0/Instruction,/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_LOW,0x60000000,512M
+SEG_zynq_ultra_ps_e_0_HPC0_QSPI,/microblaze_0/Instruction,/zynq_ultra_ps_e_0/SAXIGP0/HPC0_QSPI,0xC0000000,512M
+SEG_zynq_ultra_ps_e_0_HPC0_LPS_OCM,/microblaze_0/Instruction,/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM,0xFF000000,16M
+# 
+# Assignments in Address Space /zynq_ultra_ps_e_0/Data
+#
+SEG_axi_intc_0_Reg,/zynq_ultra_ps_e_0/Data,/axi_intc_0/S_AXI/Reg,0x80000000,1,Excluded
+SEG_mdm_0_Reg,/zynq_ultra_ps_e_0/Data,/mdm_0/S_AXI/Reg,0x80001000,4K
+SEG_axi_gpio_0_Reg,/zynq_ultra_ps_e_0/Data,/ps_pl_intr/S_AXI/Reg,0x80010000,64K

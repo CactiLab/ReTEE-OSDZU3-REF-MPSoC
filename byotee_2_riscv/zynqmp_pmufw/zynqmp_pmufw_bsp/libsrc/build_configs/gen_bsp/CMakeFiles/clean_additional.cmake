@@ -1,0 +1,40 @@
+# Additional clean files
+cmake_minimum_required(VERSION 3.16)
+
+if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
+  file(REMOVE_RECURSE
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/sleep.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xfpga_config.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xilfpga.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xilfpga_pcap.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xilfpga_pcap_common.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xilskey_bbramps_zynqmp_hw.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xilskey_bsp_config.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xilskey_eps_zynqmp.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xilskey_eps_zynqmp_hw.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xilskey_eps_zynqmp_puf.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xilskey_utils.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xiltimer.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_aes.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_aes_hw.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_aesalginfo.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_config.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_cryptochk.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_rsa.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_rsa_core.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_rsa_hw.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_rsaalginfo.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_sha.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_sha3alginfo.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_sha_hw.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_sss.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_utils.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xsecure_ver.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/include/xtimer_config.h"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/lib/libxilfpga.a"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/lib/libxilsecure.a"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/lib/libxilskey.a"
+  "/home/e/Documents/research/byotee/byotee_2_riscv/zynqmp_pmufw/zynqmp_pmufw_bsp/lib/libxiltimer.a"
+  )
+endif()

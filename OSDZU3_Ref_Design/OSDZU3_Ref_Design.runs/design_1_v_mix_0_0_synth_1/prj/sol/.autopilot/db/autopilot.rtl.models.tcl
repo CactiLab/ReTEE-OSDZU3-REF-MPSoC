@@ -1,0 +1,116 @@
+set SynModuleInfo {
+  {SRCNAME {reg<unsigned short>1} MODELNAME reg_unsigned_short_1 RTLNAME design_1_v_mix_0_0_reg_unsigned_short_1}
+  {SRCNAME AXIvideo2MultiPixStream.1_Pipeline_loop_wait_for_start MODELNAME AXIvideo2MultiPixStream_1_Pipeline_loop_wait_for_start RTLNAME design_1_v_mix_0_0_AXIvideo2MultiPixStream_1_Pipeline_loop_wait_for_start
+    SUBMODULES {
+      {MODELNAME design_1_v_mix_0_0_flow_control_loop_pipe_sequential_init RTLNAME design_1_v_mix_0_0_flow_control_loop_pipe_sequential_init BINDTYPE interface TYPE internal_upc_flow_control INSTNAME design_1_v_mix_0_0_flow_control_loop_pipe_sequential_init_U}
+    }
+  }
+  {SRCNAME AXIvideo2MultiPixStream.1_Pipeline_loop_width MODELNAME AXIvideo2MultiPixStream_1_Pipeline_loop_width RTLNAME design_1_v_mix_0_0_AXIvideo2MultiPixStream_1_Pipeline_loop_width}
+  {SRCNAME AXIvideo2MultiPixStream.1_Pipeline_loop_wait_for_eol MODELNAME AXIvideo2MultiPixStream_1_Pipeline_loop_wait_for_eol RTLNAME design_1_v_mix_0_0_AXIvideo2MultiPixStream_1_Pipeline_loop_wait_for_eol}
+  {SRCNAME AXIvideo2MultiPixStream.1 MODELNAME AXIvideo2MultiPixStream_1 RTLNAME design_1_v_mix_0_0_AXIvideo2MultiPixStream_1}
+  {SRCNAME v_mix_420_to_422<false>.2_Pipeline_VITIS_LOOP_76_2 MODELNAME v_mix_420_to_422_false_2_Pipeline_VITIS_LOOP_76_2 RTLNAME design_1_v_mix_0_0_v_mix_420_to_422_false_2_Pipeline_VITIS_LOOP_76_2}
+  {SRCNAME v_mix_420_to_422<false>.2 MODELNAME v_mix_420_to_422_false_2 RTLNAME design_1_v_mix_0_0_v_mix_420_to_422_false_2}
+  {SRCNAME v_mix_422_to_444<false>.3_Pipeline_VITIS_LOOP_105_2 MODELNAME v_mix_422_to_444_false_3_Pipeline_VITIS_LOOP_105_2 RTLNAME design_1_v_mix_0_0_v_mix_422_to_444_false_3_Pipeline_VITIS_LOOP_105_2}
+  {SRCNAME v_mix_422_to_444<false>.3 MODELNAME v_mix_422_to_444_false_3 RTLNAME design_1_v_mix_0_0_v_mix_422_to_444_false_3}
+  {SRCNAME v_mix_yuv2rgb<false>.4_Pipeline_VITIS_LOOP_897_2 MODELNAME v_mix_yuv2rgb_false_4_Pipeline_VITIS_LOOP_897_2 RTLNAME design_1_v_mix_0_0_v_mix_yuv2rgb_false_4_Pipeline_VITIS_LOOP_897_2}
+  {SRCNAME v_mix_yuv2rgb<false>.4 MODELNAME v_mix_yuv2rgb_false_4 RTLNAME design_1_v_mix_0_0_v_mix_yuv2rgb_false_4}
+  {SRCNAME {reg<unsigned short>} MODELNAME reg_unsigned_short_s RTLNAME design_1_v_mix_0_0_reg_unsigned_short_s}
+  {SRCNAME AXIvideo2MultiPixStream.5_Pipeline_loop_wait_for_start MODELNAME AXIvideo2MultiPixStream_5_Pipeline_loop_wait_for_start RTLNAME design_1_v_mix_0_0_AXIvideo2MultiPixStream_5_Pipeline_loop_wait_for_start}
+  {SRCNAME AXIvideo2MultiPixStream.5_Pipeline_loop_width MODELNAME AXIvideo2MultiPixStream_5_Pipeline_loop_width RTLNAME design_1_v_mix_0_0_AXIvideo2MultiPixStream_5_Pipeline_loop_width}
+  {SRCNAME AXIvideo2MultiPixStream.5_Pipeline_loop_wait_for_eol MODELNAME AXIvideo2MultiPixStream_5_Pipeline_loop_wait_for_eol RTLNAME design_1_v_mix_0_0_AXIvideo2MultiPixStream_5_Pipeline_loop_wait_for_eol}
+  {SRCNAME AXIvideo2MultiPixStream.5 MODELNAME AXIvideo2MultiPixStream_5 RTLNAME design_1_v_mix_0_0_AXIvideo2MultiPixStream_5}
+  {SRCNAME v_mix_420_to_422<false>.6_Pipeline_VITIS_LOOP_76_2 MODELNAME v_mix_420_to_422_false_6_Pipeline_VITIS_LOOP_76_2 RTLNAME design_1_v_mix_0_0_v_mix_420_to_422_false_6_Pipeline_VITIS_LOOP_76_2}
+  {SRCNAME v_mix_420_to_422<false>.6 MODELNAME v_mix_420_to_422_false_6 RTLNAME design_1_v_mix_0_0_v_mix_420_to_422_false_6}
+  {SRCNAME v_mix_422_to_444<true>_Pipeline_VITIS_LOOP_161_2 MODELNAME v_mix_422_to_444_true_Pipeline_VITIS_LOOP_161_2 RTLNAME design_1_v_mix_0_0_v_mix_422_to_444_true_Pipeline_VITIS_LOOP_161_2}
+  {SRCNAME v_mix_422_to_444<true> MODELNAME v_mix_422_to_444_true_s RTLNAME design_1_v_mix_0_0_v_mix_422_to_444_true_s}
+  {SRCNAME v_mix_yuv2rgb<true>_Pipeline_VITIS_LOOP_941_2 MODELNAME v_mix_yuv2rgb_true_Pipeline_VITIS_LOOP_941_2 RTLNAME design_1_v_mix_0_0_v_mix_yuv2rgb_true_Pipeline_VITIS_LOOP_941_2
+    SUBMODULES {
+      {MODELNAME design_1_v_mix_0_0_mul_8s_12ns_20_1_1 RTLNAME design_1_v_mix_0_0_mul_8s_12ns_20_1_1 BINDTYPE op TYPE mul IMPL auto LATENCY 0 ALLOW_PRAGMA 1}
+      {MODELNAME design_1_v_mix_0_0_mul_8s_11ns_18_1_1 RTLNAME design_1_v_mix_0_0_mul_8s_11ns_18_1_1 BINDTYPE op TYPE mul IMPL auto LATENCY 0 ALLOW_PRAGMA 1}
+      {MODELNAME design_1_v_mix_0_0_mul_8s_13ns_21_1_1 RTLNAME design_1_v_mix_0_0_mul_8s_13ns_21_1_1 BINDTYPE op TYPE mul IMPL auto LATENCY 0 ALLOW_PRAGMA 1}
+      {MODELNAME design_1_v_mix_0_0_mac_muladd_9ns_8s_18s_18_4_1 RTLNAME design_1_v_mix_0_0_mac_muladd_9ns_8s_18s_18_4_1 BINDTYPE op TYPE all IMPL dsp_slice LATENCY 3}
+    }
+  }
+  {SRCNAME v_mix_yuv2rgb<true> MODELNAME v_mix_yuv2rgb_true_s RTLNAME design_1_v_mix_0_0_v_mix_yuv2rgb_true_s}
+  {SRCNAME v_mix_upsample<false>.7_Pipeline_VITIS_LOOP_107_2 MODELNAME v_mix_upsample_false_7_Pipeline_VITIS_LOOP_107_2 RTLNAME design_1_v_mix_0_0_v_mix_upsample_false_7_Pipeline_VITIS_LOOP_107_2}
+  {SRCNAME v_mix_upsample<false>.7 MODELNAME v_mix_upsample_false_7 RTLNAME design_1_v_mix_0_0_v_mix_upsample_false_7}
+  {SRCNAME {v_mix_core_alpha<false, false>_Pipeline_VITIS_LOOP_465_3} MODELNAME v_mix_core_alpha_false_false_Pipeline_VITIS_LOOP_465_3 RTLNAME design_1_v_mix_0_0_v_mix_core_alpha_false_false_Pipeline_VITIS_LOOP_465_3}
+  {SRCNAME {v_mix_core_alpha<false, false>} MODELNAME v_mix_core_alpha_false_false_s RTLNAME design_1_v_mix_0_0_v_mix_core_alpha_false_false_s}
+  {SRCNAME AXIvideo2MultiPixStream_Pipeline_loop_wait_for_start MODELNAME AXIvideo2MultiPixStream_Pipeline_loop_wait_for_start RTLNAME design_1_v_mix_0_0_AXIvideo2MultiPixStream_Pipeline_loop_wait_for_start}
+  {SRCNAME AXIvideo2MultiPixStream_Pipeline_loop_width MODELNAME AXIvideo2MultiPixStream_Pipeline_loop_width RTLNAME design_1_v_mix_0_0_AXIvideo2MultiPixStream_Pipeline_loop_width}
+  {SRCNAME AXIvideo2MultiPixStream_Pipeline_loop_wait_for_eol MODELNAME AXIvideo2MultiPixStream_Pipeline_loop_wait_for_eol RTLNAME design_1_v_mix_0_0_AXIvideo2MultiPixStream_Pipeline_loop_wait_for_eol}
+  {SRCNAME AXIvideo2MultiPixStream MODELNAME AXIvideo2MultiPixStream RTLNAME design_1_v_mix_0_0_AXIvideo2MultiPixStream}
+  {SRCNAME v_mix_420_to_422<false>_Pipeline_VITIS_LOOP_76_2 MODELNAME v_mix_420_to_422_false_Pipeline_VITIS_LOOP_76_2 RTLNAME design_1_v_mix_0_0_v_mix_420_to_422_false_Pipeline_VITIS_LOOP_76_2}
+  {SRCNAME v_mix_420_to_422<false> MODELNAME v_mix_420_to_422_false_s RTLNAME design_1_v_mix_0_0_v_mix_420_to_422_false_s}
+  {SRCNAME v_mix_422_to_444<false>_Pipeline_VITIS_LOOP_105_2 MODELNAME v_mix_422_to_444_false_Pipeline_VITIS_LOOP_105_2 RTLNAME design_1_v_mix_0_0_v_mix_422_to_444_false_Pipeline_VITIS_LOOP_105_2}
+  {SRCNAME v_mix_422_to_444<false> MODELNAME v_mix_422_to_444_false_s RTLNAME design_1_v_mix_0_0_v_mix_422_to_444_false_s}
+  {SRCNAME v_mix_yuv2rgb<false>_Pipeline_VITIS_LOOP_897_2 MODELNAME v_mix_yuv2rgb_false_Pipeline_VITIS_LOOP_897_2 RTLNAME design_1_v_mix_0_0_v_mix_yuv2rgb_false_Pipeline_VITIS_LOOP_897_2}
+  {SRCNAME v_mix_yuv2rgb<false> MODELNAME v_mix_yuv2rgb_false_s RTLNAME design_1_v_mix_0_0_v_mix_yuv2rgb_false_s}
+  {SRCNAME v_mix_upsample<false>_Pipeline_VITIS_LOOP_107_2 MODELNAME v_mix_upsample_false_Pipeline_VITIS_LOOP_107_2 RTLNAME design_1_v_mix_0_0_v_mix_upsample_false_Pipeline_VITIS_LOOP_107_2}
+  {SRCNAME v_mix_upsample<false> MODELNAME v_mix_upsample_false_s RTLNAME design_1_v_mix_0_0_v_mix_upsample_false_s}
+  {SRCNAME {reg<unsigned short>12} MODELNAME reg_unsigned_short_12 RTLNAME design_1_v_mix_0_0_reg_unsigned_short_12}
+  {SRCNAME {v_mix_core_alpha<true, false>_Pipeline_VITIS_LOOP_395_3} MODELNAME v_mix_core_alpha_true_false_Pipeline_VITIS_LOOP_395_3 RTLNAME design_1_v_mix_0_0_v_mix_core_alpha_true_false_Pipeline_VITIS_LOOP_395_3
+    SUBMODULES {
+      {MODELNAME design_1_v_mix_0_0_mac_muladd_9s_9ns_16ns_16_4_1 RTLNAME design_1_v_mix_0_0_mac_muladd_9s_9ns_16ns_16_4_1 BINDTYPE op TYPE all IMPL dsp_slice LATENCY 3}
+      {MODELNAME design_1_v_mix_0_0_mac_muladd_9ns_9s_16ns_16_4_1 RTLNAME design_1_v_mix_0_0_mac_muladd_9ns_9s_16ns_16_4_1 BINDTYPE op TYPE all IMPL dsp_slice LATENCY 3}
+    }
+  }
+  {SRCNAME {v_mix_core_alpha<true, false>} MODELNAME v_mix_core_alpha_true_false_s RTLNAME design_1_v_mix_0_0_v_mix_core_alpha_true_false_s}
+  {SRCNAME v_mix_rgb2yuv<false>_Pipeline_VITIS_LOOP_1042_2 MODELNAME v_mix_rgb2yuv_false_Pipeline_VITIS_LOOP_1042_2 RTLNAME design_1_v_mix_0_0_v_mix_rgb2yuv_false_Pipeline_VITIS_LOOP_1042_2}
+  {SRCNAME v_mix_rgb2yuv<false> MODELNAME v_mix_rgb2yuv_false_s RTLNAME design_1_v_mix_0_0_v_mix_rgb2yuv_false_s}
+  {SRCNAME v_mix_444_to_422<false>_Pipeline_VITIS_LOOP_718_2 MODELNAME v_mix_444_to_422_false_Pipeline_VITIS_LOOP_718_2 RTLNAME design_1_v_mix_0_0_v_mix_444_to_422_false_Pipeline_VITIS_LOOP_718_2}
+  {SRCNAME v_mix_444_to_422<false> MODELNAME v_mix_444_to_422_false_s RTLNAME design_1_v_mix_0_0_v_mix_444_to_422_false_s}
+  {SRCNAME v_mix_422_to_420<false>_Pipeline_VITIS_LOOP_508_2 MODELNAME v_mix_422_to_420_false_Pipeline_VITIS_LOOP_508_2 RTLNAME design_1_v_mix_0_0_v_mix_422_to_420_false_Pipeline_VITIS_LOOP_508_2}
+  {SRCNAME v_mix_422_to_420<false> MODELNAME v_mix_422_to_420_false_s RTLNAME design_1_v_mix_0_0_v_mix_422_to_420_false_s}
+  {SRCNAME MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_3519_3 MODELNAME MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_3519_3 RTLNAME design_1_v_mix_0_0_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_3519_3}
+  {SRCNAME MultiPixStream2AXIvideo MODELNAME MultiPixStream2AXIvideo RTLNAME design_1_v_mix_0_0_MultiPixStream2AXIvideo}
+  {SRCNAME VMixHlsDataFlowFunction MODELNAME VMixHlsDataFlowFunction RTLNAME design_1_v_mix_0_0_VMixHlsDataFlowFunction
+    SUBMODULES {
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME srcLayer0_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME srcLayer0Yuv422_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME srcLayer0Yuv_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME outLayer0_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME srcLayer1_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME srcLayer1Yuv422_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME srcLayer1Yuv_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME srcLayer1Rgb_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME srcLayer1x_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME outLayer1_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME srcLayer2_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME srcLayer2Yuv422_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME srcLayer2Yuv_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME srcLayer2Rgb_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME srcLayer2x_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME outLayer2_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME outYuv_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME out422_U}
+      {MODELNAME design_1_v_mix_0_0_fifo_w24_d2_S RTLNAME design_1_v_mix_0_0_fifo_w24_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME out420_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_420_to_422_false_2_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_420_to_422_false_2_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_420_to_422_false_2_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_422_to_444_false_3_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_422_to_444_false_3_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_422_to_444_false_3_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_yuv2rgb_false_4_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_yuv2rgb_false_4_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_yuv2rgb_false_4_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_core_alpha_false_false_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_core_alpha_false_false_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_core_alpha_false_false_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_420_to_422_false_6_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_420_to_422_false_6_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_420_to_422_false_6_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_422_to_444_true_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_422_to_444_true_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_422_to_444_true_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_yuv2rgb_true_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_yuv2rgb_true_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_yuv2rgb_true_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_upsample_false_7_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_upsample_false_7_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_upsample_false_7_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_core_alpha_true_false_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_core_alpha_true_false_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_core_alpha_true_false_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_420_to_422_false_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_420_to_422_false_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_420_to_422_false_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_422_to_444_false_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_422_to_444_false_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_422_to_444_false_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_yuv2rgb_false_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_yuv2rgb_false_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_yuv2rgb_false_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_upsample_false_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_upsample_false_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_upsample_false_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_rgb2yuv_false_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_rgb2yuv_false_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_rgb2yuv_false_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_444_to_422_false_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_444_to_422_false_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_444_to_422_false_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_v_mix_422_to_420_false_U0 RTLNAME design_1_v_mix_0_0_start_for_v_mix_422_to_420_false_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_v_mix_422_to_420_false_U0_U}
+      {MODELNAME design_1_v_mix_0_0_start_for_MultiPixStream2AXIvideo_U0 RTLNAME design_1_v_mix_0_0_start_for_MultiPixStream2AXIvideo_U0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME start_for_MultiPixStream2AXIvideo_U0_U}
+    }
+  }
+  {SRCNAME v_mix MODELNAME v_mix RTLNAME design_1_v_mix_0_0_v_mix IS_TOP 1
+    SUBMODULES {
+      {MODELNAME design_1_v_mix_0_0_sparsemux_7_2_16_1_1 RTLNAME design_1_v_mix_0_0_sparsemux_7_2_16_1_1 BINDTYPE op TYPE sparsemux IMPL onehotencoding_realdef}
+      {MODELNAME design_1_v_mix_0_0_sparsemux_7_2_8_1_1 RTLNAME design_1_v_mix_0_0_sparsemux_7_2_8_1_1 BINDTYPE op TYPE sparsemux IMPL onehotencoding_realdef}
+      {MODELNAME design_1_v_mix_0_0_bitselect_1ns_32ns_2ns_1_1_1 RTLNAME design_1_v_mix_0_0_bitselect_1ns_32ns_2ns_1_1_1 BINDTYPE op TYPE bitselect IMPL auto}
+      {MODELNAME design_1_v_mix_0_0_CTRL_s_axi RTLNAME design_1_v_mix_0_0_CTRL_s_axi BINDTYPE interface TYPE interface_s_axilite}
+      {MODELNAME design_1_v_mix_0_0_regslice_both RTLNAME design_1_v_mix_0_0_regslice_both BINDTYPE interface TYPE adapter IMPL reg_slice}
+    }
+  }
+}

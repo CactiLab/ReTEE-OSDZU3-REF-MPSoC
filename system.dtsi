@@ -1,0 +1,14 @@
+/dts-v1/;
+
+#include "zynqmp-common.dtsi"
+
+/*
+ * Device Tree Source Include file for SDHCI1 modifications
+ * This file only contains the SDHCI1 override for 3.3V operation
+ * Include this file AFTER your main DTSI to override SDHCI1 settings
+ */
+
+&sdhci1 {
+	no-1-8-v;        /* Critical: Force 3.3V only, no voltage switching */
+	broken-cd;       /* Ignore card detect */
+};

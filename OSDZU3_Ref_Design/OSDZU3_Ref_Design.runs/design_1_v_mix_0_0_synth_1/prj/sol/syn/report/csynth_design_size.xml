@@ -1,0 +1,95 @@
+<design_size title="Design Size Report">
+    <item name="Total Instructions per Compilation Phase">
+        <table>
+            <keys size="4">Phase, Step, Instructions, Description</keys>
+            <column name="Compile/Link">, 6365, After all functions are compiled and linked into a single design</column>
+            <column name="">, , </column>
+            <column name="Unroll/Inline">, , After user unroll and inline pragmas are applied</column>
+            <column name="">(1) unroll, 3194, user unroll pragmas are applied</column>
+            <column name="">(2) simplification, 2121, simplification of applied user unroll pragmas</column>
+            <column name="">(3) inline, 2179, user inline pragmas are applied</column>
+            <column name="">(4) simplification, 2175, simplification of applied user inline pragmas</column>
+            <column name="">, , </column>
+            <column name="Array/Struct">, , After user array partition and struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(1) array partition, 1637, user array partition pragmas are applied</column>
+            <column name="">(2) simplification, 1585, simplification of applied user array partition &amp; struct aggregate/disaggregate pragmas</column>
+            <column name="">(3) aggregate/disaggregate , 1615, user struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(4) array reshape, 2009, apply array reshape pragmas</column>
+            <column name="">(5) access patterns, 2391, array access pattern optmizations</column>
+            <column name="">, , </column>
+            <column name="Performance">, , After transformations are applied to meet performance pragma targets</column>
+            <column name="">(1) loop simplification, 2318, loop and instruction simplification</column>
+            <column name="">(2) parallelization, 2219, loops are unrolled or pipelined to meet performance targets</column>
+            <column name="">(3) array partition, 1992, arrays are partitioned to meet performance targets</column>
+            <column name="">(4) simplification, 1992, simplification of design after performance transformations</column>
+            <column name="">, , </column>
+            <column name="HW Transforms">, , After hardware transfomations</column>
+            <column name="">(1) lowering, 1905, initial conversion to HW specific instructions</column>
+            <column name="">(2) optimizations, 1778, high level synthesis optimizations</column>
+        </table>
+    </item>
+    <item name="Instructions per Function for each Compilation Phase">
+        <hiertable>
+            <header size="7" col0="Function" col1="Location" col2="Compile/Link" col3="Unroll/Inline" col4="Array/Struct" col5="Performance" col6="HW Transforms"/>
+            <rows>
+                <row id="0" col0="v_mix" col1="v_mix.cpp:2034" col2="6365" col3="2175" col4="2391" col5="1992" col6="1778">
+                    <row id="15" col0="VMixHlsDataFlowFunction" col1="v_mix.cpp:498" col2="6111" col3="1986" col4="2149" col5="1833" col6="1509">
+                        <row id="4" col0="AXIvideo2MultiPixStream" col1="v_mix.cpp:3358" col2="1851" col2_disp="1,851 (3 calls)" col3="624" col3_disp=" 624 (3 calls)" col4="819" col4_disp=" 819 (3 calls)" col5="624" col5_disp=" 624 (3 calls)" col6="372" col6_disp=" 372 (3 calls)">
+                            <row id="1" col0="Scalar" col1="hls_video_core.h:196" col2="15" col2_disp="  15 (3 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="3" col0="reg&lt;unsigned short&gt;" col1="x_hls_utils.h:222" col2="6" col2_disp="   6 (6 calls)" col3="6" col3_disp="   6 (6 calls)" col4="6" col4_disp="   6 (6 calls)" col5="6" col5_disp="   6 (6 calls)" col6="24" col6_disp="  24 (6 calls)"/>
+                            <row id="9" col0="AXIGetBitFields&lt;24, ap_uint&lt;8&gt; &gt;" col1="hls_axi_io.h:83" col2="666" col2_disp=" 666 (9 calls)" col3="" col4="" col5="" col6="">
+                                <row id="7" col0="AXIGetBitFields&lt;24, ap_uint&lt;8&gt; &gt;" col1="hls_axi_io.h:60" col2="612" col2_disp=" 612 (9 calls)" col3="" col4="" col5="" col6=""/>
+                            </row>
+                        </row>
+                        <row id="11" col0="v_mix_420_to_422&lt;false&gt;" col1="v_csc.cpp:58" col2="165" col2_disp=" 165 (3 calls)" col3="132" col3_disp=" 132 (3 calls)" col4="75" col4_disp="  75 (3 calls)" col5="69" col5_disp="  69 (3 calls)" col6="96" col6_disp="  96 (3 calls)">
+                            <row id="1" col0="Scalar" col1="hls_video_core.h:196" col2="15" col2_disp="  15 (3 calls)" col3="" col4="" col5="" col6=""/>
+                        </row>
+                        <row id="8" col0="v_mix_422_to_444&lt;false&gt;" col1="v_csc.cpp:87" col2="110" col2_disp=" 110 (2 calls)" col3="88" col3_disp="  88 (2 calls)" col4="92" col4_disp="  92 (2 calls)" col5="88" col5_disp="  88 (2 calls)" col6="84" col6_disp="  84 (2 calls)">
+                            <row id="1" col0="Scalar" col1="hls_video_core.h:196" col2="10" col2_disp="  10 (2 calls)" col3="" col4="" col5="" col6=""/>
+                        </row>
+                        <row id="16" col0="v_mix_yuv2rgb&lt;false&gt;" col1="v_csc.cpp:865" col2="110" col2_disp=" 110 (2 calls)" col3="88" col3_disp="  88 (2 calls)" col4="50" col4_disp="  50 (2 calls)" col5="46" col5_disp="  46 (2 calls)" col6="64" col6_disp="  64 (2 calls)">
+                            <row id="1" col0="Scalar" col1="hls_video_core.h:196" col2="10" col2_disp="  10 (2 calls)" col3="" col4="" col5="" col6=""/>
+                        </row>
+                        <row id="5" col0="v_mix_422_to_444&lt;true&gt;" col1="v_csc.cpp:123" col2="1081" col3="235" col4="183" col5="168" col6="147">
+                            <row id="1" col0="Scalar" col1="hls_video_core.h:196" col2="40" col2_disp="  40 (8 calls)" col3="" col4="" col5="" col6=""/>
+                        </row>
+                        <row id="14" col0="v_mix_yuv2rgb&lt;true&gt;" col1="v_csc.cpp:908" col2="511" col3="103" col4="114" col5="112" col6="103">
+                            <row id="1" col0="Scalar" col1="hls_video_core.h:196" col2="10" col2_disp="  10 (2 calls)" col3="" col4="" col5="" col6=""/>
+                        </row>
+                        <row id="17" col0="v_mix_upsample&lt;false&gt;" col1="v_mix.cpp:93" col2="110" col2_disp=" 110 (2 calls)" col3="88" col3_disp="  88 (2 calls)" col4="134" col4_disp=" 134 (2 calls)" col5="130" col5_disp=" 130 (2 calls)" col6="104" col6_disp=" 104 (2 calls)">
+                            <row id="1" col0="Scalar" col1="hls_video_core.h:196" col2="10" col2_disp="  10 (2 calls)" col3="" col4="" col5="" col6=""/>
+                        </row>
+                        <row id="10" col0="v_mix_core_alpha&lt;false, false&gt;" col1="v_mix.cpp:435" col2="309" col3="128" col4="141" col5="128" col6="113">
+                            <row id="1" col0="Scalar" col1="hls_video_core.h:196" col2="20" col2_disp="  20 (4 calls)" col3="" col4="" col5="" col6=""/>
+                        </row>
+                        <row id="18" col0="v_mix_core_alpha&lt;true, false&gt;" col1="v_mix.cpp:361" col2="725" col3="193" col4="193" col5="179" col6="164">
+                            <row id="1" col0="Scalar" col1="hls_video_core.h:196" col2="20" col2_disp="  20 (4 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="3" col0="reg&lt;unsigned short&gt;" col1="x_hls_utils.h:222" col2="1" col3="1" col4="1" col5="1" col6="4"/>
+                        </row>
+                        <row id="2" col0="v_mix_rgb2yuv&lt;false&gt;" col1="v_csc.cpp:1013" col2="57" col3="44" col4="67" col5="63" col6="50">
+                            <row id="1" col0="Scalar" col1="hls_video_core.h:196" col2="5" col3="" col4="" col5="" col6=""/>
+                        </row>
+                        <row id="12" col0="v_mix_444_to_422&lt;false&gt;" col1="v_csc.cpp:702" col2="57" col3="44" col4="25" col5="21" col6="30">
+                            <row id="1" col0="Scalar" col1="hls_video_core.h:196" col2="5" col3="" col4="" col5="" col6=""/>
+                        </row>
+                        <row id="13" col0="v_mix_422_to_420&lt;false&gt;" col1="v_csc.cpp:493" col2="57" col3="44" col4="25" col5="21" col6="30">
+                            <row id="1" col0="Scalar" col1="hls_video_core.h:196" col2="5" col3="" col4="" col5="" col6=""/>
+                        </row>
+                        <row id="6" col0="MultiPixStream2AXIvideo" col1="v_mix.cpp:3458" col2="642" col3="96" col4="161" col5="125" col6="72">
+                            <row id="1" col0="Scalar" col1="hls_video_core.h:196" col2="5" col3="" col4="" col5="" col6=""/>
+                            <row id="3" col0="reg&lt;unsigned short&gt;" col1="x_hls_utils.h:222" col2="2" col2_disp="   2 (2 calls)" col3="2" col3_disp="   2 (2 calls)" col4="2" col4_disp="   2 (2 calls)" col5="2" col5_disp="   2 (2 calls)" col6="8" col6_disp="   8 (2 calls)"/>
+                        </row>
+                    </row>
+                </row>
+            </rows>
+            <notes/>
+        </hiertable>
+    </item>
+    <item name="Design Size Message Settings">
+        <table>
+            <keys size="3">Message Setting, Value, Description</keys>
+            <column name="config_compile -design_size_maximum_warning">100000, Show a warning when total design instructions exceeds this value</column>
+        </table>
+    </item>
+</design_size>
+

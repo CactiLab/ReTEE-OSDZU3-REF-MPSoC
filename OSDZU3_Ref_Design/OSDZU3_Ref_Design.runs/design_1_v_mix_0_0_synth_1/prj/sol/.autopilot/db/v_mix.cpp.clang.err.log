@@ -1,0 +1,8 @@
+In file included from /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_mix_0_0_synth_1/prj/sol/.autopilot/db/v_mix.cpp:51:
+In file included from /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/v_mix.h:49:
+In file included from /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/src/hls_video.h:63:
+In file included from /tools/Xilinx/2025.1/Vitis/common/technology/autopilot/hls_math.h:1057:
+/tools/Xilinx/2025.1/Vitis/common/technology/autopilot/etc/hls_sqrt_apfixed.h:16:34: warning: unknown warning group '-Wmisleading-indentation', ignored [-Wunknown-warning-option]
+#pragma clang diagnostic ignored "-Wmisleading-indentation"
+                                 ^
+1 warning generated.

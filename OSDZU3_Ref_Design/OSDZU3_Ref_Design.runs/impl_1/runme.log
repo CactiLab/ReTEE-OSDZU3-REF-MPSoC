@@ -1,0 +1,1084 @@
+
+*** Running vivado
+    with args -log OSDZU3x_BYOTEE_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source OSDZU3x_BYOTEE_wrapper.tcl -notrace
+
+
+****** Vivado v2025.1 (64-bit)
+  **** SW Build 6140274 on Wed May 21 22:58:25 MDT 2025
+  **** IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+  **** SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+  **** Start of session at: Mon Sep 22 18:18:58 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source OSDZU3x_BYOTEE_wrapper.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.ipdefs/IP_Repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/2025.1/Vivado/data/ip'.
+add_files: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1682.750 ; gain = 131.312 ; free physical = 35149 ; free virtual = 57800
+Command: link_design -top OSDZU3x_BYOTEE_wrapper -part xczu3eg-sfvc784-1-e
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xczu3eg-sfvc784-1-e
+INFO: [Project 1-5699] Read binary netlist with skipMacroContent - 1
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_gpio_1_0/OSDZU3x_BYOTEE_axi_gpio_1_0.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_gpio_1'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_intc_0_0/OSDZU3x_BYOTEE_axi_intc_0_0.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_intc_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_mdm_1_1/OSDZU3x_BYOTEE_mdm_1_1.dcp' for cell 'OSDZU3x_BYOTEE_i/mdm_1'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_microblaze_riscv_0_0/OSDZU3x_BYOTEE_microblaze_riscv_0_0.dcp' for cell 'OSDZU3x_BYOTEE_i/microblaze_riscv_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_gpio_2_0/OSDZU3x_BYOTEE_axi_gpio_2_0.dcp' for cell 'OSDZU3x_BYOTEE_i/pl_ps_intr'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_gpio_0_0/OSDZU3x_BYOTEE_axi_gpio_0_0.dcp' for cell 'OSDZU3x_BYOTEE_i/ps_pl_intr'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_rst_ps8_0_99M_0/OSDZU3x_BYOTEE_rst_ps8_0_99M_0.dcp' for cell 'OSDZU3x_BYOTEE_i/rst_ps8_0_99M'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_zynq_ultra_ps_e_0_1/OSDZU3x_BYOTEE_zynq_ultra_ps_e_0_1.dcp' for cell 'OSDZU3x_BYOTEE_i/zynq_ultra_ps_e_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_xbar_1/OSDZU3x_BYOTEE_axi_interconnect_0_imp_xbar_1.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/xbar'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_0/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_0.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/m01_couplers/auto_ds'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_pc_0/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_pc_0.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/m01_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_1/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_1.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/m02_couplers/auto_ds'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_pc_1/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_pc_1.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/m02_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_2/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_2.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/m03_couplers/auto_ds'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_pc_2/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_pc_2.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/m03_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_pc_3/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_pc_3.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/s00_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_0/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_0.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/s00_couplers/auto_us'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_pc_4/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_pc_4.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/s01_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_1/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_1.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/s01_couplers/auto_us'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_2/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_2.dcp' for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/s02_couplers/auto_us'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_dlmb_bram_if_cntlr_1/OSDZU3x_BYOTEE_dlmb_bram_if_cntlr_1.dcp' for cell 'OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/dlmb_bram_if_cntlr'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_dlmb_v10_1/OSDZU3x_BYOTEE_dlmb_v10_1.dcp' for cell 'OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/dlmb_v10'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_ilmb_bram_if_cntlr_1/OSDZU3x_BYOTEE_ilmb_bram_if_cntlr_1.dcp' for cell 'OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/ilmb_bram_if_cntlr'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_ilmb_v10_1/OSDZU3x_BYOTEE_ilmb_v10_1.dcp' for cell 'OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/ilmb_v10'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_lmb_bram_1/OSDZU3x_BYOTEE_lmb_bram_1.dcp' for cell 'OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_1_imp_xbar_0/OSDZU3x_BYOTEE_axi_interconnect_1_imp_xbar_0.dcp' for cell 'OSDZU3x_BYOTEE_i/ultra_ps_0_axi_periph/xbar'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_ultra_ps_0_axi_periph_imp_auto_ds_0/OSDZU3x_BYOTEE_ultra_ps_0_axi_periph_imp_auto_ds_0.dcp' for cell 'OSDZU3x_BYOTEE_i/ultra_ps_0_axi_periph/s00_couplers/auto_ds'
+INFO: [Project 1-454] Reading design checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_ultra_ps_0_axi_periph_imp_auto_pc_0/OSDZU3x_BYOTEE_ultra_ps_0_axi_periph_imp_auto_pc_0.dcp' for cell 'OSDZU3x_BYOTEE_i/ultra_ps_0_axi_periph/s00_couplers/auto_pc'
+Netlist sorting complete. Time (s): cpu = 00:00:00.17 ; elapsed = 00:00:00.17 . Memory (MB): peak = 2697.820 ; gain = 0.000 ; free physical = 34022 ; free virtual = 56676
+INFO: [Netlist 29-17] Analyzing 195 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2025.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Project 1-536] The new scoped_to_ref value 'design_1_microblaze_riscv_0_0' does not exist in the netlist
+WARNING: [Project 1-536] The new scoped_to_ref value 'OSDZU3x_Tutorial_microblaze_riscv_0_1' does not exist in the netlist
+WARNING: [Project 1-536] The new scoped_to_ref value 'byotee_extclk_microblaze_0_0' does not exist in the netlist
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_rst_ps8_0_100M_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_rst_ps8_0_100M_0/design_1_rst_ps8_0_100M_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_gpio_0_1'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_gpio_0_1/design_1_axi_gpio_0_1_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_gpio_1_1'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_gpio_1_1/design_1_axi_gpio_1_1_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_hls_ip_reset_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_hls_ip_reset_0/design_1_hls_ip_reset_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_lvds_display_iic_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_lvds_display_iic_0/design_1_lvds_display_iic_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'bd_f60c_ila_lib_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_system_ila_0_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila_impl.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'bd_f60c_ila_lib_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_system_ila_0_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'bd_365d_ila_lib_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_system_ila_1_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila_impl.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'bd_365d_ila_lib_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_system_ila_1_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'bd_36ad_ila_lib_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_system_ila_2_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila_impl.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'bd_36ad_ila_lib_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_system_ila_2_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_rst_ps8_0_100M_1'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_rst_ps8_0_100M_1/design_1_rst_ps8_0_100M_1_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_rst_ps8_0_200M_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_rst_ps8_0_200M_0/design_1_rst_ps8_0_200M_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_iic_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_iic_0_0/design_1_axi_iic_0_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_uart16550_1_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_uart16550_1_0/design_1_axi_uart16550_1_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_gpio_0_2'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_gpio_0_2/design_1_axi_gpio_0_2_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_uart16550_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_uart16550_0_0/design_1_axi_uart16550_0_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_gpio_0_3'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_gpio_0_3/design_1_axi_gpio_0_3_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_iic_1_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_iic_1_0/design_1_axi_iic_1_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_gpio_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_gpio_0_0/design_1_axi_gpio_0_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_gpio_1_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_gpio_1_0/design_1_axi_gpio_1_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_gpio_2_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_gpio_2_0/design_1_axi_gpio_2_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'bd_48ac_psr0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_1/bd_48ac_psr0_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'bd_48ac_psr_aclk_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_2/bd_48ac_psr_aclk_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'bd_48ac_psr_aclk1_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_3/bd_48ac_psr_aclk1_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_smartconnect_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/smartconnect.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_zynq_ultra_ps_e_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_zynq_ultra_ps_e_0_0/design_1_zynq_ultra_ps_e_0_0.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_microblaze_riscv_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_microblaze_riscv_0_0/design_1_microblaze_riscv_0_0.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_intc_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_intc_0_0/design_1_axi_intc_0_0.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'bd_afc3_psr_aclk_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/bd_0/ip/ip_1/bd_afc3_psr_aclk_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_smc_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/smartconnect.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'OSDZU3x_Tutorial_zynq_ultra_ps_e_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_zynq_ultra_ps_e_0_0/OSDZU3x_Tutorial_zynq_ultra_ps_e_0_0.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'OSDZU3x_Tutorial_axi_gpio_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_axi_gpio_0_0/OSDZU3x_Tutorial_axi_gpio_0_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'bd_87a8_psr_aclk_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_axi_smc_0/bd_0/ip/ip_1/bd_87a8_psr_aclk_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'OSDZU3x_Tutorial_axi_smc_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_axi_smc_0/smartconnect.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'OSDZU3x_Tutorial_axi_gpio_1_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_axi_gpio_1_0/OSDZU3x_Tutorial_axi_gpio_1_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'OSDZU3x_Tutorial_axi_gpio_2_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_axi_gpio_2_0/OSDZU3x_Tutorial_axi_gpio_2_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'OSDZU3x_Tutorial_microblaze_riscv_0_1'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_microblaze_riscv_0_1/OSDZU3x_Tutorial_microblaze_riscv_0_1.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'OSDZU3x_Tutorial_microblaze_riscv_0_axi_intc_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_microblaze_riscv_0_axi_intc_0/OSDZU3x_Tutorial_microblaze_riscv_0_axi_intc_0.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'OSDZU3x_Tutorial_rst_clk_wiz_1_100M_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_rst_clk_wiz_1_100M_0/OSDZU3x_Tutorial_rst_clk_wiz_1_100M_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'bd_a670_psr_aclk_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/bd_0/ip/ip_1/bd_a670_psr_aclk_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'OSDZU3x_Tutorial_smartconnect_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_smartconnect_0_0/smartconnect.xdc will not be read for any cell of this module.
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_zynq_ultra_ps_e_0_1/OSDZU3x_BYOTEE_zynq_ultra_ps_e_0_1.xdc] for cell 'OSDZU3x_BYOTEE_i/zynq_ultra_ps_e_0/inst'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_zynq_ultra_ps_e_0_1/OSDZU3x_BYOTEE_zynq_ultra_ps_e_0_1.xdc] for cell 'OSDZU3x_BYOTEE_i/zynq_ultra_ps_e_0/inst'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_rst_ps8_0_99M_0/OSDZU3x_BYOTEE_rst_ps8_0_99M_0_board.xdc] for cell 'OSDZU3x_BYOTEE_i/rst_ps8_0_99M/U0'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_rst_ps8_0_99M_0/OSDZU3x_BYOTEE_rst_ps8_0_99M_0_board.xdc] for cell 'OSDZU3x_BYOTEE_i/rst_ps8_0_99M/U0'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_intc_0_0/OSDZU3x_BYOTEE_axi_intc_0_0.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_intc_0/U0'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_intc_0_0/OSDZU3x_BYOTEE_axi_intc_0_0.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_intc_0/U0'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_gpio_0_0/OSDZU3x_BYOTEE_axi_gpio_0_0_board.xdc] for cell 'OSDZU3x_BYOTEE_i/ps_pl_intr/U0'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_gpio_0_0/OSDZU3x_BYOTEE_axi_gpio_0_0_board.xdc] for cell 'OSDZU3x_BYOTEE_i/ps_pl_intr/U0'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_gpio_1_0/OSDZU3x_BYOTEE_axi_gpio_1_0_board.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_gpio_1/U0'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_gpio_1_0/OSDZU3x_BYOTEE_axi_gpio_1_0_board.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_gpio_1/U0'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_gpio_2_0/OSDZU3x_BYOTEE_axi_gpio_2_0_board.xdc] for cell 'OSDZU3x_BYOTEE_i/pl_ps_intr/U0'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_gpio_2_0/OSDZU3x_BYOTEE_axi_gpio_2_0_board.xdc] for cell 'OSDZU3x_BYOTEE_i/pl_ps_intr/U0'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_microblaze_riscv_0_0/OSDZU3x_BYOTEE_microblaze_riscv_0_0.xdc] for cell 'OSDZU3x_BYOTEE_i/microblaze_riscv_0/U0'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_microblaze_riscv_0_0/OSDZU3x_BYOTEE_microblaze_riscv_0_0.xdc] for cell 'OSDZU3x_BYOTEE_i/microblaze_riscv_0/U0'
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_axi_gpio_1_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_axi_gpio_1_0/byotee_extclk_axi_gpio_1_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_axi_intc_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_axi_intc_0_0/byotee_extclk_axi_intc_0_0.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_microblaze_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_microblaze_0_0/byotee_extclk_microblaze_0_0.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_pl_ps_intr_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_pl_ps_intr_0/byotee_extclk_pl_ps_intr_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_ps_pl_intr_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_ps_pl_intr_0/byotee_extclk_ps_pl_intr_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_rst_ps8_0_99M_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_rst_ps8_0_99M_0/byotee_extclk_rst_ps8_0_99M_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_zynq_ultra_ps_e_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_zynq_ultra_ps_e_0_0/byotee_extclk_zynq_ultra_ps_e_0_0.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_proc_sys_reset_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_proc_sys_reset_0_0/byotee_extclk_proc_sys_reset_0_0_board.xdc will not be read for any cell of this module.
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/OSDZU3_Tutorial_IO_Standards.xdc]
+WARNING: [Vivado 12-584] No ports matched 'dip_switches_8bits_tri_io[*]'. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/OSDZU3_Tutorial_IO_Standards.xdc:4]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/OSDZU3_Tutorial_IO_Standards.xdc:4]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/OSDZU3_Tutorial_IO_Standards.xdc]
+Sourcing Tcl File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/Constraints/osdzu3_helper.tcl]
+Finished Sourcing Tcl File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/Constraints/osdzu3_helper.tcl]
+Sourcing Tcl File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/osdzu3_package_pins.tcl]
+ INFO - set_property PACKAGE_PIN C6 leds_8bits_tri_io[0]
+ INFO - set_property PACKAGE_PIN B6 leds_8bits_tri_io[1]
+ INFO - set_property PACKAGE_PIN B5 leds_8bits_tri_io[2]
+ INFO - set_property PACKAGE_PIN A5 leds_8bits_tri_io[3]
+ INFO - set_property PACKAGE_PIN F8 leds_8bits_tri_io[4]
+ INFO - set_property PACKAGE_PIN E8 leds_8bits_tri_io[5]
+ INFO - set_property PACKAGE_PIN G6 leds_8bits_tri_io[6]
+ INFO - set_property PACKAGE_PIN F6 leds_8bits_tri_io[7]
+WARNING: [Vivado 12-584] No ports matched 'dip_switches_8bits_tri_io[0]'. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/osdzu3_package_pins.tcl:11]
+ ERROR - port '' does not exist
+WARNING: [Vivado 12-584] No ports matched 'dip_switches_8bits_tri_io[1]'. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/osdzu3_package_pins.tcl:12]
+ ERROR - port '' does not exist
+WARNING: [Vivado 12-584] No ports matched 'dip_switches_8bits_tri_io[2]'. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/osdzu3_package_pins.tcl:13]
+ ERROR - port '' does not exist
+WARNING: [Vivado 12-584] No ports matched 'dip_switches_8bits_tri_io[3]'. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/osdzu3_package_pins.tcl:14]
+ ERROR - port '' does not exist
+WARNING: [Vivado 12-584] No ports matched 'dip_switches_8bits_tri_io[4]'. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/osdzu3_package_pins.tcl:15]
+ ERROR - port '' does not exist
+WARNING: [Vivado 12-584] No ports matched 'dip_switches_8bits_tri_io[5]'. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/osdzu3_package_pins.tcl:16]
+ ERROR - port '' does not exist
+WARNING: [Vivado 12-584] No ports matched 'dip_switches_8bits_tri_io[6]'. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/osdzu3_package_pins.tcl:17]
+ ERROR - port '' does not exist
+WARNING: [Vivado 12-584] No ports matched 'dip_switches_8bits_tri_io[7]'. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/osdzu3_package_pins.tcl:18]
+ ERROR - port '' does not exist
+Finished Sourcing Tcl File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.srcs/constraints_tutorial/imports/new/osdzu3_package_pins.tcl]
+WARNING: [Project 1-536] The new scoped_to_ref value 'design_1_microblaze_riscv_0_0' does not exist in the netlist
+WARNING: [Project 1-536] The new scoped_to_ref value 'OSDZU3x_Tutorial_microblaze_riscv_0_1' does not exist in the netlist
+WARNING: [Project 1-536] The new scoped_to_ref value 'byotee_extclk_microblaze_0_0' does not exist in the netlist
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_ps8_0_axi_periph_imp_auto_cc_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_ps8_0_axi_periph_imp_auto_cc_0/design_1_ps8_0_axi_periph_imp_auto_cc_0_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_ps8_0_axi_periph_imp_auto_cc_1'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_ps8_0_axi_periph_imp_auto_cc_1/design_1_ps8_0_axi_periph_imp_auto_cc_1_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_ps8_0_axi_periph_imp_auto_cc_2'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_ps8_0_axi_periph_imp_auto_cc_2/design_1_ps8_0_axi_periph_imp_auto_cc_2_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_ps8_0_axi_periph_imp_auto_cc_3'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_ps8_0_axi_periph_imp_auto_cc_3/design_1_ps8_0_axi_periph_imp_auto_cc_3_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_ps8_0_axi_periph_imp_auto_cc_4'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_ps8_0_axi_periph_imp_auto_cc_4/design_1_ps8_0_axi_periph_imp_auto_cc_4_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_v_axi4s_vid_out_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/design_1_v_axi4s_vid_out_0_0_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_v_frmbuf_rd_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_frmbuf_rd_0_0/design_1_v_frmbuf_rd_0_0.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_v_frmbuf_rd_1_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_frmbuf_rd_1_0/design_1_v_frmbuf_rd_1_0.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_v_mix_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_mix_0_0/design_1_v_mix_0_0.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_v_tc_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_tc_0_0/design_1_v_tc_0_0_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_ps8_0_axi_periph_imp_auto_ds_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_ps8_0_axi_periph_imp_auto_ds_0/design_1_ps8_0_axi_periph_imp_auto_ds_0_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_mdm_riscv_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_mdm_riscv_0_0/design_1_mdm_riscv_0_0.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'design_1_axi_intc_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_axi_intc_0_0/design_1_axi_intc_0_0_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'OSDZU3x_Tutorial_microblaze_riscv_0_axi_intc_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_microblaze_riscv_0_axi_intc_0/OSDZU3x_Tutorial_microblaze_riscv_0_axi_intc_0_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'OSDZU3x_Tutorial_mdm_1_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_Tutorial/ip/OSDZU3x_Tutorial_mdm_1_0/OSDZU3x_Tutorial_mdm_1_0.xdc will not be read for any cell of this module.
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_intc_0_0/OSDZU3x_BYOTEE_axi_intc_0_0_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_intc_0/U0'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_intc_0_0/OSDZU3x_BYOTEE_axi_intc_0_0_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_intc_0/U0'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_0/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_0_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/s00_couplers/auto_us/inst'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_0/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_0_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/s00_couplers/auto_us/inst'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_1/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_1_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/s01_couplers/auto_us/inst'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_1/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_1_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/s01_couplers/auto_us/inst'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_2/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_2_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/s02_couplers/auto_us/inst'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_2/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_us_2_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/s02_couplers/auto_us/inst'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_0/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_0_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/m01_couplers/auto_ds/inst'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_0/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_0_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/m01_couplers/auto_ds/inst'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_1/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_1_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/m02_couplers/auto_ds/inst'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_1/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_1_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/m02_couplers/auto_ds/inst'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_2/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_2_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/m03_couplers/auto_ds/inst'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_2/OSDZU3x_BYOTEE_axi_interconnect_0_imp_auto_ds_2_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/axi_interconnect_0/m03_couplers/auto_ds/inst'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_ultra_ps_0_axi_periph_imp_auto_ds_0/OSDZU3x_BYOTEE_ultra_ps_0_axi_periph_imp_auto_ds_0_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/ultra_ps_0_axi_periph/s00_couplers/auto_ds/inst'
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_ultra_ps_0_axi_periph_imp_auto_ds_0/OSDZU3x_BYOTEE_ultra_ps_0_axi_periph_imp_auto_ds_0_clocks.xdc] for cell 'OSDZU3x_BYOTEE_i/ultra_ps_0_axi_periph/s00_couplers/auto_ds/inst'
+Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_mdm_1_1/OSDZU3x_BYOTEE_mdm_1_1.xdc] for cell 'OSDZU3x_BYOTEE_i/mdm_1/U0'
+INFO: [Timing 38-35] Done setting XDC timing constraints. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_mdm_1_1/OSDZU3x_BYOTEE_mdm_1_1.xdc:6]
+WARNING: [Vivado_Tcl 4-935] Waiver ID 'CDC-1' is a duplicate and will not be added again. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_mdm_1_1/OSDZU3x_BYOTEE_mdm_1_1.xdc:55]
+WARNING: [Vivado_Tcl 4-935] Waiver ID 'CDC-13' is a duplicate and will not be added again. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_mdm_1_1/OSDZU3x_BYOTEE_mdm_1_1.xdc:56]
+WARNING: [Vivado_Tcl 4-935] Waiver ID 'CDC-15' is a duplicate and will not be added again. [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_mdm_1_1/OSDZU3x_BYOTEE_mdm_1_1.xdc:57]
+Finished Parsing XDC File [/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_mdm_1_1/OSDZU3x_BYOTEE_mdm_1_1.xdc] for cell 'OSDZU3x_BYOTEE_i/mdm_1/U0'
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_axi_intc_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_axi_intc_0_0/byotee_extclk_axi_intc_0_0_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_mdm_0_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_mdm_0_0/byotee_extclk_mdm_0_0.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_ultra_ps_0_axi_periph_imp_auto_ds_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_ultra_ps_0_axi_periph_imp_auto_ds_0/byotee_extclk_ultra_ps_0_axi_periph_imp_auto_ds_0_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_axi_interconnect_0_imp_auto_us_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_axi_interconnect_0_imp_auto_us_0/byotee_extclk_axi_interconnect_0_imp_auto_us_0_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_axi_interconnect_0_imp_auto_us_1'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_axi_interconnect_0_imp_auto_us_1/byotee_extclk_axi_interconnect_0_imp_auto_us_1_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_axi_interconnect_0_imp_auto_us_2'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_axi_interconnect_0_imp_auto_us_2/byotee_extclk_axi_interconnect_0_imp_auto_us_2_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_axi_interconnect_0_imp_auto_cc_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_axi_interconnect_0_imp_auto_cc_0/byotee_extclk_axi_interconnect_0_imp_auto_cc_0_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_axi_interconnect_0_imp_auto_ds_0'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_axi_interconnect_0_imp_auto_ds_0/byotee_extclk_axi_interconnect_0_imp_auto_ds_0_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_axi_interconnect_0_imp_auto_ds_1'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_axi_interconnect_0_imp_auto_ds_1/byotee_extclk_axi_interconnect_0_imp_auto_ds_1_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_axi_interconnect_0_imp_auto_ds_2'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_axi_interconnect_0_imp_auto_ds_2/byotee_extclk_axi_interconnect_0_imp_auto_ds_2_clocks.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'byotee_extclk_axi_interconnect_0_imp_auto_cc_1'. The XDC file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/byotee_extclk/ip/byotee_extclk_axi_interconnect_0_imp_auto_cc_1/byotee_extclk_axi_interconnect_0_imp_auto_cc_1_clocks.xdc will not be read for any cell of this module.
+INFO: [Project 1-1714] 17 XPM XDC files have been applied to the design.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[10].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[10].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[11].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[11].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[12].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[12].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[13].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[13].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[14].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[14].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[15].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[15].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[16].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[16].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[17].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[17].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[18].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[18].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[19].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[19].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[1].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[1].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[20].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[20].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[21].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[21].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[22].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[22].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[23].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[23].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[24].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[24].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[25].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[25].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[26].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[26].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[27].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[27].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[28].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[28].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[29].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[29].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[2].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[2].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[30].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[30].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[31].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[31].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[3].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[3].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[4].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[4].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[5].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[5].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[6].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[6].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[7].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[7].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[8].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[8].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[9].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_B has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell OSDZU3x_BYOTEE_i/microblaze_riscv_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[9].ram.r/prim_noinit.ram/DEVICE_8SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36_TDP.ram_T has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
+Generating merged BMM file for the design top 'OSDZU3x_BYOTEE_wrapper'...
+WARNING: [Memdata 28-146] Could not find a netlist instance for the specified SCOPED_TO_REF value of: byotee_extclk
+INFO: [Memdata 28-144] Successfully populated the BRAM INIT strings from the following elf files: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/OSDZU3x_BYOTEE/ip/OSDZU3x_BYOTEE_microblaze_riscv_0_0/data/riscv_bootloop.elf 
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3513.691 ; gain = 0.000 ; free physical = 33464 ; free virtual = 56117
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 76 instances were transformed.
+  IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 8 instances
+  LUT6_2 => LUT6_2 (LUT5, LUT6): 32 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 20 instances
+  RAM32M16 => RAM32M16 (RAMD32(x14), RAMS32(x2)): 16 instances
+
+106 Infos, 19 Warnings, 77 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 3513.727 ; gain = 1743.719 ; free physical = 33464 ; free virtual = 56117
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xczu3eg'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xczu3eg'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.3 . Memory (MB): peak = 3574.160 ; gain = 60.434 ; free physical = 33421 ; free virtual = 56075
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 14964ac6e
+
+Time (s): cpu = 00:00:00.82 ; elapsed = 00:00:00.38 . Memory (MB): peak = 3574.160 ; gain = 0.000 ; free physical = 33419 ; free virtual = 56073
+
+Starting Logic Optimization Task
+
+Phase 1 Initialization
+
+Phase 1.1 Core Generation And Design Setup
+Phase 1.1 Core Generation And Design Setup | Checksum: 14964ac6e
+
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3861.973 ; gain = 0.000 ; free physical = 33109 ; free virtual = 55763
+
+Phase 1.2 Setup Constraints And Sort Netlist
+Phase 1.2 Setup Constraints And Sort Netlist | Checksum: 14964ac6e
+
+Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3861.973 ; gain = 0.000 ; free physical = 33109 ; free virtual = 55763
+Phase 1 Initialization | Checksum: 14964ac6e
+
+Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3861.973 ; gain = 0.000 ; free physical = 33109 ; free virtual = 55763
+
+Phase 2 Timer Update And Timing Data Collection
+
+Phase 2.1 Timer Update
+Phase 2.1 Timer Update | Checksum: 14964ac6e
+
+Time (s): cpu = 00:00:00.44 ; elapsed = 00:00:00.17 . Memory (MB): peak = 3861.973 ; gain = 0.000 ; free physical = 33109 ; free virtual = 55763
+
+Phase 2.2 Timing Data Collection
+Phase 2.2 Timing Data Collection | Checksum: 14964ac6e
+
+Time (s): cpu = 00:00:00.46 ; elapsed = 00:00:00.19 . Memory (MB): peak = 3861.973 ; gain = 0.000 ; free physical = 33109 ; free virtual = 55763
+Phase 2 Timer Update And Timing Data Collection | Checksum: 14964ac6e
+
+Time (s): cpu = 00:00:00.46 ; elapsed = 00:00:00.19 . Memory (MB): peak = 3861.973 ; gain = 0.000 ; free physical = 33109 ; free virtual = 55763
+
+Phase 3 Retarget
+INFO: [Opt 31-1851] Number of loadless carry chains removed were: 0
+INFO: [Opt 31-1834] Total Chains To Be Transformed Were: 0 AND Number of Transformed insts Created are: 0
+INFO: [Opt 31-1566] Pulled 11 inverters resulting in an inversion of 59 pins
+INFO: [Opt 31-138] Pushed 35 inverter(s) to 2499 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 3 Retarget | Checksum: 2141d4302
+
+Time (s): cpu = 00:00:00.85 ; elapsed = 00:00:00.52 . Memory (MB): peak = 3861.973 ; gain = 0.000 ; free physical = 33109 ; free virtual = 55763
+Retarget | Checksum: 2141d4302
+INFO: [Opt 31-389] Phase Retarget created 94 cells and removed 480 cells
+INFO: [Opt 31-1021] In phase Retarget, 109 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 4 Constant propagation
+INFO: [Opt 31-138] Pushed 37 inverter(s) to 41 load pin(s).
+Phase 4 Constant propagation | Checksum: 1a7870a8d
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.84 . Memory (MB): peak = 3861.973 ; gain = 0.000 ; free physical = 33109 ; free virtual = 55763
+Constant propagation | Checksum: 1a7870a8d
+INFO: [Opt 31-389] Phase Constant propagation created 1479 cells and removed 3622 cells
+INFO: [Opt 31-1021] In phase Constant propagation, 109 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 5 Sweep
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3861.973 ; gain = 0.000 ; free physical = 33109 ; free virtual = 55763
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3861.973 ; gain = 0.000 ; free physical = 33109 ; free virtual = 55763
+Phase 5 Sweep | Checksum: 1f360314c
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 3861.973 ; gain = 0.000 ; free physical = 33109 ; free virtual = 55763
+Sweep | Checksum: 1f360314c
+INFO: [Opt 31-389] Phase Sweep created 1 cells and removed 2917 cells
+INFO: [Opt 31-1021] In phase Sweep, 386 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 6 BUFG optimization
+INFO: [Opt 31-194] Inserted BUFG OSDZU3x_BYOTEE_i/mdm_1/U0/Use_E2.BSCAN_I/tck_BUFG_inst to drive 51 load(s) on clock net OSDZU3x_BYOTEE_i/mdm_1/U0/Use_E2.BSCAN_I/tck_BUFGCE
+INFO: [Opt 31-193] Inserted 1 BUFG(s) on clock nets
+INFO: [Opt 31-1077] Phase BUFG optimization inserted 0 global clock buffer(s) for CLOCK_LOW_FANOUT.
+Phase 6 BUFG optimization | Checksum: 22326293c
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 3893.988 ; gain = 32.016 ; free physical = 33109 ; free virtual = 55763
+BUFG optimization | Checksum: 22326293c
+INFO: [Opt 31-662] Phase BUFG optimization created 1 cells of which 1 are BUFGs and removed 0 cells.
+INFO: [Opt 31-1021] In phase BUFG optimization, 1 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 7 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 7 Shift Register Optimization | Checksum: 22326293c
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 3893.988 ; gain = 32.016 ; free physical = 33109 ; free virtual = 55763
+Shift Register Optimization | Checksum: 22326293c
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 8 Post Processing Netlist
+INFO: [Opt 31-1566] Pulled 2 inverters resulting in an inversion of 2 pins
+Phase 8 Post Processing Netlist | Checksum: 2328cac9e
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 3893.988 ; gain = 32.016 ; free physical = 33109 ; free virtual = 55763
+Post Processing Netlist | Checksum: 2328cac9e
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 2 cells
+INFO: [Opt 31-1021] In phase Post Processing Netlist, 133 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 9 Finalization
+
+Phase 9.1 Finalizing Design Cores and Updating Shapes
+Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: 20a20f2b2
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 3893.988 ; gain = 32.016 ; free physical = 33109 ; free virtual = 55763
+
+Phase 9.2 Verifying Netlist Connectivity
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3893.988 ; gain = 0.000 ; free physical = 33109 ; free virtual = 55763
+Phase 9.2 Verifying Netlist Connectivity | Checksum: 20a20f2b2
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 3893.988 ; gain = 32.016 ; free physical = 33109 ; free virtual = 55763
+Phase 9 Finalization | Checksum: 20a20f2b2
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 3893.988 ; gain = 32.016 ; free physical = 33109 ; free virtual = 55763
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |              94  |             480  |                                            109  |
+|  Constant propagation         |            1479  |            3622  |                                            109  |
+|  Sweep                        |               1  |            2917  |                                            386  |
+|  BUFG optimization            |               1  |               0  |                                              1  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               2  |                                            133  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+Ending Logic Optimization Task | Checksum: 20a20f2b2
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 3893.988 ; gain = 32.016 ; free physical = 33109 ; free virtual = 55763
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+
+Finished Running Vector-less Activity Propagation
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 64 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
+Number of BRAM Ports augmented: 0 newly gated: 0 Total Ports: 128
+Ending PowerOpt Patch Enables Task | Checksum: 20a20f2b2
+
+Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:00.18 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32917 ; free virtual = 55574
+Ending Power Optimization Task | Checksum: 20a20f2b2
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 4188.930 ; gain = 294.941 ; free physical = 32917 ; free virtual = 55574
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 20a20f2b2
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32917 ; free virtual = 55574
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32917 ; free virtual = 55574
+Ending Netlist Obfuscation Task | Checksum: 20a20f2b2
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32917 ; free virtual = 55574
+INFO: [Common 17-83] Releasing license: Implementation
+142 Infos, 19 Warnings, 77 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:10 ; elapsed = 00:00:06 . Memory (MB): peak = 4188.930 ; gain = 675.203 ; free physical = 32917 ; free virtual = 55574
+INFO: [Vivado 12-24828] Executing command : report_drc -file OSDZU3x_BYOTEE_wrapper_drc_opted.rpt -pb OSDZU3x_BYOTEE_wrapper_drc_opted.pb -rpx OSDZU3x_BYOTEE_wrapper_drc_opted.rpx
+Command: report_drc -file OSDZU3x_BYOTEE_wrapper_drc_opted.rpt -pb OSDZU3x_BYOTEE_wrapper_drc_opted.pb -rpx OSDZU3x_BYOTEE_wrapper_drc_opted.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/impl_1/OSDZU3x_BYOTEE_wrapper_drc_opted.rpt.
+report_drc completed successfully
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32902 ; free virtual = 55560
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32902 ; free virtual = 55560
+Writing XDEF routing.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32902 ; free virtual = 55561
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.14 ; elapsed = 00:00:00.04 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32901 ; free virtual = 55561
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32901 ; free virtual = 55561
+Wrote Device Cache: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32898 ; free virtual = 55562
+Write Physdb Complete: Time (s): cpu = 00:00:00.19 ; elapsed = 00:00:00.06 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32896 ; free virtual = 55560
+INFO: [Common 17-1381] The checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/impl_1/OSDZU3x_BYOTEE_wrapper_opt.dcp' has been generated.
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xczu3eg'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xczu3eg'
+INFO: [Common 17-83] Releasing license: Implementation
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 8 CPUs
+
+Starting Placer Task
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32860 ; free virtual = 55528
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 1184d178a
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32860 ; free virtual = 55528
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4188.930 ; gain = 0.000 ; free physical = 32860 ; free virtual = 55528
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 1bfe5b316
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 4709.062 ; gain = 520.133 ; free physical = 32179 ; free virtual = 54978
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 261065d2d
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 4741.078 ; gain = 552.148 ; free physical = 32125 ; free virtual = 54926
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 261065d2d
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 4741.078 ; gain = 552.148 ; free physical = 32125 ; free virtual = 54926
+Phase 1 Placer Initialization | Checksum: 261065d2d
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 4741.078 ; gain = 552.148 ; free physical = 32125 ; free virtual = 54926
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+
+Phase 2.1.1 Partition Driven Placement
+
+Phase 2.1.1.1 PBP: Partition Driven Placement
+Phase 2.1.1.1 PBP: Partition Driven Placement | Checksum: 28dc2fd01
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:09 . Memory (MB): peak = 4741.078 ; gain = 552.148 ; free physical = 32163 ; free virtual = 54964
+
+Phase 2.1.1.2 PBP: Clock Region Placement
+INFO: [Place 30-3162] Check ILP status : ILP-based clock placer completed successfully.
+Phase 2.1.1.2 PBP: Clock Region Placement | Checksum: 24b630112
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 4741.078 ; gain = 552.148 ; free physical = 32162 ; free virtual = 54966
+
+Phase 2.1.1.3 PBP: Compute Congestion
+Phase 2.1.1.3 PBP: Compute Congestion | Checksum: 24b630112
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:11 . Memory (MB): peak = 4940.062 ; gain = 751.133 ; free physical = 31467 ; free virtual = 54697
+
+Phase 2.1.1.4 PBP: UpdateTiming
+Phase 2.1.1.4 PBP: UpdateTiming | Checksum: 2af4d2fcf
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:11 . Memory (MB): peak = 4972.078 ; gain = 783.148 ; free physical = 31467 ; free virtual = 54696
+
+Phase 2.1.1.5 PBP: Add part constraints
+Phase 2.1.1.5 PBP: Add part constraints | Checksum: 2af4d2fcf
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:11 . Memory (MB): peak = 4972.078 ; gain = 783.148 ; free physical = 31467 ; free virtual = 54696
+Phase 2.1.1 Partition Driven Placement | Checksum: 2af4d2fcf
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:11 . Memory (MB): peak = 4972.078 ; gain = 783.148 ; free physical = 31467 ; free virtual = 54696
+Phase 2.1 Floorplanning | Checksum: 2c4484cda
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:11 . Memory (MB): peak = 4972.078 ; gain = 783.148 ; free physical = 31467 ; free virtual = 54696
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 2c4484cda
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:11 . Memory (MB): peak = 4972.078 ; gain = 783.148 ; free physical = 31467 ; free virtual = 54696
+
+Phase 2.3 Post-Processing in Floorplanning
+Phase 2.3 Post-Processing in Floorplanning | Checksum: 2c4484cda
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:11 . Memory (MB): peak = 4972.078 ; gain = 783.148 ; free physical = 31467 ; free virtual = 54696
+
+Phase 2.4 Global Place Phase1
+Phase 2.4 Global Place Phase1 | Checksum: 19aa11ddd
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:18 . Memory (MB): peak = 4999.078 ; gain = 810.148 ; free physical = 31508 ; free virtual = 54735
+
+Phase 2.5 Global Place Phase2
+
+Phase 2.5.1 UpdateTiming Before Physical Synthesis
+Phase 2.5.1 UpdateTiming Before Physical Synthesis | Checksum: 19aa11ddd
+
+Time (s): cpu = 00:00:41 ; elapsed = 00:00:18 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31483 ; free virtual = 54709
+
+Phase 2.5.2 Physical Synthesis In Placer
+INFO: [Physopt 32-1035] Found 0 LUTNM shape to break, 859 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 0, two critical 0, total 0, new lutff created 0
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 330 nets or LUTs. Breaked 0 LUT, combined 330 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-670] No setup violation found.  Equivalent Driver Rewiring was not performed.
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-670] No setup violation found.  DSP Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register to Pipeline Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  BRAM Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  URAM Register Optimization was not performed.
+INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 5001.078 ; gain = 0.000 ; free physical = 31483 ; free virtual = 54711
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT Combining                                    |            0  |            330  |                   330  |           0  |           1  |  00:00:00  |
+|  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Equivalent Driver Rewiring                       |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                                     |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register                                   |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  BRAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  URAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                                            |            0  |            330  |                   330  |           0  |           4  |  00:00:00  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.5.2 Physical Synthesis In Placer | Checksum: 104087335
+
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:19 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31481 ; free virtual = 54710
+Phase 2.5 Global Place Phase2 | Checksum: 1af09be7f
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:21 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31479 ; free virtual = 54708
+Phase 2 Global Placement | Checksum: 1af09be7f
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:21 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31479 ; free virtual = 54708
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: f947861a
+
+Time (s): cpu = 00:00:53 ; elapsed = 00:00:22 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31470 ; free virtual = 54699
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 213875221
+
+Time (s): cpu = 00:00:54 ; elapsed = 00:00:23 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31470 ; free virtual = 54699
+
+Phase 3.3 Small Shape DP
+
+Phase 3.3.1 Small Shape Clustering
+Phase 3.3.1 Small Shape Clustering | Checksum: 11fb2757b
+
+Time (s): cpu = 00:01:00 ; elapsed = 00:00:24 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31466 ; free virtual = 54695
+
+Phase 3.3.2 Slice Area Swap
+
+Phase 3.3.2.1 Slice Area Swap Initial
+Phase 3.3.2.1 Slice Area Swap Initial | Checksum: 210782b48
+
+Time (s): cpu = 00:01:00 ; elapsed = 00:00:25 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31465 ; free virtual = 54695
+Phase 3.3.2 Slice Area Swap | Checksum: 210782b48
+
+Time (s): cpu = 00:01:00 ; elapsed = 00:00:25 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31465 ; free virtual = 54695
+Phase 3.3 Small Shape DP | Checksum: 19ed97e5f
+
+Time (s): cpu = 00:01:02 ; elapsed = 00:00:25 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31465 ; free virtual = 54695
+
+Phase 3.4 Re-assign LUT pins
+Phase 3.4 Re-assign LUT pins | Checksum: 176674ce2
+
+Time (s): cpu = 00:01:02 ; elapsed = 00:00:25 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31465 ; free virtual = 54695
+
+Phase 3.5 Pipeline Register Optimization
+Phase 3.5 Pipeline Register Optimization | Checksum: 19a01f1b5
+
+Time (s): cpu = 00:01:02 ; elapsed = 00:00:25 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31465 ; free virtual = 54695
+Phase 3 Detail Placement | Checksum: 19a01f1b5
+
+Time (s): cpu = 00:01:03 ; elapsed = 00:00:25 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31465 ; free virtual = 54695
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 116689758
+
+Phase 4.1.1.1 BUFG Insertion
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 8 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=4.694 | TNS=0.000 |
+Phase 1 Physical Synthesis Initialization | Checksum: 1d251addf
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.51 . Memory (MB): peak = 5001.078 ; gain = 0.000 ; free physical = 31465 ; free virtual = 54694
+INFO: [Place 46-35] Processed net OSDZU3x_BYOTEE_i/microblaze_riscv_0/U0/riscv_core_I/sync_reset, inserted BUFG to drive 1057 loads.
+INFO: [Place 46-45] Replicated bufg driver OSDZU3x_BYOTEE_i/microblaze_riscv_0/U0/riscv_core_I/Use_Async_Reset.sync_reset_reg_replica
+INFO: [Place 46-56] BUFG insertion identified 1 candidate nets. Inserted BUFG: 1, Replicated BUFG Driver: 1, Skipped due to Placement/Routing Conflicts: 0, Skipped due to Timing Degradation: 0, Skipped due to netlist editing failed: 0.
+Ending Physical Synthesis Task | Checksum: 1e680dcfd
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:02 . Memory (MB): peak = 5001.078 ; gain = 0.000 ; free physical = 31471 ; free virtual = 54701
+Phase 4.1.1.1 BUFG Insertion | Checksum: 13ccb9935
+
+Time (s): cpu = 00:01:17 ; elapsed = 00:00:30 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31471 ; free virtual = 54701
+
+Phase 4.1.1.2 Post Placement Timing Optimization
+INFO: [Place 30-746] Post Placement Timing Summary WNS=4.689. For the most accurate timing information please run report_timing.
+Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 163e45e64
+
+Time (s): cpu = 00:01:17 ; elapsed = 00:00:30 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31471 ; free virtual = 54701
+
+Time (s): cpu = 00:01:17 ; elapsed = 00:00:30 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31471 ; free virtual = 54701
+Phase 4.1 Post Commit Optimization | Checksum: 163e45e64
+
+Time (s): cpu = 00:01:17 ; elapsed = 00:00:30 . Memory (MB): peak = 5001.078 ; gain = 812.148 ; free physical = 31471 ; free virtual = 54701
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31418 ; free virtual = 54648
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 19de548f6
+
+Time (s): cpu = 00:01:23 ; elapsed = 00:00:32 . Memory (MB): peak = 5021.062 ; gain = 832.133 ; free physical = 31418 ; free virtual = 54648
+
+Phase 4.3 Placer Reporting
+
+Phase 4.3.1 Print Estimated Congestion
+INFO: [Place 30-612] Post-Placement Estimated Congestion 
+ ________________________________________________________________________
+|           | Global Congestion | Long Congestion   | Short Congestion  |
+| Direction | Region Size       | Region Size       | Region Size       |
+|___________|___________________|___________________|___________________|
+|      North|                1x1|                1x1|                4x4|
+|___________|___________________|___________________|___________________|
+|      South|                1x1|                1x1|                4x4|
+|___________|___________________|___________________|___________________|
+|       East|                1x1|                1x1|                4x4|
+|___________|___________________|___________________|___________________|
+|       West|                1x1|                1x1|                4x4|
+|___________|___________________|___________________|___________________|
+
+Phase 4.3.1 Print Estimated Congestion | Checksum: 19de548f6
+
+Time (s): cpu = 00:01:23 ; elapsed = 00:00:32 . Memory (MB): peak = 5021.062 ; gain = 832.133 ; free physical = 31418 ; free virtual = 54648
+Phase 4.3 Placer Reporting | Checksum: 19de548f6
+
+Time (s): cpu = 00:01:23 ; elapsed = 00:00:32 . Memory (MB): peak = 5021.062 ; gain = 832.133 ; free physical = 31418 ; free virtual = 54648
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31418 ; free virtual = 54648
+
+Time (s): cpu = 00:01:23 ; elapsed = 00:00:32 . Memory (MB): peak = 5021.062 ; gain = 832.133 ; free physical = 31418 ; free virtual = 54648
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 17ff8af07
+
+Time (s): cpu = 00:01:23 ; elapsed = 00:00:32 . Memory (MB): peak = 5021.062 ; gain = 832.133 ; free physical = 31418 ; free virtual = 54648
+Ending Placer Task | Checksum: 126be1506
+
+Time (s): cpu = 00:01:23 ; elapsed = 00:00:32 . Memory (MB): peak = 5021.062 ; gain = 832.133 ; free physical = 31418 ; free virtual = 54648
+181 Infos, 19 Warnings, 77 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:01:26 ; elapsed = 00:00:33 . Memory (MB): peak = 5021.062 ; gain = 832.133 ; free physical = 31418 ; free virtual = 54648
+INFO: [Vivado 12-24838] Running report commands "report_control_sets, report_io, report_utilization" in parallel.
+Running report generation with 3 threads.
+INFO: [Vivado 12-24828] Executing command : report_control_sets -verbose -file OSDZU3x_BYOTEE_wrapper_control_sets_placed.rpt
+report_control_sets: Time (s): cpu = 00:00:00.15 ; elapsed = 00:00:00.22 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31373 ; free virtual = 54603
+INFO: [Vivado 12-24828] Executing command : report_io -file OSDZU3x_BYOTEE_wrapper_io_placed.rpt
+report_io: Time (s): cpu = 00:00:00.17 ; elapsed = 00:00:00.24 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31357 ; free virtual = 54587
+INFO: [Vivado 12-24828] Executing command : report_utilization -file OSDZU3x_BYOTEE_wrapper_utilization_placed.rpt -pb OSDZU3x_BYOTEE_wrapper_utilization_placed.pb
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.1 ; elapsed = 00:00:00.02 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31383 ; free virtual = 54616
+Wrote PlaceDB: Time (s): cpu = 00:00:00.88 ; elapsed = 00:00:00.28 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31377 ; free virtual = 54624
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31377 ; free virtual = 54624
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.1 ; elapsed = 00:00:00.04 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31376 ; free virtual = 54624
+Wrote Netlist Cache: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31375 ; free virtual = 54624
+Wrote Device Cache: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31374 ; free virtual = 54626
+Write Physdb Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.35 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31374 ; free virtual = 54626
+INFO: [Common 17-1381] The checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/impl_1/OSDZU3x_BYOTEE_wrapper_placed.dcp' has been generated.
+Command: phys_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xczu3eg'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xczu3eg'
+
+Starting Initial Update Timing Task
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:00.79 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31373 ; free virtual = 54613
+INFO: [Vivado_Tcl 4-2279] Estimated Timing Summary | WNS= 4.693 | TNS= 0.000 | 
+INFO: [Vivado_Tcl 4-383] Design worst setup slack (WNS) is greater than or equal to 0.000 ns. All physical synthesis setup optimizations will be skipped.
+INFO: [Vivado_Tcl 4-232] No setup violation found. The netlist was not modified.
+INFO: [Common 17-83] Releasing license: Implementation
+192 Infos, 19 Warnings, 77 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.02 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31373 ; free virtual = 54616
+Wrote PlaceDB: Time (s): cpu = 00:00:00.84 ; elapsed = 00:00:00.26 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31372 ; free virtual = 54628
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31372 ; free virtual = 54628
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.1 ; elapsed = 00:00:00.04 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31372 ; free virtual = 54628
+Wrote Netlist Cache: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31372 ; free virtual = 54629
+Wrote Device Cache: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.01 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31369 ; free virtual = 54631
+Write Physdb Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.33 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31370 ; free virtual = 54631
+INFO: [Common 17-1381] The checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/impl_1/OSDZU3x_BYOTEE_wrapper_physopt.dcp' has been generated.
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xczu3eg'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xczu3eg'
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 8 CPUs
+
+Phase 1 Build RT Design
+Checksum: PlaceDB: 9a06e596 ConstDB: 0 ShapeSum: 3323cd20 RouteDB: 59936250
+Nodegraph reading from file.  Time (s): cpu = 00:00:00.24 ; elapsed = 00:00:00.26 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31368 ; free virtual = 54618
+Post Restoration Checksum: NetGraph: 9f40cadf | NumContArr: 77eb6ba1 | Constraints: d6b4f6b4 | Timing: c2a8fa9d
+Phase 1 Build RT Design | Checksum: 2b08a27d1
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31368 ; free virtual = 54617
+
+Phase 2 Router Initialization
+
+Phase 2.1 Fix Topology Constraints
+Phase 2.1 Fix Topology Constraints | Checksum: 2b08a27d1
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31368 ; free virtual = 54617
+
+Phase 2.2 Pre Route Cleanup
+Phase 2.2 Pre Route Cleanup | Checksum: 2b08a27d1
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31368 ; free virtual = 54617
+
+Phase 2.3 Global Clock Net Routing
+ Number of Nodes with overlaps = 0
+Phase 2.3 Global Clock Net Routing | Checksum: 25b053135
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:02 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31367 ; free virtual = 54617
+
+Phase 2.4 Update Timing
+Phase 2.4 Update Timing | Checksum: 2a6ebc839
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:03 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31367 ; free virtual = 54617
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=4.852  | TNS=0.000  | WHS=-0.296 | THS=-24.194|
+
+
+Phase 2.5 Soft Constraint Pins - Fast Budgeting
+Phase 2.5 Soft Constraint Pins - Fast Budgeting | Checksum: 2cd9e53cf
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:04 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31367 ; free virtual = 54618
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0.00810534 %
+  Global Horizontal Routing Utilization  = 0.00508931 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 15980
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 12976
+  Number of Partially Routed Nets     = 3004
+  Number of Node Overlaps             = 0
+
+Phase 2 Router Initialization | Checksum: 2d2cac2b0
+
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:04 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31367 ; free virtual = 54618
+
+Phase 3 Global Routing
+Phase 3 Global Routing | Checksum: 2d2cac2b0
+
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:04 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31367 ; free virtual = 54618
+
+Phase 4 Initial Routing
+
+Phase 4.1 Initial Net Routing Pass
+Phase 4.1 Initial Net Routing Pass | Checksum: 2b189d2b7
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:05 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31398 ; free virtual = 54641
+Phase 4 Initial Routing | Checksum: 25434fd6b
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:05 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31403 ; free virtual = 54645
+
+Phase 5 Rip-up And Reroute
+
+Phase 5.1 Global Iteration 0
+ Number of Nodes with overlaps = 2520
+ Number of Nodes with overlaps = 159
+ Number of Nodes with overlaps = 10
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=4.353  | TNS=0.000  | WHS=-0.043 | THS=-0.398 |
+
+Phase 5.1 Global Iteration 0 | Checksum: 1bc7a51ad
+
+Time (s): cpu = 00:00:27 ; elapsed = 00:00:12 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31428 ; free virtual = 54671
+
+Phase 5.2 Additional Iteration for Hold
+Phase 5.2 Additional Iteration for Hold | Checksum: 187b5e80f
+
+Time (s): cpu = 00:00:27 ; elapsed = 00:00:12 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31428 ; free virtual = 54671
+Phase 5 Rip-up And Reroute | Checksum: 187b5e80f
+
+Time (s): cpu = 00:00:27 ; elapsed = 00:00:12 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31428 ; free virtual = 54671
+
+Phase 6 Delay and Skew Optimization
+
+Phase 6.1 Delay CleanUp
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=4.353  | TNS=0.000  | WHS=0.012  | THS=0.000  |
+
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=4.353  | TNS=0.000  | WHS=0.012  | THS=0.000  |
+
+Phase 6.1 Delay CleanUp | Checksum: 19dbdf762
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:12 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31428 ; free virtual = 54671
+
+Phase 6.2 Clock Skew Optimization
+Phase 6.2 Clock Skew Optimization | Checksum: 19dbdf762
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:12 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31428 ; free virtual = 54671
+Phase 6 Delay and Skew Optimization | Checksum: 19dbdf762
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:12 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31428 ; free virtual = 54671
+
+Phase 7 Post Hold Fix
+
+Phase 7.1 Hold Fix Iter
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=4.353  | TNS=0.000  | WHS=0.012  | THS=0.000  |
+
+Phase 7.1 Hold Fix Iter | Checksum: 201afaf54
+
+Time (s): cpu = 00:00:30 ; elapsed = 00:00:12 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31428 ; free virtual = 54671
+Phase 7 Post Hold Fix | Checksum: 201afaf54
+
+Time (s): cpu = 00:00:30 ; elapsed = 00:00:12 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31428 ; free virtual = 54671
+
+Phase 8 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 3.39471 %
+  Global Horizontal Routing Utilization  = 2.8299 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 8 Route finalize | Checksum: 201afaf54
+
+Time (s): cpu = 00:00:30 ; elapsed = 00:00:12 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31430 ; free virtual = 54673
+
+Phase 9 Verifying routed nets
+
+ Verification completed successfully
+Phase 9 Verifying routed nets | Checksum: 201afaf54
+
+Time (s): cpu = 00:00:30 ; elapsed = 00:00:12 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31430 ; free virtual = 54673
+
+Phase 10 Depositing Routes
+Phase 10 Depositing Routes | Checksum: 201afaf54
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:13 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31429 ; free virtual = 54672
+
+Phase 11 Resolve XTalk
+Phase 11 Resolve XTalk | Checksum: 201afaf54
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:13 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31430 ; free virtual = 54672
+
+Phase 12 Post Process Routing
+Phase 12 Post Process Routing | Checksum: 201afaf54
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:13 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31430 ; free virtual = 54672
+
+Phase 13 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=4.353  | TNS=0.000  | WHS=0.012  | THS=0.000  |
+
+INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
+Phase 13 Post Router Timing | Checksum: 201afaf54
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:13 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31430 ; free virtual = 54672
+Total Elapsed time in route_design: 12.78 secs
+
+Phase 14 Post-Route Event Processing
+Phase 14 Post-Route Event Processing | Checksum: 1e9bfdde0
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:13 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31430 ; free virtual = 54672
+INFO: [Route 35-16] Router Completed Successfully
+Ending Routing Task | Checksum: 1e9bfdde0
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:13 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31430 ; free virtual = 54672
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+205 Infos, 19 Warnings, 77 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:00:31 ; elapsed = 00:00:13 . Memory (MB): peak = 5021.062 ; gain = 0.000 ; free physical = 31430 ; free virtual = 54672
+INFO: [Vivado 12-24828] Executing command : report_drc -file OSDZU3x_BYOTEE_wrapper_drc_routed.rpt -pb OSDZU3x_BYOTEE_wrapper_drc_routed.pb -rpx OSDZU3x_BYOTEE_wrapper_drc_routed.rpx
+Command: report_drc -file OSDZU3x_BYOTEE_wrapper_drc_routed.rpt -pb OSDZU3x_BYOTEE_wrapper_drc_routed.pb -rpx OSDZU3x_BYOTEE_wrapper_drc_routed.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/impl_1/OSDZU3x_BYOTEE_wrapper_drc_routed.rpt.
+report_drc completed successfully
+INFO: [Vivado 12-24828] Executing command : report_methodology -file OSDZU3x_BYOTEE_wrapper_methodology_drc_routed.rpt -pb OSDZU3x_BYOTEE_wrapper_methodology_drc_routed.pb -rpx OSDZU3x_BYOTEE_wrapper_methodology_drc_routed.rpx
+Command: report_methodology -file OSDZU3x_BYOTEE_wrapper_methodology_drc_routed.rpt -pb OSDZU3x_BYOTEE_wrapper_methodology_drc_routed.pb -rpx OSDZU3x_BYOTEE_wrapper_methodology_drc_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 8 threads
+INFO: [Vivado_Tcl 2-1520] The results of Report Methodology are in file /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/impl_1/OSDZU3x_BYOTEE_wrapper_methodology_drc_routed.rpt.
+report_methodology completed successfully
+INFO: [Vivado 12-24828] Executing command : report_timing_summary -max_paths 10 -file OSDZU3x_BYOTEE_wrapper_timing_summary_routed.rpt -pb OSDZU3x_BYOTEE_wrapper_timing_summary_routed.pb -rpx OSDZU3x_BYOTEE_wrapper_timing_summary_routed.rpx -warn_on_violation 
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [Vivado 12-24838] Running report commands "report_bus_skew, report_incremental_reuse, report_route_status" in parallel.
+Running report generation with 3 threads.
+INFO: [Vivado 12-24828] Executing command : report_incremental_reuse -file OSDZU3x_BYOTEE_wrapper_incremental_reuse_routed.rpt
+INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
+INFO: [Vivado 12-24828] Executing command : report_bus_skew -warn_on_violation -file OSDZU3x_BYOTEE_wrapper_bus_skew_routed.rpt -pb OSDZU3x_BYOTEE_wrapper_bus_skew_routed.pb -rpx OSDZU3x_BYOTEE_wrapper_bus_skew_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [Vivado 12-24828] Executing command : report_route_status -file OSDZU3x_BYOTEE_wrapper_route_status.rpt -pb OSDZU3x_BYOTEE_wrapper_route_status.pb
+INFO: [Vivado 12-24828] Executing command : report_power -file OSDZU3x_BYOTEE_wrapper_power_routed.rpt -pb OSDZU3x_BYOTEE_wrapper_power_summary_routed.pb -rpx OSDZU3x_BYOTEE_wrapper_power_routed.rpx
+Command: report_power -file OSDZU3x_BYOTEE_wrapper_power_routed.rpt -pb OSDZU3x_BYOTEE_wrapper_power_summary_routed.pb -rpx OSDZU3x_BYOTEE_wrapper_power_routed.rpx
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+WARNING: [Power 33-332] Found switching activity that implies high-fanout reset nets being asserted for excessive periods of time which may result in inaccurate power analysis.
+Resolution: To review and fix problems, please run Power Constraints Advisor in the GUI from Tools > Power Constraints Advisor or run report_power with the -advisory option to generate a text report.
+225 Infos, 20 Warnings, 77 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+INFO: [Vivado 12-24828] Executing command : report_clock_utilization -file OSDZU3x_BYOTEE_wrapper_clock_utilization_routed.rpt
+generate_parallel_reports: Time (s): cpu = 00:00:19 ; elapsed = 00:00:08 . Memory (MB): peak = 5077.090 ; gain = 56.027 ; free physical = 31373 ; free virtual = 54630
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.02 . Memory (MB): peak = 5077.090 ; gain = 0.000 ; free physical = 31371 ; free virtual = 54630
+Wrote PlaceDB: Time (s): cpu = 00:00:00.75 ; elapsed = 00:00:00.27 . Memory (MB): peak = 5077.090 ; gain = 0.000 ; free physical = 31365 ; free virtual = 54638
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 5077.090 ; gain = 0.000 ; free physical = 31365 ; free virtual = 54638
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.31 ; elapsed = 00:00:00.1 . Memory (MB): peak = 5077.090 ; gain = 0.000 ; free physical = 31362 ; free virtual = 54640
+Wrote Netlist Cache: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 5077.090 ; gain = 0.000 ; free physical = 31361 ; free virtual = 54640
+Wrote Device Cache: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 5077.090 ; gain = 0.000 ; free physical = 31353 ; free virtual = 54635
+Write Physdb Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.39 . Memory (MB): peak = 5077.090 ; gain = 0.000 ; free physical = 31353 ; free virtual = 54635
+INFO: [Common 17-1381] The checkpoint '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/impl_1/OSDZU3x_BYOTEE_wrapper_routed.dcp' has been generated.
+Command: write_bitstream -force OSDZU3x_BYOTEE_wrapper.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xczu3eg'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xczu3eg'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado 12-3199] DRC finished with 0 Errors
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+INFO: [Designutils 20-2272] Running write_bitstream with 8 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Writing bitstream ./OSDZU3x_BYOTEE_wrapper.bit...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Project 1-1876] WebTalk data collection is mandatory when using a ULT device. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
+INFO: [Common 17-83] Releasing license: Implementation
+237 Infos, 20 Warnings, 77 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:10 ; elapsed = 00:00:24 . Memory (MB): peak = 5525.309 ; gain = 0.000 ; free physical = 31391 ; free virtual = 54664
+INFO: [Common 17-206] Exiting Vivado at Mon Sep 22 18:20:52 2025...

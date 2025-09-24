@@ -1,0 +1,188 @@
+{
+    "1": {
+        "name": "FrmbufRdHlsDataFlow",
+        "file": "v_frmbuf_rd.cpp",
+        "fileloc": "78",
+        "instructions": "30",
+        "total_instructions": "306",
+        "calls": "8 2 9",
+        "basicblocks": "1",
+        "memory_accesses": "0",
+        "control_depth": "0",
+        "def_use_depth": "1"
+    },
+    "2": {
+        "name": "Bytes2MultiPixStream",
+        "file": "v_frmbuf_rd.cpp",
+        "fileloc": "686",
+        "instructions": "70",
+        "total_instructions": "136",
+        "calls": "4 3",
+        "basicblocks": "31",
+        "memory_accesses": "0",
+        "control_depth": "0",
+        "def_use_depth": "2",
+        "loads": {
+            "L": "2"
+        },
+        "stores": {
+            "L": "4"
+        },
+        "loops": {
+            "L": "2"
+        }
+    },
+    "3": {
+        "name": "Bytes2MultiPixStream_Pipeline_VITIS_LOOP_1696_1",
+        "file": "\/home\/e\/Documents\/research\/byotee\/OSDZU3_Ref_Design\/OSDZU3_Ref_Design.runs\/design_1_v_frmbuf_rd_0_0_synth_1\/prj\/sol\/.autopilot\/db\/v_frmbuf_rd.cpp",
+        "fileloc": "686",
+        "instructions": "29",
+        "total_instructions": "29",
+        "calls": "",
+        "basicblocks": "6",
+        "memory_accesses": "5",
+        "control_depth": "2",
+        "def_use_depth": "1",
+        "loads": {
+            "L": "1"
+        },
+        "stores": {
+            "L": "2"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "4": {
+        "name": "Bytes2MultiPixStream_Pipeline_VITIS_LOOP_1734_4",
+        "file": "\/home\/e\/Documents\/research\/byotee\/OSDZU3_Ref_Design\/OSDZU3_Ref_Design.runs\/design_1_v_frmbuf_rd_0_0_synth_1\/prj\/sol\/.autopilot\/db\/v_frmbuf_rd.cpp",
+        "fileloc": "686",
+        "instructions": "37",
+        "total_instructions": "37",
+        "calls": "",
+        "basicblocks": "6",
+        "memory_accesses": "5",
+        "control_depth": "2",
+        "def_use_depth": "1",
+        "loads": {
+            "L": "1"
+        },
+        "stores": {
+            "L": "2"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "5": {
+        "name": "reg<unsigned short>",
+        "file": "\/tools\/Xilinx\/2025.1\/Vitis\/common\/technology\/autopilot\/utils\/x_hls_utils.h",
+        "fileloc": "222",
+        "instructions": "5",
+        "total_instructions": "5",
+        "calls": "",
+        "basicblocks": "1",
+        "memory_accesses": "1",
+        "control_depth": "0",
+        "def_use_depth": "1"
+    },
+    "6": {
+        "name": "MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_460_2",
+        "file": "\/home\/e\/Documents\/research\/byotee\/OSDZU3_Ref_Design\/OSDZU3_Ref_Design.runs\/design_1_v_frmbuf_rd_0_0_synth_1\/prj\/sol\/.autopilot\/db\/v_frmbuf_rd.cpp",
+        "fileloc": "432",
+        "instructions": "33",
+        "total_instructions": "33",
+        "calls": "",
+        "basicblocks": "4",
+        "memory_accesses": "4",
+        "control_depth": "1",
+        "def_use_depth": "1",
+        "loads": {
+            "L": "1"
+        },
+        "stores": {
+            "L": "2"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "7": {
+        "name": "AXIMMvideo2Bytes_Pipeline_VITIS_LOOP_515_1",
+        "file": "\/home\/e\/Documents\/research\/byotee\/OSDZU3_Ref_Design\/OSDZU3_Ref_Design.runs\/design_1_v_frmbuf_rd_0_0_synth_1\/prj\/sol\/.autopilot\/db\/v_frmbuf_rd.cpp",
+        "fileloc": "515",
+        "instructions": "23",
+        "total_instructions": "23",
+        "calls": "",
+        "basicblocks": "4",
+        "memory_accesses": "4",
+        "control_depth": "1",
+        "def_use_depth": "1",
+        "loads": {
+            "L": "1"
+        },
+        "stores": {
+            "L": "2"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "0": {
+        "name": "v_frmbuf_rd",
+        "file": "v_frmbuf_rd.cpp",
+        "fileloc": "135",
+        "instructions": "53",
+        "total_instructions": "359",
+        "calls": "1",
+        "basicblocks": "1",
+        "memory_accesses": "0",
+        "control_depth": "0",
+        "def_use_depth": "3",
+        "loads": {
+            "G": "2"
+        }
+    },
+    "8": {
+        "name": "AXIMMvideo2Bytes",
+        "file": "v_frmbuf_rd.cpp",
+        "fileloc": "497",
+        "instructions": "42",
+        "total_instructions": "65",
+        "calls": "7",
+        "basicblocks": "4",
+        "memory_accesses": "0",
+        "control_depth": "0",
+        "def_use_depth": "2",
+        "loads": {
+            "L": "2"
+        },
+        "stores": {
+            "L": "4"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "9": {
+        "name": "MultiPixStream2AXIvideo",
+        "file": "v_frmbuf_rd.cpp",
+        "fileloc": "423",
+        "instructions": "32",
+        "total_instructions": "75",
+        "calls": "5 5 6",
+        "basicblocks": "4",
+        "memory_accesses": "0",
+        "control_depth": "0",
+        "def_use_depth": "2",
+        "loads": {
+            "L": "1"
+        },
+        "stores": {
+            "L": "2"
+        },
+        "loops": {
+            "L": "1"
+        }
+    }
+}

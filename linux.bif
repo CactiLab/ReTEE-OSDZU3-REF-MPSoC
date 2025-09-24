@@ -1,0 +1,10 @@
+//arch = zynqmp; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader, destination_cpu = a53-0]/home/e/Documents/research/byotee/riscv_platform/export/riscv_platform/sw/boot/fsbl.elf
+	[pmufw_image]/home/e/Documents/research/byotee/riscv_platform/export/riscv_platform/sw/boot/pmufw.elf
+	[destination_device = pl]/home/e/Documents/research/byotee/riscv_platform/export/riscv_platform/hw/sdt/BYOTEE_riscv.bit
+	[destination_cpu = a53-0, exception_level = el-3, trustzone]/home/e/Documents/research/byotee/xilinx-zynqmp-common-v2025.1/bl31.elf
+	[load = 0x00100000, destination_cpu = a53-0]/home/e/Documents/research/byotee/riscv_platform/export/riscv_platform/sw/boot/system.dtb
+	[destination_cpu = a53-0, exception_level = el-2]/home/e/Documents/research/byotee/xilinx-zynqmp-common-v2025.1/u-boot.elf
+}

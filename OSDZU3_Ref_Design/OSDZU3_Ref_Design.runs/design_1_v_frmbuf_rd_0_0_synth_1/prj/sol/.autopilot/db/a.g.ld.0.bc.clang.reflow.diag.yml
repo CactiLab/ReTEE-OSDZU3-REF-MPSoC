@@ -1,0 +1,860 @@
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 1693, Column: 18 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'hls::Scalar<4, ap_uint<8> >::Scalar()'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_frmbuf_rd_0_0/src/hls/hls_video_core.h, 
+                       Line: 196, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'Bytes2MultiPixStream(STREAM_PLANES&, hls::stream<hls::Scalar<4, ap_uint<8> >, 0>&, unsigned short const&, unsigned short const&, unsigned short const&, unsigned short const&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 688, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 431, Column: 21 }
+Function:        _ZL23MultiPixStream2AXIvideoRN3hls6streamINS_6ScalarILi4E7ap_uintILi8EEEELi0EEERNS0_INS_4axisIS2_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEERtSC_SC_
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'hls::Scalar<4, ap_uint<8> >::Scalar()'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_frmbuf_rd_0_0/src/hls/hls_video_core.h, 
+                       Line: 196, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'MultiPixStream2AXIvideo(hls::stream<hls::Scalar<4, ap_uint<8> >, 0>&, hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 429, Column: 0 }
+  - String:          ''''
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 439, Column: 16 }
+Function:        _ZL23MultiPixStream2AXIvideoRN3hls6streamINS_6ScalarILi4E7ap_uintILi8EEEELi0EEERNS0_INS_4axisIS2_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEERtSC_SC_
+Args:            
+  - Callee:          'unsigned short reg<unsigned short>(unsigned short)'
+    DebugLoc:        { File: /tools/Xilinx/2025.1/Vitis/common/technology/autopilot/utils/x_hls_utils.h, 
+                       Line: 223, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'MultiPixStream2AXIvideo(hls::stream<hls::Scalar<4, ap_uint<8> >, 0>&, hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 429, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 116, Column: 2 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_
+Args:            
+  - Callee:          'AXIMMvideo2Bytes(ap_uint<64>*&, ap_uint<64>*&, ap_uint<64>*&, STREAM_PLANES&, unsigned short const&, unsigned short const&, unsigned short const&, unsigned short const&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 506, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'FrmbufRdHlsDataFlow(hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, HW_STRUCT_REG&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 84, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 118, Column: 2 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_
+Args:            
+  - Callee:          'Bytes2MultiPixStream(STREAM_PLANES&, hls::stream<hls::Scalar<4, ap_uint<8> >, 0>&, unsigned short const&, unsigned short const&, unsigned short const&, unsigned short const&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 688, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'FrmbufRdHlsDataFlow(hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, HW_STRUCT_REG&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 84, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 125, Column: 2 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_
+Args:            
+  - Callee:          'MultiPixStream2AXIvideo(hls::stream<hls::Scalar<4, ap_uint<8> >, 0>&, hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 429, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'FrmbufRdHlsDataFlow(hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, HW_STRUCT_REG&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 84, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 259, Column: 2 }
+Function:        _Z11v_frmbuf_rdttttP7ap_uintILi64EES1_S1_RN3hls6streamINS2_4axisIS_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEE
+Args:            
+  - Callee:          'FrmbufRdHlsDataFlow(hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, HW_STRUCT_REG&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 84, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'v_frmbuf_rd(unsigned short, unsigned short, unsigned short, unsigned short, ap_uint<64>*, ap_uint<64>*, ap_uint<64>*, hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 141, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Passed
+Pass:            reflow-reg2mem-ssa
+Name:            DisaggrReason
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_frmbuf_rd_0_0/src/hls/hls_video_core.h, 
+                   Line: 198, Column: 9 }
+Function:        _ZL23MultiPixStream2AXIvideoRN3hls6streamINS_6ScalarILi4E7ap_uintILi8EEEELi0EEERNS0_INS_4axisIS2_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEERtSC_SC_
+Args:            
+  - String:          'Adding '''
+  - Name:            pix
+  - String:          ''' into disaggregation list because there''s '
+  - String:          array-partition pragma applied on the struct field
+...
+--- !Passed
+Pass:            reflow-reg2mem-ssa
+Name:            DisaggrReason
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_frmbuf_rd_0_0/src/hls/hls_video_core.h, 
+                   Line: 198, Column: 9 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Adding '''
+  - Name:            pix225
+  - String:          ''' into disaggregation list because there''s '
+  - String:          array-partition pragma applied on the struct field
+...
+--- !Passed
+Pass:            reflow-reg2mem-ssa
+Name:            DisaggrReason
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_frmbuf_rd_0_0/src/hls/hls_video_core.h, 
+                   Line: 198, Column: 9 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Adding '''
+  - Name:            pix
+  - String:          ''' into disaggregation list because there''s '
+  - String:          array-partition pragma applied on the struct field
+...
+--- !Passed
+Pass:            reflow-reg2mem-ssa
+Name:            DisaggrReason
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 96, Column: 9 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_
+Args:            
+  - String:          'Adding '''
+  - Name:            bytePlanes
+  - String:          ''' into disaggregation list because there''s '
+  - String:          stream pragma applied on the struct field
+...
+--- !Passed
+Pass:            reflow-disaggr
+Name:            DisaggrReason
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_frmbuf_rd_0_0/src/hls/hls_video_core.h, 
+                   Line: 198, Column: 9 }
+Function:        _ZL23MultiPixStream2AXIvideoRN3hls6streamINS_6ScalarILi4E7ap_uintILi8EEEELi0EEERNS0_INS_4axisIS2_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEERtSC_SC_
+Args:            
+  - String:          'Adding '''
+  - Name:            pix
+  - String:          ''' into disaggregation list because there''s '
+  - String:          array-partition pragma applied on the struct field
+...
+--- !Passed
+Pass:            reflow-disaggr
+Name:            DisaggrReason
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_frmbuf_rd_0_0/src/hls/hls_video_core.h, 
+                   Line: 198, Column: 9 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Adding '''
+  - Name:            pix225
+  - String:          ''' into disaggregation list because there''s '
+  - String:          array-partition pragma applied on the struct field
+...
+--- !Passed
+Pass:            reflow-disaggr
+Name:            DisaggrReason
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.gen/sources_1/bd/design_1/ip/design_1_v_frmbuf_rd_0_0/src/hls/hls_video_core.h, 
+                   Line: 198, Column: 9 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Adding '''
+  - Name:            pix
+  - String:          ''' into disaggregation list because there''s '
+  - String:          array-partition pragma applied on the struct field
+...
+--- !Passed
+Pass:            reflow-disaggr
+Name:            DisaggrReason
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 96, Column: 9 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_
+Args:            
+  - String:          'Adding '''
+  - Name:            bytePlanes
+  - String:          ''' into disaggregation list because there''s '
+  - String:          stream pragma applied on the struct field
+...
+--- !Passed
+Pass:            reflow-disaggr
+Name:            DisaggrSucc
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 1731, Column: 18 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Disaggregating variable '''
+  - Name:            pix225
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-disaggr
+Name:            DisaggrSucc
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 1693, Column: 18 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Disaggregating variable '''
+  - Name:            pix
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-disaggr
+Name:            DisaggrSucc
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 431, Column: 21 }
+Function:        _ZL23MultiPixStream2AXIvideoRN3hls6streamINS_6ScalarILi4E7ap_uintILi8EEEELi0EEERNS0_INS_4axisIS2_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEERtSC_SC_
+Args:            
+  - String:          'Disaggregating variable '''
+  - Name:            pix
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-disaggr
+Name:            DisaggrSucc
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 95, Column: 16 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_
+Args:            
+  - String:          'Disaggregating variable '''
+  - Name:            bytePlanes
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 478, Column: 31 }
+Function:        _ZL23MultiPixStream2AXIvideoRN3hls6streamINS_6ScalarILi4E7ap_uintILi8EEEELi0EEERNS0_INS_4axisIS2_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEERtSC_SC_
+Args:            
+  - String:          'Loop '''
+  - LoopName:        VITIS_LOOP_478_3
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 480, Column: 35 }
+Function:        _ZL23MultiPixStream2AXIvideoRN3hls6streamINS_6ScalarILi4E7ap_uintILi8EEEELi0EEERNS0_INS_4axisIS2_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEERtSC_SC_
+Args:            
+  - String:          'Loop '''
+  - LoopName:        VITIS_LOOP_480_4
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 1702, Column: 36 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Loop '''
+  - LoopName:        VITIS_LOOP_1702_2
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 1704, Column: 40 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Loop '''
+  - LoopName:        VITIS_LOOP_1704_3
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 1740, Column: 36 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Loop '''
+  - LoopName:        VITIS_LOOP_1740_5
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 1742, Column: 40 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Loop '''
+  - LoopName:        VITIS_LOOP_1742_6
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 429, Column: 0 }
+Function:        _ZL23MultiPixStream2AXIvideoRN3hls6streamINS_6ScalarILi4E7ap_uintILi8EEEELi0EEERNS0_INS_4axisIS2_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEERtSC_SC_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_478_3
+  - String:          ''' ('
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:478:31'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          MultiPixStream2AXIvideo
+  - String:          ''' completely with a factor of '
+  - Factor:          '1'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 429, Column: 0 }
+Function:        _ZL23MultiPixStream2AXIvideoRN3hls6streamINS_6ScalarILi4E7ap_uintILi8EEEELi0EEERNS0_INS_4axisIS2_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEERtSC_SC_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_480_4
+  - String:          ''' ('
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:480:35'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          MultiPixStream2AXIvideo
+  - String:          ''' completely with a factor of '
+  - Factor:          '4'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 688, Column: 0 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_1702_2
+  - String:          ''' ('
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:1702:36'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          Bytes2MultiPixStream
+  - String:          ''' completely with a factor of '
+  - Factor:          '2'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 688, Column: 0 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_1704_3
+  - String:          ''' ('
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:1704:40'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          Bytes2MultiPixStream
+  - String:          ''' completely with a factor of '
+  - Factor:          '1'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 688, Column: 0 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_1704_3
+  - String:          ''' ('
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:1704:40'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          Bytes2MultiPixStream
+  - String:          ''' completely with a factor of '
+  - Factor:          '1'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 688, Column: 0 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_1740_5
+  - String:          ''' ('
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:1740:36'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          Bytes2MultiPixStream
+  - String:          ''' completely with a factor of '
+  - Factor:          '2'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 688, Column: 0 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_1742_6
+  - String:          ''' ('
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:1742:40'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          Bytes2MultiPixStream
+  - String:          ''' completely with a factor of '
+  - Factor:          '1'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 688, Column: 0 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_1742_6
+  - String:          ''' ('
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:1742:40'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          Bytes2MultiPixStream
+  - String:          ''' completely with a factor of '
+  - Factor:          '1'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 438, Column: 16 }
+Function:        _ZL23MultiPixStream2AXIvideoRN3hls6streamINS_6ScalarILi4E7ap_uintILi8EEEELi0EEERNS0_INS_4axisIS2_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEERtSC_SC_
+Args:            
+  - Callee:          'unsigned short reg<unsigned short>(unsigned short)'
+    DebugLoc:        { File: /tools/Xilinx/2025.1/Vitis/common/technology/autopilot/utils/x_hls_utils.h, 
+                       Line: 223, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'MultiPixStream2AXIvideo(hls::stream<hls::Scalar<4, ap_uint<8> >, 0>&, hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 429, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 116, Column: 2 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_
+Args:            
+  - Callee:          'AXIMMvideo2Bytes(ap_uint<64>*&, ap_uint<64>*&, ap_uint<64>*&, STREAM_PLANES&, unsigned short const&, unsigned short const&, unsigned short const&, unsigned short const&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 506, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'FrmbufRdHlsDataFlow(hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, HW_STRUCT_REG&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 84, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 118, Column: 2 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_
+Args:            
+  - Callee:          'Bytes2MultiPixStream(STREAM_PLANES&, hls::stream<hls::Scalar<4, ap_uint<8> >, 0>&, unsigned short const&, unsigned short const&, unsigned short const&, unsigned short const&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 688, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'FrmbufRdHlsDataFlow(hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, HW_STRUCT_REG&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 84, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 125, Column: 2 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_
+Args:            
+  - Callee:          'MultiPixStream2AXIvideo(hls::stream<hls::Scalar<4, ap_uint<8> >, 0>&, hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 429, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'FrmbufRdHlsDataFlow(hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, HW_STRUCT_REG&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 84, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 259, Column: 2 }
+Function:        _Z11v_frmbuf_rdttttP7ap_uintILi64EES1_S1_RN3hls6streamINS2_4axisIS_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEE
+Args:            
+  - Callee:          'FrmbufRdHlsDataFlow(hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, HW_STRUCT_REG&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 84, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'v_frmbuf_rd(unsigned short, unsigned short, unsigned short, unsigned short, ap_uint<64>*, ap_uint<64>*, ap_uint<64>*, hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 141, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+Function:        apatb_v_frmbuf_rd_ir
+Args:            
+  - Callee:          'v_frmbuf_rd(unsigned short, unsigned short, unsigned short, unsigned short, ap_uint<64>*, ap_uint<64>*, ap_uint<64>*, hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 141, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          apatb_v_frmbuf_rd_ir
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Failure
+Pass:            reflow-array-undecay
+Name:            WarnOnUnsupportedVLAUnDecay
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 84, Column: 0 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_.clone
+Args:            
+  - String:          'Skipping array undecay on variable length array '''
+  - ArrayName:       HwReg_frm_buffer
+  - String:          '''.'
+...
+--- !Passed
+Pass:            reflow-aggr
+Name:            AggrSucc
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 90, Column: 18 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_
+Args:            
+  - String:          'Aggregating '
+  - HwTyName:        'fifo (hls::stream)'
+  - String:          ' variable '''
+  - Name:            img
+  - String:          ''' with '
+  - AggregateTypeName: 'compact=bit'
+  - String:          ' mode in '
+  - Bitwidth:        '32'
+  - String:          '-bits'
+...
+--- !Passed
+Pass:            reflow-burst-inference
+Name:            BurstInferred
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 515, Column: 20 }
+Function:        _Z16AXIMMvideo2BytesRP7ap_uintILi64EES2_S2_R13STREAM_PLANESRKtS6_S6_S6_
+Args:            
+  - String:          'Sequential '
+  - Direction:       read
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length'
+  - String:          ' has been inferred'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        scevgepseq
+  - ArrayName:       srcImg
+  - String:          ' '
+  - BundleName:      mm_video
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_515_1
+  - String:          ' '
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:515:20'
+  - String:          ' '
+  - Function:        'AXIMMvideo2Bytes(ap_uint<64>*&, ap_uint<64>*&, ap_uint<64>*&, STREAM_PLANES&, unsigned short const&, unsigned short const&, unsigned short const&, unsigned short const&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 506, Column: 0 }
+  - String:          ' '
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      load
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 519, Column: 23 }
+  - OrigDirection:   read
+  - OrigID:          for.inc.load.6
+...
+--- !Missed
+Pass:            reflow-burst-inference
+Name:            IncompatibleStride
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 515, Column: 20 }
+Function:        _Z16AXIMMvideo2BytesRP7ap_uintILi64EES2_S2_R13STREAM_PLANESRKtS6_S6_S6_
+Args:            
+  - String:          Stride is incompatible
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      call
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 515, Column: 20 }
+  - OrigDirection:   read
+  - OrigID:          scevgepseq
+  - ArrayName:       srcImg
+  - String:          ' '
+  - BundleName:      mm_video
+  - String:          ' '
+  - LoopName:        loop_AXIMMvideo2Bytes_1plane
+  - String:          ' '
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:510:5'
+  - String:          ' '
+  - Function:        'AXIMMvideo2Bytes(ap_uint<64>*&, ap_uint<64>*&, ap_uint<64>*&, STREAM_PLANES&, unsigned short const&, unsigned short const&, unsigned short const&, unsigned short const&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 506, Column: 0 }
+  - String:          ' '
+...
+--- !Missed
+Pass:            reflow-burst-widen
+Name:            GreaterOrEqualThreshold
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 515, Column: 20 }
+Function:        _Z16AXIMMvideo2BytesRP7ap_uintILi64EES2_S2_R13STREAM_PLANESRKtS6_S6_S6_
+Args:            
+  - String:          'Could not widen since type '
+  - Type:            i64
+  - String:          ' size is greater than or equal to the max_widen_bitwidth threshold of '
+  - Threshold:       '0'
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      call
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 515, Column: 20 }
+  - OrigDirection:   read
+  - OrigID:          scevgepseq
+  - ArrayName:       srcImg
+  - String:          ' '
+  - BundleName:      mm_video
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_515_1
+  - String:          ' '
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:515:20'
+  - String:          ' '
+  - Function:        'AXIMMvideo2Bytes(ap_uint<64>*&, ap_uint<64>*&, ap_uint<64>*&, STREAM_PLANES&, unsigned short const&, unsigned short const&, unsigned short const&, unsigned short const&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 506, Column: 0 }
+  - String:          ' '
+...
+--- !Failure
+Pass:            reflow-occurrence-analysis
+Name:            CouldNotAnalyzeBBInfo
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 1711, Column: 61 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Could not analyze occurrence information for '''
+  - BBName:          if.then190
+  - String:          ''' living in '''
+  - LoopName:        VITIS_LOOP_1696_1
+  - String:          '''('
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:1696:21'
+  - String:          ') .'
+...
+--- !Failure
+Pass:            reflow-occurrence-analysis
+Name:            CouldNotAnalyzeBBInfo
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 1711, Column: 61 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Could not analyze occurrence information for '''
+  - BBName:          if.then190.1
+  - String:          ''' living in '''
+  - LoopName:        VITIS_LOOP_1696_1
+  - String:          '''('
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:1696:21'
+  - String:          ') .'
+...
+--- !Failure
+Pass:            reflow-occurrence-analysis
+Name:            CouldNotAnalyzeBBInfo
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 1749, Column: 61 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Could not analyze occurrence information for '''
+  - BBName:          if.then314
+  - String:          ''' living in '''
+  - LoopName:        VITIS_LOOP_1734_4
+  - String:          '''('
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:1734:21'
+  - String:          ') .'
+...
+--- !Failure
+Pass:            reflow-occurrence-analysis
+Name:            CouldNotAnalyzeBBInfo
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 1749, Column: 61 }
+Function:        _Z20Bytes2MultiPixStreamR13STREAM_PLANESRN3hls6streamINS1_6ScalarILi4E7ap_uintILi8EEEELi0EEERKtSA_SA_SA_
+Args:            
+  - String:          'Could not analyze occurrence information for '''
+  - BBName:          if.then314.1
+  - String:          ''' living in '''
+  - LoopName:        VITIS_LOOP_1734_4
+  - String:          '''('
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:1734:21'
+  - String:          ') .'
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredVerboseSummary
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 515, Column: 20 }
+Function:        _Z16AXIMMvideo2BytesRP7ap_uintILi64EES2_S2_R13STREAM_PLANESRKtS6_S6_S6_.1
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       reads
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length and bit width '
+  - Width:           '64'
+  - String:          ' has been inferred.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        seq
+  - ArrayName:       ''
+  - String:          ' '
+  - BundleName:      mm_video
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_515_1
+  - String:          ' '
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:515:20'
+  - String:          ' '
+  - Function:        'AXIMMvideo2Bytes(ap_uint<64>*&, ap_uint<64>*&, ap_uint<64>*&, STREAM_PLANES&, unsigned short const&, unsigned short const&, unsigned short const&, unsigned short const&) (.1)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 506, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredSummary
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 515, Column: 20 }
+Function:        _Z16AXIMMvideo2BytesRP7ap_uintILi64EES2_S2_R13STREAM_PLANESRKtS6_S6_S6_.1
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       reads
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length and bit width '
+  - Width:           '64'
+  - String:          ' in loop '''
+  - LoopName:        VITIS_LOOP_515_1
+  - String:          '''('
+  - LoopLoc:         '/home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp:515:20'
+  - String:          ')'
+  - String:          ' has been inferred on bundle '''
+  - BundleName:      mm_video
+  - String:          '''.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 438, Column: 16 }
+Function:        _ZL23MultiPixStream2AXIvideoRN3hls6streamINS_6ScalarILi4E7ap_uintILi8EEEELi0EEERNS0_INS_4axisIS2_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEERtSC_SC_
+Args:            
+  - Callee:          'unsigned short reg<unsigned short>(unsigned short)'
+    DebugLoc:        { File: /tools/Xilinx/2025.1/Vitis/common/technology/autopilot/utils/x_hls_utils.h, 
+                       Line: 223, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'MultiPixStream2AXIvideo(hls::stream<hls::Scalar<4, ap_uint<8> >, 0>&, hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 429, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 116, Column: 2 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_.1
+Args:            
+  - Callee:          'AXIMMvideo2Bytes(ap_uint<64>*&, ap_uint<64>*&, ap_uint<64>*&, STREAM_PLANES&, unsigned short const&, unsigned short const&, unsigned short const&, unsigned short const&) (.1)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 506, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'FrmbufRdHlsDataFlow(hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, HW_STRUCT_REG&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&) (.1)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 84, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 118, Column: 2 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_.1
+Args:            
+  - Callee:          'Bytes2MultiPixStream(STREAM_PLANES&, hls::stream<hls::Scalar<4, ap_uint<8> >, 0>&, unsigned short const&, unsigned short const&, unsigned short const&, unsigned short const&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 688, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'FrmbufRdHlsDataFlow(hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, HW_STRUCT_REG&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&) (.1)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 84, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 125, Column: 2 }
+Function:        _ZL19FrmbufRdHlsDataFlowRN3hls6streamINS_4axisI7ap_uintILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEER13HW_STRUCT_REGRtS9_S9_S9_S9_S9_.1
+Args:            
+  - Callee:          'MultiPixStream2AXIvideo(hls::stream<hls::Scalar<4, ap_uint<8> >, 0>&, hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, unsigned short&, unsigned short&, unsigned short&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 429, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'FrmbufRdHlsDataFlow(hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, HW_STRUCT_REG&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&) (.1)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 84, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                   Line: 259, Column: 2 }
+Function:        _Z11v_frmbuf_rdttttP7ap_uintILi64EES1_S1_RN3hls6streamINS2_4axisIS_ILi32EELm1ELm1ELm1ELh56ELb0EEELi0EEE
+Args:            
+  - Callee:          'FrmbufRdHlsDataFlow(hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&, HW_STRUCT_REG&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&, unsigned short&) (.1)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 84, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'v_frmbuf_rd(unsigned short, unsigned short, unsigned short, unsigned short, ap_uint<64>*, ap_uint<64>*, ap_uint<64>*, hls::stream<hls::axis<ap_uint<32>, 1ul, 1ul, 1ul, (unsigned char)56, false>, 0>&)'
+    DebugLoc:        { File: /home/e/Documents/research/byotee/OSDZU3_Ref_Design/OSDZU3_Ref_Design.runs/design_1_v_frmbuf_rd_0_0_synth_1/prj/sol/.autopilot/db/v_frmbuf_rd.cpp, 
+                       Line: 141, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...

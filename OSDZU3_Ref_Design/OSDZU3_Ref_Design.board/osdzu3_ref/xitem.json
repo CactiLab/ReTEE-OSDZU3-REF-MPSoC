@@ -1,0 +1,34 @@
+{
+  "config": {
+    "items": [
+      {
+        "infra": {
+          "name": "osdzu3_ref", 
+          "display": "OSDZU3 Reference Design", 
+          "revision": "1.0", 
+          "description": "OSDZU3 Reference Design", 
+          "company": "octavosystems.com", 
+          "company_display": "Octavo Systems", 
+          "author": "", 
+          "contributors": [
+            {
+              "group": "Octavo Systems", 
+              "url": "octavosystems.com"
+            }
+          ], 
+          "category": "Evaluation Boards",
+          "logo": "OSDZU3.png",
+          "website": "octavosystems.com/octavo_products/osdzu3-ref/", 
+          "search-keywords": [
+            "osdzu3", 
+            "octavosystems.com", 
+            "board", 
+            "Evaluation Boards"
+          ]
+        }
+      }
+    ]
+  }, 
+  "_major": 1, 
+  "_minor": 0
+}

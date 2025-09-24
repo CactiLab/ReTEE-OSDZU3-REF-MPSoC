@@ -1,0 +1,210 @@
+axi_gpio_1:
+- axi_gpio
+- gpio
+axi_intc_0:
+- axi_intc
+- intc
+microblaze_riscv_0_local_memory_dlmb_bram_if_cntlr:
+- lmb_bram_if_cntlr
+- bram
+pl_ps_intr:
+- axi_gpio
+- gpio
+psu_adma_0:
+- psu_adma
+- zdma
+psu_adma_1:
+- psu_adma
+- zdma
+psu_adma_2:
+- psu_adma
+- zdma
+psu_adma_3:
+- psu_adma
+- zdma
+psu_adma_4:
+- psu_adma
+- zdma
+psu_adma_5:
+- psu_adma
+- zdma
+psu_adma_6:
+- psu_adma
+- zdma
+psu_adma_7:
+- psu_adma
+- zdma
+psu_afi_6:
+- psu_afi
+- None
+psu_ams:
+- psu_ams
+- sysmonpsu
+psu_apm_1:
+- psu_apm
+- axipmon
+psu_apm_2:
+- psu_apm
+- axipmon
+psu_crl_apb:
+- psu_crl_apb
+- clockps
+psu_csu_0:
+- psu_csu
+- None
+psu_csudma:
+- psu_csudma
+- csudma
+psu_efuse:
+- psu_efuse
+- None
+psu_ethernet_3:
+- psu_ethernet
+- emacps
+psu_gpio_0:
+- psu_gpio
+- gpiops
+psu_i2c_1:
+- psu_i2c
+- iicps
+psu_iou_scntr:
+- psu_iou_scntr
+- None
+psu_iou_scntrs:
+- psu_iou_scntrs
+- None
+psu_iousecure_slcr:
+- psu_iousecure_slcr
+- None
+psu_iouslcr_0:
+- psu_iouslcr
+- None
+psu_lpd_slcr:
+- psu_lpd_slcr
+- None
+psu_lpd_slcr_secure:
+- psu_lpd_slcr_secure
+- None
+psu_lpd_xppu:
+- psu_lpd_xppu
+- None
+psu_lpd_xppu_sink:
+- psu_lpd_xppu_sink
+- None
+psu_mbistjtag:
+- psu_mbistjtag
+- None
+psu_ocm:
+- psu_ocm
+- None
+psu_ocm_xmpu_cfg:
+- psu_ocm_xmpu_cfg
+- None
+psu_pmu_global_0:
+- psu_pmu_global_0
+- None
+psu_qspi_0:
+- psu_qspi
+- qspipsu
+psu_r5_0_atcm:
+- psu_r5_0_atcm
+- None
+psu_r5_0_atcm_global:
+- psu_r5_0_atcm_global
+- None
+psu_r5_0_atcm_lockstep:
+- psu_r5_0_atcm_lockstep
+- None
+psu_r5_0_btcm:
+- psu_r5_0_btcm
+- None
+psu_r5_0_btcm_global:
+- psu_r5_0_btcm_global
+- None
+psu_r5_0_btcm_lockstep:
+- psu_r5_0_btcm_lockstep
+- None
+psu_r5_1_atcm:
+- psu_r5_1_atcm
+- None
+psu_r5_1_atcm_global:
+- psu_r5_1_atcm_global
+- None
+psu_r5_1_btcm:
+- psu_r5_1_btcm
+- None
+psu_r5_1_btcm_global:
+- psu_r5_1_btcm_global
+- None
+psu_r5_tcm_ram_0:
+- psu_r5_tcm_ram
+- None
+psu_r5_tcm_ram_global:
+- psu_r5_tcm_ram
+- None
+psu_rpu:
+- psu_rpu
+- None
+psu_rsa:
+- psu_rsa
+- None
+psu_rtc:
+- psu_rtc
+- rtcpsu
+psu_sd_0:
+- psu_sd
+- sdps
+psu_sd_1:
+- psu_sd
+- sdps
+psu_spi_0:
+- psu_spi
+- spips
+psu_ttc_0:
+- psu_ttc
+- ttcps
+psu_ttc_1:
+- psu_ttc
+- ttcps
+psu_ttc_10:
+- psu_ttc
+- ttcps
+psu_ttc_11:
+- psu_ttc
+- ttcps
+psu_ttc_2:
+- psu_ttc
+- ttcps
+psu_ttc_3:
+- psu_ttc
+- ttcps
+psu_ttc_4:
+- psu_ttc
+- ttcps
+psu_ttc_5:
+- psu_ttc
+- ttcps
+psu_ttc_6:
+- psu_ttc
+- ttcps
+psu_ttc_7:
+- psu_ttc
+- ttcps
+psu_ttc_8:
+- psu_ttc
+- ttcps
+psu_ttc_9:
+- psu_ttc
+- ttcps
+psu_uart_0:
+- psu_uart
+- uartps
+psu_uart_1:
+- psu_uart
+- uartps
+psu_usb_0:
+- psu_usb
+- None
+psu_wdt_0:
+- psu_wdt
+- wdtps
