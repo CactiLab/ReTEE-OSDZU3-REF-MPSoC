@@ -1,0 +1,25 @@
+# Ignore build output directory
+/build
+/export
+
+# Ignore object files and dependent files
+.o
+.d
+
+#Ignore logs folder and log files
+/logs
+**/*.log
+**/*.jou
+
+#Ignore lock files
+.lock
+
+*.bin
+.pdi
+.vitisWorkspace.json
+
+**/_ide
+**/.cache
+
+platform_riscv
+xilinx-zynqmp-common*/
