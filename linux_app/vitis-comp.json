@@ -12,6 +12,8 @@
     "hostToolchainConfigurations": []
   },
   "domainRealName": "linux",
+  "useSysrootToolchain": false,
+  "sysrootToolchain": "/tools/zynqmp_common_peta/sysroots/cortexa72-cortexa53-amd-linux",
   "applicationFlow": "EMBEDDED",
   "template": "linux_hello_world"
 }

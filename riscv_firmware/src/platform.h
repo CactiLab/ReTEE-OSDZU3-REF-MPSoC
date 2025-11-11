@@ -6,11 +6,12 @@
 #ifndef __PLATFORM_H_
 #define __PLATFORM_H_
 
+#include <stdbool.h>
 #ifndef SDT
 #include "platform_config.h"
 #endif
 
-void init_platform();
+int init_platform();
 void cleanup_platform();
 
 #endif

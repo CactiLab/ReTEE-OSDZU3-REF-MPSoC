@@ -84,20 +84,20 @@ set(USER_COMPILE_ANSI "")
 
 # Add any compiler options that are not covered by the above variables, they will be added as extra compiler options
 # To enable profiling -pg [ for gprof ]  or -p [ for prof information ]
-set(USER_COMPILE_OTHER_FLAGS "-fPIC")
+set(USER_COMPILE_OTHER_FLAGS "")
 
 # -----------------------------------------
 
 # Linker options
 # Do not use the standard system startup files when linking.
 # The standard system libraries are used normally, unless -nostdlib or -nodefaultlibs is used. (-nostartfiles)
-set(USER_LINK_NO_START_FILES "")
+set(USER_LINK_NO_START_FILES "-nostartfiles")
 
 # Do not use the standard system libraries when linking. (-nodefaultlibs)
-set(USER_LINK_NO_DEFAULT_LIBS "")
+set(USER_LINK_NO_DEFAULT_LIBS "-nodefaultlibs")
 
 # Do not use the standard system startup files or libraries when linking. (-nostdlib)
-set(USER_LINK_NO_STDLIB "")
+set(USER_LINK_NO_STDLIB "-nostdlib")
 
 # Omit all symbol information. (-s)
 set(USER_LINK_OMIT_ALL_SYMBOL_INFO "")
@@ -123,6 +123,7 @@ set(USER_LINKER_SCRIPT "${CMAKE_SOURCE_DIR}/lscript.ld")
 # Add linker options to be passed, they will be added as extra linker options
 # Example : Adding -s will pass -s to the linker.
 set(USER_LINK_OTHER_FLAGS
+"-Wl,--just-symbols=../../riscv_firmware/build/riscv_firmware.elf"
 )
 
 # -----------------------------------------

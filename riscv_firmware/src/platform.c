@@ -3,13 +3,17 @@
 * SPDX-License-Identifier: MIT
 ******************************************************************************/
 
+#include "platform.h"
+#include <string.h>
 #include <xil_cache.h>
+#include <xil_printf.h>
 #include <xparameters.h>
 #include <stdint.h>
 #include <xintc.h>
 #include <xgpio.h>
 #include <xstatus.h>
 #include <stdbool.h>
+
 
 #ifndef SDT
 #include "platform_config.h"
@@ -91,7 +95,14 @@ typedef struct __attribute__((__packed__)) {
 //     SHARED_OCM->mb_to_arm_flag = 1;  // Signal ARM
 // }
 
+extern char _MODULE_BASE;
+extern char _MODULE_SIZE;
+extern bool intr_triggered;
+
 void arm_interrupt_handler(XIntc *intc) {
+    if (intr_triggered) return;
+    SHARED_OCM->ready = 0;
+    intr_triggered = true;
     // Xil_DCacheInvalidateRange(SHARED_ADDR, sizeof(shared_ocm_t));
     // Read data from shared memory immediately
     uint32_t received_command = SHARED_OCM->command;
@@ -101,19 +112,19 @@ void arm_interrupt_handler(XIntc *intc) {
     
     xil_printf("[m] IRQ from ARM! Cmd: 0x%08X\r\n", received_command);
 
-    for (int i = 0; i < 16000; i+=2) {
-        char* bytes = (char*) SHARED_OCM->data + i;
-        xil_printf("[%04X] %02X %02X %02X %02X %02X %02X %02X %02X\r\n", i, 
-            SHARED_OCM->data[i * sizeof(uint32_t)], 
-            bytes[0], 
-            bytes[1],
-            bytes[2],
-            bytes[3],
-            bytes[4],
-            bytes[5],
-            bytes[6],
-            bytes[7]);
-    }
+    // for (int i = 0; i < 16000; i+=2) {
+    //     char* bytes = (char*) SHARED_OCM->data + i;
+    //     xil_printf("[%04X] %02X %02X %02X %02X %02X %02X %02X %02X\r\n", i, 
+    //         SHARED_OCM->data[i * sizeof(uint32_t)], 
+    //         bytes[0], 
+    //         bytes[1],
+    //         bytes[2],
+    //         bytes[3],
+    //         bytes[4],
+    //         bytes[5],
+    //         bytes[6],
+    //         bytes[7]);
+    // }
 
     // Clear interrupt in hardware if needed
     // This depends on your interrupt generation logic

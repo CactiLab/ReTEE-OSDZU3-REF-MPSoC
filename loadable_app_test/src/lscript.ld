@@ -3,6 +3,13 @@
 * SPDX-License-Identifier: MIT
 ******************************************************************************/
 
+EXTERN(_MODULE_BASE) /* Import MODULE_BASE from firmware */
+/* shared heap with firmware */
+EXTERN(.heap)
+EXTERN(_heap)
+EXTERN(_heap_start)
+EXTERN(_heap_end)
+
 _STACK_SIZE = DEFINED(_STACK_SIZE) ? _STACK_SIZE : 0x400;
 _HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x800;
 
@@ -18,36 +25,39 @@ MEMORY
 
 /* Specify the default entry point to the program */
 
-ENTRY(_boot)
+ENTRY(module_main)
 
 /* Define the sections, and where they are mapped in memory */
 
 SECTIONS
 {
-.text.init : {
-   __text.init_start = .;
-   *(.text.init)
-   __text.init_end = .;
-} > psu_ocm_0
+. = _MODULE_BASE;
+_module_start = .;
 
-.text : {
+.text . : {
    . = ALIGN(2048);
    *(.text)
    *(.text.*)
    *(.gnu.linkonce.t.*)
-} > psu_ocm_0
+} > lmb_bram_0
+
+.text.init : {
+   __text.init_start = .;
+   *(.text.init)
+   __text.init_end = .;
+} > lmb_bram_0
 
 .note.gnu.build-id : {
    KEEP (*(.note.gnu.build-id))
-} > psu_ocm_0
+} > lmb_bram_0
 
 .init : {
    KEEP (*(.init))
-} > psu_ocm_0
+} > lmb_bram_0
 
 .fini : {
    KEEP (*(.fini))
-} > psu_ocm_0
+} > lmb_bram_0
 
 .ctors : {
    __CTOR_LIST__ = .;
@@ -58,7 +68,7 @@ SECTIONS
    KEEP (*(.ctors))
    __CTOR_END__ = .;
    ___CTORS_END___ = .;
-} > psu_ocm_0
+} > lmb_bram_0
 
 .dtors : {
    __DTOR_LIST__ = .;
@@ -69,7 +79,7 @@ SECTIONS
    KEEP (*(.dtors))
    __DTOR_END__ = .;
    ___DTORS_END___ = .;
-} > psu_ocm_0
+} > lmb_bram_0
 
 .rodata : {
    __rodata_start = .;
@@ -77,7 +87,7 @@ SECTIONS
    *(.rodata.*)
    *(.gnu.linkonce.r.*)
    __rodata_end = .;
-} > psu_ocm_0
+} > lmb_bram_0
 
 .srodata : {
    __srodata_start = .;
@@ -99,22 +109,6 @@ SECTIONS
    *(.data.*)
    *(.gnu.linkonce.d.*)
    _edata = .;
-} > lmb_bram_0
-
-.got : {
-   *(.got)
-} > lmb_bram_0
-
-.got1 : {
-   *(.got1)
-} > lmb_bram_0
-
-.got2 : {
-   *(.got2)
-} > lmb_bram_0
-
-.jcr : {
-   *(.jcr)
 } > lmb_bram_0
 
 .gcc_except_table : {
@@ -188,15 +182,7 @@ _SDA_BASE_ = __sdata_start + ((__sbss_end - __sdata_start) / 2 );
 
 _SDA2_BASE_ = __sdata2_start + ((__sbss2_end - __sdata2_start) / 2 );
 
-/* Generate Stack and Heap definitions */
-
-.heap (NOLOAD) : {
-   . = ALIGN(8);
-   _heap = .;
-   _heap_start = .;
-   . += _HEAP_SIZE;
-   _heap_end = .;
-} > lmb_bram_0
+/* Generate Stack definition */
 
 .stack (NOLOAD) : {
    _stack_end = .;
@@ -207,5 +193,5 @@ _SDA2_BASE_ = __sdata2_start + ((__sbss2_end - __sdata2_start) / 2 );
 } > lmb_bram_0
 
 __global_pointer$ = MIN(__sdata_start + 0x800, MAX(__data_start + 0x800, __bss_end - 0x800));
-_end = .;
+_module_end = .;
 }

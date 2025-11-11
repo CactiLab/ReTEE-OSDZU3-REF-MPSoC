@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 cmake_minimum_required(VERSION 3.16)
 
-include(${CMAKE_CURRENT_SOURCE_DIR}/Hello_worldExample.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/main.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/UserConfig.cmake)
 set(APP_NAME riscv_firmware)
 project(${APP_NAME})
@@ -10,6 +10,12 @@ project(${APP_NAME})
 enable_language(C ASM CXX)
 find_package(common)
 collect(PROJECT_LIB_DEPS xilstandalone;xiltimer;gloss)
+
+
+
+
+
+
 
 
 

@@ -5,3 +5,5 @@ updatemem -force \
 	-proc OSDZU3x_BYOTEE_i/microblaze_riscv_0 \
 	-out system_fw.bit \
 	-force
+
+rm *.log *.jou

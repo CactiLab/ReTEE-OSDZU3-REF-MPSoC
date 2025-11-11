@@ -4,7 +4,7 @@
 ******************************************************************************/
 
 _STACK_SIZE = DEFINED(_STACK_SIZE) ? _STACK_SIZE : 0x400;
-_HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x800;
+_HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x1000;
 
 /* Define Memories in the system */
 
@@ -208,4 +208,6 @@ _SDA2_BASE_ = __sdata2_start + ((__sbss2_end - __sdata2_start) / 2 );
 
 __global_pointer$ = MIN(__sdata_start + 0x800, MAX(__data_start + 0x800, __bss_end - 0x800));
 _end = .;
+_MODULE_BASE = ALIGN(., 0x800);
+_MODULE_SIZE = (LENGTH(lmb_bram_0) - _MODULE_BASE + ORIGIN(lmb_bram_0));
 }
