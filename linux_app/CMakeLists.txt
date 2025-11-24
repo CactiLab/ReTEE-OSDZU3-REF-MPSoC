@@ -15,7 +15,7 @@ ${CMAKE_MODULE_PATH}
 find_package(EmbHost REQUIRED)
 
 set(VITIS_PLATFORM_PATH
-/home/e/Documents/research/byotee_riscv/platform_riscv/export/platform_riscv/platform_riscv.xpfm
+/home/e/Documents/research/byotee_riscv/platform/export/platform/platform.xpfm
 CACHE STRING
 "Vitis Platform"
 )

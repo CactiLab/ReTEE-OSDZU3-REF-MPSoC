@@ -22,4 +22,5 @@
 **/.cache
 
 platform_riscv
+platform
 xilinx-zynqmp-common*/

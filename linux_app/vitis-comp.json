@@ -1,7 +1,7 @@
 {
   "name": "linux_app",
   "type": "HOST",
-  "platform": "platform_riscv",
+  "platform": "platform",
   "domain": "linux",
   "cpuInstance": "cortex-a53",
   "cpuType": "cortex-a53",

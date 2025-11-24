@@ -1,8 +1,8 @@
 {
   "name": "loadable_app_test",
   "type": "HOST",
-  "platform": "platform_riscv",
-  "domain": "standalone_microblaze_riscv_0",
+  "platform": "platform",
+  "domain": "microblaze_riscv_0",
   "cpuInstance": "microblaze_riscv_0",
   "cpuType": "microblaze_riscv",
   "os": "standalone",
@@ -10,6 +10,7 @@
     "componentType": "HOST",
     "hostToolchainConfigurations": []
   },
-  "domainRealName": "standalone_microblaze_riscv_0",
+  "domainRealName": "microblaze_riscv_0",
+  "useSysrootToolchain": false,
   "applicationFlow": "EMBEDDED"
 }

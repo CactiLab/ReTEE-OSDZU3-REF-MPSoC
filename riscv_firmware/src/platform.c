@@ -134,8 +134,8 @@ void arm_interrupt_handler(XIntc *intc) {
 
 static XIntc InterruptController;
 
-volatile uint32_t* led_data = (volatile uint32_t*)(XPAR_AXI_GPIO_1_BASEADDR);
-volatile uint32_t* led_direction = (volatile uint32_t*)(XPAR_AXI_GPIO_1_BASEADDR + 0x04);
+volatile uint32_t* led_data = (volatile uint32_t*)(XPAR_XGPIO_0_BASEADDR);
+volatile uint32_t* led_direction = (volatile uint32_t*)(XPAR_XGPIO_0_BASEADDR + 0x04);
 uint8_t led_value = 0;
 
 int init_platform()
