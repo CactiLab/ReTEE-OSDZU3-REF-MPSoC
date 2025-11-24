@@ -97,39 +97,18 @@ typedef struct __attribute__((__packed__)) {
 
 extern char _MODULE_BASE;
 extern char _MODULE_SIZE;
-extern bool intr_triggered;
+extern volatile bool intr_triggered;
 
 void arm_interrupt_handler(XIntc *intc) {
+    xil_printf("[m] IRQ from ARM! Cmd: 0x%08X\r\n", SHARED_OCM->command);
     if (intr_triggered) return;
     SHARED_OCM->ready = 0;
     intr_triggered = true;
     // Xil_DCacheInvalidateRange(SHARED_ADDR, sizeof(shared_ocm_t));
     // Read data from shared memory immediately
-    uint32_t received_command = SHARED_OCM->command;
-        
+            
     SHARED_OCM->arm_to_mb_flag = 0;
-    SHARED_OCM->mb_to_arm_flag = 1;
-    
-    xil_printf("[m] IRQ from ARM! Cmd: 0x%08X\r\n", received_command);
-
-    // for (int i = 0; i < 16000; i+=2) {
-    //     char* bytes = (char*) SHARED_OCM->data + i;
-    //     xil_printf("[%04X] %02X %02X %02X %02X %02X %02X %02X %02X\r\n", i, 
-    //         SHARED_OCM->data[i * sizeof(uint32_t)], 
-    //         bytes[0], 
-    //         bytes[1],
-    //         bytes[2],
-    //         bytes[3],
-    //         bytes[4],
-    //         bytes[5],
-    //         bytes[6],
-    //         bytes[7]);
-    // }
-
-    // Clear interrupt in hardware if needed
-    // This depends on your interrupt generation logic
-    // Example: *(volatile uint32_t*)INTERRUPT_CLEAR_REG = 0x01;
-    // XIntc_Acknowledge(intc, 0);
+    SHARED_OCM->mb_to_arm_flag = 1;    
 }
 
 static XIntc InterruptController;
@@ -207,12 +186,4 @@ void toggle_LED(int idx)
 void rst_LED() 
 {
     *led_data = 0;
-}
-
-void dbg_print() {
-
-}
-
-void test() {
-    
 }

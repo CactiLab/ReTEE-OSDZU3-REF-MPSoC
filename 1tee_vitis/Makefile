@@ -18,9 +18,11 @@ MMI_FILE := $(wildcard $(MMI_DIR)/*.mmi)
 BIT_FILE := $(wildcard $(BIT_DIR)/*.bit)
 
 # Default target
+.PHONY: all
+all: package boot
+
 .PHONY: package
 package: $(OUTPUT_BIT)
-
 # Main target to generate the firmware bitstream
 $(OUTPUT_BIT): $(ELF_FILE) $(MMI_FILE) $(BIT_FILE)
 	@echo "Building firmware bitstream..."
@@ -47,6 +49,10 @@ $(OUTPUT_BIT): $(ELF_FILE) $(MMI_FILE) $(BIT_FILE)
 		-out $(OUTPUT_BIT) \
 		-force
 	rm *.jou *.log
+
+.PHONY: boot
+boot: BOOT.bin
+	bootgen -arch zynqmp -image linux.bif -o BOOT.bin -w 
 
 # Clean target
 .PHONY: clean

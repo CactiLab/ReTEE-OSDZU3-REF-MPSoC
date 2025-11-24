@@ -1,8 +1,10 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
 #include <fcntl.h>
 #include <string.h>
+#include <strings.h>
 #include <unistd.h>
 #include <time.h>
 #include <sys/mman.h>
@@ -101,6 +103,9 @@ int main()
 
     shared_ocm_t* ocm_memory = (shared_ocm_t*) mapped_region;
 
+    for (int i = 0; i < 50000; ++i) {
+        ocm_memory->data[i] = 0;
+    }
     srand(time(NULL));
 
     int random = rand();
@@ -109,16 +114,23 @@ int main()
 
     system("devmem 0x80010000 32 1; devmem 0x80010000 32 0;");
 
-    while(ocm_memory->executing) continue;
+    while(!ocm_memory->ready) continue;
     
     printf("fw image load test (no valid ELF)\n");
     ocm_memory->command = 0x44414F4C;
     system("devmem 0x80010000 32 1; devmem 0x80010000 32 0;");
 
-    while(ocm_memory->executing) continue;
+    // sleep(10);
+
+    while(!ocm_memory->ready) continue;
 
     printf("loading linux image: \n");
+    ocm_memory->command = 0x44414F4C;
     FILE* load_elf_file = fopen("/home/petalinux/loadable_app_test.elf", "r");
+    if (load_elf_file == NULL) {
+        printf("Failed to locate loadable image.\n");
+        return -1;
+    }
     int sz = fread(ocm_memory->data, 1, sizeof(ocm_memory->data), load_elf_file);
 
     char* data_buf = ocm_memory->data;
@@ -127,13 +139,9 @@ int main()
     //char* module_mem = &_MODULE_BASE;
     for (int i = 0; i < ehdr->e_phnum; i++) {
         printf("i: %d, type: %d, phdr: %x paddr: %x sz: %x\r\n", i, phdr[i].p_type, phdr[i].p_offset, phdr[i].p_paddr, phdr[i].p_filesz);
-        if (phdr[i].p_type == PT_LOAD) {
-            //memcpy(phdr[i].p_paddr, data_buf + phdr[i].p_offset, phdr[i].p_filesz);
-            //module_mem += phdr[i].p_filesz;
-        }
     }
     printf("loaded 0x%x bytes to ocm_memory\n", sz);
-    // for (int i = 0; i < 16000; i+=2) {
+    // for (int i = 0; i < 1000; i+=2) {
     //     char* bytes = (char*) &ocm_memory->data[i];
     //     printf("[%04lX] %02X %02X %02X %02X %02X %02X %02X %02X | %X %X\n", i * sizeof(uint32_t), 
     //         bytes[0], 

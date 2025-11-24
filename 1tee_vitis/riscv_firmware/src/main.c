@@ -40,8 +40,7 @@ typedef struct __attribute__((__packed__)) {
 #define SHARED_ADDR 0xFFFC0000
 #define SHARED_OCM ((shared_ocm_t*) SHARED_ADDR)
 
-bool loaded = false;
-bool intr_triggered = false;
+volatile bool intr_triggered = false;
 
 int main()
 {
@@ -55,6 +54,7 @@ int main()
 
     while (1) {
         if (intr_triggered) {
+            xil_printf("[riscv] Handling IRQ: 0x%08X.\n", SHARED_OCM->command);
             SHARED_OCM->executing = 1;
             if (SHARED_OCM->command == 0x44414F4C) {
                 // parse elf header
@@ -83,59 +83,11 @@ int main()
             SHARED_OCM->executing = 0;
             SHARED_OCM->ready = 1;
         }
-        msleep(100);
-        xil_printf("[riscv] cycle: %d\n\r", c);
+        msleep(10);
+        if (c % 100 == 0) xil_printf("[riscv] cycle: %d\n\r", c);
         ++c;
     }
 
     cleanup_platform();
     return 0;
 }
-
-// extern uintptr_t _ELF_START;
-// extern uintptr_t _FW_SYMBOL_TABLE;
-
-// void symbol_table_demo() {
-//     uintptr_t file_buf = 
-//     Elf64_Ehdr* hdr = (Elf64_Ehdr*) file_buf;
-//     Elf64_Phdr* segments = (Elf64_Phdr*)(file_buf + hdr->e_phoff);
-//     Elf64_Addr DYNAMIC_addr = 0;
-//     Elf64_Addr DYNAMIC_size = 0;
-//     for(int i = 0; i < hdr->e_phnum; i++) {
-//     	if(segments[i].p_flags & PT_DYNAMIC && segments[i].p_align < 0x1000 && segments[i].p_memsz > 0) {
-//     		DYNAMIC_addr = segments[i].p_vaddr;
-//     		DYNAMIC_size = segments[i].p_memsz;
-//             break;
-//     	}
-//     }
-//     Elf64_Dyn* df = file_buf + DYNAMIC_addr;
-//     unsigned long long dt_vals[40];
-//     memset(dt_vals, 0, sizeof(dt_vals));
-//     for(int i = 0; i < DYNAMIC_size/sizeof(Elf64_Dyn); i++) {
-//         if(df[i].d_tag == DT_NULL) { break; }
-//         if(df[i].d_tag > 40) {continue;}
-//         dt_vals[df[i].d_tag] = df[i].d_un.d_val;        
-//     }
-//     STRTAB = dt_vals[DT_STRTAB];
-//     SYMTAB = dt_vals[DT_SYMTAB];
-//     uint32_t* hash = dt_vals[DT_HASH];
-//     SYMTAB_CT = hash[1];
-//     char strworkspace[256];
-//     memset(strworkspace, 0, sizeof(strworkspace));
-//     for (int i = 0; i < SYMTAB_CT; i++) {
-//         Elf64_Sym symbol = SYMTAB[i];
-//         char* name = &STRTAB[symbol.st_name];
-//         decrypt_string(ptrace_encrypted, STRLEN(ptrace_encrypted), strworkspace);
-//         if(!ptrace_func && my_strstr(name, strworkspace)) {
-//             ptrace_func = file_buf + symbol.st_value;
-//         }
-//         decrypt_string(dlsym_encrypted, STRLEN(dlsym_encrypted), strworkspace);
-//         if(!dlsym_func && my_strstr(name, strworkspace)) {
-//             dlsym_func = file_buf + symbol.st_value;
-//         }
-//         decrypt_string(dlopen_encrypted, STRLEN(dlopen_encrypted), strworkspace);
-//         if(!dlopen_func && my_strstr(name, strworkspace)) {
-//             dlopen_func = file_buf + symbol.st_value;
-//         }
-//     }
-// }
