@@ -21,6 +21,8 @@
 **/_ide
 **/.cache
 
+1tee_saved/
+1tee_saved.zip
 platform_riscv
 platform
 xilinx-zynqmp-common*/
