@@ -1,0 +1,4 @@
+domain_path: /home/e/Documents/research/byotee_riscv/1tee_vitis/platform/export/platform/sw/microblaze_riscv_0
+app_src_dir: /tools/Xilinx/Vitis/2024.2/data/embeddedsw/lib/sw_apps/empty_application
+template: empty_application
+lang: c

@@ -1,14 +1,7 @@
 /* OPTIONAL: delete uart1 node for PL output */
 /delete-node/ &uart1;
 
-/ {
-    chosen {
-        bootargs = "earlycon console=ttyPS0,115200 root=/dev/mmcblk1p2 rootfstype=ext4 rootwait rw clk_ignore_unused uio_pdrv_genirq.of_id=generic-uio";
-    };
-};
-
 &sdhci1 {
-    status = "okay";
     no-1-8-v;        /* Critical: Force 3.3V only, no voltage switching */
     broken-cd;       /* Ignore card detect */
     disable-wp;
@@ -16,9 +9,40 @@
 };
 
 &amba {
-    ocm@fffc0000 {
-        compatible = "generic-uio, uio, ui_pdrv";
+    ocm_memory: ocm@fffc0000 {
+        compatible = "generic-uio";
         reg = <0x0 0xfffc0000 0x0 0x40000>; /* 256KB OCM */
         status = "okay";
+    };
+};
+
+/ {
+    /* prevent linux from disabling PL clocks */
+    fclk0: fclk0 {
+        status = "okay";
+        compatible = "xlnx,fclk";
+        clocks = <&zynqmp_clk 71>;
+    };
+    
+    fclk1: fclk1 {
+        status = "okay";
+        compatible = "xlnx,fclk";
+        clocks = <&zynqmp_clk 72>;
+    };
+
+    fclk2: fclk2 {
+        status = "okay";
+        compatible = "xlnx,fclk";
+        clocks = <&zynqmp_clk 73>;
+    };
+
+    fclk3: fclk3 {
+        status = "okay";
+        compatible = "xlnx,fclk";
+        clocks = <&zynqmp_clk 74>;
+    };
+
+    chosen {
+        bootargs = "console=ttyPS0,115200 root=/dev/mmcblk1p2 rootfstype=ext4 rootwait rw clk_ignore_unused uio_pdrv_genirq.of_id=generic-uio";
     };
 };
