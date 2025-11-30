@@ -183,6 +183,12 @@ void toggle_LED(int idx)
     *led_data = led_value;
 }
 
+void set_LED(int value) 
+{
+    led_value = value;
+    *led_data = value;
+}
+
 void rst_LED() 
 {
     *led_data = 0;

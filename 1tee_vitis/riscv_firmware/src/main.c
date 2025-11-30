@@ -46,9 +46,7 @@ int main()
 {
     init_platform();
 
-    print("[riscv] Hello World\n\r");
-    print("[riscv] Successfully ran Hello World application\n\r");
-    xil_printf("MODULE_BASE: 0x%x, SZ: 0x%x\n\r", &_MODULE_BASE, &_MODULE_SIZE);
+    print("[riscv] Initialized.\n\r");
 
     int c = 0;
 
