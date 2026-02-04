@@ -1,5 +1,5 @@
 {
-  "name": "linux_app",
+  "name": "linux_video_ml",
   "type": "HOST",
   "platform": "platform",
   "domain": "linux",
@@ -12,9 +12,8 @@
     "hostToolchainConfigurations": []
   },
   "domainRealName": "linux",
-  "useSysrootToolchain": false,
-  "sysrootToolchain": "/tools/zynqmp_common_peta/sysroots/cortexa72-cortexa53-amd-linux",
+  "useSysrootToolchain": true,
+  "sysrootToolchain": "/opt/petalinux/2025.1/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-amd-linux",
   "applicationFlow": "EMBEDDED",
-  "template": "linux_hello_world",
   "templateFlow": "VITIS"
 }

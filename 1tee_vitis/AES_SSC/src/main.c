@@ -5,8 +5,7 @@
 #include <xil_printf.h>
 #include "aes.h"
 
-#define AES_KEY_SZ 32
-#define AES_BUFFER_SZ 16384
+#define AES_BUFFER_SZ 0x2000
 
 typedef struct __attribute__((__packed__)) {
     volatile bool mb_to_arm_flag;
@@ -18,13 +17,16 @@ typedef struct __attribute__((__packed__)) {
 } shared_ocm_t;
 
 enum aes_command {
-    ENC = 1,
-    DEC = 2,
+    NONE = 0,
+    ENC,
+    DEC,
+    GETMODE
 };
 
 typedef struct __attribute__((__packed__)) {
     volatile bool ready;
     volatile bool err;
+    volatile bool complete;
     volatile enum aes_command command;
     volatile uint8_t key_sz;
     volatile uint8_t key[32];
@@ -34,34 +36,54 @@ typedef struct __attribute__((__packed__)) {
 
 shared_ocm_t* ocm_memory = (shared_ocm_t*) 0xFFFC0000;
 
-char aes_key[32];
-char aes_buffer[AES_BUFFER_SZ];
+uint8_t aes_key[AES_KEYLEN];
+uint8_t aes_buffer[AES_BUFFER_SZ];
+
+static void phex(uint8_t *str, uint8_t len) {
+    unsigned char i;
+    for (i = 0; i < len; ++i) xil_printf("%.2x", str[i]);
+    xil_printf("\r\n");
+}
 
 int module_main() {
-    memset(aes_buffer, 0, AES_BUFFER_SZ);
     while (1) {
         aes_struct_t* aes_data = (aes_struct_t*) ocm_memory->data;
-        memcpy(aes_key, (void*) aes_data->key, aes_data->key_sz < AES_KEY_SZ ? aes_data : AES_KEY_SZ);
-        memcpy(aes_buffer, (void*) aes_data->data, aes_data->data_sz < AES_BUFFER_SZ ? aes_data->data_sz : AES_BUFFER_SZ);
+        if (aes_data->command == NONE) continue;
+        aes_data->ready = false;
+        aes_data->complete = false;
+        const size_t aes_key_sz = aes_data->key_sz < AES_KEYLEN ? aes_data : AES_KEYLEN;
+        const size_t aes_buffer_sz = aes_data->data_sz < AES_BUFFER_SZ ? aes_data->data_sz : AES_BUFFER_SZ;
+        memcpy(aes_key, (void*) aes_data->key, aes_key_sz);
+        memcpy(aes_buffer, (void*) aes_data->data, aes_buffer_sz);
+
+        struct AES_ctx ctx;
+        AES_init_ctx(&ctx, aes_key);
+
+        int i;
 
         switch (aes_data->command)
         {
         case ENC:
-            aes_enc_test();
-            memcpy((void *)cmd_chnl->enc_dec_data, received_data, ENC_DEC_DATA_SIZE);
+            for (i = 0; i < (aes_buffer_sz + AES_KEYLEN - 1)/AES_KEYLEN; ++i) {
+                AES_ECB_encrypt(&ctx, aes_buffer + (i * AES_KEYLEN));
+                phex(aes_buffer + (i * AES_KEYLEN), AES_KEYLEN);
+            }
+            memcpy((void *)aes_data->data, aes_buffer, aes_buffer_sz);
             break;
         case DEC:
-            aes_dec_test();
-            memcpy((void *)cmd_chnl->enc_dec_data, received_data, ENC_DEC_DATA_SIZE);
+            for (i = 0; i < (aes_buffer_sz + AES_KEYLEN - 1)/AES_KEYLEN; ++i) {
+                AES_ECB_decrypt(&ctx, aes_buffer + (i * AES_KEYLEN));
+                phex(aes_buffer + (i * AES_KEYLEN), AES_KEYLEN);
+            }
+            memcpy((void *)aes_data->data, aes_buffer, aes_buffer_sz);
             break;
         default:
             xil_printf("SSC> Unrecognized command!!!\r\n");
             break;
         }
-        //memset(ptr, 0xff, 80);
-        att_md.output_att_size = ENC_DEC_DATA_SIZE;
-        memcpy(&att_md.att_output_data, received_data, ENC_DEC_DATA_SIZE);
+        aes_data->command = NONE;
+        memset(aes_buffer, 0xFF, AES_BUFFER_SZ);
+        aes_data->complete = true;
     }
-    ocm_memory->data = 
     return 0;
 }
