@@ -47,7 +47,7 @@ static void phex(uint8_t *str, uint8_t len) {
 
 int module_main() {
     while (1) {
-        aes_struct_t* aes_data = (aes_struct_t*) ocm_memory->data;
+        volatile aes_struct_t* aes_data = (aes_struct_t*) ocm_memory->data;
         if (aes_data->command == NONE) continue;
         aes_data->ready = false;
         aes_data->complete = false;

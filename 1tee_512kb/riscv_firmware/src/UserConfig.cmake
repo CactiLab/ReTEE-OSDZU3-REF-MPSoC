@@ -85,7 +85,7 @@ set(USER_COMPILE_ANSI "")
 
 # Add any compiler options that are not covered by the above variables, they will be added as extra compiler options
 # To enable profiling -pg [ for gprof ]  or -p [ for prof information ]
-set(USER_COMPILE_OTHER_FLAGS "")
+set(USER_COMPILE_OTHER_FLAGS "-flto")
 
 # -----------------------------------------
 
@@ -109,6 +109,7 @@ set(USER_LINK_OMIT_ALL_SYMBOL_INFO "")
 # Add any libraries to be linked below, they will be added as extra libraries.
 # User needs to update USER_LINK_DIRECTORIES below with these library search paths.
 set(USER_LINK_LIBRARIES
+""
 )
 
 # Add any directories to look for the libraries to be linked.

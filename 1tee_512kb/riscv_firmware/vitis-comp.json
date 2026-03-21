@@ -1,0 +1,18 @@
+{
+  "name": "riscv_firmware",
+  "type": "HOST",
+  "platform": "platform",
+  "domain": "microblaze_riscv_0",
+  "cpuInstance": "microblaze_riscv_0",
+  "cpuType": "microblaze_riscv",
+  "os": "standalone",
+  "configuration": {
+    "componentType": "HOST",
+    "hostToolchainConfigurations": []
+  },
+  "domainRealName": "microblaze_riscv_0",
+  "useSysrootToolchain": false,
+  "applicationFlow": "EMBEDDED",
+  "template": "hello_world",
+  "templateFlow": "VITIS"
+}

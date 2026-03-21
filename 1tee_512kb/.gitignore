@@ -8,23 +8,14 @@
 
 #Ignore logs folder and log files
 /logs
-**/*.log
-**/*.jou
+.log
 
 #Ignore lock files
 .lock
 
-*.bin
+.bin
 .pdi
 .vitisWorkspace.json
 
-**/_ide
-**/.cache
-.vscode/
-**/build
-
-1tee_saved/
-1tee_saved.zip
-platform_riscv
-platform
-xilinx-zynqmp-common*/
+_ide/logs
+_ide/.wsdata
