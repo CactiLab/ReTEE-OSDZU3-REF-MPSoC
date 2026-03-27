@@ -131,7 +131,7 @@ int init_platform()
     enable_caches();
     init_uart();
     *led_direction = 0x00;
-    *led_data = 0;
+    *led_data = 0b11111111;
 
     // setup interrupts
     int Status;
@@ -143,18 +143,24 @@ int init_platform()
 		return XST_FAILURE;
 	}
 
+    *led_data = 0b11101110;
+
     Status = XIntc_Connect(&InterruptController, 0,
                           (XInterruptHandler)arm_interrupt_handler,
                           (void*) &InterruptController);
     if (Status != XST_SUCCESS) {
         return XST_FAILURE;
     }
+
+    *led_data = 0b11001100;
     
     // Start interrupt controller
     Status = XIntc_Start(&InterruptController, XIN_REAL_MODE);
     if (Status != XST_SUCCESS) {
         return XST_FAILURE;
     }
+
+    *led_data = 0b10001000;
     
     // Enable GPIO interrupt
     XIntc_Enable(&InterruptController, 0);
@@ -168,6 +174,8 @@ int init_platform()
 	Xil_ExceptionEnable();
 
     riscv_enable_interrupts();
+
+    *led_data = 0;
 
     return XST_SUCCESS;
 }

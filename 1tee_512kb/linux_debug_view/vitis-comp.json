@@ -1,0 +1,19 @@
+{
+  "name": "linux_debug_view",
+  "type": "HOST",
+  "platform": "platform",
+  "domain": "linux",
+  "cpuInstance": "cortex-a53",
+  "cpuType": "cortex-a53",
+  "os": "linux",
+  "sysroot": "/opt/petalinux/2025.1/sysroots/cortexa72-cortexa53-amd-linux",
+  "configuration": {
+    "componentType": "HOST",
+    "hostToolchainConfigurations": []
+  },
+  "domainRealName": "linux",
+  "useSysrootToolchain": true,
+  "sysrootToolchain": "/opt/petalinux/2025.1/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-amd-linux",
+  "applicationFlow": "EMBEDDED",
+  "templateFlow": "VITIS"
+}

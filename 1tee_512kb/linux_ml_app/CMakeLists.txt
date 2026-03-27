@@ -2,7 +2,7 @@
 
 cmake_minimum_required(VERSION 3.20)
 include(${CMAKE_CURRENT_SOURCE_DIR}/UserConfig.cmake)
-project(linux_video_ml
+project(linux_ml_app
 LANGUAGES
 C CXX
 )

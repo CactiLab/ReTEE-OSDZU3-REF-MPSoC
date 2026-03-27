@@ -30,6 +30,15 @@ static int read_sysfs_string(const char *path, char *buf, size_t size) {
     return 0;
 }
 
+static int read_sysfs_hex(const char *path, uint64_t *val) {
+    FILE *f = fopen(path, "r");
+    if (!f) return -1;
+    int ret = fscanf(f, "%llx", (unsigned long long *)val);
+    fclose(f);
+    return (ret == 1) ? 0 : -1;
+}
+
+
 static void trigger_interrupt(void) {
     system("devmem " INTR_ADDR " 32 1; devmem " INTR_ADDR " 32 0;");
 }
@@ -60,19 +69,23 @@ static shared_ocm_t* map_ocm(void) {
     printf("Found UIO device: /dev/%s\n", dev_name);
 
     char path[128];
-    snprintf(path, sizeof(path), "/sys/class/uio/%s/maps/map0/size", dev_name);
-    FILE *f = fopen(path, "r");
-    if (!f) { perror("read uio size"); return NULL; }
+    snprintf(path, sizeof(path), "/sys/class/uio/%s/maps/map0/size", dev_name);    
     unsigned long size;
-    fscanf(f, "0x%lx", &size);
-    fclose(f);
+    if (read_sysfs_hex(path, &size)) { perror("read uio size"); return NULL; }
+
+    unsigned long addr;
+    snprintf(path, sizeof(path), "/sys/class/uio/%s/maps/map0/addr", dev_name);
+    if (read_sysfs_hex(path, &addr)) { perror("read addr"); return NULL; }
+
+    printf("UIO %s: phys 0x%llx  size 0x%llx\n",
+           dev_name, (unsigned long long)addr, (unsigned long long)size);
 
     snprintf(path, sizeof(path), "/dev/%s", dev_name);
-    int fd = open(path, O_RDWR);
-    if (fd < 0) { perror("open uio"); return NULL; }
+    int fd = open(path, O_RDWR | O_SYNC);
+    if (fd < 0) { perror("open uio device"); return NULL; }
 
-    void *mapped = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-    if (mapped == MAP_FAILED) { perror("mmap uio"); return NULL; }
+    void *mapped = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, NULL);
+    if (mapped == MAP_FAILED) { perror("mmap"); close(fd); return NULL; }
 
     return (shared_ocm_t*)mapped;
 }
@@ -95,35 +108,10 @@ static void wait_ready(shared_ocm_t *ocm) {
     while (!ocm->ready) continue;
 }
 
-/* Original: copy entire ELF into OCM data[] (max ~200KB) */
-static int load_elf(shared_ocm_t *ocm, const char *elf_path) {
-    size_t sz;
-    uint8_t *buf = read_file(elf_path, &sz);
-    if (!buf) return -1;
-
-    if (sz > sizeof(ocm->data)) {
-        fprintf(stderr, "ELF too large for OCM (%zu > %zu). "
-                "Use --dram or --chunked.\n", sz, sizeof(ocm->data));
-        free(buf);
-        return -1;
-    }
-    memcpy((void*)ocm->data, buf, sz);
-    free(buf);
-    printf("Loaded %zu bytes from %s into OCM\n", sz, elf_path);
-
-    ocm->ready = false;
-    ocm->command = CMD_LOAD_ELF;
-    trigger_interrupt();
-
-    printf("Waiting for RISC-V to load ELF...\n");
-    wait_ready(ocm);
-    printf("ELF loaded and running\n");
-    return 0;
-}
-
 /* DRAM pointer mode: write ELF to DRAM via /dev/mem, pass address to firmware */
 static int load_elf_dram(shared_ocm_t *ocm, const char *elf_path,
                          uint32_t dram_addr) {
+    // wait_ready(ocm);
     size_t sz;
     uint8_t *buf = read_file(elf_path, &sz);
     if (!buf) return -1;
@@ -163,67 +151,6 @@ static int load_elf_dram(shared_ocm_t *ocm, const char *elf_path,
     return 0;
 }
 
-/* Chunked mode: host parses ELF, sends PT_LOAD segments one at a time via OCM */
-static int load_elf_chunked(shared_ocm_t *ocm, const char *elf_path) {
-    size_t sz;
-    uint8_t *buf = read_file(elf_path, &sz);
-    if (!buf) return -1;
-
-    Elf32_Ehdr *ehdr = (Elf32_Ehdr*)buf;
-    if (memcmp(ehdr->e_ident, ELFMAG, SELFMAG) != 0) {
-        fprintf(stderr, "Not a valid ELF file\n");
-        free(buf);
-        return -1;
-    }
-
-    Elf32_Phdr *phdrs = (Elf32_Phdr*)(buf + ehdr->e_phoff);
-    size_t max_chunk = (50000 - 2) * sizeof(uint32_t); /* room for 2 header words */
-
-    printf("Chunked load: %d program headers, entry=0x%08X\n",
-           ehdr->e_phnum, ehdr->e_entry);
-
-    for (int i = 0; i < ehdr->e_phnum; i++) {
-        if (phdrs[i].p_type != PT_LOAD || phdrs[i].p_filesz == 0)
-            continue;
-
-        uint32_t dest = phdrs[i].p_paddr;
-        uint32_t remaining = phdrs[i].p_filesz;
-        uint32_t src_off = phdrs[i].p_offset;
-        uint32_t dst_off = 0;
-
-        printf("  seg %d: %u bytes -> 0x%08X\n", i, remaining, dest);
-
-        while (remaining > 0) {
-            uint32_t chunk = remaining > max_chunk ? max_chunk : remaining;
-
-            ocm->data[0] = dest + dst_off;
-            ocm->data[1] = chunk;
-            memcpy((void*)&ocm->data[2], buf + src_off + dst_off, chunk);
-
-            ocm->ready = false;
-            ocm->command = CMD_LOAD_SEG;
-            trigger_interrupt();
-            wait_ready(ocm);
-
-            dst_off += chunk;
-            remaining -= chunk;
-        }
-    }
-
-    /* All segments loaded — tell firmware to execute */
-    ocm->data[0] = ehdr->e_entry;
-    ocm->ready = false;
-    ocm->command = CMD_EXEC;
-    trigger_interrupt();
-
-    printf("Waiting for RISC-V to start execution...\n");
-    wait_ready(ocm);
-    printf("ELF loaded (chunked) and running\n");
-
-    free(buf);
-    return 0;
-}
-
 /*
  * Downsample YUYV to int8 grayscale for model input.
  * Extracts Y (luminance) channel and shifts to [-128, 127].
@@ -259,47 +186,38 @@ static int open_camera(void) {
 }
 
 int main(int argc, char *argv[]) {
-    const char *elf_path = "/home/petalinux/test_app.elf";
+    const char *elf_path = "/tmp/ML_SSA.elf";
     const char *mode = "ocm";            /* default: original OCM mode */
     uint32_t dram_addr = 0x50000000;     /* default DRAM load address */
-
-    for (int i = 1; i < argc; i++) {
-        if (strcmp(argv[i], "--dram") == 0) {
-            mode = "dram";
-            if (i + 1 < argc && argv[i+1][0] != '-') {
-                dram_addr = strtoul(argv[++i], NULL, 0);
-            }
-        } else if (strcmp(argv[i], "--chunked") == 0) {
-            mode = "chunked";
-        } else {
-            elf_path = argv[i];
-        }
-    }
-    printf("Mode: %s, ELF: %s\n", mode, elf_path);
 
     /* Map OCM */
     shared_ocm_t *ocm = map_ocm();
     if (!ocm) return 1;
 
-    /* Load ML_SSC ELF */
-    int rc;
-    if (strcmp(mode, "dram") == 0) {
-        printf("DRAM address: 0x%08X\n", dram_addr);
-        rc = load_elf_dram(ocm, elf_path, dram_addr);
-    } else if (strcmp(mode, "chunked") == 0) {
-        rc = load_elf_chunked(ocm, elf_path);
-    } else {
-        rc = load_elf(ocm, elf_path);
-    }
-    if (rc < 0) return 1;
-
     /* Get pointer to ML data region in OCM */
     volatile ml_data_t *ml = (volatile ml_data_t*)ocm->data;
 
-    /* Wait for ML_SSC to signal ready */
-    printf("Waiting for ML_SSC to initialize...\n");
-    while (!ml->ready) continue;
-    printf("ML_SSC ready\n");
+    /* Check if the correct SSA is already loaded and ready */
+    if (ml->status == STATUS_READY && ml->model_id == MODEL_ID_PERSON_DETECT) {
+        printf("SSA already loaded (model_id=0x%08X), skipping load\n",
+               ml->model_id);
+    } else {
+        if (ml->status != STATUS_BUSY) {
+            printf("SSA loaded but wrong model (got 0x%08X, want 0x%08X), reloading\n",
+                   ml->model_id, MODEL_ID_PERSON_DETECT);
+        }
+
+        /* Load ML_SSA ELF */
+        int rc;
+        printf("DRAM address: 0x%08X\n", dram_addr);
+        rc = load_elf_dram(ocm, elf_path, dram_addr);
+        if (rc < 0) return 1;
+
+        /* Wait for ML_SSA to signal ready */
+        printf("Waiting for ML_SSA to initialize...\n");
+        while (ml->status != STATUS_READY) continue;
+    }
+    printf("ML_SSA ready (model_id=0x%08X)\n", ml->model_id);
 
     /* Open camera */
     int cam_fd = open_camera();
@@ -353,18 +271,19 @@ int main(int argc, char *argv[]) {
         preprocess_yuyv(frame, preprocess_buf, CAM_WIDTH, CAM_HEIGHT);
         clock_gettime(CLOCK_MONOTONIC, &t2);
 
-        /* Send to ML_SSC via OCM */
-        memcpy((void*)ml->data, preprocess_buf, MODEL_INPUT_SZ);
+        /* Send to ML_SSC via OCM (byte copy — memcpy may use NEON which
+           faults on device/strongly-ordered memory from /dev/mem O_SYNC) */
+        for (int i = 0; i < MODEL_INPUT_SZ; i++)
+            ml->data[i] = preprocess_buf[i];
         ml->data_sz = MODEL_INPUT_SZ;
-        ml->complete = false;
-        ml->err = false;
+        ml->status = STATUS_BUSY;
         ml->command = CMD_INFER;
 
         /* Wait for inference result */
-        while (!ml->complete) continue;
+        while (!(ml->status & STATUS_COMPLETE) && ml->status != STATUS_ERR) continue;
         clock_gettime(CLOCK_MONOTONIC, &t3);
 
-        if (ml->err) {
+        if (ml->status == STATUS_ERR) {
             fprintf(stderr, "ML_SSC inference error\n");
         } else {
             double preproc_ms = (t2.tv_sec - t1.tv_sec) * 1000.0 +
@@ -386,6 +305,7 @@ int main(int argc, char *argv[]) {
         clock_gettime(CLOCK_MONOTONIC, &t_now);
         double elapsed = (t_now.tv_sec - t_start.tv_sec) +
                          (t_now.tv_nsec - t_start.tv_nsec) / 1e9;
+        printf("%f ms", elapsed * 1e3);
         if (elapsed >= 5.0) {
             printf("--- %.1f fps ---\n", frames / elapsed);
             frames = 0;

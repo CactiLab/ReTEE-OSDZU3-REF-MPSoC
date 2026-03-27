@@ -3,8 +3,6 @@
 * SPDX-License-Identifier: MIT
 ******************************************************************************/
 /*
- * helloworld.c: simple test application
- *
  * This application configures UART 16550 to baud rate 9600.
  * PS7 UART (Zynq) is not initialized by this application, since
  * bootrom/bsp configures it to baud rate 115200
@@ -34,7 +32,7 @@ typedef struct __attribute__((__packed__)) {
     volatile bool ready;
     volatile bool executing;
     volatile uint32_t command;
-    volatile uint32_t data[50000];
+    volatile uint32_t data[];
 } shared_ocm_t;
 
 #define SHARED_ADDR 0xFFFC0000
@@ -48,8 +46,7 @@ typedef struct __attribute__((__packed__)) {
 volatile bool intr_triggered = false;
 
 /* Load ELF from a buffer (OCM data[] or DRAM pointer) */
-static void load_elf_from_buf(char *data_buf)
-{
+static void load_elf_from_buf(char *data_buf) {
     if (*(uint32_t*)data_buf != 0x464C457F) {
         xil_printf("[m] ELF magic not found: %x\n\r", *(uint32_t*)data_buf);
         return;
@@ -69,22 +66,26 @@ static void load_elf_from_buf(char *data_buf)
 
     void* entrypoint = (void*) ehdr->e_entry;
     xil_printf("[m] jumping to 0x%x\n\r", entrypoint);
+
+    /* Signal ready before jumping — the module may loop forever */
+    SHARED_OCM->executing = 0;
+    SHARED_OCM->ready = 1;
+
     ((void (*)(void))entrypoint)();
 
     memset(&_MODULE_BASE, 0, (size_t)&_MODULE_SIZE);
 }
 
-int main()
-{
+int main() {
     init_platform();
 
-    print("[riscv] Initialized.\n\r");
+    xil_printf("[riscv] Initialized.\n\r");
 
     int c = 0;
 
     while (1) {
         if (intr_triggered) {
-            xil_printf("[riscv] Handling IRQ: 0x%08X.\n", SHARED_OCM->command);
+            xil_printf("[riscv] Handling IRQ: 0x%08X.\n\r", SHARED_OCM->command);
             SHARED_OCM->executing = 1;
 
             uint32_t cmd = SHARED_OCM->command;
@@ -100,7 +101,7 @@ int main()
                 uint32_t elf_size  = SHARED_OCM->data[1];
                 xil_printf("[m] LOADING ELF from DRAM @ 0x%08X (%d bytes)\r\n",
                            dram_addr, elf_size);
-                load_elf_from_buf((char*)dram_addr);
+                load_elf_from_buf((char*) dram_addr);
 
             } else if (cmd == CMD_LOAD_SEG) {
                 /* Chunked mode: copy one segment to destination */
@@ -113,6 +114,10 @@ int main()
                 /* Chunked mode: execute at entry point */
                 uint32_t entry = SHARED_OCM->data[0];
                 xil_printf("[m] EXEC @ 0x%08X\r\n", entry);
+                /* Signal ready before jumping — the module may loop forever */
+                SHARED_OCM->executing = 0;
+                SHARED_OCM->ready = 1;
+                intr_triggered = false;
                 ((void (*)(void))entry)();
                 memset(&_MODULE_BASE, 0, (size_t)&_MODULE_SIZE);
 

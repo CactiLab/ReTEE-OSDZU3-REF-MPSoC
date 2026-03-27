@@ -1,19 +1,19 @@
 /******************************************************************************
-* Copyright (C) 2023 Advanced Micro Devices, Inc. All Rights Reserved.
+* Copyright (C) 2023 - 2025 Advanced Micro Devices, Inc. All Rights Reserved.
 * SPDX-License-Identifier: MIT
 ******************************************************************************/
 
 _STACK_SIZE = DEFINED(_STACK_SIZE) ? _STACK_SIZE : 0x400;
-_HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x1000;
+_HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x800;
 
 /* Define Memories in the system */
 
 MEMORY
 {
-	psu_ddr_0 : ORIGIN = 0x40000000, LENGTH = 0x3ff00000
-	psu_qspi_linear_0 : ORIGIN = 0xd0000000, LENGTH = 0x10000000
-	psu_ocm_0 : ORIGIN = 0xfffc0000, LENGTH = 0x40000
-	lmb_bram_0 : ORIGIN = 0x0, LENGTH = 0x80000
+	psu_ddr_0_memory_0 : ORIGIN = 0x40000000, LENGTH = 0x3ff00000
+	psu_qspi_linear_0_memory_0 : ORIGIN = 0xd0000000, LENGTH = 0x10000000
+	bram : ORIGIN = 0x0, LENGTH = 0xc0000
+	psu_ocm_ram_0_memory_0 : ORIGIN = 0xfffc0000, LENGTH = 0x40000
 }
 
 /* Specify the default entry point to the program */
@@ -28,26 +28,26 @@ SECTIONS
    __text.init_start = .;
    *(.text.init)
    __text.init_end = .;
-} > lmb_bram_0
+} > bram
 
 .text : {
    . = ALIGN(2048);
    *(.text)
    *(.text.*)
    *(.gnu.linkonce.t.*)
-} > lmb_bram_0
+} > bram
 
-.note.gnu.build-id : {
+.note.gnu.build-id (NOLOAD): {
    KEEP (*(.note.gnu.build-id))
-} > lmb_bram_0
+} > bram
 
 .init : {
    KEEP (*(.init))
-} > lmb_bram_0
+} > bram
 
 .fini : {
    KEEP (*(.fini))
-} > lmb_bram_0
+} > bram
 
 .ctors : {
    __CTOR_LIST__ = .;
@@ -58,7 +58,7 @@ SECTIONS
    KEEP (*(.ctors))
    __CTOR_END__ = .;
    ___CTORS_END___ = .;
-} > lmb_bram_0
+} > bram
 
 .dtors : {
    __DTOR_LIST__ = .;
@@ -69,7 +69,7 @@ SECTIONS
    KEEP (*(.dtors))
    __DTOR_END__ = .;
    ___DTORS_END___ = .;
-} > lmb_bram_0
+} > bram
 
 .rodata : {
    __rodata_start = .;
@@ -77,13 +77,13 @@ SECTIONS
    *(.rodata.*)
    *(.gnu.linkonce.r.*)
    __rodata_end = .;
-} > lmb_bram_0
+} > bram
 
 .srodata : {
    __srodata_start = .;
    *(.srodata)
    __srodata_end = .;
-} > lmb_bram_0
+} > bram
 
 .sdata2 : {
    __sdata2_start = .;
@@ -91,7 +91,7 @@ SECTIONS
    *(.sdata2.*)
    *(.gnu.linkonce.s2.*)
    __sdata2_end = .;
-} > lmb_bram_0
+} > bram
 
 .data : {
    __data_start = .;
@@ -99,41 +99,45 @@ SECTIONS
    *(.data.*)
    *(.gnu.linkonce.d.*)
    _edata = .;
-} > lmb_bram_0
+} > bram
 
 .got : {
    *(.got)
-} > lmb_bram_0
+} > bram
 
 .got1 : {
    *(.got1)
-} > lmb_bram_0
+} > bram
 
 .got2 : {
    *(.got2)
-} > lmb_bram_0
+} > bram
+
+.eh_frame : {
+   *(.eh_frame)
+} > bram
 
 .jcr : {
    *(.jcr)
-} > lmb_bram_0
+} > bram
 
 .gcc_except_table : {
    *(.gcc_except_table)
-} > lmb_bram_0
+} > bram
 
 .init_array : {
    __init_array_start = .;
    KEEP (*(SORT(.init_array.*)))
    KEEP (*(.init_array))
    __init_array_end = .;
-} > lmb_bram_0
+} > bram
 
 .fini_array : {
    __fini_array_start = .;
    KEEP (*(SORT(.fini_array.*)))
    KEEP (*(.fini_array))
    __fini_array_end = .;
-} > lmb_bram_0
+} > bram
 
 .sdata : {
    __sdata_start = .;
@@ -141,7 +145,7 @@ SECTIONS
    *(.sdata.*)
    *(.gnu.linkonce.s.*)
    __sdata_end = .;
-} > lmb_bram_0
+} > bram
 
 .tdata : {
    __tdata_start = .;
@@ -149,7 +153,7 @@ SECTIONS
    *(.tdata.*)
    *(.gnu.linkonce.td.*)
    __tdata_end = .;
-} > lmb_bram_0
+} > bram
 
 .tbss : {
    __tbss_start = .;
@@ -157,7 +161,7 @@ SECTIONS
    *(.tbss.*)
    *(.gnu.linkonce.tb.*)
    __tbss_end = .;
-} > lmb_bram_0
+} > bram
 
 .bss (NOLOAD) : {
    __bss_start = .;
@@ -166,7 +170,7 @@ SECTIONS
    *(.gnu.linkonce.b.*)
    *(COMMON)
    __bss_end = .;
-} > lmb_bram_0
+} > bram
 
 .sbss (NOLOAD) : {
    __sbss_start = .;
@@ -174,15 +178,15 @@ SECTIONS
    *(.sbss.*)
    *(.gnu.linkonce.sb.*)
    __sbss_end = .;
-} > lmb_bram_0
+} > bram
 
-.sbss2 : {
+.sbss2 (NOLOAD) : {
    __sbss2_start = .;
    *(.sbss2)
    *(.sbss2.*)
    *(.gnu.linkonce.sb2.*)
    __sbss2_end = .;
-} > lmb_bram_0
+} > bram
 
 _SDA_BASE_ = __sdata_start + ((__sbss_end - __sdata_start) / 2 );
 
@@ -196,7 +200,7 @@ _SDA2_BASE_ = __sdata2_start + ((__sbss2_end - __sdata2_start) / 2 );
    _heap_start = .;
    . += _HEAP_SIZE;
    _heap_end = .;
-} > lmb_bram_0
+} > bram
 
 .stack (NOLOAD) : {
    _stack_end = .;
@@ -204,10 +208,10 @@ _SDA2_BASE_ = __sdata2_start + ((__sbss2_end - __sdata2_start) / 2 );
    . = ALIGN(8);
    _stack = .;
    __stack = _stack;
-} > lmb_bram_0
+} > bram
 
 __global_pointer$ = MIN(__sdata_start + 0x800, MAX(__data_start + 0x800, __bss_end - 0x800));
 _end = .;
 _MODULE_BASE = ALIGN(., 0x800);
-_MODULE_SIZE = (ORIGIN(lmb_bram_0) + LENGTH(lmb_bram_0)) - _MODULE_BASE;
+_MODULE_SIZE = (ORIGIN(bram) + LENGTH(bram)) - _MODULE_BASE;
 }
