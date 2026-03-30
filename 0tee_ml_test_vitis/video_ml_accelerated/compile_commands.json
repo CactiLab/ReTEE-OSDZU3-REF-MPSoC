@@ -1,0 +1,7 @@
+[
+  {
+    "file": "/home/test/Documents/research/byotee_riscv/0tee_ml_test_vitis/video_ml_accelerated/src/main.c",
+    "command": "/opt/petalinux/2025.1/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-amd-linux/aarch64-amd-linux-gcc -DVITIS_MAJOR_VERSION\u003d\"\" -DVITIS_MINOR_VERSION\u003d\"\" -DVITIS_VERSION\u003d\"\" -I/opt/petalinux/2025.1/sysroots/cortexa72-cortexa53-amd-linux/usr/include -g  -I/opt/petalinux/2025.1/sysroots/cortexa72-cortexa53-amd-linux/usr/include/c++/11.2.0/aarch64-xilinx-linux -I/opt/petalinux/2025.1/sysroots/cortexa72-cortexa53-amd-linux/usr/include/c++/11.2.0/backward -I/opt/petalinux/2025.1/sysroots/cortexa72-cortexa53-amd-linux/usr/lib/aarch64-xilinx-linux/11.2.0/include -I/opt/petalinux/2025.1/sysroots/cortexa72-cortexa53-amd-linux/usr/include/c++/11.2.0 --sysroot\u003d/opt/petalinux/2025.1/sysroots/cortexa72-cortexa53-amd-linux -Wall -Wextra -Os -o CMakeFiles/video_ml_accelerated.elf.dir/src/main.c.obj -c /home/test/Documents/research/byotee_riscv/0tee_ml_test_vitis/video_ml_accelerated/src/main.c",
+    "directory": "/home/test/Documents/research/byotee_riscv/0tee_ml_test_vitis/video_ml_accelerated"
+  }
+]

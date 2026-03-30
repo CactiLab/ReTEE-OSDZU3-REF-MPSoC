@@ -1,3 +1,0 @@
-relativeroot=/home/e/Documents/research/byotee_riscv/1tee_512kb/systolic_ml
-original_argv=--mode hls --csim --config /home/e/Documents/research/byotee_riscv/1tee_512kb/systolic_ml/hls_config.cfg --work_dir systolic_ml 
-

@@ -1,5 +1,5 @@
 {
-  "name": "riscv_firmware",
+  "name": "ML_SSA",
   "type": "HOST",
   "platform": "platform",
   "domain": "microblaze_riscv_0",
@@ -12,7 +12,5 @@
   },
   "domainRealName": "microblaze_riscv_0",
   "useSysrootToolchain": false,
-  "applicationFlow": "EMBEDDED",
-  "template": "hello_world",
-  "templateFlow": "VITIS"
+  "applicationFlow": "EMBEDDED"
 }

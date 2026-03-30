@@ -1,0 +1,28 @@
+# Ignore build output directory
+/build
+/export
+
+# Ignore object files and dependent files
+.o
+.d
+
+#Ignore logs folder and log files
+/logs
+.log
+
+#Ignore lock files
+.lock
+
+.bin
+.pdi
+.vitisWorkspace.json
+
+_ide/logs
+_ide/.wsdata
+
+/mac_accel/conv_accel
+/mac_accel/conv_accel.zip
+/mac_accel/hls
+/mac_accel/logs
+/mac_accel/reports
+/mac_accel/mac_accel.*
