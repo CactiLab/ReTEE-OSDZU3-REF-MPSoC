@@ -73,7 +73,6 @@ static volatile bool accel_done_flag = false;
 static inline void accel_wait_done(void) {
     while (!accel_done_flag)
         ;
-    accel_done_flag = false;
 }
 
 static void accel_isr(void *callback_ref) {
@@ -232,7 +231,7 @@ static inline void accel_run_layer(const accel_layer_desc_t *d) {
     (void)*(volatile uint32_t *)ACCEL_ACT_A_BASE;
 
     accel_write(ACCEL_AP_CTRL, AP_START);
-    accel_wait_done();
+    accel_wait_idle();
 }
 
 #endif /* CONV_ACCEL_DRIVER_H */

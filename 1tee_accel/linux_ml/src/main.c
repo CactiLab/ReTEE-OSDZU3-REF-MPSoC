@@ -311,8 +311,32 @@ int main(int argc, char *argv[]) {
             ml->status = STATUS_BUSY;
             ml->command = CMD_INFER;
 
-            /* Wait for inference result */
-            while (!(ml->status & STATUS_COMPLETE) && ml->status != STATUS_ERR) continue;
+            /* Wait for inference result (timeout after 100ms) */
+            struct timespec t_deadline;
+            clock_gettime(CLOCK_MONOTONIC, &t_deadline);
+            t_deadline.tv_nsec += 100000000L;
+            if (t_deadline.tv_nsec >= 1000000000L) {
+                t_deadline.tv_sec++;
+                t_deadline.tv_nsec -= 1000000000L;
+            }
+            while (!(ml->status & STATUS_COMPLETE) && ml->status != STATUS_ERR) {
+                struct timespec t_chk;
+                clock_gettime(CLOCK_MONOTONIC, &t_chk);
+                if (t_chk.tv_sec > t_deadline.tv_sec ||
+                    (t_chk.tv_sec == t_deadline.tv_sec &&
+                     t_chk.tv_nsec >= t_deadline.tv_nsec)) {
+                    fprintf(stderr, "WARN: inference timeout (status=0x%02x), resending\n",
+                            ml->status);
+                    ml->status = STATUS_BUSY;
+                    ml->command = CMD_INFER;
+                    t_deadline = t_chk;
+                    t_deadline.tv_nsec += 100000000L;
+                    if (t_deadline.tv_nsec >= 1000000000L) {
+                        t_deadline.tv_sec++;
+                        t_deadline.tv_nsec -= 1000000000L;
+                    }
+                }
+            }
             clock_gettime(CLOCK_MONOTONIC, &t3);
 
             /* Build packet */

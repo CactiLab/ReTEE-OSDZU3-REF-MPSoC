@@ -20,8 +20,11 @@
 _ide/logs
 _ide/.wsdata
 
-conv_accel/conv_accel/hls
 conv_accel/conv_accel/conv_accel
-conv_accel/conv_accel/*_summary
-conv_accel/conv_accel/reports
 conv_accel/conv_accel/conv_accel.zip
+conv_accel/conv_accel/hls
+conv_accel/conv_accel/reports
+conv_accel/conv_accel/*_summary
+
+BOOT.bin
+system_fw.bit

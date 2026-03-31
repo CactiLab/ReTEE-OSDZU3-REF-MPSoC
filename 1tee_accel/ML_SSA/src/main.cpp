@@ -18,6 +18,7 @@
 #include "custom_ops.h"
 
 extern uint32_t g_layer_idx;
+static uint32_t g_infer_count;
 
 #define MODEL_WIDTH  96
 #define MODEL_HEIGHT 96
@@ -113,10 +114,9 @@ extern "C" int module_main() {
     ml->status = STATUS_READY;
     xil_printf("ML_SSA> Ready\r\n");
 
+    ocm->ready = true;
     while (1) {
         if (ml->command == CMD_NONE) {
-            ocm->ready = true;
-            ml->status = STATUS_READY;
             continue;
         }
 
@@ -128,6 +128,7 @@ extern "C" int module_main() {
                    MODEL_WIDTH * MODEL_HEIGHT);
 
             g_layer_idx = 0;
+            ++g_infer_count;
             if (interp->Invoke() != kTfLiteOk) {
                 xil_printf("ML_SSC> Invoke failed\r\n");
                 ml->status = STATUS_ERR;
@@ -138,9 +139,12 @@ extern "C" int module_main() {
             ml->person_score    = output->data.int8[1];
             ml->confidence      = (uint8_t)(output->data.int8[1] + 128);
 
-            xil_printf("ML_SSC> [%d,%d] conf=%d%%\r\n",
-                       (int)output->data.int8[0], (int)output->data.int8[1],
-                       (int)(ml->confidence) * 100 / 255);
+            if (g_infer_count % 400 == 0) {
+                xil_printf("ML_SSA> inference #%u [%d,%d] conf=%d%%\r\n",
+                           g_infer_count,
+                           (int)output->data.int8[0], (int)output->data.int8[1],
+                           (int)(ml->confidence) * 100 / 255);
+            }
             break;
         }
         default:

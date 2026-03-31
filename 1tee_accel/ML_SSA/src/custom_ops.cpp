@@ -31,13 +31,7 @@
 #include "tensorflow/lite/micro/kernels/kernel_util.h"
 #include "tensorflow/lite/micro/micro_log.h"
 
-static inline uint32_t rdcycle(void) {
-    uint32_t c;
-    asm volatile("csrr %0, mcycle" : "=r"(c));
-    return c;
-}
-
-static uint32_t g_layer_idx;
+uint32_t g_layer_idx;
 
 namespace {
 
@@ -291,14 +285,10 @@ static TfLiteStatus AccelConvEval(TfLiteContext *context, TfLiteNode *node) {
     const auto *adata = static_cast<const AccelOpData *>(node->user_data);
     const auto &data = adata->base;
 
-    uint32_t t0 = rdcycle();
-    int layer = g_layer_idx++;
+    g_layer_idx++;
 
     if (!adata->use_hw) {
-        TfLiteStatus st = g_stock_conv.invoke(context, node);
-        uint32_t dt = rdcycle() - t0;
-        xil_printf("L%d Conv SW %u\r\n", layer, dt);
-        return st;
+        return g_stock_conv.invoke(context, node);
     }
 
     const TfLiteEvalTensor *input =
@@ -373,8 +363,6 @@ static TfLiteStatus AccelConvEval(TfLiteContext *context, TfLiteNode *node) {
         }
     }
 
-    uint32_t dt = rdcycle() - t0;
-    xil_printf("L%d Conv HW %u\r\n", layer, dt);
     return kTfLiteOk;
 }
 
@@ -596,21 +584,14 @@ static TfLiteStatus AccelDwConvEval(TfLiteContext *context, TfLiteNode *node) {
     const auto *adata = static_cast<const AccelOpData *>(node->user_data);
     const auto &data = adata->base;
 
-    uint32_t t0 = rdcycle();
-    int layer = g_layer_idx++;
+    g_layer_idx++;
 
     if (!adata->use_hw) {
-        TfLiteStatus st = g_stock_dwconv.invoke(context, node);
-        uint32_t dt = rdcycle() - t0;
-        xil_printf("L%d DW SW %u\r\n", layer, dt);
-        return st;
+        return g_stock_dwconv.invoke(context, node);
     }
 
     if (adata->use_im2col) {
-        TfLiteStatus st = AccelDwConvEvalIm2col(context, node, adata, params);
-        uint32_t dt = rdcycle() - t0;
-        xil_printf("L%d DW HW(im2col) %u\r\n", layer, dt);
-        return st;
+        return AccelDwConvEvalIm2col(context, node, adata, params);
     }
 
     const TfLiteEvalTensor *input = tflite::micro::GetEvalInput(
@@ -665,8 +646,6 @@ static TfLiteStatus AccelDwConvEval(TfLiteContext *context, TfLiteNode *node) {
     int out_size = out_h * out_w * in_c;
     accel_read_output(out_data, 0, out_size);
 
-    uint32_t dt = rdcycle() - t0;
-    xil_printf("L%d DW HW %u\r\n", layer, dt);
     return kTfLiteOk;
 }
 
