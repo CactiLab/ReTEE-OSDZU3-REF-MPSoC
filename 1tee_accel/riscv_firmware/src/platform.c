@@ -111,7 +111,7 @@ void arm_interrupt_handler(XIntc *intc) {
     SHARED_OCM->mb_to_arm_flag = 1;    
 }
 
-static XIntc InterruptController;
+XIntc InterruptController;
 
 volatile uint32_t* led_data = (volatile uint32_t*)(XPAR_XGPIO_0_BASEADDR);
 volatile uint32_t* led_direction = (volatile uint32_t*)(XPAR_XGPIO_0_BASEADDR + 0x04);

@@ -8,28 +8,34 @@
 //  Accelerator parameters — tune to your ZU3 resource budget
 // ============================================================
 
-// MAC array width.  128 INT8 MACs ≈ 128 DSP48E2s (1:1 mapping).
-// Increase to 256 if you pack 2 mults per DSP and have headroom.
-static const int MAC_PARALLEL = 128;
-
 // Maximum dimensions this accelerator supports.
 // MobileNetV1 0.25x 96×96: largest spatial = 48×48, largest channels = 256.
 static const int MAX_H  = 48;
 static const int MAX_W  = 48;
 static const int MAX_C  = 256;
 static const int MAX_K  = 256;   // max output channels
-static const int MAX_TILE_ROWS = 4; // spatial tiling — process 4 rows at a time
+
+// Pointwise: output-channel tile size.
+// Weights for one tile are preloaded into local cache, then all pixels
+// are processed against them.  Determines DSP count for pointwise.
+// TILE_OC=16 → 16 DSPs, 4 KB weight cache.
+static const int PW_TILE_OC = 16;
+
+// Accumulator depth — must be ≥ DSP48E2 multiply-accumulate latency
+// to break the carried dependency on acc[t][d] and achieve II=1.
+static const int ACC_DEPTH = 4;
 
 // Depthwise parallelism — process DW_PARALLEL channels at a time.
 // Kept small to avoid LUT explosion from wide unroll + variable trip counts.
-static const int DW_PARALLEL = 16;
+static const int DW_PARALLEL = 32;
 
-// BRAM sizing (bytes).  These determine the ap_uint port widths.
-// Weight buffer: loaded per-layer by the CPU before each accelerator call.
-// Largest layer (PW 128→256): 32K weights + 1K bias + 2K requant ≈ 36 KB.
-static const int WEIGHT_BRAM_BYTES = 64 * 1024;
-// Activation double-buffer: 48 KB each.
-static const int ACT_BUF_BYTES = 48 * 1024;
+// BRAM sizing (bytes).
+// Two 64 KB activation BRAMs — no separate weight BRAM.
+// Weights are packed into act_bram_a alongside input activations,
+// loaded per-layer by the CPU before each accelerator call.
+// Largest combined: PW 128→256 = ~36 KB weights + ~5 KB input = ~41 KB.
+static const int ACT_BUF_BYTES = 64 * 1024;
+static const int ACT_BUF_WORDS = ACT_BUF_BYTES / 4;
 
 // ============================================================
 //  Fixed-point / quantisation types
@@ -40,6 +46,11 @@ typedef ap_uint<8>  uint8_t_hls;
 
 // ============================================================
 //  Layer descriptor — written by RISC-V via AXI-Lite
+//
+//  All base addresses are byte offsets within the act BRAMs:
+//    weight_base, bias_base, requant_base → offsets in act_bram_a
+//    input_base                           → offset in act_bram_a
+//    output_base                          → offset in act_bram_b
 // ============================================================
 struct LayerDesc {
     // Spatial dimensions (input)
@@ -58,13 +69,13 @@ struct LayerDesc {
     ap_uint<1>  is_depthwise; // 1 = DEPTHWISE_CONV_2D, 0 = CONV_2D (pointwise/standard)
     ap_uint<1>  relu6_en;     // 1 = apply ReLU6 clamp after requantisation
 
-    // BRAM base addresses (byte offsets)
-    ap_uint<20> weight_base;  // offset into weight BRAM
-    ap_uint<20> bias_base;    // offset into weight BRAM (biases stored after weights)
-    ap_uint<20> input_base;   // offset into activation BRAM (ping or pong)
-    ap_uint<20> output_base;  // offset into activation BRAM (pong or ping)
+    // BRAM base addresses (byte offsets into act_bram_a)
+    ap_uint<20> weight_base;  // weights
+    ap_uint<20> bias_base;    // biases (after weights)
+    ap_uint<20> input_base;   // input activations (after requant)
+    ap_uint<20> output_base;  // offset in act_bram_b
 
-    // Per-channel requantisation table base (stored in weight BRAM)
+    // Per-channel requantisation table base (in act_bram_a, after biases)
     // Each entry: int32 multiplier + int8 shift (5 bytes per channel)
     ap_uint<20> requant_base;
 
@@ -96,10 +107,11 @@ void conv_accel(
     ap_int<8>   input_zp,
     ap_int<8>   output_zp,
 
-    // BRAM ports — directly wired to PL block RAMs
-    int8_t_hls  weight_bram[WEIGHT_BRAM_BYTES],
-    int8_t_hls  act_bram_a[ACT_BUF_BYTES],
-    int8_t_hls  act_bram_b[ACT_BUF_BYTES]
+    // BRAM ports — two 64 KB activation BRAMs (32-bit wide)
+    // act_bram_a: weights + input (read by accelerator)
+    // act_bram_b: output (written by accelerator)
+    ap_uint<32> act_bram_a[ACT_BUF_WORDS],
+    ap_uint<32> act_bram_b[ACT_BUF_WORDS]
 );
 
 #endif // ACCEL_H

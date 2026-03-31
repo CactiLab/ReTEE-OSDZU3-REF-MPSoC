@@ -109,7 +109,6 @@ int main() {
                 uint32_t size = SHARED_OCM->data[1];
                 xil_printf("[m] LOAD_SEG: %d bytes -> 0x%08X\r\n", size, dest);
                 memcpy((void*)dest, (void*)&SHARED_OCM->data[2], size);
-
             } else if (cmd == CMD_EXEC) {
                 /* Chunked mode: execute at entry point */
                 uint32_t entry = SHARED_OCM->data[0];

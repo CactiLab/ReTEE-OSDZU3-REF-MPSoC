@@ -20,7 +20,7 @@ MEMORY
 	psu_ddr_0 : ORIGIN = 0x40000000, LENGTH = 0x3ff00000
 	psu_qspi_linear_0 : ORIGIN = 0xd0000000, LENGTH = 0x10000000
 	psu_ocm_0 : ORIGIN = 0xfffc0000, LENGTH = 0x40000
-	bram : ORIGIN = 0x0, LENGTH = 0xc0000
+	bram : ORIGIN = 0x0, LENGTH = 0xa0000
 }
 
 /* Specify the default entry point to the program */
@@ -35,7 +35,7 @@ SECTIONS
 _module_start = .;
 
 .text . : {
-   . = ALIGN(2048);
+   . = ALIGN(32);
    *(.text)
    *(.text.*)
    *(.gnu.linkonce.t.*)
@@ -47,17 +47,17 @@ _module_start = .;
    __text.init_end = .;
 } > bram
 
-.note.gnu.build-id : {
+.note.gnu.build-id (NOLOAD): {
    KEEP (*(.note.gnu.build-id))
-} > bram
+} > psu_ddr_0
 
-.init : {
+.init (NOLOAD) : {
    KEEP (*(.init))
-} > bram
+} > psu_ddr_0
 
-.fini : {
+.fini (NOLOAD) : {
    KEEP (*(.fini))
-} > bram
+} > psu_ddr_0
 
 .ctors : {
    __CTOR_LIST__ = .;

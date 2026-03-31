@@ -8,10 +8,16 @@
 #include <time.h>
 #include <sys/mman.h>
 #include <sys/ioctl.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <signal.h>
 #include <linux/videodev2.h>
 
 #include <elf.h>
 #include "comm.h"
+
+#define PORT 8080
 
 #define CAM_WIDTH  640
 #define CAM_HEIGHT 480
@@ -246,76 +252,122 @@ int main(int argc, char *argv[]) {
     enum v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
     ioctl(cam_fd, VIDIOC_STREAMON, &type);
 
-    /* Inference loop */
+    /* TCP server setup */
+    signal(SIGPIPE, SIG_IGN);
+    int srv = socket(AF_INET, SOCK_STREAM, 0);
+    int opt = 1;
+    setsockopt(srv, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+
+    struct sockaddr_in saddr = {0};
+    saddr.sin_family = AF_INET;
+    saddr.sin_addr.s_addr = INADDR_ANY;
+    saddr.sin_port = htons(PORT);
+    if (bind(srv, (struct sockaddr*)&saddr, sizeof(saddr)) < 0) {
+        perror("bind"); return 1;
+    }
+    listen(srv, 2);
+    printf("Streaming on port %d (waiting for client...)\n", PORT);
+
+    /* Packet layout: [confidence(1) | person_score(1) | no_person_score(1) | reserved(1) | YUYV frame] */
+    const size_t frame_sz = CAM_WIDTH * CAM_HEIGHT * 2;
+    const size_t pkt_sz = 4 + frame_sz;
+    uint8_t *packet = malloc(pkt_sz);
+    if (!packet) { perror("malloc"); return 1; }
+
     int8_t preprocess_buf[MODEL_INPUT_SZ];
-    int frames = 0;
-    struct timespec t_start, t_now;
-    clock_gettime(CLOCK_MONOTONIC, &t_start);
 
-    printf("Starting inference loop...\n");
     while (1) {
-        /* Dequeue frame */
-        struct v4l2_buffer buf = {0};
-        buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-        buf.memory = V4L2_MEMORY_MMAP;
-        if (ioctl(cam_fd, VIDIOC_DQBUF, &buf) < 0) {
-            perror("VIDIOC_DQBUF");
-            break;
-        }
+        int client = accept(srv, NULL, NULL);
+        if (client < 0) continue;
+        setsockopt(client, IPPROTO_TCP, TCP_NODELAY, &opt, sizeof(opt));
+        printf("Client connected\n");
 
-        uint8_t *frame = (uint8_t*)buffers[buf.index].start;
+        int frames = 0;
+        struct timespec t_start, t_now;
+        clock_gettime(CLOCK_MONOTONIC, &t_start);
 
-        /* Preprocess on ARM: YUYV -> int8 96x96 */
-        struct timespec t1, t2, t3;
-        clock_gettime(CLOCK_MONOTONIC, &t1);
-        preprocess_yuyv(frame, preprocess_buf, CAM_WIDTH, CAM_HEIGHT);
-        clock_gettime(CLOCK_MONOTONIC, &t2);
+        while (1) {
+            /* Dequeue frame */
+            struct v4l2_buffer buf = {0};
+            buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+            buf.memory = V4L2_MEMORY_MMAP;
+            if (ioctl(cam_fd, VIDIOC_DQBUF, &buf) < 0) {
+                perror("VIDIOC_DQBUF");
+                break;
+            }
 
-        /* Send to ML_SSC via OCM (byte copy — memcpy may use NEON which
-           faults on device/strongly-ordered memory from /dev/mem O_SYNC) */
-        for (int i = 0; i < MODEL_INPUT_SZ; i++)
-            ml->data[i] = preprocess_buf[i];
-        ml->data_sz = MODEL_INPUT_SZ;
-        ml->status = STATUS_BUSY;
-        ml->command = CMD_INFER;
+            uint8_t *frame = (uint8_t*)buffers[buf.index].start;
 
-        /* Wait for inference result */
-        while (!(ml->status & STATUS_COMPLETE) && ml->status != STATUS_ERR) continue;
-        clock_gettime(CLOCK_MONOTONIC, &t3);
+            /* Preprocess on ARM: YUYV -> int8 96x96 */
+            struct timespec t1, t2, t3, t4;
+            clock_gettime(CLOCK_MONOTONIC, &t1);
+            preprocess_yuyv(frame, preprocess_buf, CAM_WIDTH, CAM_HEIGHT);
+            clock_gettime(CLOCK_MONOTONIC, &t2);
 
-        if (ml->status == STATUS_ERR) {
-            fprintf(stderr, "ML_SSC inference error\n");
-        } else {
+            /* Send to ML_SSA via OCM */
+            for (int i = 0; i < MODEL_INPUT_SZ; i++)
+                ml->data[i] = preprocess_buf[i];
+            ml->data_sz = MODEL_INPUT_SZ;
+            ml->status = STATUS_BUSY;
+            ml->command = CMD_INFER;
+
+            /* Wait for inference result */
+            while (!(ml->status & STATUS_COMPLETE) && ml->status != STATUS_ERR) continue;
+            clock_gettime(CLOCK_MONOTONIC, &t3);
+
+            /* Build packet */
+            uint8_t confidence = 0;
+            int8_t pscore = 0, npscore = 0;
+            if (ml->status != STATUS_ERR) {
+                confidence = ml->confidence;
+                pscore = ml->person_score;
+                npscore = ml->no_person_score;
+            }
+            packet[0] = confidence;
+            packet[1] = (uint8_t)pscore;
+            packet[2] = (uint8_t)npscore;
+            packet[3] = 0;
+            memcpy(&packet[4], frame, frame_sz);
+
+            /* Send to client */
+            if (send(client, packet, pkt_sz, MSG_NOSIGNAL) <= 0) {
+                ioctl(cam_fd, VIDIOC_QBUF, &buf);
+                break;
+            }
+            clock_gettime(CLOCK_MONOTONIC, &t4);
+
             double preproc_ms = (t2.tv_sec - t1.tv_sec) * 1000.0 +
                                 (t2.tv_nsec - t1.tv_nsec) / 1e6;
             double infer_ms = (t3.tv_sec - t2.tv_sec) * 1000.0 +
                               (t3.tv_nsec - t2.tv_nsec) / 1e6;
+            double send_ms = (t4.tv_sec - t3.tv_sec) * 1000.0 +
+                             (t4.tv_nsec - t3.tv_nsec) / 1e6;
 
-            printf("preprocess: %.1fms  inference: %.1fms  "
-                   "confidence: %d%%  person: %d  no_person: %d\n",
-                   preproc_ms, infer_ms,
-                   (int)ml->confidence * 100 / 255,
-                   ml->person_score, ml->no_person_score);
+            /* Requeue frame */
+            ioctl(cam_fd, VIDIOC_QBUF, &buf);
+
+            frames++;
+            clock_gettime(CLOCK_MONOTONIC, &t_now);
+            double elapsed = (t_now.tv_sec - t_start.tv_sec) +
+                             (t_now.tv_nsec - t_start.tv_nsec) / 1e9;
+            if (elapsed >= 5.0) {
+                printf("%.1f fps | preproc: %.1fms infer: %.1fms send: %.1fms | "
+                       "confidence: %d%%  person: %d  no_person: %d\n",
+                       frames / elapsed, preproc_ms, infer_ms, send_ms,
+                       (int)confidence * 100 / 255, pscore, npscore);
+                frames = 0;
+                t_start = t_now;
+            }
         }
-
-        /* Requeue frame */
-        ioctl(cam_fd, VIDIOC_QBUF, &buf);
-
-        frames++;
-        clock_gettime(CLOCK_MONOTONIC, &t_now);
-        double elapsed = (t_now.tv_sec - t_start.tv_sec) +
-                         (t_now.tv_nsec - t_start.tv_nsec) / 1e9;
-        printf("%f ms", elapsed * 1e3);
-        if (elapsed >= 5.0) {
-            printf("--- %.1f fps ---\n", frames / elapsed);
-            frames = 0;
-            t_start = t_now;
-        }
+        printf("Client disconnected\n");
+        close(client);
     }
 
+    free(packet);
     ioctl(cam_fd, VIDIOC_STREAMOFF, &type);
     for (int i = 0; i < NUM_BUFFERS; i++)
         munmap(buffers[i].start, buffers[i].length);
     close(cam_fd);
+    close(srv);
     return 0;
 }

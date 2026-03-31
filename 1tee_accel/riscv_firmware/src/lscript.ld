@@ -3,8 +3,8 @@
 * SPDX-License-Identifier: MIT
 ******************************************************************************/
 
-_STACK_SIZE = DEFINED(_STACK_SIZE) ? _STACK_SIZE : 0x400;
-_HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x800;
+_STACK_SIZE = DEFINED(_STACK_SIZE) ? _STACK_SIZE : 0x2000;
+_HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x1000;
 
 /* Define Memories in the system */
 
@@ -12,11 +12,10 @@ MEMORY
 {
 	psu_ddr_0_memory_0 : ORIGIN = 0x40000000, LENGTH = 0x3ff00000
 	psu_qspi_linear_0_memory_0 : ORIGIN = 0xd0000000, LENGTH = 0x10000000
-	bram : ORIGIN = 0x0, LENGTH = 0x80000
-   weight_bram_cntlr_memory_2 : ORIGIN = 0xc1000000, LENGTH = 0xC000
+	bram : ORIGIN = 0x0, LENGTH = 0xb0000
 	psu_ocm_ram_0_memory_0 : ORIGIN = 0xfffc0000, LENGTH = 0x40000
-	act_bram_a_cntlr_memory_0 : ORIGIN = 0xc2000000, LENGTH = 0x10000
-	act_bram_b_cntlr_memory_1 : ORIGIN = 0xc2010000, LENGTH = 0x10000
+	act_bram_a_cntlr_memory_0 : ORIGIN = 0xc1000000, LENGTH = 0x10000
+	act_bram_b_cntlr_memory_1 : ORIGIN = 0xc2000000, LENGTH = 0x10000
 }
 
 /* Specify the default entry point to the program */

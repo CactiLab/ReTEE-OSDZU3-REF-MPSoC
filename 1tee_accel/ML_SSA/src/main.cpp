@@ -3,10 +3,8 @@
 #include <string.h>
 #include <xil_printf.h>
 
-#include "profile.h"
 #include "tensorflow/lite/micro/micro_interpreter.h"
 #include "tensorflow/lite/micro/micro_mutable_op_resolver.h"
-#include "tensorflow/lite/micro/micro_profiler.h"
 #include "tensorflow/lite/schema/schema_generated.h"
 #include "tensorflow/lite/micro/models/person_detect_model_data.h"
 
@@ -19,16 +17,16 @@
 /* HW-accelerated Conv2D / DepthwiseConv2D kernels */
 #include "custom_ops.h"
 
+extern uint32_t g_layer_idx;
+
 #define MODEL_WIDTH  96
 #define MODEL_HEIGHT 96
 
 /*
- * Tensor arena sized to minimum needed (136KB).
- * Placed in DDR since it exceeds BRAM capacity alongside the model.
+ * Tensor arena sized to minimum needed (96KB).
  */
-constexpr int kTensorArenaSize = 136 * 1024;
-alignas(16) static uint8_t tensor_arena[kTensorArenaSize]
-    __attribute__((section(".ddr_bss")));
+constexpr int kTensorArenaSize = 126 * 1024;
+alignas(16) static uint8_t tensor_arena[kTensorArenaSize];
 
 /* Shared OCM structure — must match firmware definition */
 typedef struct __attribute__((__packed__)) {
@@ -92,16 +90,11 @@ extern "C" int module_main() {
     resolver->AddSoftmax(tflite::Register_SOFTMAX_INT8());
     resolver->AddAveragePool2D(tflite::Register_AVERAGE_POOL_2D_INT8());
 
-    /* Profiler to measure per-op execution time (~48KB — place in DDR) */
-    static tflite::MicroProfiler profiler
-        __attribute__((section(".ddr_bss")));
-
     /* Use placement new for interpreter to avoid heap allocation */
     uint8_t interp_buf[sizeof(tflite::MicroInterpreter)];
     tflite::MicroInterpreter* interp =
         new (interp_buf) tflite::MicroInterpreter(
-            model, *resolver, tensor_arena, kTensorArenaSize,
-            nullptr, &profiler);
+            model, *resolver, tensor_arena, kTensorArenaSize);
     if (interp->AllocateTensors() != kTfLiteOk) {
         xil_printf("ML_SSA> AllocateTensors failed\r\n");
         return 1;
@@ -131,33 +124,23 @@ extern "C" int module_main() {
 
         switch (ml->command) {
         case CMD_INFER: {
-            xil_printf("ML_SSA> INFER\r\n");
-            profile_clear();
-
-            /* Copy preprocessed int8 data from OCM to input tensor */
-            profile_start();
             memcpy(input->data.int8, (const void*)ml->data,
                    MODEL_WIDTH * MODEL_HEIGHT);
-            profile_stop("memcpy_input");
 
-            xil_printf("ML_SSA> Invoking...\r\n");
-            profile_start();
+            g_layer_idx = 0;
             if (interp->Invoke() != kTfLiteOk) {
                 xil_printf("ML_SSC> Invoke failed\r\n");
                 ml->status = STATUS_ERR;
                 break;
             }
-            profile_stop("Invoke");
 
             ml->no_person_score = output->data.int8[0];
             ml->person_score    = output->data.int8[1];
             ml->confidence      = (uint8_t)(output->data.int8[1] + 128);
 
-            xil_printf("ML_SSC> conf=%d%%\r\n",
+            xil_printf("ML_SSC> [%d,%d] conf=%d%%\r\n",
+                       (int)output->data.int8[0], (int)output->data.int8[1],
                        (int)(ml->confidence) * 100 / 255);
-            profile_dump();
-            profiler.LogTicksPerTagCsv();
-            profiler.ClearEvents();
             break;
         }
         default:

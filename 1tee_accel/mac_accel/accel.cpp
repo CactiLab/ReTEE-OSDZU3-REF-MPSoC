@@ -1,14 +1,7 @@
 #include "accel.h"
 
 // ============================================================
-//  Requantise: INT32 accumulator → INT8 output
-//
-//  TFLite quantisation:
-//    out = (acc * multiplier) >> shift + output_zp
-//    then clamp to [-128, 127] (and optionally [0, qmax] for ReLU6)
-//
-//  The multiplier and shift are per-channel, precomputed by
-//  TFLite Micro and stored in the weight BRAM.
+//  Requantise: INT32 accumulator -> INT8 output
 // ============================================================
 static int8_t_hls requantise(
     int32_t_hls acc,
@@ -16,34 +9,27 @@ static int8_t_hls requantise(
     int8_t_hls  shift,
     int8_t_hls  output_zp,
     ap_uint<1>  relu6_en,
-    int8_t_hls  act_min,   // quantised 0   for ReLU6
-    int8_t_hls  act_max    // quantised 6   for ReLU6
+    int8_t_hls  act_min,
+    int8_t_hls  act_max
 ) {
 #pragma HLS INLINE
 #pragma HLS PIPELINE II=1
 
-    // Multiply accumulator by per-channel scale
-    // Use 64-bit intermediate to avoid overflow
     ap_int<64> wide = (ap_int<64>)acc * (ap_int<64>)multiplier;
 
-    // Arithmetic right shift (rounding)
     int32_t_hls shifted;
     if (shift >= 0) {
-        // Round-half-up: add (1 << (shift-1)) before shifting
         ap_int<64> round_val = (shift > 0) ? ((ap_int<64>)1 << (shift - 1)) : (ap_int<64>)0;
         shifted = (int32_t_hls)((wide + round_val) >> shift);
     } else {
         shifted = (int32_t_hls)(wide << (-shift));
     }
 
-    // Add output zero point
     int32_t_hls result = shifted + (int32_t_hls)output_zp;
 
-    // Clamp to INT8 range
     if (result > 127)  result = 127;
     if (result < -128)  result = -128;
 
-    // Optional ReLU6 clamping
     if (relu6_en) {
         if (result < (int32_t_hls)act_min) result = (int32_t_hls)act_min;
         if (result > (int32_t_hls)act_max) result = (int32_t_hls)act_max;
@@ -53,42 +39,15 @@ static int8_t_hls requantise(
 }
 
 // ============================================================
-//  Read a single activation value with padding support
-// ============================================================
-static int8_t_hls read_act_padded(
-    int8_t_hls  act_bram[ACT_BUF_BYTES],
-    ap_uint<20> input_base,
-    int          h,
-    int          w,
-    int          c,
-    int          in_h,
-    int          in_w,
-    int          in_c,
-    int8_t_hls   input_zp   // padding fills with zero-point value
-) {
-#pragma HLS INLINE
-    if (h < 0 || h >= in_h || w < 0 || w >= in_w) {
-        return input_zp;
-    }
-    int addr = (int)input_base + (h * in_w * in_c) + (w * in_c) + c;
-    return act_bram[addr];
-}
-
-// ============================================================
-//  Pointwise (1×1) convolution kernel
+//  Pointwise (1x1) convolution -- weight-stationary tiled
 //
-//  Input is a flat array of spatial × in_c values (caller pre-strides).
-//  For each pixel p in [0, spatial):
-//    for each output channel oc:
-//      acc = bias[oc] + Σ_ic (input[p,ic] - input_zp) * weight[oc,ic]
-//      output[p, oc] = requantise(acc)
-//
-//  Inner ic loop is unrolled by MAC_PARALLEL.
+//  All BRAM accesses are 32-bit words. Weights and activations
+//  are packed 4 INT8 values per word (little-endian byte order).
+//  MAC inner loop steps by 4 channels per BRAM read.
 // ============================================================
 static void pointwise_conv(
-    int8_t_hls  weight_bram[WEIGHT_BRAM_BYTES],
-    int8_t_hls  act_in[ACT_BUF_BYTES],
-    int8_t_hls  act_out[ACT_BUF_BYTES],
+    ap_uint<32> act_in[ACT_BUF_WORDS],
+    ap_uint<32> act_out[ACT_BUF_WORDS],
     int          spatial, int in_c,
     int          out_c,
     ap_uint<20>  weight_base,
@@ -100,121 +59,166 @@ static void pointwise_conv(
     int8_t_hls   output_zp,
     ap_uint<1>   relu6_en
 ) {
-    // Local weight line buffer — holds one row of weight matrix:
-    // weight[oc, 0..in_c-1] for current oc.
-    // static to avoid stack overflow in HLS C simulation.
-    static int8_t_hls w_buf[MAX_C];
-#pragma HLS ARRAY_PARTITION variable=w_buf cyclic factor=MAC_PARALLEL
+    static int8_t_hls w_cache[PW_TILE_OC][MAX_C];
+#pragma HLS ARRAY_PARTITION variable=w_cache complete dim=1
+#pragma HLS BIND_STORAGE variable=w_cache type=ram_1p impl=lutram
 
-    // Input pixel buffer — holds input[pixel, 0..in_c-1]
-    static int8_t_hls in_buf[MAX_C];
-#pragma HLS ARRAY_PARTITION variable=in_buf cyclic factor=MAC_PARALLEL
+    static int32_t_hls bias_cache[PW_TILE_OC];
+#pragma HLS ARRAY_PARTITION variable=bias_cache complete
 
-    // Partial sums for MAC — one per DSP lane, zeroed each output channel.
-    static int32_t_hls partial[MAC_PARALLEL];
-#pragma HLS ARRAY_PARTITION variable=partial complete
+    static int32_t_hls rq_mult_cache[PW_TILE_OC];
+    static int8_t_hls  rq_shift_cache[PW_TILE_OC];
+    static int8_t_hls  rq_amin_cache[PW_TILE_OC];
+    static int8_t_hls  rq_amax_cache[PW_TILE_OC];
+#pragma HLS ARRAY_PARTITION variable=rq_mult_cache  complete
+#pragma HLS ARRAY_PARTITION variable=rq_shift_cache complete
+#pragma HLS ARRAY_PARTITION variable=rq_amin_cache  complete
+#pragma HLS ARRAY_PARTITION variable=rq_amax_cache  complete
 
-    // Iterate over output pixels (caller pre-strides the input)
-    LOOP_PIX: for (int pix = 0; pix < spatial; pix++) {
+    static int32_t_hls acc[PW_TILE_OC][ACC_DEPTH];
+#pragma HLS ARRAY_PARTITION variable=acc complete
 
-        // Load input pixel vector (all input channels)
-        LOAD_IN: for (int ic = 0; ic < in_c; ic++) {
+    int in_c4 = in_c >> 2;  // number of 32-bit words per row
+
+    PW_OC_TILE: for (int oc_base = 0; oc_base < out_c;
+                     oc_base += PW_TILE_OC) {
+
+        int tile_oc = (oc_base + PW_TILE_OC <= out_c)
+                      ? PW_TILE_OC : (out_c - oc_base);
+
+        // Preload weights: 4 channels per 32-bit BRAM read
+        PW_PRELOAD_W:
+        for (int t = 0; t < tile_oc; t++) {
+            PW_PRELOAD_W_IC:
+            for (int ic4 = 0; ic4 < in_c4; ic4++) {
 #pragma HLS PIPELINE II=1
-            int addr = (int)input_base + pix * in_c + ic;
-            in_buf[ic] = act_in[addr];
+                int word_addr = ((int)weight_base + (oc_base + t) * in_c) / 4 + ic4;
+                ap_uint<32> w = act_in[word_addr];
+                int ic = ic4 * 4;
+                w_cache[t][ic + 0] = (int8_t_hls)w( 7,  0);
+                w_cache[t][ic + 1] = (int8_t_hls)w(15,  8);
+                w_cache[t][ic + 2] = (int8_t_hls)w(23, 16);
+                w_cache[t][ic + 3] = (int8_t_hls)w(31, 24);
+            }
         }
 
-        // Iterate over output channels
-        LOOP_OC: for (int oc = 0; oc < out_c; oc++) {
-
-            // Load bias
-            int bias_addr = (int)bias_base + oc * 4;
-            int32_t_hls bias_val = (int32_t_hls)(
-                ((ap_uint<32>)(ap_uint<8>)weight_bram[bias_addr + 3] << 24) |
-                ((ap_uint<32>)(ap_uint<8>)weight_bram[bias_addr + 2] << 16) |
-                ((ap_uint<32>)(ap_uint<8>)weight_bram[bias_addr + 1] <<  8) |
-                ((ap_uint<32>)(ap_uint<8>)weight_bram[bias_addr + 0])
-            );
-
-            // Load weight row for this output channel
-            LOAD_W: for (int ic = 0; ic < in_c; ic++) {
+        // Preload biases: one 32-bit word = one bias
+        PW_PRELOAD_BIAS:
+        for (int t = 0; t < tile_oc; t++) {
 #pragma HLS PIPELINE II=1
-                int w_addr = (int)weight_base + (oc * in_c) + ic;
-                w_buf[ic] = weight_bram[w_addr];
-            }
+            int word_addr = ((int)bias_base + (oc_base + t) * 4) / 4;
+            bias_cache[t] = (int32_t_hls)act_in[word_addr];
+        }
 
-            // MAC — use partial sums to break carried dependency.
-            // Each partial[p] is independent; full-width UNROLL
-            // creates MAC_PARALLEL DSPs operating in parallel.
-            CLEAR_P: for (int p = 0; p < MAC_PARALLEL; p++) {
-#pragma HLS UNROLL
-                partial[p] = 0;
-            }
-
-            MAC_OUTER: for (int ic_base = 0; ic_base < in_c;
-                            ic_base += MAC_PARALLEL) {
+        // Preload requant params: 2 words per channel (8 bytes each)
+        // Word 0: multiplier (32-bit), Word 1: [shift, amin, amax, pad]
+        PW_PRELOAD_RQ:
+        for (int t = 0; t < tile_oc; t++) {
 #pragma HLS PIPELINE II=1
-                MAC_INNER: for (int p = 0; p < MAC_PARALLEL; p++) {
+            int base_word = ((int)requant_base + (oc_base + t) * 8) / 4;
+            ap_uint<32> w0 = act_in[base_word];
+            ap_uint<32> w1 = act_in[base_word + 1];
+            rq_mult_cache[t]  = (int32_t_hls)w0;
+            rq_shift_cache[t] = (int8_t_hls)w1( 7,  0);
+            rq_amin_cache[t]  = (int8_t_hls)w1(15,  8);
+            rq_amax_cache[t]  = (int8_t_hls)w1(23, 16);
+        }
+
+        // Process all spatial pixels against cached weights
+        PW_PIX: for (int pix = 0; pix < spatial; pix++) {
+
+            // Init accumulators
+            PW_INIT_ACC: for (int t = 0; t < PW_TILE_OC; t++) {
 #pragma HLS UNROLL
-                    int ic = ic_base + p;
-                    if (ic < in_c) {
-                        partial[p] +=
-                            ((int32_t_hls)in_buf[ic] - (int32_t_hls)input_zp) *
-                            (int32_t_hls)w_buf[ic];
-                    }
+                for (int d = 0; d < ACC_DEPTH; d++) {
+#pragma HLS UNROLL
+                    acc[t][d] = (d == 0) ? bias_cache[t] : (int32_t_hls)0;
                 }
             }
 
-            // Reduce partial sums + bias
-            int32_t_hls sum = bias_val;
-            REDUCE: for (int p = 0; p < MAC_PARALLEL; p++) {
+            // MAC: read 4 input channels per 32-bit word
+            PW_MAC: for (int ic4 = 0; ic4 < in_c4; ic4++) {
+#pragma HLS PIPELINE II=1
+                int word_addr = ((int)input_base + pix * in_c) / 4 + ic4;
+                ap_uint<32> in_word = act_in[word_addr];
+
+                // Extract 4 INT8 values and subtract zero point
+                int32_t_hls in_sub[4];
+#pragma HLS ARRAY_PARTITION variable=in_sub complete
+                in_sub[0] = (int32_t_hls)(int8_t_hls)in_word( 7,  0) - (int32_t_hls)input_zp;
+                in_sub[1] = (int32_t_hls)(int8_t_hls)in_word(15,  8) - (int32_t_hls)input_zp;
+                in_sub[2] = (int32_t_hls)(int8_t_hls)in_word(23, 16) - (int32_t_hls)input_zp;
+                in_sub[3] = (int32_t_hls)(int8_t_hls)in_word(31, 24) - (int32_t_hls)input_zp;
+
+                int ic = ic4 * 4;
+                int d0 = (ic + 0) % ACC_DEPTH;
+                int d1 = (ic + 1) % ACC_DEPTH;
+                int d2 = (ic + 2) % ACC_DEPTH;
+                int d3 = (ic + 3) % ACC_DEPTH;
+
+                PW_MAC_TILE: for (int t = 0; t < PW_TILE_OC; t++) {
 #pragma HLS UNROLL
-                sum += partial[p];
+                    acc[t][d0] += in_sub[0] * (int32_t_hls)w_cache[t][ic + 0];
+                    acc[t][d1] += in_sub[1] * (int32_t_hls)w_cache[t][ic + 1];
+                    acc[t][d2] += in_sub[2] * (int32_t_hls)w_cache[t][ic + 2];
+                    acc[t][d3] += in_sub[3] * (int32_t_hls)w_cache[t][ic + 3];
+                }
             }
 
-            // Requantise and store
-            int rq_addr = (int)requant_base + oc * 8;
-            int32_t_hls mult = (int32_t_hls)(
-                ((ap_uint<32>)(ap_uint<8>)weight_bram[rq_addr + 3] << 24) |
-                ((ap_uint<32>)(ap_uint<8>)weight_bram[rq_addr + 2] << 16) |
-                ((ap_uint<32>)(ap_uint<8>)weight_bram[rq_addr + 1] <<  8) |
-                ((ap_uint<32>)(ap_uint<8>)weight_bram[rq_addr + 0])
-            );
-            int8_t_hls rq_shift = weight_bram[rq_addr + 4];
-            int8_t_hls act_min = weight_bram[rq_addr + 5];
-            int8_t_hls act_max = weight_bram[rq_addr + 6];
+            // Reduce depth-interleaved accumulators
+            PW_REDUCE: for (int t = 0; t < PW_TILE_OC; t++) {
+#pragma HLS UNROLL
+                for (int d = 1; d < ACC_DEPTH; d++) {
+#pragma HLS UNROLL
+                    acc[t][0] += acc[t][d];
+                }
+            }
 
-            int8_t_hls out_val = requantise(
-                sum, mult, rq_shift, output_zp, relu6_en,
-                act_min, act_max
-            );
-
-            int out_addr = (int)output_base + pix * out_c + oc;
-            act_out[out_addr] = out_val;
+            // Requantise and store: pack 4 INT8 results per 32-bit word
+            PW_STORE: for (int t = 0; t < tile_oc; t += 4) {
+#pragma HLS PIPELINE II=1
+                ap_uint<32> out_word;
+                for (int b = 0; b < 4; b++) {
+#pragma HLS UNROLL
+                    int8_t_hls out_val = (int8_t_hls)0;
+                    if (oc_base + t + b < out_c) {
+                        out_val = requantise(
+                            acc[t + b][0],
+                            rq_mult_cache[t + b],
+                            rq_shift_cache[t + b],
+                            output_zp, relu6_en,
+                            rq_amin_cache[t + b],
+                            rq_amax_cache[t + b]
+                        );
+                    }
+                    out_word(b * 8 + 7, b * 8) = (ap_uint<8>)out_val;
+                }
+                int byte_addr = (int)output_base + pix * out_c + oc_base + t;
+                act_out[byte_addr / 4] = out_word;
+            }
         }
     }
 }
 
 // ============================================================
-//  Depthwise 3×3 convolution kernel
+//  Depthwise 3x3 convolution — line-buffered, full-width MAC
 //
-//  Each output channel c depends only on input channel c.
-//  For each output pixel (oh, ow), for each channel c:
-//    acc = bias[c]
-//    for kh in [0..2], kw in [0..2]:
-//      acc += input[oh*stride+kh-1, ow*stride+kw-1, c] * weight[kh, kw, c]
-//    output[oh, ow, c] = requantise(acc)
+//  Caches 3 input rows per channel tile into partitioned LUTRAM,
+//  enabling DW_PARALLEL channels to be processed per cycle.
+//  The 3×3 kernel loop runs in 9 cycles per pixel (vs 72+overhead
+//  when limited to 4 channels/cycle from a single BRAM port).
 //
-//  Parallelise across channels in tiles of DW_PARALLEL.
-//  All inner loops have fixed trip counts to avoid mux explosion.
+//  Accumulators are depth-interleaved (ACC_DEPTH=4) to break the
+//  carried dependency across kernel positions, same technique as
+//  the pointwise kernel.
 // ============================================================
 static void depthwise_conv3x3(
-    int8_t_hls  weight_bram[WEIGHT_BRAM_BYTES],
-    int8_t_hls  act_in[ACT_BUF_BYTES],
-    int8_t_hls  act_out[ACT_BUF_BYTES],
+    ap_uint<32> act_in[ACT_BUF_WORDS],
+    ap_uint<32> act_out[ACT_BUF_WORDS],
     int          in_h, int in_w, int in_c,
     int          out_h, int out_w,
     int          stride,
+    ap_uint<1>   pad_same,
     ap_uint<20>  weight_base,
     ap_uint<20>  bias_base,
     ap_uint<20>  requant_base,
@@ -224,16 +228,14 @@ static void depthwise_conv3x3(
     int8_t_hls   output_zp,
     ap_uint<1>   relu6_en
 ) {
-    // Weight cache — partitioned by DW_PARALLEL for parallel reads.
-    // static to avoid stack overflow in HLS C simulation (ap_int overhead).
     static int8_t_hls w_cache[9][MAX_C];
 #pragma HLS ARRAY_PARTITION variable=w_cache complete dim=1
 #pragma HLS ARRAY_PARTITION variable=w_cache cyclic factor=DW_PARALLEL dim=2
+#pragma HLS BIND_STORAGE variable=w_cache type=ram_1p impl=lutram
 
-    // Preloaded bias / requant tables — avoids weight_bram port
-    // contention in the per-pixel LOAD_DW_BIAS and DW_STORE loops.
     static int32_t_hls bias_cache[MAX_C];
 #pragma HLS ARRAY_PARTITION variable=bias_cache cyclic factor=DW_PARALLEL
+#pragma HLS BIND_STORAGE variable=bias_cache type=ram_1p impl=lutram
 
     static int32_t_hls rq_mult_cache[MAX_C];
     static int8_t_hls  rq_shift_cache[MAX_C];
@@ -243,107 +245,174 @@ static void depthwise_conv3x3(
 #pragma HLS ARRAY_PARTITION variable=rq_shift_cache cyclic factor=DW_PARALLEL
 #pragma HLS ARRAY_PARTITION variable=rq_amin_cache  cyclic factor=DW_PARALLEL
 #pragma HLS ARRAY_PARTITION variable=rq_amax_cache  cyclic factor=DW_PARALLEL
+#pragma HLS BIND_STORAGE variable=rq_mult_cache  type=ram_1p impl=lutram
+#pragma HLS BIND_STORAGE variable=rq_shift_cache type=ram_1p impl=lutram
+#pragma HLS BIND_STORAGE variable=rq_amin_cache  type=ram_1p impl=lutram
+#pragma HLS BIND_STORAGE variable=rq_amax_cache  type=ram_1p impl=lutram
 
-    // Per-tile accumulator — zeroed via LOAD_DW_BIAS each tile.
-    static int32_t_hls acc[DW_PARALLEL];
+    // Line buffer: 3 input rows × in_w columns × DW_PARALLEL channels.
+    // dim=1 (3 rows) and dim=3 (DW_PARALLEL channels) fully partitioned
+    // so all 32 channels can be read in one cycle from any of the 3 rows.
+    // Cost: 96 LUTRAMs of depth MAX_W = ~768 LUTs (~1% of ZU3).
+    static int8_t_hls line_buf[3][MAX_W][DW_PARALLEL];
+#pragma HLS ARRAY_PARTITION variable=line_buf complete dim=1
+#pragma HLS ARRAY_PARTITION variable=line_buf complete dim=3
+#pragma HLS BIND_STORAGE variable=line_buf type=ram_1p impl=lutram
+
+    // Depth-interleaved accumulators: breaks carried dependency across
+    // the 9 kernel positions so DW_KERNEL achieves II=1.
+    // Reuse distance for acc[t][d] = ACC_DEPTH = 4, matching DSP latency.
+    static int32_t_hls acc[DW_PARALLEL][ACC_DEPTH];
 #pragma HLS ARRAY_PARTITION variable=acc complete
 
-    // Preload weights — one read from weight_bram per cycle (II=1).
-    // Outer loop over kernel positions avoids multi-read-per-iter stall.
+    int in_c4 = in_c >> 2;
+    int dw_c4 = DW_PARALLEL >> 2;
+
+    // Compute SAME-padding offsets from dimensions
+    int pad_top = 0, pad_left = 0;
+    if (pad_same) {
+        int pad_h = (out_h - 1) * stride + 3 - in_h;
+        int pad_w = (out_w - 1) * stride + 3 - in_w;
+        if (pad_h > 0) pad_top = pad_h / 2;
+        if (pad_w > 0) pad_left = pad_w / 2;
+    }
+
+    // Preload weights: 4 channels per word
     LOAD_DW_W_K: for (int k = 0; k < 9; k++) {
-        LOAD_DW_W_C: for (int c = 0; c < in_c; c++) {
+        LOAD_DW_W_C: for (int c4 = 0; c4 < in_c4; c4++) {
 #pragma HLS PIPELINE II=1
-            int w_addr = (int)weight_base + k * in_c + c;
-            w_cache[k][c] = weight_bram[w_addr];
+            int word_addr = ((int)weight_base + k * in_c) / 4 + c4;
+            ap_uint<32> w = act_in[word_addr];
+            int c = c4 * 4;
+            w_cache[k][c + 0] = (int8_t_hls)w( 7,  0);
+            w_cache[k][c + 1] = (int8_t_hls)w(15,  8);
+            w_cache[k][c + 2] = (int8_t_hls)w(23, 16);
+            w_cache[k][c + 3] = (int8_t_hls)w(31, 24);
         }
     }
 
-    // Preload biases (4 bytes each from weight_bram)
+    // Preload biases: one word = one 32-bit bias
     LOAD_DW_BIASES: for (int c = 0; c < in_c; c++) {
 #pragma HLS PIPELINE II=1
-        int addr = (int)bias_base + c * 4;
-        int32_t_hls bv = (int32_t_hls)(
-            ((ap_uint<32>)(ap_uint<8>)weight_bram[addr + 3] << 24) |
-            ((ap_uint<32>)(ap_uint<8>)weight_bram[addr + 2] << 16) |
-            ((ap_uint<32>)(ap_uint<8>)weight_bram[addr + 1] <<  8) |
-            ((ap_uint<32>)(ap_uint<8>)weight_bram[addr + 0])
-        );
-        bias_cache[c] = bv;
+        int word_addr = ((int)bias_base + c * 4) / 4;
+        bias_cache[c] = (int32_t_hls)act_in[word_addr];
     }
 
-    // Preload requant parameters (7 bytes each from weight_bram)
+    // Preload requant: 2 words per channel
     LOAD_DW_REQUANT: for (int c = 0; c < in_c; c++) {
 #pragma HLS PIPELINE II=1
-        int addr = (int)requant_base + c * 8;
-        int32_t_hls m = (int32_t_hls)(
-            ((ap_uint<32>)(ap_uint<8>)weight_bram[addr + 3] << 24) |
-            ((ap_uint<32>)(ap_uint<8>)weight_bram[addr + 2] << 16) |
-            ((ap_uint<32>)(ap_uint<8>)weight_bram[addr + 1] <<  8) |
-            ((ap_uint<32>)(ap_uint<8>)weight_bram[addr + 0])
-        );
-        rq_mult_cache[c]  = m;
-        rq_shift_cache[c] = weight_bram[addr + 4];
-        rq_amin_cache[c]  = weight_bram[addr + 5];
-        rq_amax_cache[c]  = weight_bram[addr + 6];
+        int base_word = ((int)requant_base + c * 8) / 4;
+        ap_uint<32> w0 = act_in[base_word];
+        ap_uint<32> w1 = act_in[base_word + 1];
+        rq_mult_cache[c]  = (int32_t_hls)w0;
+        rq_shift_cache[c] = (int8_t_hls)w1( 7,  0);
+        rq_amin_cache[c]  = (int8_t_hls)w1(15,  8);
+        rq_amax_cache[c]  = (int8_t_hls)w1(23, 16);
     }
 
-    // Iterate over spatial and channel dimensions
-    DW_OH: for (int oh = 0; oh < out_h; oh++) {
-        DW_OW: for (int ow = 0; ow < out_w; ow++) {
+    DW_C_TILE: for (int c_base = 0; c_base < in_c;
+                    c_base += DW_PARALLEL) {
 
-            // Process DW_PARALLEL channels at a time
-            DW_C_TILE: for (int c_base = 0; c_base < in_c;
-                            c_base += DW_PARALLEL) {
+        // Track which input rows have been loaded into line_buf.
+        // Row ir occupies slot ir % 3.  On each output row, we
+        // load only the new rows the sliding window needs.
+        int max_loaded = -1;
 
-                // Load biases from local cache (1 read/cycle, II=1)
-                LOAD_DW_BIAS: for (int t = 0; t < DW_PARALLEL; t++) {
+        DW_OH: for (int oh = 0; oh < out_h; oh++) {
+
+            // Determine the highest input row this output row reads
+            int need_up_to = oh * stride - pad_top + 2;
+            if (need_up_to >= in_h) need_up_to = in_h - 1;
+
+            // Load any input rows not yet in the line buffer
+            LOAD_ROWS: for (int ir = max_loaded + 1; ir <= need_up_to; ir++) {
+#pragma HLS LOOP_TRIPCOUNT min=0 max=3
+                int slot = ir % 3;
+                LOAD_COL: for (int col = 0; col < in_w; col++) {
+                    LOAD_CH: for (int t4 = 0; t4 < dw_c4; t4++) {
 #pragma HLS PIPELINE II=1
-                    acc[t] = bias_cache[c_base + t];
+                        int byte_addr = (int)input_base +
+                            ir * in_w * in_c + col * in_c + c_base + t4 * 4;
+                        ap_uint<32> w = act_in[byte_addr / 4];
+                        int t = t4 * 4;
+                        line_buf[slot][col][t + 0] = (int8_t_hls)w( 7,  0);
+                        line_buf[slot][col][t + 1] = (int8_t_hls)w(15,  8);
+                        line_buf[slot][col][t + 2] = (int8_t_hls)w(23, 16);
+                        line_buf[slot][col][t + 3] = (int8_t_hls)w(31, 24);
+                    }
+                }
+                max_loaded = ir;
+            }
+
+            DW_OW: for (int ow = 0; ow < out_w; ow++) {
+
+                // Init depth-interleaved accumulators from bias
+                DW_INIT: for (int t = 0; t < DW_PARALLEL; t++) {
+#pragma HLS UNROLL
+                    for (int d = 0; d < ACC_DEPTH; d++) {
+#pragma HLS UNROLL
+                        acc[t][d] = (d == 0) ? bias_cache[c_base + t]
+                                              : (int32_t_hls)0;
+                    }
                 }
 
-                // 3×3 MAC — pipeline across channels within each
-                // kernel position.  acc[t] reuse distance = DW_PARALLEL,
-                // which exceeds DSP latency so II=1 is achievable.
-                DW_KH: for (int kh = 0; kh < 3; kh++) {
-                    DW_KW: for (int kw = 0; kw < 3; kw++) {
-                        int ih = oh * stride + kh - 1;
-                        int iw = ow * stride + kw - 1;
-                        int k_idx = kh * 3 + kw;
-
-                        DW_MAC: for (int t = 0; t < DW_PARALLEL; t++) {
+                // 3×3 MAC: DW_PARALLEL channels per cycle, 9 cycles total.
+                // acc[t][k%4] breaks the carried dependency so II=1.
+                DW_KERNEL: for (int k = 0; k < 9; k++) {
 #pragma HLS PIPELINE II=1
-                            int c = c_base + t;
-                            int8_t_hls in_val = read_act_padded(
-                                act_in, input_base,
-                                ih, iw, c,
-                                in_h, in_w, in_c,
-                                input_zp
+                    int kh = k / 3;
+                    int kw = k % 3;
+                    int ih = oh * stride + kh - pad_top;
+                    int iw = ow * stride + kw - pad_left;
+                    bool pad = (ih < 0 || ih >= in_h ||
+                                iw < 0 || iw >= in_w);
+                    int safe_ih = pad ? 0 : ih;
+                    int safe_iw = pad ? 0 : iw;
+                    int slot = safe_ih % 3;
+                    int d = k % ACC_DEPTH;
+
+                    for (int t = 0; t < DW_PARALLEL; t++) {
+#pragma HLS UNROLL
+                        int8_t_hls in_val = pad ? input_zp
+                                                : line_buf[slot][safe_iw][t];
+                        acc[t][d] +=
+                            ((int32_t_hls)in_val - (int32_t_hls)input_zp) *
+                            (int32_t_hls)w_cache[k][c_base + t];
+                    }
+                }
+
+                // Reduce depth-interleaved accumulators
+                DW_REDUCE: for (int t = 0; t < DW_PARALLEL; t++) {
+#pragma HLS UNROLL
+                    for (int d = 1; d < ACC_DEPTH; d++) {
+#pragma HLS UNROLL
+                        acc[t][0] += acc[t][d];
+                    }
+                }
+
+                // Requantise and store: pack 4 results per word
+                DW_STORE: for (int t = 0; t < DW_PARALLEL; t += 4) {
+#pragma HLS PIPELINE II=1
+                    ap_uint<32> out_word;
+                    for (int b = 0; b < 4; b++) {
+#pragma HLS UNROLL
+                        int c = c_base + t + b;
+                        int8_t_hls out_val = (int8_t_hls)0;
+                        if (c < in_c) {
+                            out_val = requantise(
+                                acc[t + b][0],
+                                rq_mult_cache[c],
+                                rq_shift_cache[c],
+                                output_zp, relu6_en,
+                                rq_amin_cache[c],
+                                rq_amax_cache[c]
                             );
-                            acc[t] +=
-                                ((int32_t_hls)in_val - (int32_t_hls)input_zp) *
-                                (int32_t_hls)w_cache[k_idx][c];
                         }
+                        out_word(b * 8 + 7, b * 8) = (ap_uint<8>)out_val;
                     }
-                }
-
-                // Requantise and store — reads only local caches (II=1)
-                DW_STORE: for (int t = 0; t < DW_PARALLEL; t++) {
-#pragma HLS PIPELINE II=1
-                    int c = c_base + t;
-                    if (c < in_c) {
-                        int8_t_hls out_val = requantise(
-                            acc[t],
-                            rq_mult_cache[c],
-                            rq_shift_cache[c],
-                            output_zp, relu6_en,
-                            rq_amin_cache[c],
-                            rq_amax_cache[c]
-                        );
-
-                        int out_addr = (int)output_base +
-                            (oh * out_w * in_c) + (ow * in_c) + c;
-                        act_out[out_addr] = out_val;
-                    }
+                    int byte_addr = (int)output_base +
+                        (oh * out_w * in_c) + (ow * in_c) + c_base + t;
+                    act_out[byte_addr / 4] = out_word;
                 }
             }
         }
@@ -371,11 +440,9 @@ void conv_accel(
     ap_uint<20> requant_base,
     ap_int<8>   input_zp,
     ap_int<8>   output_zp,
-    int8_t_hls  weight_bram[WEIGHT_BRAM_BYTES],
-    int8_t_hls  act_bram_a[ACT_BUF_BYTES],
-    int8_t_hls  act_bram_b[ACT_BUF_BYTES]
+    ap_uint<32> act_bram_a[ACT_BUF_WORDS],
+    ap_uint<32> act_bram_b[ACT_BUF_WORDS]
 ) {
-    // ---- AXI-Lite for scalar control registers ----
 #pragma HLS INTERFACE s_axilite port=in_h        bundle=ctrl
 #pragma HLS INTERFACE s_axilite port=in_w        bundle=ctrl
 #pragma HLS INTERFACE s_axilite port=in_c        bundle=ctrl
@@ -395,25 +462,9 @@ void conv_accel(
 #pragma HLS INTERFACE s_axilite port=output_zp   bundle=ctrl
 #pragma HLS INTERFACE s_axilite port=return      bundle=ctrl
 
-    // ---- BRAM interfaces ----
-    // weight_bram is read-only during inference.
-    // act BRAMs use true dual-port so cosim (and the external bus master)
-    // can preload act_bram_a and readback act_bram_b.
-#pragma HLS INTERFACE bram port=weight_bram storage_type=ram_1p
-#pragma HLS INTERFACE bram port=act_bram_a  storage_type=ram_t2p
+#pragma HLS INTERFACE bram port=act_bram_a  storage_type=ram_1p
 #pragma HLS INTERFACE bram port=act_bram_b  storage_type=ram_t2p
 
-    // Force HLS to keep both read and write paths on each activation
-    // BRAM.  Without these accesses, HLS optimises away the unused
-    // direction and cosim cannot preload/readback test data.
-    volatile int8_t_hls dummy_a = act_bram_a[0];
-    volatile int8_t_hls dummy_b = act_bram_b[0];
-    (void)dummy_a;
-    (void)dummy_b;
-    act_bram_a[0] = act_bram_a[0];
-    act_bram_b[0] = act_bram_b[0];
-
-    // Cast to plain int for loop bounds (HLS needs static-friendly types)
     int h_in  = (int)in_h;
     int w_in  = (int)in_w;
     int c_in  = (int)in_c;
@@ -424,17 +475,17 @@ void conv_accel(
 
     if (is_depthwise) {
         depthwise_conv3x3(
-            weight_bram, act_bram_a, act_bram_b,
+            act_bram_a, act_bram_b,
             h_in, w_in, c_in,
             h_out, w_out,
-            s,
+            s, pad_same,
             weight_base, bias_base, requant_base,
             input_base, output_base,
             input_zp, output_zp, relu6_en
         );
     } else {
         pointwise_conv(
-            weight_bram, act_bram_a, act_bram_b,
+            act_bram_a, act_bram_b,
             h_out * w_out, c_in,
             c_out,
             weight_base, bias_base, requant_base,

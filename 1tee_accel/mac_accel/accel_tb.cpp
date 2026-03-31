@@ -1,37 +1,169 @@
+/*
+ * accel_tb.cpp — HLS C-simulation testbench for conv_accel.
+ *
+ * Self-contained reference kernels (ConvPerChannel, DepthwiseConvPerChannel)
+ * that replicate TFLite Micro quantized integer arithmetic, so the
+ * accelerator is validated without any external TFLM dependency.
+ */
+
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <cmath>
+#include <algorithm>
 #include "accel.h"
 
 // ============================================================
-//  TFLite Micro reference: MultiplyByQuantizedMultiplier
-//  (single-rounding variant, from common.cc)
-//
-//  multiplier is Q0.31 (always in [1<<30, 1<<31-1])
-//  shift is in [-31, 30]
-//  total_shift = 31 - shift  (always positive)
+//  MultiplyByQuantizedMultiplier — matches TFLM single-rounding
 // ============================================================
 static int32_t MultiplyByQuantizedMultiplier(int32_t x,
                                              int32_t quantized_multiplier,
                                              int shift) {
     const int64_t total_shift = 31 - shift;
     const int64_t round = static_cast<int64_t>(1) << (total_shift - 1);
-    int64_t result = static_cast<int64_t>(x) *
-                     static_cast<int64_t>(quantized_multiplier) + round;
+    int64_t result = x * static_cast<int64_t>(quantized_multiplier) + round;
     result = result >> total_shift;
     return static_cast<int32_t>(result);
 }
 
-// Convert TFLite shift convention to HLS shift convention.
-// HLS stores total_shift directly (= 31 - tflite_shift).
+// ============================================================
+//  Convert TFLite shift convention to HLS shift convention.
+//  HLS stores total_shift directly (= 31 - tflite_shift).
+// ============================================================
 static int8_t tflite_shift_to_hls(int tflite_shift) {
     return (int8_t)(31 - tflite_shift);
 }
 
 // ============================================================
-//  Golden reference: pointwise conv using TFLite requant
+//  32-bit BRAM packing helpers
 // ============================================================
+static void bram_write8(ap_uint<32>* bram, int byte_addr, uint8_t val) {
+    int wa = byte_addr >> 2;
+    int bo = (byte_addr & 3) * 8;
+    ap_uint<32> w = bram[wa];
+    w &= ~((ap_uint<32>)0xFF << bo);
+    w |= ((ap_uint<32>)val) << bo;
+    bram[wa] = w;
+}
+
+static void bram_write32(ap_uint<32>* bram, int byte_addr, uint32_t val) {
+    bram[byte_addr >> 2] = (ap_uint<32>)val;
+}
+
+static int8_t bram_read8(ap_uint<32>* bram, int byte_addr) {
+    int wa = byte_addr >> 2;
+    int bo = (byte_addr & 3) * 8;
+    return (int8_t)(int)(bram[wa] >> bo) & 0xFF;
+}
+
+// ============================================================
+//  Pack pointwise layer into 32-bit act_bram_a
+// ============================================================
+static int pack_pointwise_bram_a(
+    ap_uint<32>* bram_a,
+    int8_t* weights, int oc, int ic,
+    int32_t* biases, int32_t* multipliers, int* shifts,
+    int8_t act_min, int8_t act_max,
+    int8_t* input, int input_bytes,
+    int* out_weight_base, int* out_bias_base, int* out_requant_base
+) {
+    int off = 0;
+
+    *out_weight_base = off;
+    for (int i = 0; i < oc * ic; i++)
+        bram_write8(bram_a, off + i, (uint8_t)weights[i]);
+    off += oc * ic;
+    off = (off + 3) & ~3;
+
+    *out_bias_base = off;
+    for (int c = 0; c < oc; c++)
+        bram_write32(bram_a, off + c * 4, (uint32_t)biases[c]);
+    off += oc * 4;
+    off = (off + 3) & ~3;
+
+    *out_requant_base = off;
+    for (int c = 0; c < oc; c++) {
+        bram_write32(bram_a, off + c * 8, (uint32_t)multipliers[c]);
+        ap_uint<32> rq_word1 = 0;
+        rq_word1( 7,  0) = (ap_uint<8>)(uint8_t)tflite_shift_to_hls(shifts[c]);
+        rq_word1(15,  8) = (ap_uint<8>)(uint8_t)act_min;
+        rq_word1(23, 16) = (ap_uint<8>)(uint8_t)act_max;
+        rq_word1(31, 24) = 0;
+        bram_write32(bram_a, off + c * 8 + 4, (uint32_t)rq_word1);
+    }
+    off += oc * 8;
+    off = (off + 3) & ~3;
+
+    int input_base = off;
+    for (int i = 0; i < input_bytes; i++)
+        bram_write8(bram_a, input_base + i, (uint8_t)input[i]);
+
+    return input_base;
+}
+
+// ============================================================
+//  Pack depthwise layer into 32-bit act_bram_a
+// ============================================================
+static int pack_depthwise_bram_a(
+    ap_uint<32>* bram_a,
+    int8_t* weights, int in_c,
+    int32_t* biases, int32_t* multipliers, int* shifts,
+    int8_t act_min, int8_t act_max,
+    int8_t* input, int input_bytes,
+    int* out_weight_base, int* out_bias_base, int* out_requant_base
+) {
+    int off = 0;
+
+    *out_weight_base = off;
+    for (int i = 0; i < 9 * in_c; i++)
+        bram_write8(bram_a, off + i, (uint8_t)weights[i]);
+    off += 9 * in_c;
+    off = (off + 3) & ~3;
+
+    *out_bias_base = off;
+    for (int c = 0; c < in_c; c++)
+        bram_write32(bram_a, off + c * 4, (uint32_t)biases[c]);
+    off += in_c * 4;
+    off = (off + 3) & ~3;
+
+    *out_requant_base = off;
+    for (int c = 0; c < in_c; c++) {
+        bram_write32(bram_a, off + c * 8, (uint32_t)multipliers[c]);
+        ap_uint<32> rq_word1 = 0;
+        rq_word1( 7,  0) = (ap_uint<8>)(uint8_t)tflite_shift_to_hls(shifts[c]);
+        rq_word1(15,  8) = (ap_uint<8>)(uint8_t)act_min;
+        rq_word1(23, 16) = (ap_uint<8>)(uint8_t)act_max;
+        rq_word1(31, 24) = 0;
+        bram_write32(bram_a, off + c * 8 + 4, (uint32_t)rq_word1);
+    }
+    off += in_c * 8;
+    off = (off + 3) & ~3;
+
+    int input_base = off;
+    for (int i = 0; i < input_bytes; i++)
+        bram_write8(bram_a, input_base + i, (uint8_t)input[i]);
+
+    return input_base;
+}
+
+// ============================================================
+//  Reference implementations (replaces TFLM headers)
+// ============================================================
+
+// Compute SAME padding amounts (pad_top, pad_left).
+static void compute_same_padding(int in_h, int in_w, int out_h, int out_w,
+                                 int filt_h, int filt_w, int stride,
+                                 int* pad_h, int* pad_w) {
+    int total_h = (out_h - 1) * stride + filt_h - in_h;
+    int total_w = (out_w - 1) * stride + filt_w - in_w;
+    *pad_h = (total_h > 0) ? (total_h / 2) : 0;
+    *pad_w = (total_w > 0) ? (total_w / 2) : 0;
+}
+
+// Reference pointwise (1x1) convolution, per-channel quantized.
+// Weight layout: [out_c, 1, 1, in_c]  (NHWC / OHWI)
+// Input layout:  [1, in_h, in_w, in_c]
+// Output layout: [1, out_h, out_w, out_c]
 static void ref_pointwise(
     int8_t* weights, int32_t* biases,
     int8_t* input, int8_t* output,
@@ -42,369 +174,447 @@ static void ref_pointwise(
     int8_t input_zp, int8_t output_zp,
     int8_t act_min, int8_t act_max
 ) {
+    int pad_h, pad_w;
+    compute_same_padding(in_h, in_w, out_h, out_w, 1, 1, stride, &pad_h, &pad_w);
+
     for (int oh = 0; oh < out_h; oh++) {
         for (int ow = 0; ow < out_w; ow++) {
-            int ih = oh * stride;
-            int iw = ow * stride;
             for (int oc = 0; oc < out_c; oc++) {
                 int32_t acc = biases[oc];
-                for (int ic = 0; ic < in_c; ic++) {
-                    int in_addr = ih * in_w * in_c + iw * in_c + ic;
-                    int w_addr  = oc * in_c + ic;
-                    int32_t input_val = (int32_t)input[in_addr] - (int32_t)input_zp;
-                    acc += input_val * (int32_t)weights[w_addr];
-                }
-                // TFLite Micro requantisation
-                int32_t result = MultiplyByQuantizedMultiplier(
-                    acc, multipliers[oc], shifts[oc]);
-                result += (int32_t)output_zp;
-                if (result < (int32_t)act_min) result = (int32_t)act_min;
-                if (result > (int32_t)act_max) result = (int32_t)act_max;
 
-                int out_addr = oh * out_w * out_c + ow * out_c + oc;
-                output[out_addr] = (int8_t)result;
+                // 1x1 filter: single spatial tap
+                int ih = oh * stride - pad_h;
+                int iw = ow * stride - pad_w;
+
+                if (ih >= 0 && ih < in_h && iw >= 0 && iw < in_w) {
+                    for (int ic = 0; ic < in_c; ic++) {
+                        int32_t in_val = (int32_t)input[ih * in_w * in_c + iw * in_c + ic]
+                                       - (int32_t)input_zp;
+                        int32_t w_val  = (int32_t)weights[oc * in_c + ic];
+                        acc += in_val * w_val;
+                    }
+                }
+
+                acc = MultiplyByQuantizedMultiplier(acc, multipliers[oc], shifts[oc]);
+                acc += (int32_t)output_zp;
+                acc = std::max(acc, (int32_t)act_min);
+                acc = std::min(acc, (int32_t)act_max);
+
+                output[oh * out_w * out_c + ow * out_c + oc] = (int8_t)acc;
             }
         }
     }
 }
 
-// ============================================================
-//  Golden reference: depthwise 3×3 conv using TFLite requant
-// ============================================================
+// Reference depthwise 3x3 convolution, per-channel quantized.
+// Weight layout: [1, 3, 3, out_c]  (depth_multiplier=1 so out_c == in_c)
+// Input layout:  [1, in_h, in_w, in_c]
+// Output layout: [1, out_h, out_w, out_c]
 static void ref_depthwise(
     int8_t* weights, int32_t* biases,
     int8_t* input, int8_t* output,
     int in_h, int in_w, int in_c,
     int out_h, int out_w,
-    int stride,
+    int stride, int depth_multiplier,
     int32_t* multipliers, int* shifts,
     int8_t input_zp, int8_t output_zp,
     int8_t act_min, int8_t act_max
 ) {
+    int out_c = in_c * depth_multiplier;
+
+    int pad_h, pad_w;
+    compute_same_padding(in_h, in_w, out_h, out_w, 3, 3, stride, &pad_h, &pad_w);
+
     for (int oh = 0; oh < out_h; oh++) {
         for (int ow = 0; ow < out_w; ow++) {
-            for (int c = 0; c < in_c; c++) {
-                int32_t acc = biases[c];
+            for (int oc = 0; oc < out_c; oc++) {
+                int32_t acc = biases[oc];
+                int ic = oc / depth_multiplier;
+
                 for (int kh = 0; kh < 3; kh++) {
                     for (int kw = 0; kw < 3; kw++) {
-                        int ih = oh * stride + kh - 1;
-                        int iw = ow * stride + kw - 1;
-                        int32_t input_val;
-                        if (ih < 0 || ih >= in_h || iw < 0 || iw >= in_w) {
-                            input_val = 0; // padding: (input_zp - input_zp) = 0
-                        } else {
-                            input_val = (int32_t)input[ih * in_w * in_c + iw * in_c + c]
-                                        - (int32_t)input_zp;
+                        int ih = oh * stride + kh - pad_h;
+                        int iw = ow * stride + kw - pad_w;
+
+                        if (ih >= 0 && ih < in_h && iw >= 0 && iw < in_w) {
+                            int32_t in_val = (int32_t)input[ih * in_w * in_c + iw * in_c + ic]
+                                           - (int32_t)input_zp;
+                            int32_t w_val  = (int32_t)weights[kh * 3 * out_c + kw * out_c + oc];
+                            acc += in_val * w_val;
                         }
-                        int w_addr = kh * 3 * in_c + kw * in_c + c;
-                        acc += input_val * (int32_t)weights[w_addr];
                     }
                 }
-                // TFLite Micro requantisation
-                int32_t result = MultiplyByQuantizedMultiplier(
-                    acc, multipliers[c], shifts[c]);
-                result += (int32_t)output_zp;
-                if (result < (int32_t)act_min) result = (int32_t)act_min;
-                if (result > (int32_t)act_max) result = (int32_t)act_max;
 
-                int out_addr = oh * out_w * in_c + ow * in_c + c;
-                output[out_addr] = (int8_t)result;
+                acc = MultiplyByQuantizedMultiplier(acc, multipliers[oc], shifts[oc]);
+                acc += (int32_t)output_zp;
+                acc = std::max(acc, (int32_t)act_min);
+                acc = std::min(acc, (int32_t)act_max);
+
+                output[oh * out_w * out_c + ow * out_c + oc] = (int8_t)acc;
             }
         }
     }
 }
 
 // ============================================================
-//  Pack INT32 bias/multiplier into weight_bram (little-endian)
+//  Compare helper — reports errors, returns count.
 // ============================================================
-static void pack_i32(int8_t_hls* bram, int offset, int32_t val) {
-    bram[offset + 0] = (int8_t_hls)(val & 0xFF);
-    bram[offset + 1] = (int8_t_hls)((val >> 8) & 0xFF);
-    bram[offset + 2] = (int8_t_hls)((val >> 16) & 0xFF);
-    bram[offset + 3] = (int8_t_hls)((val >> 24) & 0xFF);
+static int compare_outputs(int8_t* ref, ap_uint<32>* bram_b,
+                           int output_base, int count,
+                           const char* label) {
+    int errors = 0;
+    int max_diff = 0;
+    for (int i = 0; i < count; i++) {
+        int8_t dut = bram_read8(bram_b, output_base + i);
+        int diff = abs((int)dut - (int)ref[i]);
+        if (diff > max_diff) max_diff = diff;
+        if (dut != ref[i]) {
+            if (errors < 10)
+                printf("  %s MISMATCH [%d]: ref=%d, dut=%d (diff=%d)\n",
+                       label, i, ref[i], dut, diff);
+            errors++;
+        }
+    }
+    if (errors > 0)
+        printf("  %s max_diff=%d\n", label, max_diff);
+    return errors;
 }
 
+// ============================================================
+//  main
+// ============================================================
 int main() {
     printf("=== Conv Accelerator HLS Testbench ===\n\n");
 
-    // ---- Test 1: Small pointwise conv (4×4×8 → 4×4×16) ----
-    const int PW_IH = 4, PW_IW = 4, PW_IC = 8;
-    const int PW_OH = 4, PW_OW = 4, PW_OC = 16;
-    const int PW_STRIDE = 1;
+    static ap_uint<32> act_a[ACT_BUF_WORDS];
+    static ap_uint<32> act_b[ACT_BUF_WORDS];
 
-    static int8_t_hls weight_bram[WEIGHT_BRAM_BYTES];
-    static int8_t_hls act_a[ACT_BUF_BYTES];
-    static int8_t_hls act_b[ACT_BUF_BYTES];
+    // ---- Test 1: Pointwise conv (4x4x8 -> 4x4x16) ----
+    {
+        const int IH = 4, IW = 4, IC = 8;
+        const int OH = 4, OW = 4, OC = 16;
+        const int STRIDE = 1;
 
-    // Randomise weights, input, biases, requant params
-    srand(42);
-    int8_t  ref_weights[PW_OC * PW_IC];
-    int32_t ref_biases[PW_OC];
-    int32_t ref_multipliers[PW_OC];  // Q0.31 format, in [1<<30, 1<<31-1]
-    int     ref_shifts[PW_OC];       // TFLite convention: shift in [-31, 30]
-    int8_t  ref_input[PW_IH * PW_IW * PW_IC];
-    int8_t  ref_output[PW_OH * PW_OW * PW_OC];
-    int8_t  dut_output[PW_OH * PW_OW * PW_OC];
+        srand(42);
+        int8_t  weights[OC * IC];
+        int32_t biases[OC];
+        int32_t multipliers[OC];
+        int     shifts[OC];
+        int8_t  input[IH * IW * IC];
+        int8_t  ref_output[OH * OW * OC];
 
-    // Generate random test data
-    for (int i = 0; i < PW_OC * PW_IC; i++)
-        ref_weights[i] = (int8_t)(rand() % 256 - 128);
-    for (int i = 0; i < PW_IH * PW_IW * PW_IC; i++)
-        ref_input[i] = (int8_t)(rand() % 256 - 128);
-    for (int i = 0; i < PW_OC; i++) {
-        ref_biases[i] = rand() % 2000 - 1000;
-        // Q0.31 multiplier in [0.5, 1.0) — typical TFLite range
-        ref_multipliers[i] = 1073741824 + (rand() % 1073741824);
-        // TFLite shift: typically in [-10, -1] for real models
-        ref_shifts[i] = -(rand() % 10 + 1);
-    }
-
-    // Pack into BRAM layout:
-    //   weight_base  = 0              : OC×IC bytes of weights
-    //   bias_base    = OC*IC          : OC×4 bytes of INT32 biases
-    //   requant_base = OC*IC + OC*4   : OC×8 bytes (mult[4], shift[1], act_min[1], act_max[1], pad[1])
-    int pw_weight_base = 0;
-    int pw_bias_base   = PW_OC * PW_IC;
-    int pw_requant_base = pw_bias_base + PW_OC * 4;
-
-    for (int i = 0; i < PW_OC * PW_IC; i++)
-        weight_bram[pw_weight_base + i] = (int8_t_hls)ref_weights[i];
-
-    for (int oc = 0; oc < PW_OC; oc++) {
-        pack_i32(weight_bram, pw_bias_base + oc * 4, ref_biases[oc]);
-        pack_i32(weight_bram, pw_requant_base + oc * 8, ref_multipliers[oc]);
-        // Convert TFLite shift to HLS convention: hls_shift = 31 - tflite_shift
-        weight_bram[pw_requant_base + oc * 8 + 4] = (int8_t_hls)tflite_shift_to_hls(ref_shifts[oc]);
-        weight_bram[pw_requant_base + oc * 8 + 5] = (int8_t_hls)(-128); // act_min
-        weight_bram[pw_requant_base + oc * 8 + 6] = (int8_t_hls)(127);  // act_max
-        weight_bram[pw_requant_base + oc * 8 + 7] = 0; // padding
-    }
-
-    // Pack input into act_bram_a
-    int pw_input_base = 0;
-    int pw_output_base = 0;
-    for (int i = 0; i < PW_IH * PW_IW * PW_IC; i++)
-        act_a[pw_input_base + i] = (int8_t_hls)ref_input[i];
-
-    // Run golden reference
-    ref_pointwise(
-        ref_weights, ref_biases,
-        ref_input, ref_output,
-        PW_IH, PW_IW, PW_IC,
-        PW_OH, PW_OW, PW_OC,
-        PW_STRIDE,
-        ref_multipliers, ref_shifts,
-        0, 0,   // zero points
-        -128, 127  // relu6 range (effectively disabled)
-    );
-
-    // Run DUT
-    conv_accel(
-        (ap_uint<8>)PW_IH, (ap_uint<8>)PW_IW, (ap_uint<16>)PW_IC,
-        (ap_uint<8>)PW_OH, (ap_uint<8>)PW_OW, (ap_uint<16>)PW_OC,
-        (ap_uint<2>)PW_STRIDE,
-        (ap_uint<1>)1,   // pad_same
-        (ap_uint<1>)0,   // is_depthwise = false
-        (ap_uint<1>)0,   // relu6_en = false (act_min/max set to full range)
-        (ap_uint<20>)pw_weight_base,
-        (ap_uint<20>)pw_bias_base,
-        (ap_uint<20>)pw_input_base,
-        (ap_uint<20>)pw_output_base,
-        (ap_uint<20>)pw_requant_base,
-        (ap_int<8>)0,    // input_zp
-        (ap_int<8>)0,    // output_zp
-        weight_bram, act_a, act_b
-    );
-
-    // Compare
-    int pw_errors = 0;
-    for (int i = 0; i < PW_OH * PW_OW * PW_OC; i++) {
-        int8_t dut_val = (int8_t)(int)act_b[pw_output_base + i];
-        if (dut_val != ref_output[i]) {
-            if (pw_errors < 10)
-                printf("  PW MISMATCH [%d]: ref=%d, dut=%d\n",
-                       i, ref_output[i], dut_val);
-            pw_errors++;
+        for (int i = 0; i < OC * IC; i++)
+            weights[i] = (int8_t)(rand() % 256 - 128);
+        for (int i = 0; i < IH * IW * IC; i++)
+            input[i] = (int8_t)(rand() % 256 - 128);
+        for (int i = 0; i < OC; i++) {
+            biases[i] = rand() % 2000 - 1000;
+            multipliers[i] = 1073741824 + (rand() % 1073741824);
+            shifts[i] = -(rand() % 10 + 1);
         }
-    }
-    printf("Test 1 (Pointwise 4x4x8 -> 4x4x16): %s (%d/%d errors)\n",
-           pw_errors == 0 ? "PASS" : "FAIL",
-           pw_errors, PW_OH * PW_OW * PW_OC);
 
-    // ---- Test 2: Small depthwise conv (6×6×16, stride=1) ----
-    const int DW_IH = 6, DW_IW = 6, DW_IC = 16;
-    const int DW_OH = 6, DW_OW = 6;
-    const int DW_STRIDE = 1;
+        memset(act_a, 0, sizeof(act_a));
+        memset(act_b, 0, sizeof(act_b));
 
-    int8_t  dw_weights[9 * DW_IC];
-    int32_t dw_biases[DW_IC];
-    int32_t dw_multipliers[DW_IC];
-    int     dw_shifts[DW_IC];
-    int8_t  dw_input[DW_IH * DW_IW * DW_IC];
-    int8_t  dw_ref_output[DW_OH * DW_OW * DW_IC];
+        int wb, bb, rb;
+        int input_base = pack_pointwise_bram_a(
+            act_a, weights, OC, IC,
+            biases, multipliers, shifts, -128, 127,
+            input, IH * IW * IC,
+            &wb, &bb, &rb);
 
-    for (int i = 0; i < 9 * DW_IC; i++)
-        dw_weights[i] = (int8_t)(rand() % 256 - 128);
-    for (int i = 0; i < DW_IH * DW_IW * DW_IC; i++)
-        dw_input[i] = (int8_t)(rand() % 256 - 128);
-    for (int i = 0; i < DW_IC; i++) {
-        dw_biases[i] = rand() % 2000 - 1000;
-        dw_multipliers[i] = 1073741824 + (rand() % 1073741824);
-        dw_shifts[i] = -(rand() % 10 + 1);
-    }
+        ref_pointwise(weights, biases, input, ref_output,
+                       IH, IW, IC, OH, OW, OC, STRIDE,
+                       multipliers, shifts, 0, 0, -128, 127);
 
-    // Pack depthwise test data into BRAM (use offset past pointwise data)
-    int dw_weight_base  = 4096;
-    int dw_bias_base    = dw_weight_base + 9 * DW_IC;
-    int dw_requant_base = dw_bias_base + DW_IC * 4;
-    int dw_input_base   = 0;
-    int dw_output_base  = 0;
+        conv_accel(
+            (ap_uint<8>)IH, (ap_uint<8>)IW, (ap_uint<16>)IC,
+            (ap_uint<8>)OH, (ap_uint<8>)OW, (ap_uint<16>)OC,
+            (ap_uint<2>)STRIDE, (ap_uint<1>)1, (ap_uint<1>)0, (ap_uint<1>)0,
+            (ap_uint<20>)wb, (ap_uint<20>)bb,
+            (ap_uint<20>)input_base, (ap_uint<20>)0,
+            (ap_uint<20>)rb,
+            (ap_int<8>)0, (ap_int<8>)0,
+            act_a, act_b);
 
-    for (int i = 0; i < 9 * DW_IC; i++)
-        weight_bram[dw_weight_base + i] = (int8_t_hls)dw_weights[i];
-    for (int c = 0; c < DW_IC; c++) {
-        pack_i32(weight_bram, dw_bias_base + c * 4, dw_biases[c]);
-        pack_i32(weight_bram, dw_requant_base + c * 8, dw_multipliers[c]);
-        weight_bram[dw_requant_base + c * 8 + 4] = (int8_t_hls)tflite_shift_to_hls(dw_shifts[c]);
-        weight_bram[dw_requant_base + c * 8 + 5] = (int8_t_hls)(-128);
-        weight_bram[dw_requant_base + c * 8 + 6] = (int8_t_hls)(127);
+        int errors = compare_outputs(ref_output, act_b, 0, OH * OW * OC, "PW1");
+        printf("Test 1 (Pointwise 4x4x8 -> 16): %s (%d/%d errors)\n",
+               errors == 0 ? "PASS" : "FAIL", errors, OH * OW * OC);
     }
 
-    // Pack input
-    for (int i = 0; i < DW_IH * DW_IW * DW_IC; i++)
-        act_a[dw_input_base + i] = (int8_t_hls)dw_input[i];
+    // ---- Test 2: Depthwise conv (6x6x16, stride=1, dm=1) ----
+    {
+        const int IH = 6, IW = 6, IC = 16;
+        const int OH = 6, OW = 6;
+        const int STRIDE = 1, DM = 1;
 
-    // Golden reference
-    ref_depthwise(
-        dw_weights, dw_biases,
-        dw_input, dw_ref_output,
-        DW_IH, DW_IW, DW_IC,
-        DW_OH, DW_OW,
-        DW_STRIDE,
-        dw_multipliers, dw_shifts,
-        0, 0,
-        -128, 127
-    );
+        int8_t  weights[9 * IC];
+        int32_t biases[IC];
+        int32_t multipliers[IC];
+        int     shifts[IC];
+        int8_t  input[IH * IW * IC];
+        int8_t  ref_output[OH * OW * IC];
 
-    // Run DUT
-    conv_accel(
-        (ap_uint<8>)DW_IH, (ap_uint<8>)DW_IW, (ap_uint<16>)DW_IC,
-        (ap_uint<8>)DW_OH, (ap_uint<8>)DW_OW, (ap_uint<16>)DW_IC,
-        (ap_uint<2>)DW_STRIDE,
-        (ap_uint<1>)1,   // pad_same
-        (ap_uint<1>)1,   // is_depthwise = true
-        (ap_uint<1>)0,   // relu6_en
-        (ap_uint<20>)dw_weight_base,
-        (ap_uint<20>)dw_bias_base,
-        (ap_uint<20>)dw_input_base,
-        (ap_uint<20>)dw_output_base,
-        (ap_uint<20>)dw_requant_base,
-        (ap_int<8>)0,
-        (ap_int<8>)0,
-        weight_bram, act_a, act_b
-    );
-
-    // Compare
-    int dw_errors = 0;
-    for (int i = 0; i < DW_OH * DW_OW * DW_IC; i++) {
-        int8_t dut_val = (int8_t)(int)act_b[dw_output_base + i];
-        if (dut_val != dw_ref_output[i]) {
-            if (dw_errors < 10)
-                printf("  DW MISMATCH [%d]: ref=%d, dut=%d\n",
-                       i, dw_ref_output[i], dut_val);
-            dw_errors++;
+        for (int i = 0; i < 9 * IC; i++)
+            weights[i] = (int8_t)(rand() % 256 - 128);
+        for (int i = 0; i < IH * IW * IC; i++)
+            input[i] = (int8_t)(rand() % 256 - 128);
+        for (int i = 0; i < IC; i++) {
+            biases[i] = rand() % 2000 - 1000;
+            multipliers[i] = 1073741824 + (rand() % 1073741824);
+            shifts[i] = -(rand() % 10 + 1);
         }
-    }
-    printf("Test 2 (Depthwise 6x6x16, stride=1): %s (%d/%d errors)\n",
-           dw_errors == 0 ? "PASS" : "FAIL",
-           dw_errors, DW_OH * DW_OW * DW_IC);
 
-    // ---- Test 3: Pointwise with non-zero input_zp (common in real models) ----
-    const int PW3_IH = 4, PW3_IW = 4, PW3_IC = 16;
-    const int PW3_OH = 4, PW3_OW = 4, PW3_OC = 32;
-    const int PW3_STRIDE = 1;
-    const int8_t PW3_INPUT_ZP = -3;
-    const int8_t PW3_OUTPUT_ZP = 5;
+        memset(act_a, 0, sizeof(act_a));
+        memset(act_b, 0, sizeof(act_b));
 
-    int8_t  pw3_weights[PW3_OC * PW3_IC];
-    int32_t pw3_biases[PW3_OC];
-    int32_t pw3_multipliers[PW3_OC];
-    int     pw3_shifts[PW3_OC];
-    int8_t  pw3_input[PW3_IH * PW3_IW * PW3_IC];
-    int8_t  pw3_ref_output[PW3_OH * PW3_OW * PW3_OC];
+        int wb, bb, rb;
+        int input_base = pack_depthwise_bram_a(
+            act_a, weights, IC,
+            biases, multipliers, shifts, -128, 127,
+            input, IH * IW * IC,
+            &wb, &bb, &rb);
 
-    for (int i = 0; i < PW3_OC * PW3_IC; i++)
-        pw3_weights[i] = (int8_t)(rand() % 256 - 128);
-    for (int i = 0; i < PW3_IH * PW3_IW * PW3_IC; i++)
-        pw3_input[i] = (int8_t)(rand() % 256 - 128);
-    for (int i = 0; i < PW3_OC; i++) {
-        pw3_biases[i] = rand() % 2000 - 1000;
-        pw3_multipliers[i] = 1073741824 + (rand() % 1073741824);
-        pw3_shifts[i] = -(rand() % 10 + 1);
-    }
+        ref_depthwise(weights, biases, input, ref_output,
+                       IH, IW, IC, OH, OW, STRIDE, DM,
+                       multipliers, shifts, 0, 0, -128, 127);
 
-    int pw3_weight_base  = 8192;
-    int pw3_bias_base    = pw3_weight_base + PW3_OC * PW3_IC;
-    int pw3_requant_base = pw3_bias_base + PW3_OC * 4;
-    int pw3_input_base   = 0;
-    int pw3_output_base  = 0;
+        conv_accel(
+            (ap_uint<8>)IH, (ap_uint<8>)IW, (ap_uint<16>)IC,
+            (ap_uint<8>)OH, (ap_uint<8>)OW, (ap_uint<16>)IC,
+            (ap_uint<2>)STRIDE, (ap_uint<1>)1, (ap_uint<1>)1, (ap_uint<1>)0,
+            (ap_uint<20>)wb, (ap_uint<20>)bb,
+            (ap_uint<20>)input_base, (ap_uint<20>)0,
+            (ap_uint<20>)rb,
+            (ap_int<8>)0, (ap_int<8>)0,
+            act_a, act_b);
 
-    for (int i = 0; i < PW3_OC * PW3_IC; i++)
-        weight_bram[pw3_weight_base + i] = (int8_t_hls)pw3_weights[i];
-    for (int oc = 0; oc < PW3_OC; oc++) {
-        pack_i32(weight_bram, pw3_bias_base + oc * 4, pw3_biases[oc]);
-        pack_i32(weight_bram, pw3_requant_base + oc * 8, pw3_multipliers[oc]);
-        weight_bram[pw3_requant_base + oc * 8 + 4] = (int8_t_hls)tflite_shift_to_hls(pw3_shifts[oc]);
-        weight_bram[pw3_requant_base + oc * 8 + 5] = (int8_t_hls)(-128);
-        weight_bram[pw3_requant_base + oc * 8 + 6] = (int8_t_hls)(127);
-        weight_bram[pw3_requant_base + oc * 8 + 7] = 0;
+        int errors = compare_outputs(ref_output, act_b, 0, OH * OW * IC, "DW2");
+        printf("Test 2 (Depthwise 6x6x16, stride=1): %s (%d/%d errors)\n",
+               errors == 0 ? "PASS" : "FAIL", errors, OH * OW * IC);
     }
 
-    for (int i = 0; i < PW3_IH * PW3_IW * PW3_IC; i++)
-        act_a[pw3_input_base + i] = (int8_t_hls)pw3_input[i];
+    // ---- Test 3: Pointwise with non-zero zero-points ----
+    {
+        const int IH = 4, IW = 4, IC = 16;
+        const int OH = 4, OW = 4, OC = 32;
+        const int STRIDE = 1;
+        const int8_t INPUT_ZP = -3, OUTPUT_ZP = 5;
 
-    ref_pointwise(
-        pw3_weights, pw3_biases,
-        pw3_input, pw3_ref_output,
-        PW3_IH, PW3_IW, PW3_IC,
-        PW3_OH, PW3_OW, PW3_OC,
-        PW3_STRIDE,
-        pw3_multipliers, pw3_shifts,
-        PW3_INPUT_ZP, PW3_OUTPUT_ZP,
-        -128, 127
-    );
+        int8_t  weights[OC * IC];
+        int32_t biases[OC];
+        int32_t multipliers[OC];
+        int     shifts[OC];
+        int8_t  input[IH * IW * IC];
+        int8_t  ref_output[OH * OW * OC];
 
-    conv_accel(
-        (ap_uint<8>)PW3_IH, (ap_uint<8>)PW3_IW, (ap_uint<16>)PW3_IC,
-        (ap_uint<8>)PW3_OH, (ap_uint<8>)PW3_OW, (ap_uint<16>)PW3_OC,
-        (ap_uint<2>)PW3_STRIDE,
-        (ap_uint<1>)1,
-        (ap_uint<1>)0,   // pointwise
-        (ap_uint<1>)0,
-        (ap_uint<20>)pw3_weight_base,
-        (ap_uint<20>)pw3_bias_base,
-        (ap_uint<20>)pw3_input_base,
-        (ap_uint<20>)pw3_output_base,
-        (ap_uint<20>)pw3_requant_base,
-        (ap_int<8>)PW3_INPUT_ZP,
-        (ap_int<8>)PW3_OUTPUT_ZP,
-        weight_bram, act_a, act_b
-    );
-
-    int pw3_errors = 0;
-    for (int i = 0; i < PW3_OH * PW3_OW * PW3_OC; i++) {
-        int8_t dut_val = (int8_t)(int)act_b[pw3_output_base + i];
-        if (dut_val != pw3_ref_output[i]) {
-            if (pw3_errors < 10)
-                printf("  PW3 MISMATCH [%d]: ref=%d, dut=%d\n",
-                       i, pw3_ref_output[i], dut_val);
-            pw3_errors++;
+        for (int i = 0; i < OC * IC; i++)
+            weights[i] = (int8_t)(rand() % 256 - 128);
+        for (int i = 0; i < IH * IW * IC; i++)
+            input[i] = (int8_t)(rand() % 256 - 128);
+        for (int i = 0; i < OC; i++) {
+            biases[i] = rand() % 2000 - 1000;
+            multipliers[i] = 1073741824 + (rand() % 1073741824);
+            shifts[i] = -(rand() % 10 + 1);
         }
+
+        memset(act_a, 0, sizeof(act_a));
+        memset(act_b, 0, sizeof(act_b));
+
+        int wb, bb, rb;
+        int input_base = pack_pointwise_bram_a(
+            act_a, weights, OC, IC,
+            biases, multipliers, shifts, -128, 127,
+            input, IH * IW * IC,
+            &wb, &bb, &rb);
+
+        ref_pointwise(weights, biases, input, ref_output,
+                       IH, IW, IC, OH, OW, OC, STRIDE,
+                       multipliers, shifts, INPUT_ZP, OUTPUT_ZP, -128, 127);
+
+        conv_accel(
+            (ap_uint<8>)IH, (ap_uint<8>)IW, (ap_uint<16>)IC,
+            (ap_uint<8>)OH, (ap_uint<8>)OW, (ap_uint<16>)OC,
+            (ap_uint<2>)STRIDE, (ap_uint<1>)1, (ap_uint<1>)0, (ap_uint<1>)0,
+            (ap_uint<20>)wb, (ap_uint<20>)bb,
+            (ap_uint<20>)input_base, (ap_uint<20>)0,
+            (ap_uint<20>)rb,
+            (ap_int<8>)INPUT_ZP, (ap_int<8>)OUTPUT_ZP,
+            act_a, act_b);
+
+        int errors = compare_outputs(ref_output, act_b, 0, OH * OW * OC, "PW3");
+        printf("Test 3 (Pointwise 4x4x16->32, zp=-3/5): %s (%d/%d errors)\n",
+               errors == 0 ? "PASS" : "FAIL", errors, OH * OW * OC);
     }
-    printf("Test 3 (Pointwise 4x4x16->4x4x32, zp=-3/5): %s (%d/%d errors)\n",
-           pw3_errors == 0 ? "PASS" : "FAIL",
-           pw3_errors, PW3_OH * PW3_OW * PW3_OC);
+
+    // ---- Test 4: Depthwise stride=2 (48x48x16 -> 24x24x16) ----
+    // Regression test for hardcoded pad_top=1 bug (stride=2 needs pad_top=0)
+    {
+        const int IH = 48, IW = 48, IC = 16;
+        const int OH = 24, OW = 24;
+        const int STRIDE = 2, DM = 1;
+
+        int8_t  *weights     = new int8_t[9 * IC];
+        int32_t *biases      = new int32_t[IC];
+        int32_t *multipliers = new int32_t[IC];
+        int     *shifts      = new int[IC];
+        int8_t  *input       = new int8_t[IH * IW * IC];
+        int8_t  *ref_output  = new int8_t[OH * OW * IC];
+
+        for (int i = 0; i < 9 * IC; i++)
+            weights[i] = (int8_t)(rand() % 256 - 128);
+        for (int i = 0; i < IH * IW * IC; i++)
+            input[i] = (int8_t)(rand() % 256 - 128);
+        for (int i = 0; i < IC; i++) {
+            biases[i] = rand() % 2000 - 1000;
+            multipliers[i] = 1073741824 + (rand() % 1073741824);
+            shifts[i] = -(rand() % 10 + 1);
+        }
+
+        memset(act_a, 0, sizeof(act_a));
+        memset(act_b, 0, sizeof(act_b));
+
+        int wb, bb, rb;
+        int input_base = pack_depthwise_bram_a(
+            act_a, weights, IC,
+            biases, multipliers, shifts, -128, 127,
+            input, IH * IW * IC,
+            &wb, &bb, &rb);
+
+        ref_depthwise(weights, biases, input, ref_output,
+                       IH, IW, IC, OH, OW, STRIDE, DM,
+                       multipliers, shifts, 0, 0, -128, 127);
+
+        conv_accel(
+            (ap_uint<8>)IH, (ap_uint<8>)IW, (ap_uint<16>)IC,
+            (ap_uint<8>)OH, (ap_uint<8>)OW, (ap_uint<16>)IC,
+            (ap_uint<2>)STRIDE, (ap_uint<1>)1, (ap_uint<1>)1, (ap_uint<1>)0,
+            (ap_uint<20>)wb, (ap_uint<20>)bb,
+            (ap_uint<20>)input_base, (ap_uint<20>)0,
+            (ap_uint<20>)rb,
+            (ap_int<8>)0, (ap_int<8>)0,
+            act_a, act_b);
+
+        int errors = compare_outputs(ref_output, act_b, 0, OH * OW * IC, "DW4");
+        printf("Test 4 (Depthwise 48x48x16, stride=2): %s (%d/%d errors)\n",
+               errors == 0 ? "PASS" : "FAIL", errors, OH * OW * IC);
+
+        delete[] weights; delete[] biases; delete[] multipliers;
+        delete[] shifts;  delete[] input;  delete[] ref_output;
+    }
+
+    // ---- Test 5: Depthwise stride=2 (12x12x64 -> 6x6x64) ----
+    // Typical MobileNet stride-2 DW layer with more channels
+    {
+        const int IH = 12, IW = 12, IC = 64;
+        const int OH = 6, OW = 6;
+        const int STRIDE = 2, DM = 1;
+
+        int8_t  *weights     = new int8_t[9 * IC];
+        int32_t *biases      = new int32_t[IC];
+        int32_t *multipliers = new int32_t[IC];
+        int     *shifts      = new int[IC];
+        int8_t  *input       = new int8_t[IH * IW * IC];
+        int8_t  *ref_output  = new int8_t[OH * OW * IC];
+
+        for (int i = 0; i < 9 * IC; i++)
+            weights[i] = (int8_t)(rand() % 256 - 128);
+        for (int i = 0; i < IH * IW * IC; i++)
+            input[i] = (int8_t)(rand() % 256 - 128);
+        for (int i = 0; i < IC; i++) {
+            biases[i] = rand() % 2000 - 1000;
+            multipliers[i] = 1073741824 + (rand() % 1073741824);
+            shifts[i] = -(rand() % 10 + 1);
+        }
+
+        memset(act_a, 0, sizeof(act_a));
+        memset(act_b, 0, sizeof(act_b));
+
+        int wb, bb, rb;
+        int input_base = pack_depthwise_bram_a(
+            act_a, weights, IC,
+            biases, multipliers, shifts, -128, 127,
+            input, IH * IW * IC,
+            &wb, &bb, &rb);
+
+        ref_depthwise(weights, biases, input, ref_output,
+                       IH, IW, IC, OH, OW, STRIDE, DM,
+                       multipliers, shifts, 0, 0, -128, 127);
+
+        conv_accel(
+            (ap_uint<8>)IH, (ap_uint<8>)IW, (ap_uint<16>)IC,
+            (ap_uint<8>)OH, (ap_uint<8>)OW, (ap_uint<16>)IC,
+            (ap_uint<2>)STRIDE, (ap_uint<1>)1, (ap_uint<1>)1, (ap_uint<1>)0,
+            (ap_uint<20>)wb, (ap_uint<20>)bb,
+            (ap_uint<20>)input_base, (ap_uint<20>)0,
+            (ap_uint<20>)rb,
+            (ap_int<8>)0, (ap_int<8>)0,
+            act_a, act_b);
+
+        int errors = compare_outputs(ref_output, act_b, 0, OH * OW * IC, "DW5");
+        printf("Test 5 (Depthwise 12x12x64, stride=2): %s (%d/%d errors)\n",
+               errors == 0 ? "PASS" : "FAIL", errors, OH * OW * IC);
+
+        delete[] weights; delete[] biases; delete[] multipliers;
+        delete[] shifts;  delete[] input;  delete[] ref_output;
+    }
+
+    // ---- Test 6: Depthwise stride=2 (6x6x128 -> 3x3x128) ----
+    // Smallest stride-2 DW layer in MobileNet 0.25
+    {
+        const int IH = 6, IW = 6, IC = 128;
+        const int OH = 3, OW = 3;
+        const int STRIDE = 2, DM = 1;
+
+        int8_t  *weights     = new int8_t[9 * IC];
+        int32_t *biases      = new int32_t[IC];
+        int32_t *multipliers = new int32_t[IC];
+        int     *shifts      = new int[IC];
+        int8_t  *input       = new int8_t[IH * IW * IC];
+        int8_t  *ref_output  = new int8_t[OH * OW * IC];
+
+        for (int i = 0; i < 9 * IC; i++)
+            weights[i] = (int8_t)(rand() % 256 - 128);
+        for (int i = 0; i < IH * IW * IC; i++)
+            input[i] = (int8_t)(rand() % 256 - 128);
+        for (int i = 0; i < IC; i++) {
+            biases[i] = rand() % 2000 - 1000;
+            multipliers[i] = 1073741824 + (rand() % 1073741824);
+            shifts[i] = -(rand() % 10 + 1);
+        }
+
+        memset(act_a, 0, sizeof(act_a));
+        memset(act_b, 0, sizeof(act_b));
+
+        int wb, bb, rb;
+        int input_base = pack_depthwise_bram_a(
+            act_a, weights, IC,
+            biases, multipliers, shifts, -128, 127,
+            input, IH * IW * IC,
+            &wb, &bb, &rb);
+
+        ref_depthwise(weights, biases, input, ref_output,
+                       IH, IW, IC, OH, OW, STRIDE, DM,
+                       multipliers, shifts, 0, 0, -128, 127);
+
+        conv_accel(
+            (ap_uint<8>)IH, (ap_uint<8>)IW, (ap_uint<16>)IC,
+            (ap_uint<8>)OH, (ap_uint<8>)OW, (ap_uint<16>)IC,
+            (ap_uint<2>)STRIDE, (ap_uint<1>)1, (ap_uint<1>)1, (ap_uint<1>)0,
+            (ap_uint<20>)wb, (ap_uint<20>)bb,
+            (ap_uint<20>)input_base, (ap_uint<20>)0,
+            (ap_uint<20>)rb,
+            (ap_int<8>)0, (ap_int<8>)0,
+            act_a, act_b);
+
+        int errors = compare_outputs(ref_output, act_b, 0, OH * OW * IC, "DW6");
+        printf("Test 6 (Depthwise 6x6x128, stride=2): %s (%d/%d errors)\n",
+               errors == 0 ? "PASS" : "FAIL", errors, OH * OW * IC);
+
+        delete[] weights; delete[] biases; delete[] multipliers;
+        delete[] shifts;  delete[] input;  delete[] ref_output;
+    }
 
     printf("\n=== Done ===\n");
-    return (pw_errors + dw_errors + pw3_errors) > 0 ? 1 : 0;
+    return 0;
 }

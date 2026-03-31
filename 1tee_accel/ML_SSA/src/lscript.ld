@@ -10,8 +10,8 @@ EXTERN(_heap)
 EXTERN(_heap_start)
 EXTERN(_heap_end)
 
-_STACK_SIZE = DEFINED(_STACK_SIZE) ? _STACK_SIZE : 0x400;
-_HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x1000;
+_STACK_SIZE = DEFINED(_STACK_SIZE) ? _STACK_SIZE : 0x0;
+_HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x0;
 
 /* Define Memories in the system */
 
@@ -20,10 +20,9 @@ MEMORY
 	psu_ddr_0 : ORIGIN = 0x40000000, LENGTH = 0x3ff00000
 	psu_qspi_linear_0 : ORIGIN = 0xd0000000, LENGTH = 0x10000000
 	psu_ocm_0 : ORIGIN = 0xfffc0000, LENGTH = 0x40000
-   bram : ORIGIN = 0x0, LENGTH = 0x80000
-	weight_bram_cntlr_memory_2 : ORIGIN = 0xc1000000, LENGTH = 0xC000
-	act_bram_a_cntlr_memory_0 : ORIGIN = 0xc2000000, LENGTH = 0x10000
-	act_bram_b_cntlr_memory_1 : ORIGIN = 0xc2010000, LENGTH = 0x10000
+	bram : ORIGIN = 0x0, LENGTH = 0xb0000
+	act_bram_a_cntlr_memory_0 : ORIGIN = 0xc1000000, LENGTH = 0x10000
+	act_bram_b_cntlr_memory_1 : ORIGIN = 0xc2000000, LENGTH = 0x10000
 }
 
 /* Specify the default entry point to the program */
@@ -38,7 +37,7 @@ SECTIONS
 _module_start = .;
 
 .text . : {
-   . = ALIGN(2048);
+   . = ALIGN(32);
    *(.text)
    *(.text.*)
    *(.gnu.linkonce.t.*)
@@ -50,17 +49,17 @@ _module_start = .;
    __text.init_end = .;
 } > bram
 
-.note.gnu.build-id : {
+.note.gnu.build-id (NOLOAD): {
    KEEP (*(.note.gnu.build-id))
-} > bram
+} > psu_ddr_0
 
-.init : {
+.init (NOLOAD) : {
    KEEP (*(.init))
-} > bram
+} > psu_ddr_0
 
-.fini : {
+.fini (NOLOAD) : {
    KEEP (*(.fini))
-} > bram
+} > psu_ddr_0
 
 .ctors : {
    __CTOR_LIST__ = .;
@@ -84,16 +83,13 @@ _module_start = .;
    ___DTORS_END___ = .;
 } > bram
 
-/* Model weights (~250 KB) dominate .rodata — place in DDR to free
-   BRAM for code.  Small rodata (string literals, vtables) stays
-   in BRAM via .srodata. */
 .rodata : {
    __rodata_start = .;
    *(.rodata)
    *(.rodata.*)
    *(.gnu.linkonce.r.*)
    __rodata_end = .;
-} > psu_ddr_0
+} > bram
 
 .srodata : {
    __srodata_start = .;
@@ -121,19 +117,10 @@ _module_start = .;
    *(.gcc_except_table)
 } > bram
 
-.init_array : {
-   __init_array_start = .;
-   KEEP (*(SORT(.init_array.*)))
-   KEEP (*(.init_array))
-   __init_array_end = .;
-} > bram
-
-.fini_array : {
-   __fini_array_start = .;
-   KEEP (*(SORT(.fini_array.*)))
-   KEEP (*(.fini_array))
-   __fini_array_end = .;
-} > bram
+/DISCARD/ : {
+   *(.init_array*)
+   *(.fini_array*)
+}
 
 .sdata : {
    __sdata_start = .;
@@ -201,8 +188,5 @@ _SDA2_BASE_ = __sdata2_start + ((__sbss2_end - __sdata2_start) / 2 );
 __global_pointer$ = MIN(__sdata_start + 0x800, MAX(__data_start + 0x800, __bss_end - 0x800));
 _module_end = .;
 
-/* Tensor arena in DDR — too large for BRAM */
-.ddr_bss (NOLOAD) : {
-   *(.ddr_bss)
-} > psu_ddr_0
+/* Profiler in back of OCM (IPC uses front) */
 }
