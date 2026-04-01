@@ -1,25 +1,57 @@
-# BYOTee-Octavo-Extension
+# What is this?
 
-# Pre-requisites
+This is an updated implementation of [BYOTEE (Build Your Own Trusted Execution Environment)](). 
 
-Xilinx Vivado 2025.1 and Vitis 2025.1: [https://www.xilinx.com/support/download.html]
+Essentially, it's an architecture that consists of custom processor(s) and resources within an FPGA fabric that physically isolates computation from a hardcore environment.
 
-Xilinx ZYNQMP common image: [https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html]
+# Architecture
+
+TBD
+
+# Building and running example projects
+
+## Pre-requisites
+
+### Xilinx Vivado 2025.2 and Vitis 2025.2: 
+
+[https://www.xilinx.com/support/download.html](https://www.xilinx.com/support/download.html)
+
+### Xilinx ZYNQMP common image: 
+
+[https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html)
+- I used Petalinux 2025.1, but any build should work (we will be using the associated toolchain)
 - Scroll to "Common Images for Embedded Vitis™ Platforms" and download "ZYNQMP common image".
-Download and extract this wherever you like. It is suggested to put it at the root of this repository.
 
-# Building and running the example projects
+Download and extract this wherever you like. It is suggested to put it at the root of this repository. It will be needed later.
+
+Make sure to run ```./sdk.sh``` and install it to a directory of your choice. 
+- I suggest leaving the default of ```/opt/petalinux/<PETALINUX_VERSION>```
 
 ## SD Card setup
 
-After extracting the ZYNQMP common image to the desired path, the following:
+After extracting the ZYNQMP common image to the desired path, do the following:
 
-Create a boot partition on the sd card (2GB should be enough).
-```COMMAND_GOES_HERE```
+NOTE: ```<SD_CARD_DEVICE>``` should be something like ```mmcblk0```
 
-Extract ```rootfs.tar.gz``` from the ZYNQMP common image. It should produce ```rootfs.ext4```
+### Create a boot partition on the sd card (2GB should be enough).
 
-Flash ```rootfs.ext4``` to another partition on the SD card.
+```sudo parted /dev/<SD_CARD_DEVICE> --script 
+mklabel msdos 
+mkpart primary fat32 1MiB 2GiB 
+set 1 boot on 
+mkpart primary ext4 2GiB 100%
+sudo mkfs.vfat -F 32 -n BOOT /dev/<SD_CARD_DEVICE>
+```
+
+### Extract ```rootfs.tar.gz``` from the ZYNQMP common image. 
+
+It should produce ```rootfs.ext4```
+
+### Flash ```rootfs.ext4``` to another partition on the SD card.
+
+```
+sudo dd if=rootfs.ext4 of=/dev/<SD_CARD_DEVICE> bs=4M status=progress
+```
 
 ## In Vivado
 
@@ -33,7 +65,7 @@ However, you may choose to build them yourself from the ```.tcl``` files under `
 
 ### Symlink to common image
 
-Create a symlink to the ZYNQMP common image directory by running ```ln -s ./common $(PATH_TO_ZYNQMP_COMMON)``` in an example project directory.
+Create a symlink to the ZYNQMP common image directory by running ```ln -s $(PATH_TO_ZYNQMP_COMMON) ./common``` in an example project directory.
 
 ### Creating the platform project
 
@@ -52,24 +84,17 @@ It can be generated from the following steps:
 
 At this point, the platform project should be generated.
 
-### Building and packaging firmware [system_fw.bit]
+### Building and packaging firmware [system_fw.bit], [BOOT.bin]
 
 In Vitis, build the "riscv_firmware" project to generate an ELF image.
 
 The included Makefile under each example project will package the PL microblaze firmware into the hardware XSA image.
 
-This can be done by running ```make package``` in an example project root (after building the ELF).
+This can be done by running ```make boot``` in an example project root (after building the relevant ELF files).
 
-### Building a boot image [BOOT.bin]
+Two artifacts are generated from this step: ```system_fw.bit```, and ```BOOT.bin```
 
-Requirements: the above steps to create ```system_fw.bit``` and ```design_*tee.xsa```
-
-- Go to Vitis -> Create Boot Image -> Zyunq Ultrascale+
-- Choose "Import existing BIF file"
-- For "Import BIF File Path", select "linux.bif" at the root of the example project.
-- Select "Create Image"
-
-BOOT.bin should now be generated in the root of the example project. This should be copied to the "boot" partition of the SD card.
+Copy ```BOOT.bin``` to the BOOT partition of your sd card.
 
 ## Booting the board
 
@@ -77,13 +102,22 @@ On the OSDZU3 board, set the "BOOT MODE" to SD card boot. It should be [1, 0, 1,
 
 Turn the device on, and connect to it with the TTY console.
 
+```sudo minicom -b 115200 -o -D /dev/ttyUSB1```
+
+```sudo minicom -b 115200 -o -D /dev/ttyUSB0```
+
 Press a key to exit to the uboot console environment.
 
 Run the following commands:
+
 ```setenv bootargs 'root=/dev/mmcblk1p2 rootfstype=ext4 rootwait rw init=/bin/sh'```
+
 ```boot```
+
 This will give you the ability to set a root password with: ```passwd root```
 
 ## Loading and Running SSAs
 
-WIP
+SSAs are loadable modules which add capabilities to the system. 
+
+See the example projects for a reference design and API for loading and running SSAs.
