@@ -25,6 +25,30 @@
 
 struct buffer { void *start; size_t length; };
 
+/* Globals for signal handler cleanup */
+static volatile ml_data_t *g_ml;
+static volatile sig_atomic_t g_shutdown;
+
+static void unload_ssa(void) {
+    if (!g_ml) return;
+    printf("Unloading ML_SSA...\n");
+    g_ml->command = CMD_UNLOAD;
+    /* Wait up to 500ms for module to clear model_id */
+    for (int i = 0; i < 500 && g_ml->model_id != 0; i++) {
+        usleep(1000);
+    }
+    if (g_ml->model_id == 0)
+        printf("ML_SSA unloaded\n");
+    else
+        fprintf(stderr, "WARN: ML_SSA unload timed out\n");
+    g_ml = NULL;
+}
+
+static void shutdown_handler(int sig) {
+    (void)sig;
+    g_shutdown = 1;
+}
+
 static int read_sysfs_string(const char *path, char *buf, size_t size) {
     int fd = open(path, O_RDONLY);
     if (fd < 0) return -1;
@@ -202,9 +226,17 @@ int main(int argc, char *argv[]) {
 
     /* Get pointer to ML data region in OCM */
     volatile ml_data_t *ml = (volatile ml_data_t*)ocm->data;
+    g_ml = ml;
+
+    /* Register cleanup handlers */
+    struct sigaction sa = {0};
+    sa.sa_handler = shutdown_handler;
+    sigaction(SIGINT, &sa, NULL);
+    sigaction(SIGTERM, &sa, NULL);
 
     /* Check if the correct SSA is already loaded and ready */
-    if (ml->status == STATUS_READY && ml->model_id == MODEL_ID_PERSON_DETECT) {
+    if ((ml->status & STATUS_READY) &&
+        ml->model_id == MODEL_ID_PERSON_DETECT) {
         printf("SSA already loaded (model_id=0x%08X), skipping load\n",
                ml->model_id);
     } else {
@@ -276,9 +308,12 @@ int main(int argc, char *argv[]) {
 
     int8_t preprocess_buf[MODEL_INPUT_SZ];
 
-    while (1) {
+    while (!g_shutdown) {
         int client = accept(srv, NULL, NULL);
-        if (client < 0) continue;
+        if (client < 0) {
+            if (g_shutdown) break;
+            continue;
+        }
         setsockopt(client, IPPROTO_TCP, TCP_NODELAY, &opt, sizeof(opt));
         printf("Client connected\n");
 
@@ -286,7 +321,7 @@ int main(int argc, char *argv[]) {
         struct timespec t_start, t_now;
         clock_gettime(CLOCK_MONOTONIC, &t_start);
 
-        while (1) {
+        while (!g_shutdown) {
             /* Dequeue frame */
             struct v4l2_buffer buf = {0};
             buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
@@ -311,32 +346,9 @@ int main(int argc, char *argv[]) {
             ml->status = STATUS_BUSY;
             ml->command = CMD_INFER;
 
-            /* Wait for inference result (timeout after 100ms) */
-            struct timespec t_deadline;
-            clock_gettime(CLOCK_MONOTONIC, &t_deadline);
-            t_deadline.tv_nsec += 100000000L;
-            if (t_deadline.tv_nsec >= 1000000000L) {
-                t_deadline.tv_sec++;
-                t_deadline.tv_nsec -= 1000000000L;
-            }
-            while (!(ml->status & STATUS_COMPLETE) && ml->status != STATUS_ERR) {
-                struct timespec t_chk;
-                clock_gettime(CLOCK_MONOTONIC, &t_chk);
-                if (t_chk.tv_sec > t_deadline.tv_sec ||
-                    (t_chk.tv_sec == t_deadline.tv_sec &&
-                     t_chk.tv_nsec >= t_deadline.tv_nsec)) {
-                    fprintf(stderr, "WARN: inference timeout (status=0x%02x), resending\n",
-                            ml->status);
-                    ml->status = STATUS_BUSY;
-                    ml->command = CMD_INFER;
-                    t_deadline = t_chk;
-                    t_deadline.tv_nsec += 100000000L;
-                    if (t_deadline.tv_nsec >= 1000000000L) {
-                        t_deadline.tv_sec++;
-                        t_deadline.tv_nsec -= 1000000000L;
-                    }
-                }
-            }
+            /* Wait for inference result */
+            while (!(ml->status & STATUS_COMPLETE) && ml->status != STATUS_ERR)
+                continue;
             clock_gettime(CLOCK_MONOTONIC, &t3);
 
             /* Build packet */
@@ -387,6 +399,7 @@ int main(int argc, char *argv[]) {
         close(client);
     }
 
+    unload_ssa();
     free(packet);
     ioctl(cam_fd, VIDIOC_STREAMOFF, &type);
     for (int i = 0; i < NUM_BUFFERS; i++)

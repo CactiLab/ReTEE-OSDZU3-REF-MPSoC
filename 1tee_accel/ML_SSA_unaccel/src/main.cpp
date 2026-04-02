@@ -14,10 +14,6 @@
 #include "tensorflow/lite/micro/kernels/pooling.h"
 #include "tensorflow/lite/micro/kernels/softmax.h"
 
-/* HW-accelerated Conv2D / DepthwiseConv2D kernels */
-#include "custom_ops.h"
-
-extern uint32_t g_layer_idx;
 static uint32_t g_infer_count;
 
 #define MODEL_WIDTH  96
@@ -76,18 +72,12 @@ extern "C" int module_main() {
         return 1;
     }
 
-    /*
-     * Register accelerated Conv2D / DepthwiseConv2D kernels.
-     * Layers that fit the HW constraints run on the BRAM-based
-     * convolution accelerator; others fall back to INT8 software.
-     * Remaining ops (Reshape, Softmax, AvgPool) use stock INT8 kernels.
-     */
     using PersonDetectResolver = tflite::MicroMutableOpResolver<5>;
     uint8_t resolver_buf[sizeof(PersonDetectResolver)];
     PersonDetectResolver* resolver =
         new (resolver_buf) PersonDetectResolver();
-    resolver->AddConv2D(Register_CONV_2D_ACCEL());
-    resolver->AddDepthwiseConv2D(Register_DEPTHWISE_CONV_2D_ACCEL());
+    resolver->AddConv2D(tflite::Register_CONV_2D());
+    resolver->AddDepthwiseConv2D(tflite::Register_DEPTHWISE_CONV_2D());
     resolver->AddReshape();
     resolver->AddSoftmax(tflite::Register_SOFTMAX_INT8());
     resolver->AddAveragePool2D(tflite::Register_AVERAGE_POOL_2D_INT8());
@@ -136,7 +126,6 @@ extern "C" int module_main() {
             memcpy(input->data.int8, (const void*)ml->data,
                    MODEL_WIDTH * MODEL_HEIGHT);
 
-            g_layer_idx = 0;
             ++g_infer_count;
             if (interp->Invoke() != kTfLiteOk) {
                 xil_printf("ML_SSC> Invoke failed\r\n");

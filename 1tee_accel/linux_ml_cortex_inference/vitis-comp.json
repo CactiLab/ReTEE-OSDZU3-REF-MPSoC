@@ -1,5 +1,5 @@
 {
-  "name": "video_ml_accelerated",
+  "name": "linux_ml_cortex_inference",
   "type": "HOST",
   "platform": "platform",
   "domain": "linux_psu_cortexa53",

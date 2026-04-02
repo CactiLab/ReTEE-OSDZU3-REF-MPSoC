@@ -2,7 +2,7 @@
 
 cmake_minimum_required(VERSION 3.20)
 include(${CMAKE_CURRENT_SOURCE_DIR}/UserConfig.cmake)
-project(video_ml_accelerated
+project(linux_ml_cortex_inference
 LANGUAGES
 C CXX
 )
@@ -15,7 +15,7 @@ ${CMAKE_MODULE_PATH}
 find_package(EmbHost REQUIRED)
 
 set(VITIS_PLATFORM_PATH
-/home/test/Documents/research/byotee_riscv/0tee_ml_test_vitis/platform/export/platform/platform.xpfm
+/home/e/Documents/research/byotee_riscv/1tee_accel/platform/export/platform/platform.xpfm
 CACHE STRING
 "Vitis Platform"
 )

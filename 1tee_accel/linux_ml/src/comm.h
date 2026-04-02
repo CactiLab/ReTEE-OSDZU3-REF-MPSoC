@@ -21,8 +21,9 @@ typedef enum : uint8_t {
 } ml_status_t;
 
 enum ml_command {
-    CMD_NONE  = 0,
-    CMD_INFER = 1,
+    CMD_NONE   = 0,
+    CMD_INFER  = 1,
+    CMD_UNLOAD = 2,
 };
 
 typedef struct __attribute__((__packed__)) {
