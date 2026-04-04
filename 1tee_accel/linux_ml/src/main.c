@@ -339,9 +339,14 @@ int main(int argc, char *argv[]) {
             preprocess_yuyv(frame, preprocess_buf, CAM_WIDTH, CAM_HEIGHT);
             clock_gettime(CLOCK_MONOTONIC, &t2);
 
-            /* Send to ML_SSA via OCM */
-            for (int i = 0; i < MODEL_INPUT_SZ; i++)
-                ml->data[i] = preprocess_buf[i];
+            /* Send to ML_SSA via OCM — word-at-a-time copy because OCM is
+             * mapped as Device memory (O_SYNC) where NEON/memcpy faults. */
+            {
+                const uint32_t *src32 = (const uint32_t *)preprocess_buf;
+                volatile uint32_t *dst32 = (volatile uint32_t *)ml->data;
+                for (int i = 0; i < MODEL_INPUT_SZ / 4; i++)
+                    dst32[i] = src32[i];
+            }
             ml->data_sz = MODEL_INPUT_SZ;
             ml->status = STATUS_BUSY;
             ml->command = CMD_INFER;

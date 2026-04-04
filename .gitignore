@@ -28,3 +28,4 @@
 platform_riscv
 platform
 xilinx-zynqmp-common*/
+vivado_*/

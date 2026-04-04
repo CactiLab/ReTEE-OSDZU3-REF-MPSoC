@@ -230,8 +230,9 @@ static inline void accel_run_layer(const accel_layer_desc_t *d) {
      * commit before the accelerator starts reading. */
     (void)*(volatile uint32_t *)ACCEL_ACT_A_BASE;
 
+    accel_done_flag = false;
     accel_write(ACCEL_AP_CTRL, AP_START);
-    accel_wait_idle();
+    accel_wait_done();
 }
 
 #endif /* CONV_ACCEL_DRIVER_H */
