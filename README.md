@@ -35,7 +35,8 @@ NOTE: ```<SD_CARD_DEVICE>``` should be something like ```mmcblk0```
 
 ### Create a boot partition on the sd card (2GB should be enough).
 
-```sudo parted /dev/<SD_CARD_DEVICE> --script 
+```
+sudo parted /dev/<SD_CARD_DEVICE> --script 
 mklabel msdos 
 mkpart primary fat32 1MiB 2GiB 
 set 1 boot on 
