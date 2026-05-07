@@ -36,12 +36,25 @@ NOTE: ```<SD_CARD_DEVICE>``` should be something like ```mmcblk0```
 ### Create a boot partition on the sd card (2GB should be enough).
 
 ```
+<SD_CARD_DEVICE> example: mmcblk0
+```
+
+```
 sudo parted /dev/<SD_CARD_DEVICE> --script 
 mklabel msdos 
 mkpart primary fat32 1MiB 2GiB 
 set 1 boot on 
 mkpart primary ext4 2GiB 100%
-sudo mkfs.vfat -F 32 -n BOOT /dev/<SD_CARD_DEVICE>
+```
+
+quit gparted
+
+```
+<SD_CARD_DEVICE>p1 example: mmcblk0p1
+```
+
+```
+sudo mkfs.vfat -F 32 -n BOOT /dev/<SD_CARD_DEVICE>p1
 ```
 
 ### Extract ```rootfs.tar.gz``` from the ZYNQMP common image. 
@@ -51,7 +64,11 @@ It should produce ```rootfs.ext4```
 ### Flash ```rootfs.ext4``` to another partition on the SD card.
 
 ```
-sudo dd if=rootfs.ext4 of=/dev/<SD_CARD_DEVICE> bs=4M status=progress
+<SD_CARD_DEVICE>p2 example: mmcblk0p2
+```
+
+```
+sudo dd if=rootfs.ext4 of=/dev/<SD_CARD_DEVICE>p2 bs=4M status=progress
 ```
 
 ## In Vivado
@@ -60,7 +77,10 @@ sudo dd if=rootfs.ext4 of=/dev/<SD_CARD_DEVICE> bs=4M status=progress
 
 By default, the example hardware designs are included as ```.xsa``` files.
 
-However, you may choose to build them yourself from the ```.tcl``` files under ```hardware_designs```.
+However, you may choose to build them yourself from the ```.tcl``` files under ```hardware_designs```. 
+
+Please use Vivado 2025.2 to import and build the hardware designs.
+
 
 ## In Vitis
 
