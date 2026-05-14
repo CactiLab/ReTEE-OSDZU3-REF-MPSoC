@@ -4,10 +4,6 @@ This is an updated implementation of [BYOTEE (Build Your Own Trusted Execution E
 
 Essentially, it's an architecture that consists of custom processor(s) and resources within an FPGA fabric that physically isolates computation from a hardcore environment.
 
-# Architecture
-
-TBD
-
 # Building and running example projects
 
 ## Pre-requisites
@@ -121,3 +117,7 @@ This will give you the ability to set a root password with: ```passwd root```
 SSAs are loadable modules which add capabilities to the system. 
 
 See the example projects for a reference design and API for loading and running SSAs.
+
+# Architecture
+
+See each example project for architecture specifics.
