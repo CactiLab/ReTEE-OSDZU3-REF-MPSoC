@@ -136,12 +136,17 @@ static inline int ct_memcmp64(const uint8_t a[64], const uint8_t b[64]) {
  * the embedded entry point. Returns -1 on validation failure (bundle is
  * not run); returns 0 only after the module has returned. */
 static int load_elf_from_buf_pel2(uint8_t *bundle) {
-    /* Latency accumulators. "decrypt" covers AES-CTR + HMAC-SHA512 work
-     * (manifest + per-segment). "load" covers memcpy into the module
-     * region. mcycle is 32-bit and wraps every ~43s at 100MHz; values
-     * below are deltas across short critical sections so wrap is safe. */
+    /* Latency accumulators, one per phase:
+     *   verify   — HMAC-SHA512 over manifest + per-segment ciphertexts
+     *   decrypt  — AES-128-CTR over manifest + per-segment ciphertexts
+     *   load     — memcpy of plaintext segments into their target paddr
+     *   cleanup  — zeroing the module region before load (clears stale code)
+     * mcycle is 32-bit and wraps every ~43s at 100MHz; each delta below
+     * spans a short critical section so wrap is safe. */
+    uint32_t verify_cycles  = 0;
     uint32_t decrypt_cycles = 0;
     uint32_t load_cycles    = 0;
+    uint32_t cleanup_cycles = 0;
     uint32_t total_start    = mcycle_now();
     uint32_t t0;
 
@@ -172,7 +177,7 @@ static int load_elf_from_buf_pel2(uint8_t *bundle) {
     t0 = mcycle_now();
     hmac_sha512_2chunk(hmac_key, bundle, 24,
                        o->manifest_ciphertext, o->manifest_sz, mac);
-    decrypt_cycles += mcycle_now() - t0;
+    verify_cycles += mcycle_now() - t0;
     if (ct_memcmp64(mac, o->manifest_hmac) != 0) {
         xil_printf("[m] PEL2: manifest HMAC mismatch\r\n");
         return -1;
@@ -214,7 +219,9 @@ static int load_elf_from_buf_pel2(uint8_t *bundle) {
     }
 
     /* Zero the module region before loading anything into it. */
+    t0 = mcycle_now();
     memset(&_MODULE_BASE, 0, (size_t)&_MODULE_SIZE);
+    cleanup_cycles += mcycle_now() - t0;
 
     /* Walk segment ciphertexts back-to-back (no per-segment header bytes). */
     uint8_t *cursor = bundle + PEL2_OUTER_HDR + o->manifest_sz;
@@ -235,7 +242,7 @@ static int load_elf_from_buf_pel2(uint8_t *bundle) {
         hmac_sha512_2chunk(hmac_key,
                            (const uint8_t *)&bind, sizeof(bind),
                            seg_ct, size, mac);
-        decrypt_cycles += mcycle_now() - t0;
+        verify_cycles += mcycle_now() - t0;
         if (ct_memcmp64(mac, m->segments[i].hmac) != 0) {
             xil_printf("[m] PEL2: seg[%u] HMAC mismatch\r\n", i);
             return -1;
@@ -256,11 +263,15 @@ static int load_elf_from_buf_pel2(uint8_t *bundle) {
     }
 
     uint32_t total_cycles = mcycle_now() - total_start;
-    xil_printf("[m] PEL2: latency  decrypt=%u cyc (%u us)  load=%u cyc (%u us)"
-               "  total=%u cyc (%u us)\r\n",
-               decrypt_cycles, decrypt_cycles / (MCYCLES_PER_SEC / 1000000U),
-               load_cycles,    load_cycles    / (MCYCLES_PER_SEC / 1000000U),
-               total_cycles,   total_cycles   / (MCYCLES_PER_SEC / 1000000U));
+    uint32_t us_per_cyc_div = MCYCLES_PER_SEC / 1000000U;
+    xil_printf("[m] PEL2: latency  verify=%u cyc (%u us)  "
+               "decrypt=%u cyc (%u us)  load=%u cyc (%u us)  "
+               "cleanup=%u cyc (%u us)  total=%u cyc (%u us)\r\n",
+               verify_cycles,  verify_cycles  / us_per_cyc_div,
+               decrypt_cycles, decrypt_cycles / us_per_cyc_div,
+               load_cycles,    load_cycles    / us_per_cyc_div,
+               cleanup_cycles, cleanup_cycles / us_per_cyc_div,
+               total_cycles,   total_cycles   / us_per_cyc_div);
     xil_printf("[m] PEL2: jumping to 0x%08X\r\n", m->entry_point);
     void *entrypoint = (void *)(uintptr_t)m->entry_point;
 

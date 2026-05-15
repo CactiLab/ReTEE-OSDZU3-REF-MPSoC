@@ -95,14 +95,15 @@ Requant entry (8 bytes per channel):
 ## Build Notes
 
 ### TFLM Library
-- Built from `~/Documents/tflm-tree/` via Makefile
-- Float variant: `build/libtflm.a` (rv32imf)
+- Built from `../tflm-tree/` (sibling of `1tee_accel/` in the byotee_riscv repo) via Makefile
+- RISC-V hard-float variant: `build-riscv-hfloat/libtflm.a` (rv32imf)
+- Cortex-A53 variant: `build-cortexa-neon/libtflm.a` (aarch64 ARMv8-A NEON)
 - Compile definitions: `TF_LITE_STATIC_MEMORY`, `TF_LITE_MCU_DEBUG_LOG`, `NDEBUG`
 - **Critical:** ML_SSA must also define `TF_LITE_STATIC_MEMORY` — this changes `TfLiteTensor`/`TfLiteNode` struct layouts. Mismatching this causes garbage tensor dimensions.
 
 ### ML_SSA Build (UserConfig.cmake)
 - Links against: `../../riscv_firmware/build/riscv_firmware.elf` (for firmware symbols)
-- Links TFLM from: `../../../../../tflm-tree/build/`
+- Links TFLM from: `../../../tflm-tree/build-riscv-hfloat/`
 - `.init_array`/`.fini_array` sections are `/DISCARD/`ed — module is called by entry point only
 - Optimisation: `-Os -fno-exceptions -fno-rtti -ffunction-sections -fdata-sections`
 

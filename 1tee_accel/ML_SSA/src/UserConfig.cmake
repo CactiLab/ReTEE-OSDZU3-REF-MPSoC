@@ -29,10 +29,10 @@ set(USER_UNDEFINED_SYMBOLS
 # Example 3: Adding ${CMAKE_SOURCE_DIR}/data/include to add data/include from this project.
 
 set(USER_INCLUDE_DIRECTORIES
-"../../../../../tflm-tree"
-"../../../../../tflm-tree/third_party/flatbuffers/include"
-"../../../../../tflm-tree/third_party/kissfft"
-"../../../../../tflm-tree/third_party/gemmlowp"
+"../../../tflm-tree"
+"../../../tflm-tree/third_party/flatbuffers/include"
+"../../../tflm-tree/third_party/kissfft"
+"../../../tflm-tree/third_party/gemmlowp"
 )
 
 #Add any source below, they will be added as Compile sources.
@@ -129,7 +129,7 @@ set(USER_LINK_LIBRARIES
 # Example 1: Adding /proj/compression/lib will pass -L/proj/compression/lib to the linker.
 # Example 2: Adding ../../common/lib will consider the path as relative to this directory and will pass the path to -L option.
 set(USER_LINK_DIRECTORIES
-"../../../../../tflm-tree/build/"
+"../../../tflm-tree/build-riscv-hfloat/"
 )
 
 # -----------------------------------------
