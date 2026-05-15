@@ -76,7 +76,7 @@ typedef struct __attribute__((__packed__)) {
     uint32_t paddr;                       /* p_paddr — load address */
     uint32_t size;                        /* p_filesz — plain == cipher size */
     uint8_t  iv[PEL2_IV_LEN];             /* per-segment CTR initial counter */
-    uint8_t  hmac[PEL2_MAC_LEN];          /* HMAC over (idx||paddr||size||iv||ct) */
+    uint8_t  hmac[PEL2_MAC_LEN];          /* HMAC over (idx||paddr||size||iv||plaintext) */
 } pel2_seg_entry_t;                       /* sizeof == 88 */
 
 typedef struct __attribute__((__packed__)) {
@@ -85,7 +85,7 @@ typedef struct __attribute__((__packed__)) {
     pel2_seg_entry_t segments[];
 } pel2_manifest_t;
 
-/* Per-segment MAC binding prefix: fed into HMAC before the ciphertext.
+/* Per-segment MAC binding prefix: fed into HMAC before the plaintext.
  * Sealing (idx, paddr, size, iv) prevents segment swap and length tampering. */
 typedef struct __attribute__((__packed__)) {
     uint32_t idx;
@@ -132,15 +132,24 @@ static inline int ct_memcmp64(const uint8_t a[64], const uint8_t b[64]) {
     return diff;  /* 0 == equal */
 }
 
-/* Verify+decrypt+load a PEL2 bundle starting at `bundle`, then jump to
- * the embedded entry point. Returns -1 on validation failure (bundle is
- * not run); returns 0 only after the module has returned. */
+/* Load+decrypt+verify a PEL2 bundle starting at `bundle`, then jump to
+ * the embedded entry point. Order:
+ *   LOAD MANIFEST  -> copy manifest ciphertext from bundle to local buffer
+ *   DECRYPT MANIFEST
+ *   VERIFY MANIFEST  (HMAC over plaintext)
+ *   LOAD SEGMENTS  -> memcpy each segment ciphertext to its target paddr
+ *   DECRYPT SEGMENTS  (in place at paddr)
+ *   VERIFY SEGMENTS  (HMAC over plaintext at paddr)
+ * On any failure after segment plaintext has been written to the module
+ * region, the region is re-zeroed before returning so unverified code
+ * cannot be reached. Returns -1 on validation failure; 0 only after the
+ * module has returned. */
 static int load_elf_from_buf_pel2(uint8_t *bundle) {
     /* Latency accumulators, one per phase:
-     *   verify   — HMAC-SHA512 over manifest + per-segment ciphertexts
-     *   decrypt  — AES-128-CTR over manifest + per-segment ciphertexts
-     *   load     — memcpy of plaintext segments into their target paddr
-     *   cleanup  — zeroing the module region before load (clears stale code)
+     *   load     — memcpy manifest + per-segment ciphertexts into target memory
+     *   decrypt  — AES-128-CTR over manifest + per-segment plaintexts/ciphertexts
+     *   verify   — HMAC-SHA512 over manifest + per-segment plaintexts
+     *   cleanup  — zeroing the module region (before load + on verify failure)
      * mcycle is 32-bit and wraps every ~43s at 100MHz; each delta below
      * spans a short critical section so wrap is safe. */
     uint32_t verify_cycles  = 0;
@@ -163,6 +172,7 @@ static int load_elf_from_buf_pel2(uint8_t *bundle) {
         xil_printf("[m] PEL2: bad manifest_sz %u\r\n", o->manifest_sz);
         return -1;
     }
+    uint32_t manifest_sz = o->manifest_sz;
 
     /* Derive HMAC key = SHA-512(aes_key) — matches the packer. */
     SHA512_State ss;
@@ -171,38 +181,49 @@ static int load_elf_from_buf_pel2(uint8_t *bundle) {
     SHA512_Bytes(&ss, (const void *)aes_key, AES_KEYLEN);
     SHA512_Final(&ss, hmac_key);
 
-    /* Verify manifest HMAC: head = first 24 bytes of bundle
-     * (magic || manifest_sz || manifest_iv); tail = manifest ciphertext. */
+    /* === LOAD MANIFEST ===
+     * Copy manifest ciphertext from the (potentially DRAM-resident, attacker-
+     * adjacent) bundle into a firmware-local buffer so subsequent decrypt and
+     * verify run on memory the attacker cannot race against. */
+    static uint8_t manifest_buf[PEL2_MANIFEST_MAX] __attribute__((aligned(4)));
+    t0 = mcycle_now();
+    memcpy(manifest_buf, o->manifest_ciphertext, manifest_sz);
+    load_cycles += mcycle_now() - t0;
+
+    /* === DECRYPT MANIFEST in local buffer (CTR is symmetric). === */
+    struct AES_ctx ctx;
+    t0 = mcycle_now();
+    AES_init_ctx_iv(&ctx, (const uint8_t *)aes_key, o->manifest_iv);
+    AES_CTR_xcrypt_buffer(&ctx, manifest_buf, manifest_sz);
+    decrypt_cycles += mcycle_now() - t0;
+
+    /* === VERIFY MANIFEST: HMAC over plaintext ===
+     * head = first 24 bytes of bundle (magic || manifest_sz || manifest_iv);
+     * tail = manifest plaintext in local buffer. */
     uint8_t mac[64];
     t0 = mcycle_now();
     hmac_sha512_2chunk(hmac_key, bundle, 24,
-                       o->manifest_ciphertext, o->manifest_sz, mac);
+                       manifest_buf, manifest_sz, mac);
     verify_cycles += mcycle_now() - t0;
     if (ct_memcmp64(mac, o->manifest_hmac) != 0) {
         xil_printf("[m] PEL2: manifest HMAC mismatch\r\n");
         return -1;
     }
 
-    /* Decrypt the manifest in place (CTR is symmetric). */
-    struct AES_ctx ctx;
-    t0 = mcycle_now();
-    AES_init_ctx_iv(&ctx, (const uint8_t *)aes_key, o->manifest_iv);
-    AES_CTR_xcrypt_buffer(&ctx, o->manifest_ciphertext, o->manifest_sz);
-    decrypt_cycles += mcycle_now() - t0;
-
-    pel2_manifest_t *m = (pel2_manifest_t *)o->manifest_ciphertext;
+    pel2_manifest_t *m = (pel2_manifest_t *)manifest_buf;
     if (m->num_segments == 0 || m->num_segments > PEL2_MAX_SEGS) {
         xil_printf("[m] PEL2: bad num_segments %u\r\n", m->num_segments);
         return -1;
     }
-    if (8u + (uint32_t)PEL2_SEG_ENTRY * m->num_segments != o->manifest_sz) {
+    if (8u + (uint32_t)PEL2_SEG_ENTRY * m->num_segments != manifest_sz) {
         xil_printf("[m] PEL2: manifest_sz/num_segments mismatch\r\n");
         return -1;
     }
 
     /* Bounds-check every segment against the module region defined by the
-     * linker. Prevents a tampered (but authenticated under another key?)
-     * manifest from overwriting the firmware itself. */
+     * linker. The manifest is HMAC-verified at this point so its paddr/size
+     * are trusted, but a (valid-key, but misbuilt) bundle could still ask
+     * us to overwrite the firmware itself. */
     uintptr_t module_lo = (uintptr_t)&_MODULE_BASE;
     uintptr_t module_sz = (uintptr_t)&_MODULE_SIZE;
     uintptr_t module_hi = module_lo + module_sz;
@@ -210,7 +231,7 @@ static int load_elf_from_buf_pel2(uint8_t *bundle) {
         uintptr_t p = (uintptr_t)m->segments[i].paddr;
         uintptr_t s = (uintptr_t)m->segments[i].size;
         if (p < module_lo || p >= module_hi || s > module_hi - p) {
-            xil_printf("[m] PEL2: seg[%u] 0x%08X+%u out of module "
+            xil_printf("[m] PEL2: seg[%u] 0x%08X+%08X out of module "
                        "[0x%08X..0x%08X)\r\n",
                        i, (uint32_t)p, (uint32_t)s,
                        (uint32_t)module_lo, (uint32_t)module_hi);
@@ -223,15 +244,36 @@ static int load_elf_from_buf_pel2(uint8_t *bundle) {
     memset(&_MODULE_BASE, 0, (size_t)&_MODULE_SIZE);
     cleanup_cycles += mcycle_now() - t0;
 
-    /* Walk segment ciphertexts back-to-back (no per-segment header bytes). */
-    uint8_t *cursor = bundle + PEL2_OUTER_HDR + o->manifest_sz;
+    /* === LOAD SEGMENTS ===
+     * Copy each segment's ciphertext from the bundle into its target paddr.
+     * Segment ciphertexts sit back-to-back after the manifest. */
+    uint8_t *cursor = bundle + PEL2_OUTER_HDR + manifest_sz;
+    t0 = mcycle_now();
     for (uint32_t i = 0; i < m->num_segments; i++) {
         uint32_t paddr = m->segments[i].paddr;
         uint32_t size  = m->segments[i].size;
-        uint8_t *seg_ct = cursor;
+        memcpy((void *)(uintptr_t)paddr, cursor, size);
+        cursor += size;
+    }
+    load_cycles += mcycle_now() - t0;
 
-        /* Compute per-segment MAC binding (idx, paddr, size, iv), then MAC
-         * over (binding || ciphertext). */
+    /* === DECRYPT SEGMENTS in place at each paddr. === */
+    t0 = mcycle_now();
+    for (uint32_t i = 0; i < m->num_segments; i++) {
+        uint32_t paddr = m->segments[i].paddr;
+        uint32_t size  = m->segments[i].size;
+        AES_init_ctx_iv(&ctx, (const uint8_t *)aes_key, m->segments[i].iv);
+        AES_CTR_xcrypt_buffer(&ctx, (uint8_t *)(uintptr_t)paddr, size);
+    }
+    decrypt_cycles += mcycle_now() - t0;
+
+    /* === VERIFY SEGMENTS: HMAC over plaintext at paddr. ===
+     * Plaintext is already in the module region; if any verify fails we
+     * re-zero the region before returning so unverified bytes cannot run. */
+    for (uint32_t i = 0; i < m->num_segments; i++) {
+        uint32_t paddr = m->segments[i].paddr;
+        uint32_t size  = m->segments[i].size;
+
         pel2_seg_macblob_t bind;
         bind.idx   = i;
         bind.paddr = paddr;
@@ -241,25 +283,17 @@ static int load_elf_from_buf_pel2(uint8_t *bundle) {
         t0 = mcycle_now();
         hmac_sha512_2chunk(hmac_key,
                            (const uint8_t *)&bind, sizeof(bind),
-                           seg_ct, size, mac);
+                           (const uint8_t *)(uintptr_t)paddr, size,
+                           mac);
         verify_cycles += mcycle_now() - t0;
         if (ct_memcmp64(mac, m->segments[i].hmac) != 0) {
             xil_printf("[m] PEL2: seg[%u] HMAC mismatch\r\n", i);
+            t0 = mcycle_now();
+            memset(&_MODULE_BASE, 0, (size_t)&_MODULE_SIZE);
+            cleanup_cycles += mcycle_now() - t0;
             return -1;
         }
-
-        /* Decrypt the segment ciphertext in place. */
-        t0 = mcycle_now();
-        AES_init_ctx_iv(&ctx, (const uint8_t *)aes_key, m->segments[i].iv);
-        AES_CTR_xcrypt_buffer(&ctx, seg_ct, size);
-        decrypt_cycles += mcycle_now() - t0;
-
         xil_printf("[m] seg[%u] -> 0x%08X (%u bytes)\r\n", i, paddr, size);
-        t0 = mcycle_now();
-        memcpy((void *)(uintptr_t)paddr, seg_ct, size);
-        load_cycles += mcycle_now() - t0;
-
-        cursor += size;
     }
 
     uint32_t total_cycles = mcycle_now() - total_start;
@@ -316,7 +350,6 @@ int main() {
                 xil_printf("[m] LOADING ELF from DRAM @ 0x%08X (%d bytes)\r\n",
                            dram_addr, elf_size);
                 load_elf_from_buf((char*) dram_addr);
-
             } else {
                 xil_printf("[m] unknown cmd: 0x%08X\r\n", cmd);
             }

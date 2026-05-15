@@ -216,7 +216,7 @@ static int open_camera(void) {
 }
 
 int main(int argc, char *argv[]) {
-    const char *elf_path = "/tmp/ML_SSA.elf";
+    const char *elf_path = "/tmp/ML_SSA_secure.pel2";
     const char *mode = "ocm";            /* default: original OCM mode */
     uint32_t dram_addr = 0x50000000;     /* default DRAM load address */
 

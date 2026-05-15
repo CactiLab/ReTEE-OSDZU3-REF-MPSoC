@@ -11,7 +11,9 @@ enable_language(C ASM CXX)
 # Add any compiler definitions, they will be added as extra definitions
 # Example : Adding VERBOSE=1 will pass -DVERBOSE=1 to the compiler.
 set(USER_COMPILE_DEFINITIONS
-""
+"TF_LITE_STATIC_MEMORY"
+"TF_LITE_MCU_DEBUG_LOG"
+"NDEBUG"
 )
 
 # Undefine any previously specified compiler definitions, either built in or provided with a -D option
@@ -27,6 +29,10 @@ set(USER_UNDEFINED_SYMBOLS
 # Example 3: Adding ${CMAKE_SOURCE_DIR}/data/include to add data/include from this project.
 
 set(USER_INCLUDE_DIRECTORIES
+"../../../tflm-tree"
+"../../../tflm-tree/third_party/kissfft"
+"../../../tflm-tree/third_party/gemmlowp"
+"../../../tflm-tree/third_party/flatbuffers/include"
 )
 
 #Add any source below, they will be added as Compile sources.
@@ -34,8 +40,10 @@ set(USER_INCLUDE_DIRECTORIES
 #Example 2: Adding ../../common/helloworld.c will consider the path as relative to this component directory
 #Example 3: Adding ${MY_ENV}/data/helloworld.c are expanded using project-specific environment settings.
 set(USER_COMPILE_SOURCES
-"src/main.cpp"
+"main.cpp"
 "person_detect_model_data.cc"
+"blake2s.c"
+"custom_ops.cpp"
 )
 
 # -----------------------------------------
@@ -67,7 +75,7 @@ set(USER_COMPILE_WARNINGS_INHIBIT_ALL )
 set(USER_COMPILE_OPTIMIZATION_LEVEL "-Os")
 
 # Other flags related to optimization
-set(USER_COMPILE_OPTIMIZATION_OTHER_FLAGS )
+set(USER_COMPILE_OPTIMIZATION_OTHER_FLAGS "-fno-exceptions -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics -ffunction-sections -fdata-sections")
 
 # -----------------------------------------
 
@@ -117,12 +125,14 @@ set(USER_LINK_OMIT_ALL_SYMBOL_INFO "-s")
 # Add any libraries to be linked below, they will be added as extra libraries.
 # User needs to update USER_LINK_DIRECTORIES below with these library search paths.
 set(USER_LINK_LIBRARIES
+"tflm"
 )
 
 # Add any directories to look for the libraries to be linked.
 # Example 1: Adding /proj/compression/lib will pass -L/proj/compression/lib to the linker.
 # Example 2: Adding ../../common/lib will consider the path as relative to this directory and will pass the path to -L option.
 set(USER_LINK_DIRECTORIES
+"../../../tflm-tree/build-riscv-hfloat"
 )
 
 # -----------------------------------------
@@ -132,6 +142,7 @@ set(USER_LINKER_SCRIPT "${CMAKE_SOURCE_DIR}/lscript.ld")
 # Add linker options to be passed, they will be added as extra linker options
 # Example : Adding -s will pass -s to the linker.
 set(USER_LINK_OTHER_FLAGS
+"-Wl,--just-symbols=../../riscv_firmware_secure/build/riscv_firmware_secure.elf -Wl,--gc-sections -Wl,-s"
 )
 
 # -----------------------------------------

@@ -292,7 +292,7 @@ int blake2s(void *out, const void *in, size_t inlen)
         if (BLAKE2S_ERRCHECK && inlen % BLAKE2S_BLOCKBYTES != 0)
             return -1;
 
-        const uint8_t *inbuf = in;
+        const uint8_t *inbuf = (const uint8_t *)in;
         const uint8_t *inend = inbuf + inlen - BLAKE2S_BLOCKBYTES;
         for (;;)
         {

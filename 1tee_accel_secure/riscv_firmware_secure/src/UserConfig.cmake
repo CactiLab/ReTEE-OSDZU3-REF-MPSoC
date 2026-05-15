@@ -69,7 +69,7 @@ set(USER_COMPILE_WARNINGS_INHIBIT_ALL )
 set(USER_COMPILE_OPTIMIZATION_LEVEL "-Os")
 
 # Other flags related to optimization
-set(USER_COMPILE_OPTIMIZATION_OTHER_FLAGS )
+set(USER_COMPILE_OPTIMIZATION_OTHER_FLAGS "")
 
 # -----------------------------------------
 
@@ -102,16 +102,16 @@ set(USER_COMPILE_OTHER_FLAGS )
 # Linker options
 # Do not use the standard system startup files when linking.
 # The standard system libraries are used normally, unless -nostdlib or -nodefaultlibs is used. (-nostartfiles)
-set(USER_LINK_NO_START_FILES )
+set(USER_LINK_NO_START_FILES "-nostartfiles")
 
 # Do not use the standard system libraries when linking. (-nodefaultlibs)
-set(USER_LINK_NO_DEFAULT_LIBS )
+set(USER_LINK_NO_DEFAULT_LIBS "-nodefaultlibs")
 
 # Do not use the standard system startup files or libraries when linking. (-nostdlib)
-set(USER_LINK_NO_STDLIB )
+set(USER_LINK_NO_STDLIB "-nostdlib")
 
 # Omit all symbol information. (-s)
-set(USER_LINK_OMIT_ALL_SYMBOL_INFO )
+set(USER_LINK_OMIT_ALL_SYMBOL_INFO "")
 
 
 # -----------------------------------------

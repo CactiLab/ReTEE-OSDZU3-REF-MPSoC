@@ -29,9 +29,10 @@ Two modes, auto-detected from the input ELF:
           4    4     num_segments
           8    88*N  segments[]: { u32 paddr; u32 size; u8 iv[16]; u8 hmac[64] }
 
-    HMAC bindings:
-      manifest: HMAC(hmac_key, magic||manifest_sz||manifest_iv||manifest_ct)
-      segment i: HMAC(hmac_key, u32_LE(i)||u32_LE(paddr)||u32_LE(size)||iv||ct)
+    HMAC bindings (both over plaintext — the firmware decrypts before
+    verifying, matching the LOAD->DECRYPT->VERIFY order):
+      manifest: HMAC(hmac_key, magic||manifest_sz||manifest_iv||manifest_pt)
+      segment i: HMAC(hmac_key, u32_LE(i)||u32_LE(paddr)||u32_LE(size)||iv||pt)
 
     Total bundle size = 88 + manifest_sz + sum(p_filesz for PT_LOAD).
     No encryption expansion.
@@ -173,15 +174,16 @@ def pack(elf_path, out_path, key):
 
     hmac_key = derive_hmac_key(key)
 
-    # Encrypt each segment and compute its MAC (binding: idx||paddr||size).
+    # Encrypt each segment and compute its MAC over plaintext.
+    # Binding: idx||paddr||size||iv, then plaintext bytes.
     seg_ciphertexts = []
     seg_entries = []  # one 88-byte entry per segment in the manifest
     for i, seg in enumerate(loads):
         iv = os.urandom(IV_LEN)
+        bind = struct.pack("<III", i, seg["paddr"], seg["size"])
+        mac = hmac.new(hmac_key, bind + iv + seg["data"], hashlib.sha512).digest()
         ct = aes_ctr_xcrypt(key, iv, seg["data"])
         assert len(ct) == seg["size"]
-        bind = struct.pack("<III", i, seg["paddr"], seg["size"])
-        mac = hmac.new(hmac_key, bind + iv + ct, hashlib.sha512).digest()
         seg_ciphertexts.append(ct)
         seg_entries.append(
             struct.pack("<II", seg["paddr"], seg["size"]) + iv + mac
@@ -192,16 +194,16 @@ def pack(elf_path, out_path, key):
     manifest_sz = len(manifest_pt)
     assert manifest_sz == 8 + SEG_ENTRY_LEN * len(loads)
 
-    # Encrypt manifest with its own IV.
+    # Manifest MAC over plaintext: (magic || manifest_sz || manifest_iv || plaintext).
     manifest_iv = os.urandom(IV_LEN)
-    manifest_ct = aes_ctr_xcrypt(key, manifest_iv, manifest_pt)
-    assert len(manifest_ct) == manifest_sz
-
-    # Manifest MAC over (magic || manifest_sz || manifest_iv || ciphertext).
     outer_prefix = MAGIC + struct.pack("<I", manifest_sz) + manifest_iv
     manifest_mac = hmac.new(
-        hmac_key, outer_prefix + manifest_ct, hashlib.sha512
+        hmac_key, outer_prefix + manifest_pt, hashlib.sha512
     ).digest()
+
+    # Encrypt manifest after MACing.
+    manifest_ct = aes_ctr_xcrypt(key, manifest_iv, manifest_pt)
+    assert len(manifest_ct) == manifest_sz
 
     with open(out_path, "wb") as f:
         f.write(outer_prefix)
