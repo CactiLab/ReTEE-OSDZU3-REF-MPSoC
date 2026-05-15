@@ -27,10 +27,10 @@ set(USER_UNDEFINED_SYMBOLS
 # Example 3: Adding ${CMAKE_SOURCE_DIR}/data/include to add data/include from this project.
 
 set(USER_INCLUDE_DIRECTORIES
-"../../../../../Documents/tflm-tree"
-"../../../../../Documents/tflm-tree/third_party/flatbuffers/include"
-"../../../../../Documents/tflm-tree/third_party/kissfft"
-"../../../../../Documents/tflm-tree/third_party/gemmlowp"
+"../../tflm-tree"
+"../../tflm-tree/third_party/flatbuffers/include"
+"../../tflm-tree/third_party/kissfft"
+"../../tflm-tree/third_party/gemmlowp"
 )
 
 # -----------------------------------------
@@ -139,7 +139,7 @@ set(USER_LINK_LIBRARIES
 # Example 1: Adding /proj/compression/lib will pass -L/proj/compression/lib to the linker.
 # Example 2: Adding ../../common/lib will consider the path as relative to this directory. and will pass the path to -L option.
 set(USER_LINK_DIRECTORIES
-"../../../../../Documents/tflm-tree/build-cortex-a"
+"../../tflm-tree/build-cortexa-neon"
 )
 
 # Add linker options to be passed, they will be added as extra linker options

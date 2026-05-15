@@ -1,0 +1,7 @@
+[
+  {
+    "file": "/home/e/Documents/research/byotee_riscv/1tee_accel_secure/linux_ml_secure/src/main.c",
+    "command": "/tools/zynqmp_common_peta/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-amd-linux/aarch64-amd-linux-gcc -DVITIS_MAJOR_VERSION\u003d\"\" -DVITIS_MINOR_VERSION\u003d\"\" -DVITIS_VERSION\u003d\"\" -I/tools/zynqmp_common_peta/sysroots/cortexa72-cortexa53-amd-linux/usr/include -g  -I/tools/zynqmp_common_peta/sysroots/cortexa72-cortexa53-amd-linux/usr/include/c++/11.2.0/aarch64-xilinx-linux -I/tools/zynqmp_common_peta/sysroots/cortexa72-cortexa53-amd-linux/usr/include/c++/11.2.0/backward -I/tools/zynqmp_common_peta/sysroots/cortexa72-cortexa53-amd-linux/usr/lib/aarch64-xilinx-linux/11.2.0/include -I/tools/zynqmp_common_peta/sysroots/cortexa72-cortexa53-amd-linux/usr/include/c++/11.2.0 --sysroot\u003d/tools/zynqmp_common_peta/sysroots/cortexa72-cortexa53-amd-linux -Wall -Wextra -O0 -g3 -o CMakeFiles/linux_ml_secure.elf.dir/src/main.c.obj -c /home/e/Documents/research/byotee_riscv/1tee_accel_secure/linux_ml_secure/src/main.c",
+    "directory": "/home/e/Documents/research/byotee_riscv/1tee_accel_secure/linux_ml_secure"
+  }
+]

@@ -4,10 +4,6 @@ This is an updated implementation of [BYOTEE (Build Your Own Trusted Execution E
 
 Essentially, it's an architecture that consists of custom processor(s) and resources within an FPGA fabric that physically isolates computation from a hardcore environment.
 
-# Architecture
-
-TBD
-
 # Building and running example projects
 
 ## Pre-requisites
@@ -137,8 +133,18 @@ Run the following commands:
 
 This will give you the ability to set a root password with: ```passwd root```
 
+It is suggested to also setup a secondary account to copy binaries to with ```scp```. I used the name ```petalinux```, which is referenced in the ```./copy.sh``` scripts.
+
 ## Loading and Running SSAs
 
 SSAs are loadable modules which add capabilities to the system. 
 
 See the example projects for a reference design and API for loading and running SSAs.
+
+# Architecture
+
+See each example project for architecture specifics.
+
+# Miscellaneous notes
+
+The full vivado project for the ```1tee_accel``` block design is included as a zip in ```vivado_riscv_1tee_accel.zip```. Feel free to use this if the ```hardware_designs/*.tcl``` scripts are having issues.
