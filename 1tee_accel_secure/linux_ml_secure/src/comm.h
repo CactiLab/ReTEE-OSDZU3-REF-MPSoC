@@ -21,10 +21,22 @@ typedef enum : uint8_t {
 } ml_status_t;
 
 enum ml_command {
-    CMD_NONE   = 0,
-    CMD_INFER  = 1,
-    CMD_UNLOAD = 2,
+    CMD_NONE           = 0,
+    CMD_INFER          = 1,
+    CMD_UNLOAD         = 2,
+    /* Toggle .text/.rodata attestation caching. Payload in ml->data_sz:
+     * 0 = recompute M_text and M_rodata every CMD_INFER (default);
+     * 1 = compute once now, reuse on every subsequent CMD_INFER.
+     * .data is *never* cached (it holds mutable globals like g_infer_count). */
+    CMD_ATT_CACHE_CODE = 3,
 };
+
+/* Attestation field sizes.
+ * NOTE: ML_SSA_secure/src/main.cpp keeps an independent copy of ml_data_t —
+ * keep both layouts byte-identical when editing here. */
+#define ATT_DIGEST_SIZE     32
+#define ATT_CHALLENGE_SIZE  8
+#define ATT_KEY_SIZE        32   /* shared with verifier out-of-band */
 
 typedef struct __attribute__((__packed__)) {
     volatile uint8_t status;
@@ -34,6 +46,10 @@ typedef struct __attribute__((__packed__)) {
     volatile uint32_t command;
     volatile uint32_t model_id;
     volatile uint32_t data_sz;
+    volatile uint8_t challenge[ATT_CHALLENGE_SIZE];        /* ARM -> RISC-V, per inference */
+    volatile uint8_t preExe_digest[ATT_DIGEST_SIZE];       /* RISC-V -> ARM (M4) */
+    volatile uint8_t postExe_digest[ATT_DIGEST_SIZE];      /* RISC-V -> ARM (M5) */
+    volatile uint8_t tag[ATT_DIGEST_SIZE];                 /* RISC-V -> ARM (keyed envelope) */
     volatile int8_t data[];
 } ml_data_t;
 

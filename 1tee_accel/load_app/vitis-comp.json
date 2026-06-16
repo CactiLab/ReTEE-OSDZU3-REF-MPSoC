@@ -6,7 +6,7 @@
   "cpuInstance": "cortex-a53",
   "cpuType": "cortex-a53",
   "os": "linux",
-  "sysroot": "/opt/petalinux/2025.1/sysroots/cortexa72-cortexa53-amd-linux",
+  "sysroot": "/tools/zynqmp_common_peta/sysroots/cortexa72-cortexa53-amd-linux",
   "configuration": {
     "componentType": "HOST",
     "hostToolchainConfigurations": []

@@ -36,11 +36,18 @@ SECTIONS
 . = _MODULE_BASE;
 _module_start = .;
 
+/* Attestation: __text_start/__text_end bound the bytes hashed for M_text.
+ * Size is padded to a multiple of 64 so the non-streaming blake2s() (which
+ * requires inlen % 64 == 0) can hash the section in place. .text.init,
+ * .init, .fini, .ctors, .dtors live outside the measured region. */
 .text . : {
-   . = ALIGN(32);
+   . = ALIGN(64);
+   __text_start = .;
    *(.text)
    *(.text.*)
    *(.gnu.linkonce.t.*)
+   . = ALIGN(64);
+   __text_end = .;
 } > bram
 
 .text.init : {
@@ -84,10 +91,12 @@ _module_start = .;
 } > bram
 
 .rodata : {
+   . = ALIGN(64);
    __rodata_start = .;
    *(.rodata)
    *(.rodata.*)
    *(.gnu.linkonce.r.*)
+   . = ALIGN(64);
    __rodata_end = .;
 } > bram
 
@@ -106,10 +115,12 @@ _module_start = .;
 } > bram
 
 .data : {
+   . = ALIGN(64);
    __data_start = .;
    *(.data)
    *(.data.*)
    *(.gnu.linkonce.d.*)
+   . = ALIGN(64);
    _edata = .;
 } > bram
 

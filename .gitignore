@@ -29,3 +29,8 @@ platform_riscv
 platform
 xilinx-zynqmp-common*/
 vivado_*/
+
+*.pel2
+*.elf
+transcribe.txt
+embench-iot/

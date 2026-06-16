@@ -8,6 +8,7 @@
 #include <time.h>
 #include <sys/mman.h>
 #include <sys/ioctl.h>
+#include <sys/random.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
@@ -22,6 +23,14 @@
 #define CAM_WIDTH  640
 #define CAM_HEIGHT 480
 #define NUM_BUFFERS 4
+
+/* ATT_CACHE_CODE = 1: tell the SSA to compute M_text and M_rodata once at
+ * startup and reuse them for every CMD_INFER (skips ~480 KB of rodata +
+ * ~150 KB of text hashing per frame).
+ *           = 0: SSA recomputes both every frame (matches the BYOTEE
+ * reference's per-inference code measurement). .data is always recomputed
+ * regardless because it holds mutable globals. */
+#define ATT_CACHE_CODE 0
 
 struct buffer { void *start; size_t length; };
 
@@ -257,6 +266,15 @@ int main(int argc, char *argv[]) {
     }
     printf("ML_SSA ready (model_id=0x%08X)\n", ml->model_id);
 
+    /* Configure code attestation caching once, per the compile-time
+     * ATT_CACHE_CODE switch. data_sz carries the on/off payload. */
+    ml->data_sz = ATT_CACHE_CODE ? 1u : 0u;
+    ml->status = STATUS_BUSY;
+    ml->command = CMD_ATT_CACHE_CODE;
+    while (!(ml->status & STATUS_COMPLETE) && ml->status != STATUS_ERR)
+        continue;
+    printf("ML_SSA att code cache: %s\n", ATT_CACHE_CODE ? "on" : "off");
+
     /* Open camera */
     int cam_fd = open_camera();
     if (cam_fd < 0) return 1;
@@ -300,9 +318,31 @@ int main(int argc, char *argv[]) {
     listen(srv, 2);
     printf("Streaming on port %d (waiting for client...)\n", PORT);
 
-    /* Packet layout: [confidence(1) | person_score(1) | no_person_score(1) | reserved(1) | YUYV frame] */
+    /* Packet layout (623724 bytes total).
+     *   off    sz       field
+     *   0      1        confidence
+     *   1      1        person_score
+     *   2      1        no_person_score
+     *   3      1        reserved
+     *   4      8        challenge (host-issued, per inference)
+     *   12     32       preExe_digest  (TEE-emitted; M4)
+     *   44     32       postExe_digest (TEE-emitted; M5)
+     *   76     32       tag            (TEE-emitted; prefix-MAC over att_key||M5)
+     *   108    9216     preprocessed_input (the bytes the TEE consumed)
+     *   9324   614400   YUYV frame (display only; not attested)
+     */
+    #define PKT_OFF_CONFIDENCE  0
+    #define PKT_OFF_PSCORE      1
+    #define PKT_OFF_NPSCORE     2
+    #define PKT_OFF_RESERVED    3
+    #define PKT_OFF_CHALLENGE   4
+    #define PKT_OFF_PREEXE      (PKT_OFF_CHALLENGE + ATT_CHALLENGE_SIZE)
+    #define PKT_OFF_POSTEXE     (PKT_OFF_PREEXE   + ATT_DIGEST_SIZE)
+    #define PKT_OFF_TAG         (PKT_OFF_POSTEXE  + ATT_DIGEST_SIZE)
+    #define PKT_OFF_INPUT       (PKT_OFF_TAG      + ATT_DIGEST_SIZE)
+    #define PKT_OFF_YUYV        (PKT_OFF_INPUT    + MODEL_INPUT_SZ)
     const size_t frame_sz = CAM_WIDTH * CAM_HEIGHT * 2;
-    const size_t pkt_sz = 4 + frame_sz;
+    const size_t pkt_sz = PKT_OFF_YUYV + frame_sz;
     uint8_t *packet = malloc(pkt_sz);
     if (!packet) { perror("malloc"); return 1; }
 
@@ -348,6 +388,23 @@ int main(int argc, char *argv[]) {
                     dst32[i] = src32[i];
             }
             ml->data_sz = MODEL_INPUT_SZ;
+
+            /* Generate per-inference attestation challenge.  If /dev/urandom
+             * is unavailable in the image, fall back to a monotonic counter
+             * — still unique per inference within a session. */
+            uint8_t challenge[ATT_CHALLENGE_SIZE];
+            if (getrandom(challenge, ATT_CHALLENGE_SIZE, 0) != (ssize_t)ATT_CHALLENGE_SIZE) {
+                static uint64_t ctr = 0;
+                ctr++;
+                memcpy(challenge, &ctr, ATT_CHALLENGE_SIZE);
+            }
+            {
+                const uint32_t *src32 = (const uint32_t *)challenge;
+                volatile uint32_t *dst32 = (volatile uint32_t *)ml->challenge;
+                for (size_t i = 0; i < ATT_CHALLENGE_SIZE / 4; i++)
+                    dst32[i] = src32[i];
+            }
+
             ml->status = STATUS_BUSY;
             ml->command = CMD_INFER;
 
@@ -359,16 +416,42 @@ int main(int argc, char *argv[]) {
             /* Build packet */
             uint8_t confidence = 0;
             int8_t pscore = 0, npscore = 0;
+            uint8_t preexe[ATT_DIGEST_SIZE]  = {0};
+            uint8_t postexe[ATT_DIGEST_SIZE] = {0};
+            uint8_t tag[ATT_DIGEST_SIZE]     = {0};
             if (ml->status != STATUS_ERR) {
                 confidence = ml->confidence;
                 pscore = ml->person_score;
                 npscore = ml->no_person_score;
+
+                /* Read attestation fields out of OCM with the same volatile
+                 * word-at-a-time pattern used for the input copy. */
+                {
+                    volatile uint32_t *src = (volatile uint32_t *)ml->preExe_digest;
+                    uint32_t *dst = (uint32_t *)preexe;
+                    for (size_t i = 0; i < ATT_DIGEST_SIZE / 4; i++) dst[i] = src[i];
+                }
+                {
+                    volatile uint32_t *src = (volatile uint32_t *)ml->postExe_digest;
+                    uint32_t *dst = (uint32_t *)postexe;
+                    for (size_t i = 0; i < ATT_DIGEST_SIZE / 4; i++) dst[i] = src[i];
+                }
+                {
+                    volatile uint32_t *src = (volatile uint32_t *)ml->tag;
+                    uint32_t *dst = (uint32_t *)tag;
+                    for (size_t i = 0; i < ATT_DIGEST_SIZE / 4; i++) dst[i] = src[i];
+                }
             }
-            packet[0] = confidence;
-            packet[1] = (uint8_t)pscore;
-            packet[2] = (uint8_t)npscore;
-            packet[3] = 0;
-            memcpy(&packet[4], frame, frame_sz);
+            packet[PKT_OFF_CONFIDENCE] = confidence;
+            packet[PKT_OFF_PSCORE]     = (uint8_t)pscore;
+            packet[PKT_OFF_NPSCORE]    = (uint8_t)npscore;
+            packet[PKT_OFF_RESERVED]   = 0;
+            memcpy(&packet[PKT_OFF_CHALLENGE], challenge,    ATT_CHALLENGE_SIZE);
+            memcpy(&packet[PKT_OFF_PREEXE],    preexe,       ATT_DIGEST_SIZE);
+            memcpy(&packet[PKT_OFF_POSTEXE],   postexe,      ATT_DIGEST_SIZE);
+            memcpy(&packet[PKT_OFF_TAG],       tag,          ATT_DIGEST_SIZE);
+            memcpy(&packet[PKT_OFF_INPUT],     preprocess_buf, MODEL_INPUT_SZ);
+            memcpy(&packet[PKT_OFF_YUYV],      frame,        frame_sz);
 
             /* Send to client */
             if (send(client, packet, pkt_sz, MSG_NOSIGNAL) <= 0) {

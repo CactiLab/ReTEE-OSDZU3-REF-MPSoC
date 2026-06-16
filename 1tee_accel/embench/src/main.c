@@ -2,7 +2,18 @@
 #include <stdbool.h>
 #include <string.h>
 #include <xil_printf.h>
+#include "xparameters.h"
+#include "xuartlite_l.h"
 #include "profile.h"
+
+#define EMBENCH_UART_BASE XPAR_XUARTLITE_0_BASEADDR
+
+static int uart_try_recv(void)
+{
+    if (XUartLite_IsReceiveEmpty(EMBENCH_UART_BASE))
+        return -1;
+    return (int)XUartLite_RecvByte(EMBENCH_UART_BASE);
+}
 
 /* ---------- per-benchmark declarations (renamed via #define) ---------- */
 
@@ -104,11 +115,19 @@ int module_main(void)
     bd->status      = STATUS_READY;
 
     xil_printf("embench> Ready (%d benchmarks)\r\n", NUM_BENCHMARKS);
+    xil_printf("embench> UART: 'r'=run 'u'=unload\r\n");
     ocm->ready = true;
 
     while (1) {
-        if (bd->command == CMD_NONE)
-            continue;
+        if (bd->command == CMD_NONE) {
+            int c = uart_try_recv();
+            if (c == 'r' || c == 'R')
+                bd->command = CMD_RUN;
+            else if (c == 'u' || c == 'U')
+                bd->command = CMD_UNLOAD;
+            else
+                continue;
+        }
 
         if (bd->command == CMD_UNLOAD) {
             xil_printf("embench> Unloading\r\n");
