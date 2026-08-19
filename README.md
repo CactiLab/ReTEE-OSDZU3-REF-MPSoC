@@ -1,5 +1,7 @@
 # What is this?
 
+RETEE: Reconfigurable Trusted Execution Environments and Acceleration on FPGA SoCs
+
 This is an updated implementation of [BYOTEE (Build Your Own Trusted Execution Environment)](). 
 
 Essentially, it's an architecture that consists of custom processor(s) and resources within an FPGA fabric that physically isolates computation from a hardcore environment.
